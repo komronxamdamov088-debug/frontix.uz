@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#050506" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="FRONTIX" />
+
+    <title>FRONTIX — Biznesingiz uchun raqamli yechimlar</title>
+    <meta
+      name="description"
+      content="FRONTIX — biznesingiz uchun zamonaviy website, Telegram bot, QR menyu, onlayn buyurtma va avtomatlashtirish yechimlarini yaratadigan IT kompaniya."
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="FRONTIX" />
+    <meta property="og:title" content="FRONTIX — Biznesingiz uchun raqamli yechimlar" />
+    <meta
+      property="og:description"
+      content="FRONTIX — biznesingiz uchun zamonaviy website, Telegram bot, QR menyu, onlayn buyurtma va avtomatlashtirish yechimlarini yaratadigan IT kompaniya."
+    />
+    <meta property="og:url" content="https://frontix.uz/" />
+    <meta property="og:image" content="https://frontix.uz/og-image.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="FRONTIX — Biznesingiz uchun raqamli yechimlar" />
+    <meta
+      name="twitter:description"
+      content="FRONTIX — biznesingiz uchun zamonaviy website, Telegram bot, QR menyu va avtomatlashtirish yechimlarini yaratadi."
+    />
+
+    <link rel="canonical" href="https://frontix.uz/" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "FRONTIX",
+        "url": "https://frontix.uz/",
+        "logo": "https://frontix.uz/favicon.svg",
+        "description": "FRONTIX — biznesingiz uchun zamonaviy website, Telegram bot, QR menyu, onlayn buyurtma va avtomatlashtirish yechimlarini yaratadigan IT kompaniya.",
+        "areaServed": "UZ",
+        "knowsAbout": [
+          "Website Development",
+          "QR Menu",
+          "Telegram Bot",
+          "Online Ordering System",
+          "Business Automation",
+          "Custom Software"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "telephone": "+998-90-123-45-67",
+          "email": "hello@frontix.uz",
+          "areaServed": "UZ",
+          "availableLanguage": ["uz", "ru", "en"]
+        },
+        "sameAs": ["https://t.me/frontix", "https://instagram.com/frontix"]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "FRONTIX",
+        "url": "https://frontix.uz/"
+      }
+    </script>
+
+    <script>
+      (function () {
+        var stored = localStorage.getItem("frontix-theme");
+        var theme = stored || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+        if (theme === "dark") document.documentElement.classList.add("dark");
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

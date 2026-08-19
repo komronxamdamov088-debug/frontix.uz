@@ -1,0 +1,32 @@
+# FRONTIX
+
+> FRONTIX — bizneslar uchun zamonaviy raqamli yechimlar yaratadigan IT kompaniya. Website development, QR menyu, Telegram bot, onlayn buyurtma tizimlari, custom software va business automation xizmatlarini taqdim etadi. Sayt o'zbek, rus va ingliz tillarida mavjud (UZ/RU/EN).
+
+FRONTIX bizneslarga g'oyadan ishga tushirishgacha bo'lgan yo'lda hamrohlik qiladi: strategiya, dizayn, ishlab chiqish va texnik qo'llab-quvvatlash. Saytda FRX nomli AI yordamchi mavjud bo'lib, xizmatlar, jamoa, narxlar va aloqa haqidagi savollarga javob beradi.
+
+## Xizmatlar
+
+- Website Development — tezkor, SEO-optimallashtirilgan korporativ va biznes saytlari.
+- QR Menu — restoran va kafelar uchun real-vaqtda yangilanadigan raqamli menyu tizimi.
+- Telegram Bot — buyurtma qabul qilish, mijozlar bilan aloqa va avtomatik javob botlari.
+- Online Ordering System — to'liq huquqli onlayn buyurtma va yetkazib berish platformasi.
+- Business Automation — biznes jarayonlarini avtomatlashtirish va CRM integratsiyasi.
+- Custom Software — bizneslarning noyob ehtiyojlariga mos individual dasturiy ta'minot.
+
+## Jamoa
+
+FRONTIX jamoasi 12 nafar mutaxassisdan iborat: 2 asoschi, 8 dasturchi, 1 administrator va 1 dizayner.
+
+## Sahifalar
+
+- [Bosh sahifa](https://frontix.uz/): kompaniya haqida umumiy ma'lumot, xizmatlar, jamoa va mijozlar fikri.
+- [Xizmatlar](https://frontix.uz/services): barcha xizmatlarning batafsil tavsifi.
+- [Jamoa](https://frontix.uz/team): FRONTIX jamoasi a'zolari.
+- [Biz haqimizda](https://frontix.uz/about): kompaniya missiyasi va qadriyatlari.
+- [Aloqa](https://frontix.uz/contact): loyiha so'rovi formasi va aloqa ma'lumotlari.
+
+## Aloqa
+
+- Email: hello@frontix.uz
+- Telegram: https://t.me/frontix
+- Manzil: Toshkent, O'zbekiston
