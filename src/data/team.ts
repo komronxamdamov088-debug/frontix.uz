@@ -35,8 +35,8 @@ export interface TeamMember {
 }
 
 export const team: TeamMember[] = [
-  { slug: "sardor-aliyev", name: "Sardor Aliyev", roleKey: "founder", category: "founder", color: "brand" },
-  { slug: "diyora-nazarova", name: "Diyora Nazarova", roleKey: "coFounder", category: "founder", color: "fuchsia" },
+  { slug: "Komron-Xamdamov", name: "Komron Xamdamov", roleKey: "founder", category: "founder", color: "brand" },
+  { slug: "Abdurahmon-Ahunjanov", name: "Abdurahmon Ahunjanov", roleKey: "coFounder", category: "founder", color: "fuchsia" },
   { slug: "jasur-toshev", name: "Jasur Toshev", roleKey: "frontend", category: "developer", color: "emerald" },
   { slug: "kamola-yusupova", name: "Kamola Yusupova", roleKey: "backend", category: "developer", color: "amber" },
   { slug: "otabek-rashidov", name: "Otabek Rashidov", roleKey: "fullstack", category: "developer", color: "sky" },

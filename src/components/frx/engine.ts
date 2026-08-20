@@ -26,7 +26,7 @@ function includesAny(text: string, keywords: string[]): boolean {
 interface Intent {
   id: string;
   keywords: string[];
-  reply: (t: (typeof translations)[Lang]) => FrxReply;
+  reply: (t: (typeof translations)[Lang], lang: Lang) => FrxReply;
 }
 
 const intents: Intent[] = [
@@ -139,7 +139,76 @@ const intents: Intent[] = [
       cta: { label: t.frx.pricingCta, to: "/contact" },
     }),
   },
+  {
+    id: "support",
+    keywords: [
+      "qollab", "kafolat", "yordam berasizlar", "texnik yordam",
+      "поддержк", "гарант", "сопровожден",
+      "support", "warranty", "guarantee", "maintenance", "after launch",
+    ],
+    reply: (t) => ({
+      text: t.contact.faq[2]?.answer ?? t.frx.pricingIntro,
+      cta: { label: t.frx.contactCta, to: "/contact" },
+    }),
+  },
+  {
+    id: "payment",
+    keywords: [
+      "tolov usul", "qanday tolaymiz", "naqd", "karta orqali",
+      "способ оплат", "оплата картой", "предоплат",
+      "payment method", "how to pay", "installment", "pay by card",
+    ],
+    reply: (t) => ({
+      text: t.contact.faq[3]?.answer ?? t.frx.pricingIntro,
+      cta: { label: t.frx.contactCta, to: "/contact" },
+    }),
+  },
+  {
+    id: "tech-stack",
+    keywords: [
+      "texnologiya", "qanday tilda", "qaysi tilda yozasiz", "stack",
+      "технологи", "стек", "на чём пишете",
+      "tech stack", "technology", "framework", "programming language",
+    ],
+    reply: (t) => ({
+      text: `${t.about.techStackTitle}: ${t.about.techStack.join(", ")}.`,
+      cta: { label: t.nav.about, to: "/about" },
+    }),
+  },
+  {
+    id: "who-are-you",
+    keywords: [
+      "sen kimsan", "kimsan oz", "ozing haqingda", "sun'iy intellekt", "robot", "ai misan",
+      "ты кто", "расскажи о себе", "искусственный интеллект", "робот", "ты бот",
+      "who are you", "are you ai", "are you a bot", "artificial intelligence", "tell me about yourself",
+    ],
+    reply: (_t, lang) => ({ text: selfIntro[lang] }),
+  },
+  {
+    id: "start-project",
+    keywords: [
+      "qanday boshlayman", "ish boshlaymiz", "bepul konsultatsiya", "loyihani boshlash",
+      "начать проект", "с чего начать", "бесплатная консультац",
+      "get started", "how do i start", "start a project", "free consultation", "place an order",
+    ],
+    reply: (t, lang) => ({
+      text: startProject[lang],
+      cta: { label: t.frx.contactCta, to: "/contact" },
+    }),
+  },
 ];
+
+const selfIntro: Record<Lang, string> = {
+  uz: "Men FRX — FRONTIX saytidagi lokal yordamchiman. Katta til modeli emasman, shuning uchun API kaliti kerak emas — lekin xizmatlar, narx, jarayon, jamoa va aloqa haqidagi savollaringizga tez javob bera olaman.",
+  ru: "Я FRX — локальный помощник на сайте FRONTIX. Я не большая языковая модель и не требую API-ключа, но быстро отвечу на вопросы об услугах, ценах, процессе, команде и контактах.",
+  en: "I'm FRX, the local assistant built into the FRONTIX site. I'm not a large language model and need no API key, but I can quickly answer questions about services, pricing, process, the team and contact info.",
+};
+
+const startProject: Record<Lang, string> = {
+  uz: "Juda sodda: aloqa formasini to'ldiring yoki Telegram orqali yozing — 24 soat ichida bepul konsultatsiya uchun bog'lanamiz va aniq taklif tayyorlaymiz.",
+  ru: "Всё просто: заполните форму обратной связи или напишите в Telegram — свяжемся в течение 24 часов для бесплатной консультации и подготовим точное предложение.",
+  en: "It's simple: fill out the contact form or message us on Telegram — we'll reach out within 24 hours for a free consultation and put together an exact quote.",
+};
 
 function serviceReply(t: (typeof translations)[Lang], slug: keyof (typeof translations)["uz"]["services"]): FrxReply {
   const text = t.services[slug];
@@ -156,7 +225,7 @@ export function getFrxReply(rawInput: string, lang: Lang): FrxReply {
 
   for (const intent of intents) {
     if (includesAny(input, intent.keywords)) {
-      return intent.reply(t);
+      return intent.reply(t, lang);
     }
   }
 

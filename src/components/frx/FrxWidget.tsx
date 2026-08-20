@@ -129,7 +129,7 @@ export function FrxWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.96 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed bottom-5 right-5 z-50 flex h-[min(720px,calc(100vh-2rem))] w-[calc(100vw-2.5rem)] flex-col overflow-hidden rounded-3xl border border-ink/10 dark:border-white/10 bg-paper dark:bg-ink-2 shadow-soft-dark sm:bottom-6 sm:right-6 sm:w-[440px]"
+            className="fixed bottom-5 right-5 z-50 flex h-[min(820px,calc(100vh-2rem))] w-[calc(100vw-2.5rem)] flex-col overflow-hidden rounded-3xl border border-ink/10 dark:border-white/10 bg-paper dark:bg-ink-2 shadow-soft-dark sm:bottom-6 sm:right-6 sm:w-[520px]"
           >
             <div className="flex items-center justify-between border-b border-ink/10 dark:border-white/10 px-6 py-5">
               <div className="flex items-center gap-3">
@@ -160,7 +160,7 @@ export function FrxWidget() {
                     {m.role === "frx" && <FrxAvatar />}
                     <div
                       className={cn(
-                        "max-w-[300px] whitespace-pre-line rounded-2xl px-4 py-3 text-sm leading-relaxed",
+                        "max-w-95 whitespace-pre-line rounded-2xl px-4 py-3 text-sm leading-relaxed",
                         m.role === "user"
                           ? "rounded-br-sm bg-brand-500 text-white"
                           : "rounded-bl-sm bg-paper-2 dark:bg-white/[0.06] text-ink dark:text-paper",
