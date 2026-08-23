@@ -24,11 +24,17 @@
 - [x] 1-chat_id (7158130495, Komronfrx) test xabari bilan tasdiqlandi — ishlayapti
 - [x] 2-chat_id (8245962324, Frontix | Manager) test xabari bilan tasdiqlandi — endi ishlayapti (blok olib tashlangan)
 - [x] `/api/contact` mantig'i `api/_lib/telegram.ts`ga chiqarildi va `vite.config.ts`ga dev-vaqti middleware qo'shildi — endi `npm run dev` (localhost) rejimida ham, Vercel'da deploy qilingandan keyin ham forma Telegram botga bir xil ishlaydi (avval faqat production'da ishlar edi)
+- [x] Loading (splash) ekrani qo'shildi — `src/components/ui/Preloader.tsx`: sayt ochilganda FRONTIX logotip belgisi animatsiya bilan chiziladi, ostida **FRX** yozuvi chiqadi, 1.5 soniyadan keyin tarkibga fade bilan o'tadi
+- [x] Loyiha GitHub'ga bog'landi va push qilindi — `github.com/komronxamdamov088-debug/test1` (`main` branch)
+- [x] FRX'ga Google Gemini (AI Studio) API ulandi — `api/_lib/gemini.ts` + `api/frx.ts` (Vercel serverless), `vite.config.ts`ga dev-vaqti middleware, model `gemini-3.6-flash` (`thinkingLevel: "low"`, `maxOutputTokens: 1024`). FRONTIX haqida to'liq bilim bazasi (xizmatlar, jamoa, jarayon, narx, aloqa) system prompt'ga kiritildi, javob foydalanuvchi tanlagan tilda (UZ/RU/EN) qaytadi, suhbat tarixi (oxirgi 12 ta xabar) kontekst sifatida yuboriladi. API ishlamasa (kalit yo'q/xato), avtomatik ravishda eski lokal `engine.ts`ga fallback qiladi — sayt hech qachon "javobsiz" qolmaydi
+- [x] `GEMINI_API_KEY` `.env.local`ga qo'shildi va `.env.example`da hujjatlashtirildi (git'ga tushmaydi)
+- [x] FRX widget'da xabar yuborish mantig'i tuzatildi — React StrictMode sabab bitta savolga 2 marta javob qaytarayotgan bug (setState updater ichida side-effect) tuzatildi, endi doim 1 ta javob
 
 ## Foydalanuvchi tomonidan qilinishi kerak
 
-- [ ] Loyihani Vercel'ga (yoki boshqa hostingga) joylash
-- [ ] Vercel > Settings > Environment Variables: `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` (qiymatlar `.env.local`da lokal saqlangan, gitga tushmaydi)
+- [ ] Vercel'da import qilish: **vercel.com/new** → GitHub'dan `test1` repo'sini tanlash → Import (Framework avtomatik "Vite" deb aniqlanadi)
+- [ ] Import qilishdan oldin Environment Variables qo'shish: `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `GEMINI_API_KEY` (qiymatlar `.env.local`da lokal saqlangan, gitga tushmaydi)
+- [ ] Deploy tugagach havolani yuborish — production'da contact formani qayta tekshirib beraman
 - [ ] `src/data/team.ts` — placeholder ismlarni haqiqiy xodimlar bilan almashtirish
 - [ ] `src/data/site.ts` — telefon/email/Telegram/Instagram havolalarini haqiqiysiga almashtirish
 - [ ] `og-image.png` rasmini `public/`ga qo'shish

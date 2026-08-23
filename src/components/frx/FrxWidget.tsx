@@ -55,6 +55,11 @@ export function FrxWidget() {
   const [typing, setTyping] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const seeded = useRef(false);
+  const messagesRef = useRef<ChatMessage[]>([]);
+
+  useEffect(() => {
+    messagesRef.current = messages;
+  }, [messages]);
 
   useEffect(() => {
     if (!seeded.current) {
@@ -74,27 +79,45 @@ export function FrxWidget() {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
   }, [messages, typing]);
 
-  const respond = (query: string) => {
-    const reply: FrxReply = getFrxReply(query, lang);
-    window.setTimeout(
-      () => {
-        setMessages((prev) => [
-          ...prev,
-          { id: nextId(), role: "frx", text: reply.text, quickReplies: reply.quickReplies, cta: reply.cta },
-        ]);
-        setTyping(false);
-      },
-      550 + Math.random() * 500,
-    );
+  const respond = async (query: string, historySnapshot: ChatMessage[]) => {
+    const minDelay = new Promise((resolve) => window.setTimeout(resolve, 450 + Math.random() * 350));
+    const history = historySnapshot
+      .filter((m) => m.role === "user" || m.role === "frx")
+      .slice(-12)
+      .map((m) => ({ role: m.role === "user" ? "user" : "model", text: m.text }));
+
+    let reply: FrxReply;
+    try {
+      const res = await fetch("/api/frx", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: query, lang, history }),
+      });
+      if (!res.ok) throw new Error("frx api error");
+      const data = (await res.json()) as { reply?: string };
+      if (!data.reply) throw new Error("empty reply");
+      reply = { text: data.reply };
+    } catch {
+      reply = getFrxReply(query, lang);
+    }
+
+    await minDelay;
+    setMessages((prev) => [
+      ...prev,
+      { id: nextId(), role: "frx", text: reply.text, quickReplies: reply.quickReplies, cta: reply.cta },
+    ]);
+    setTyping(false);
   };
 
   const sendMessage = (raw: string) => {
     const value = raw.trim();
     if (!value) return;
-    setMessages((prev) => [...prev, { id: nextId(), role: "user", text: value }]);
     setInput("");
     setTyping(true);
-    respond(value);
+    const next = [...messagesRef.current, { id: nextId(), role: "user" as const, text: value }];
+    messagesRef.current = next;
+    setMessages(next);
+    void respond(value, next);
   };
 
   return (
