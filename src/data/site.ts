@@ -8,5 +8,5 @@ export const SITE = {
   telegramUrl: "https://t.me/frontix_official",
   telegramHandle: "@frontix_official",
   instagramUrl: "https://instagram.com/frontix_uz",
-  url: "https://frontix.uz",
+  url: "https://frontix-uz.vercel.app",
 };

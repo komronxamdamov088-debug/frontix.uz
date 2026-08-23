@@ -19,14 +19,14 @@ FRONTIX jamoasi 12 nafar mutaxassisdan iborat: 2 asoschi, 8 dasturchi, 1 adminis
 
 ## Sahifalar
 
-- [Bosh sahifa](https://frontix.uz/): kompaniya haqida umumiy ma'lumot, xizmatlar, jamoa va mijozlar fikri.
-- [Xizmatlar](https://frontix.uz/services): barcha xizmatlarning batafsil tavsifi.
-- [Jamoa](https://frontix.uz/team): FRONTIX jamoasi a'zolari.
-- [Biz haqimizda](https://frontix.uz/about): kompaniya missiyasi va qadriyatlari.
-- [Aloqa](https://frontix.uz/contact): loyiha so'rovi formasi va aloqa ma'lumotlari.
+- [Bosh sahifa](https://frontix-uz.vercel.app/): kompaniya haqida umumiy ma'lumot, xizmatlar, jamoa va mijozlar fikri.
+- [Xizmatlar](https://frontix-uz.vercel.app/services): barcha xizmatlarning batafsil tavsifi.
+- [Jamoa](https://frontix-uz.vercel.app/team): FRONTIX jamoasi a'zolari.
+- [Biz haqimizda](https://frontix-uz.vercel.app/about): kompaniya missiyasi va qadriyatlari.
+- [Aloqa](https://frontix-uz.vercel.app/contact): loyiha so'rovi formasi va aloqa ma'lumotlari.
 
 ## Aloqa
 
-- Email: hello@frontix.uz
-- Telegram: https://t.me/frontix
+- Email: frontix_uz@gmail.com
+- Telegram: https://t.me/frontix_official
 - Manzil: Toshkent, O'zbekiston
