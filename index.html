@@ -36,12 +36,18 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
+        "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
         "name": "FRONTIX",
         "url": "https://frontix-uz.vercel.app/",
         "logo": "https://frontix-uz.vercel.app/favicon.svg",
+        "image": "https://frontix-uz.vercel.app/og-image.png",
         "description": "FRONTIX — biznesingiz uchun zamonaviy website, Telegram bot, QR menyu, onlayn buyurtma va avtomatlashtirish yechimlarini yaratadigan IT kompaniya.",
         "areaServed": "UZ",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Toshkent",
+          "addressCountry": "UZ"
+        },
         "knowsAbout": [
           "Website Development",
           "QR Menu",

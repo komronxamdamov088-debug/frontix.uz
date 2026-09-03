@@ -17,16 +17,46 @@ FRONTIX bizneslarga g'oyadan ishga tushirishgacha bo'lgan yo'lda hamrohlik qilad
 
 FRONTIX jamoasi 12 nafar mutaxassisdan iborat: 2 asoschi, 8 dasturchi, 1 administrator va 1 dizayner.
 
+## Ish jarayoni
+
+1. Kashfiyot — biznes maqsadlari va ehtiyojlarini o'rganish.
+2. Strategiya va dizayn — aniq strategiya asosida UI/UX dizayn yaratish.
+3. Ishlab chiqish — zamonaviy texnologiyalar bilan mahsulotni qurish.
+4. Ishga tushirish — sinovdan o'tkazib, mahsulotni ishga tushirish va qo'llab-quvvatlash.
+
+Loyiha odatda murakkablikka qarab 1-6 hafta ichida yakunlanadi. Narx har bir loyiha uchun individual belgilanadi (funksionallik, dizayn murakkabligi va muddatga qarab); bepul konsultatsiyadan so'ng aniq taklif beriladi.
+
+## Hamkorlar
+
+FRONTIX hamkorlik qilgan bizneslar: Tezcode, Coremed, AI Solution, Mars IT School, QarzDaftar.
+
+## Ko'p so'raladigan savollar
+
+**Loyiha necha kunda tayyor bo'ladi?**
+Murakkablikka qarab odatda 1-6 hafta ichida yakunlanadi. Aniq muddat bepul konsultatsiyadan so'ng belgilanadi.
+
+**Narxlar qanday belgilanadi?**
+Har bir loyiha individual baholanadi — funksionallik, dizayn murakkabligi va muddatga qarab. Konsultatsiyadan so'ng aniq taklif taqdim etiladi.
+
+**Loyihadan keyin qo'llab-quvvatlash bormi?**
+Ha, barcha loyihalar uchun texnik qo'llab-quvvatlash va yangilanishlar xizmati taklif qilinadi.
+
+**Qanday to'lov usullari mavjud?**
+To'lovni bosqichma-bosqich (oldindan va yakunda) yoki kelishilgan jadval asosida amalga oshirish mumkin.
+
 ## Sahifalar
 
 - [Bosh sahifa](https://frontix-uz.vercel.app/): kompaniya haqida umumiy ma'lumot, xizmatlar, jamoa va mijozlar fikri.
 - [Xizmatlar](https://frontix-uz.vercel.app/services): barcha xizmatlarning batafsil tavsifi.
 - [Jamoa](https://frontix-uz.vercel.app/team): FRONTIX jamoasi a'zolari.
+- [Hamkorlar](https://frontix-uz.vercel.app/partners): FRONTIX bilan hamkorlik qilgan bizneslar.
 - [Biz haqimizda](https://frontix-uz.vercel.app/about): kompaniya missiyasi va qadriyatlari.
 - [Aloqa](https://frontix-uz.vercel.app/contact): loyiha so'rovi formasi va aloqa ma'lumotlari.
 
 ## Aloqa
 
 - Email: frontix_uz@gmail.com
+- Telefon: +998 90 816 98 33
 - Telegram: https://t.me/frontix_official
+- Instagram: https://instagram.com/frontix_uz
 - Manzil: Toshkent, O'zbekiston

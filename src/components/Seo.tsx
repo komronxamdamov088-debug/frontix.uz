@@ -5,6 +5,7 @@ interface SeoProps {
   title: string;
   description: string;
   path?: string;
+  jsonLd?: object | object[];
 }
 
 function setMeta(attr: "name" | "property", key: string, content: string) {
@@ -17,7 +18,7 @@ function setMeta(attr: "name" | "property", key: string, content: string) {
   el.setAttribute("content", content);
 }
 
-export function Seo({ title, description, path = "/" }: SeoProps) {
+export function Seo({ title, description, path = "/", jsonLd }: SeoProps) {
   useEffect(() => {
     const fullTitle = title.includes(SITE.name) ? title : `${title} | ${SITE.name}`;
     document.title = fullTitle;
@@ -42,5 +43,34 @@ export function Seo({ title, description, path = "/" }: SeoProps) {
     canonical.setAttribute("href", `${SITE.url}${path}`);
   }, [title, description, path]);
 
+  useEffect(() => {
+    const nodes: HTMLScriptElement[] = [];
+    const entries = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+    for (const entry of entries) {
+      const script = document.createElement("script");
+      script.type = "application/ld+json";
+      script.dataset.pageJsonLd = "true";
+      script.textContent = JSON.stringify(entry);
+      document.head.appendChild(script);
+      nodes.push(script);
+    }
+    return () => {
+      for (const node of nodes) node.remove();
+    };
+  }, [jsonLd]);
+
   return null;
+}
+
+export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      item: `${SITE.url}${item.path}`,
+    })),
+  };
 }

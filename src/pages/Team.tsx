@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Seo } from "@/components/Seo";
+import { Seo, breadcrumbJsonLd } from "@/components/Seo";
 import { PageHero } from "@/components/sections/PageHero";
 import { Container } from "@/components/ui/Container";
 import { TeamCard } from "@/components/ui/TeamCard";
@@ -20,7 +20,15 @@ export default function Team() {
 
   return (
     <>
-      <Seo title={t.team.pageTitle} description={t.team.pageDescription} path="/team" />
+      <Seo
+        title={t.team.pageTitle}
+        description={t.team.pageDescription}
+        path="/team"
+        jsonLd={breadcrumbJsonLd([
+          { name: t.nav.home, path: "/" },
+          { name: t.nav.team, path: "/team" },
+        ])}
+      />
       <PageHero eyebrow={t.team.pageEyebrow} title={t.team.pageTitle} description={t.team.pageDescription} />
 
       <section className="pb-24 sm:pb-32">

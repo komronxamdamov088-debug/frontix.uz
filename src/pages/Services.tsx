@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Check, ArrowRight } from "lucide-react";
-import { Seo } from "@/components/Seo";
+import { Seo, breadcrumbJsonLd } from "@/components/Seo";
+import { SITE } from "@/data/site";
 import { PageHero } from "@/components/sections/PageHero";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
@@ -12,9 +13,30 @@ import { useLanguage } from "@/context/LanguageContext";
 export default function Services() {
   const { t } = useLanguage();
 
+  const servicesJsonLd = services.map((service) => ({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: t.services[service.slug].title,
+    description: t.services[service.slug].description,
+    provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    areaServed: "UZ",
+    url: `${SITE.url}/services`,
+  }));
+
   return (
     <>
-      <Seo title={t.nav.services} description={t.servicesPage.description} path="/services" />
+      <Seo
+        title={t.nav.services}
+        description={t.servicesPage.description}
+        path="/services"
+        jsonLd={[
+          breadcrumbJsonLd([
+            { name: t.nav.home, path: "/" },
+            { name: t.nav.services, path: "/services" },
+          ]),
+          ...servicesJsonLd,
+        ]}
+      />
       <PageHero
         eyebrow={t.servicesPage.eyebrow}
         title={t.servicesPage.title}

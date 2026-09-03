@@ -18,6 +18,7 @@ interface Dictionary {
     home: string;
     services: string;
     team: string;
+    partners: string;
     about: string;
     contact: string;
     contactCta: string;
@@ -55,6 +56,11 @@ interface Dictionary {
     roles: Record<RoleKey, string>;
     bios: Record<RoleKey, string>;
     count: string;
+  };
+  partners: {
+    pageEyebrow: string;
+    pageTitle: string;
+    pageDescription: string;
   };
   process: {
     eyebrow: string;
@@ -362,6 +368,7 @@ export const translations: Record<Lang, Dictionary> = {
       home: "Bosh sahifa",
       services: "Xizmatlar",
       team: "Jamoa",
+      partners: "Hamkorlar",
       about: "Biz haqimizda",
       contact: "Aloqa",
       contactCta: "Biz bilan bog'lanish",
@@ -421,6 +428,11 @@ export const translations: Record<Lang, Dictionary> = {
       roles: rolesUz,
       bios: biosUz,
       count: "a'zo",
+    },
+    partners: {
+      pageEyebrow: "Hamkorlar",
+      pageTitle: "Bizga ishonch bildirgan hamkorlar",
+      pageDescription: "Turli sohalardagi bizneslar bilan hamkorlikda raqamli mahsulotlar yaratamiz va ularning o'sishiga hissa qo'shamiz.",
     },
     process: {
       eyebrow: "Ish jarayoni",
@@ -578,6 +590,7 @@ export const translations: Record<Lang, Dictionary> = {
       home: "Главная",
       services: "Услуги",
       team: "Команда",
+      partners: "Партнёры",
       about: "О нас",
       contact: "Контакты",
       contactCta: "Связаться с нами",
@@ -637,6 +650,11 @@ export const translations: Record<Lang, Dictionary> = {
       roles: rolesRu,
       bios: biosRu,
       count: "человек",
+    },
+    partners: {
+      pageEyebrow: "Партнёры",
+      pageTitle: "Партнёры, которые нам доверяют",
+      pageDescription: "Мы сотрудничаем с бизнесами из разных сфер, создавая цифровые продукты и помогая им расти.",
     },
     process: {
       eyebrow: "Процесс работы",
@@ -793,6 +811,7 @@ export const translations: Record<Lang, Dictionary> = {
       home: "Home",
       services: "Services",
       team: "Team",
+      partners: "Partners",
       about: "About",
       contact: "Contact",
       contactCta: "Get in touch",
@@ -852,6 +871,11 @@ export const translations: Record<Lang, Dictionary> = {
       roles: rolesEn,
       bios: biosEn,
       count: "members",
+    },
+    partners: {
+      pageEyebrow: "Partners",
+      pageTitle: "Partners who trust us",
+      pageDescription: "We collaborate with businesses across industries, building digital products that help them grow.",
     },
     process: {
       eyebrow: "Our process",

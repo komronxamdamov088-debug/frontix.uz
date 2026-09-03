@@ -5,17 +5,19 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 const MIN_VISIBLE_MS = 1500;
 
 export function Preloader() {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(() => document.documentElement.dataset.prerendered !== "true");
 
   useEffect(() => {
+    if (!visible) return;
     const timer = setTimeout(() => setVisible(false), MIN_VISIBLE_MS);
     return () => clearTimeout(timer);
-  }, []);
+  }, [visible]);
 
   return (
     <AnimatePresence>
       {visible && (
         <motion.div
+          data-preloader-root="true"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5, ease: EASE }}

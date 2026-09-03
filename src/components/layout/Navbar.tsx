@@ -20,6 +20,7 @@ export function Navbar() {
     { label: t.nav.home, to: "/" },
     { label: t.nav.services, to: "/services" },
     { label: t.nav.team, to: "/team" },
+    { label: t.nav.partners, to: "/partners" },
     { label: t.nav.about, to: "/about" },
     { label: t.nav.contact, to: "/contact" },
   ];

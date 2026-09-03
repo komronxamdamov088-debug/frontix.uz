@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, Phone, Mail, MapPin, CheckCircle2, ArrowRight, Loader2, ChevronDown } from "lucide-react";
-import { Seo } from "@/components/Seo";
+import { Seo, breadcrumbJsonLd } from "@/components/Seo";
 import { PageHero } from "@/components/sections/PageHero";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
@@ -72,7 +72,26 @@ export default function Contact() {
 
   return (
     <>
-      <Seo title={t.nav.contact} description={t.contact.description} path="/contact" />
+      <Seo
+        title={t.nav.contact}
+        description={t.contact.description}
+        path="/contact"
+        jsonLd={[
+          breadcrumbJsonLd([
+            { name: t.nav.home, path: "/" },
+            { name: t.nav.contact, path: "/contact" },
+          ]),
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: t.contact.faq.map((item) => ({
+              "@type": "Question",
+              name: item.question,
+              acceptedAnswer: { "@type": "Answer", text: item.answer },
+            })),
+          },
+        ]}
+      />
       <PageHero eyebrow={t.contact.eyebrow} title={t.contact.title} description={t.contact.description} />
 
       <section className="pb-24 sm:pb-32">

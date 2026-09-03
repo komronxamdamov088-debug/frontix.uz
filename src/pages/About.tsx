@@ -1,5 +1,5 @@
 import { Code2 } from "lucide-react";
-import { Seo } from "@/components/Seo";
+import { Seo, breadcrumbJsonLd } from "@/components/Seo";
 import { PageHero } from "@/components/sections/PageHero";
 import { Container } from "@/components/ui/Container";
 import { Reveal, staggerContainer, staggerItem } from "@/components/ui/Reveal";
@@ -13,7 +13,15 @@ export default function About() {
 
   return (
     <>
-      <Seo title={t.nav.about} description={t.about.description} path="/about" />
+      <Seo
+        title={t.nav.about}
+        description={t.about.description}
+        path="/about"
+        jsonLd={breadcrumbJsonLd([
+          { name: t.nav.home, path: "/" },
+          { name: t.nav.about, path: "/about" },
+        ])}
+      />
       <PageHero eyebrow={t.about.eyebrow} title={t.about.title} description={t.about.description} />
 
       <section className="pb-24 sm:pb-32">
