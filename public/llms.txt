@@ -46,12 +46,14 @@ To'lovni bosqichma-bosqich (oldindan va yakunda) yoki kelishilgan jadval asosida
 
 ## Sahifalar
 
-- [Bosh sahifa](https://frontix-uz.vercel.app/): kompaniya haqida umumiy ma'lumot, xizmatlar, jamoa va mijozlar fikri.
-- [Xizmatlar](https://frontix-uz.vercel.app/services): barcha xizmatlarning batafsil tavsifi.
-- [Jamoa](https://frontix-uz.vercel.app/team): FRONTIX jamoasi a'zolari.
-- [Hamkorlar](https://frontix-uz.vercel.app/partners): FRONTIX bilan hamkorlik qilgan bizneslar.
-- [Biz haqimizda](https://frontix-uz.vercel.app/about): kompaniya missiyasi va qadriyatlari.
-- [Aloqa](https://frontix-uz.vercel.app/contact): loyiha so'rovi formasi va aloqa ma'lumotlari.
+Sayt uch tilda mavjud: o'zbekcha (prefikssiz URL), ruscha (`/ru/...`) va inglizcha (`/en/...`). Har bir til uchun kontent shu til so'rovlariga mos ravishda alohida indekslanadi.
+
+- [Bosh sahifa](https://frontix-uz.vercel.app/): kompaniya haqida umumiy ma'lumot, xizmatlar, jamoa va mijozlar fikri. RU: `/ru`, EN: `/en`.
+- [Xizmatlar](https://frontix-uz.vercel.app/services): barcha xizmatlarning batafsil tavsifi. RU: `/ru/services`, EN: `/en/services`.
+- [Jamoa](https://frontix-uz.vercel.app/team): FRONTIX jamoasi a'zolari. RU: `/ru/team`, EN: `/en/team`.
+- [Hamkorlar](https://frontix-uz.vercel.app/partners): FRONTIX bilan hamkorlik qilgan bizneslar. RU: `/ru/partners`, EN: `/en/partners`.
+- [Biz haqimizda](https://frontix-uz.vercel.app/about): kompaniya missiyasi va qadriyatlari. RU: `/ru/about`, EN: `/en/about`.
+- [Aloqa](https://frontix-uz.vercel.app/contact): loyiha so'rovi formasi va aloqa ma'lumotlari. RU: `/ru/contact`, EN: `/en/contact`.
 
 ## Aloqa
 

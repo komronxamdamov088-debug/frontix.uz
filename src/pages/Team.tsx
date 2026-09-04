@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 type FilterKey = TeamCategory | "all";
 
 export default function Team() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [active, setActive] = useState<FilterKey>("all");
 
   const categories: FilterKey[] = useMemo(() => ["all", "founder", "developer", "admin", "designer"], []);
@@ -24,10 +24,13 @@ export default function Team() {
         title={t.team.pageTitle}
         description={t.team.pageDescription}
         path="/team"
-        jsonLd={breadcrumbJsonLd([
-          { name: t.nav.home, path: "/" },
-          { name: t.nav.team, path: "/team" },
-        ])}
+        jsonLd={breadcrumbJsonLd(
+          [
+            { name: t.nav.home, path: "/" },
+            { name: t.nav.team, path: "/team" },
+          ],
+          lang,
+        )}
       />
       <PageHero eyebrow={t.team.pageEyebrow} title={t.team.pageTitle} description={t.team.pageDescription} />
 

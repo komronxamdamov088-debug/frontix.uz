@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { motion, type HTMLMotionProps } from "framer-motion";
 import { forwardRef } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/i18n/LocalizedLink";
 
 type Variant = "primary" | "secondary" | "ghost";
 type Size = "md" | "lg";

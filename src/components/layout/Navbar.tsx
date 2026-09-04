@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink } from "@/components/i18n/LocalizedLink";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";

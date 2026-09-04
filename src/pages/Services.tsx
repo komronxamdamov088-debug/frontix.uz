@@ -9,9 +9,10 @@ import { CTASection } from "@/components/sections/CTASection";
 import { serviceMockups } from "@/components/sections/services/ServiceMockups";
 import { services } from "@/data/services";
 import { useLanguage } from "@/context/LanguageContext";
+import { localizePath } from "@/i18n/langRoutes";
 
 export default function Services() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
 
   const servicesJsonLd = services.map((service) => ({
     "@context": "https://schema.org",
@@ -20,7 +21,7 @@ export default function Services() {
     description: t.services[service.slug].description,
     provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
     areaServed: "UZ",
-    url: `${SITE.url}/services`,
+    url: `${SITE.url}${localizePath(lang, "/services")}`,
   }));
 
   return (
@@ -30,10 +31,13 @@ export default function Services() {
         description={t.servicesPage.description}
         path="/services"
         jsonLd={[
-          breadcrumbJsonLd([
-            { name: t.nav.home, path: "/" },
-            { name: t.nav.services, path: "/services" },
-          ]),
+          breadcrumbJsonLd(
+            [
+              { name: t.nav.home, path: "/" },
+              { name: t.nav.services, path: "/services" },
+            ],
+            lang,
+          ),
           ...servicesJsonLd,
         ]}
       />

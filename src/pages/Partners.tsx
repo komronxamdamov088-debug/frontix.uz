@@ -7,7 +7,7 @@ import { partners } from "@/data/partners";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Partners() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
 
   return (
     <>
@@ -15,10 +15,13 @@ export default function Partners() {
         title={t.partners.pageTitle}
         description={t.partners.pageDescription}
         path="/partners"
-        jsonLd={breadcrumbJsonLd([
-          { name: t.nav.home, path: "/" },
-          { name: t.nav.partners, path: "/partners" },
-        ])}
+        jsonLd={breadcrumbJsonLd(
+          [
+            { name: t.nav.home, path: "/" },
+            { name: t.nav.partners, path: "/partners" },
+          ],
+          lang,
+        )}
       />
       <PageHero
         eyebrow={t.partners.pageEyebrow}

@@ -9,7 +9,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
 
 export default function About() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
 
   return (
     <>
@@ -17,10 +17,13 @@ export default function About() {
         title={t.nav.about}
         description={t.about.description}
         path="/about"
-        jsonLd={breadcrumbJsonLd([
-          { name: t.nav.home, path: "/" },
-          { name: t.nav.about, path: "/about" },
-        ])}
+        jsonLd={breadcrumbJsonLd(
+          [
+            { name: t.nav.home, path: "/" },
+            { name: t.nav.about, path: "/about" },
+          ],
+          lang,
+        )}
       />
       <PageHero eyebrow={t.about.eyebrow} title={t.about.title} description={t.about.description} />
 

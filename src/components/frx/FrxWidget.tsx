@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/i18n/LocalizedLink";
 import { Send as SendIcon, X, ArrowUpRight } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { useLanguage } from "@/context/LanguageContext";

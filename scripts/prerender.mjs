@@ -11,7 +11,12 @@ import { join } from "node:path";
 const PORT = 4321;
 const ROOT = process.cwd();
 const DIST = join(ROOT, "dist");
-const ROUTES = ["/", "/services", "/team", "/partners", "/about", "/contact"];
+// Keep PAGE_PATHS/LANG_PREFIXES in sync with src/App.tsx and scripts/generate-sitemap.mjs.
+const PAGE_PATHS = ["/", "/services", "/team", "/partners", "/about", "/contact"];
+const LANG_PREFIXES = ["", "/ru", "/en"];
+const ROUTES = LANG_PREFIXES.flatMap((prefix) =>
+  PAGE_PATHS.map((p) => (prefix + (p === "/" ? "" : p)) || "/"),
+);
 
 function waitForServer(url, timeoutMs = 20000) {
   const start = Date.now();
@@ -42,6 +47,13 @@ async function run() {
     const browser = await chromium.launch();
     const page = await browser.newPage();
 
+    // Capture every route into memory first, and only write files to disk
+    // after the whole loop finishes. Writing dist/index.html mid-loop would
+    // make vite preview's SPA fallback serve that already-prerendered (and
+    // now stale) document as the initial shell for every route captured
+    // afterwards, leaking its <head> tags (hreflang, JSON-LD) into them.
+    const captured = [];
+
     for (const route of ROUTES) {
       await page.goto(`http://localhost:${PORT}${route}`, { waitUntil: "networkidle", timeout: 30000 });
       await page.waitForSelector("footer", { timeout: 15000 });
@@ -53,14 +65,18 @@ async function run() {
         document.documentElement.setAttribute("data-prerendered", "true");
       });
       const html = "<!doctype html>\n" + (await page.content());
-
       const outDir = route === "/" ? DIST : join(DIST, route.slice(1));
+      captured.push({ route, outDir });
+      captured[captured.length - 1].html = html;
+    }
+
+    await browser.close();
+
+    for (const { route, outDir, html } of captured) {
       if (!existsSync(outDir)) mkdirSync(outDir, { recursive: true });
       writeFileSync(join(outDir, "index.html"), html, "utf-8");
       console.log(`[prerender] ${route} -> ${join(outDir, "index.html").replace(ROOT + "/", "")}`);
     }
-
-    await browser.close();
   } finally {
     server.kill();
   }

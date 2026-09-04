@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/i18n/LocalizedLink";
 import type { Service } from "@/data/services";
 import { useLanguage } from "@/context/LanguageContext";
 

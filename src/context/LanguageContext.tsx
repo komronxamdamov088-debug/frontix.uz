@@ -1,5 +1,7 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, type ReactNode } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { translations, type Dictionary, type Lang } from "@/i18n/translations";
+import { getLangFromPathname, localizePath, stripLangPrefix } from "@/i18n/langRoutes";
 
 interface LanguageContextValue {
   lang: Lang;
@@ -9,24 +11,20 @@ interface LanguageContextValue {
 
 const LanguageContext = createContext<LanguageContextValue | undefined>(undefined);
 
-const LANGS: Lang[] = ["uz", "ru", "en"];
-
-function getInitialLang(): Lang {
-  if (typeof window === "undefined") return "uz";
-  const stored = window.localStorage.getItem("frontix-lang");
-  if (stored && LANGS.includes(stored as Lang)) return stored as Lang;
-  return "uz";
-}
-
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>(getInitialLang);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const lang = getLangFromPathname(location.pathname);
 
   useEffect(() => {
     document.documentElement.lang = lang;
-    window.localStorage.setItem("frontix-lang", lang);
   }, [lang]);
 
-  const setLang = (next: Lang) => setLangState(next);
+  const setLang = (next: Lang) => {
+    if (next === lang) return;
+    const canonicalPath = stripLangPrefix(location.pathname);
+    navigate(`${localizePath(next, canonicalPath)}${location.search}${location.hash}`);
+  };
 
   return (
     <LanguageContext.Provider value={{ lang, setLang, t: translations[lang] }}>

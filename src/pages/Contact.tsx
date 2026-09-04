@@ -19,7 +19,7 @@ interface FormState {
 }
 
 export default function Contact() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const initialState: FormState = {
     name: "",
     phone: "",
@@ -77,10 +77,13 @@ export default function Contact() {
         description={t.contact.description}
         path="/contact"
         jsonLd={[
-          breadcrumbJsonLd([
-            { name: t.nav.home, path: "/" },
-            { name: t.nav.contact, path: "/contact" },
-          ]),
+          breadcrumbJsonLd(
+            [
+              { name: t.nav.home, path: "/" },
+              { name: t.nav.contact, path: "/contact" },
+            ],
+            lang,
+          ),
           {
             "@context": "https://schema.org",
             "@type": "FAQPage",
