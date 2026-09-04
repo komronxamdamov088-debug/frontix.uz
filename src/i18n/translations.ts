@@ -362,7 +362,7 @@ export const translations: Record<Lang, Dictionary> = {
     meta: {
       title: "FRONTIX — Biznesingiz uchun raqamli yechimlar",
       description:
-        "FRONTIX — biznesingiz uchun zamonaviy website, Telegram bot, QR menyu va avtomatlashtirish yechimlarini yaratadi.",
+        "FRONTIX — bizneslar uchun onlayn buyurtma, CRM va avtomatlashtirish yechimlarini yaratadigan IT kompaniya.",
     },
     nav: {
       home: "Bosh sahifa",
