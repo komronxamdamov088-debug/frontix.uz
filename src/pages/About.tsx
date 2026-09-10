@@ -14,8 +14,8 @@ export default function About() {
   return (
     <>
       <Seo
-        title={t.nav.about}
-        description={t.about.description}
+        title={t.seo.about.title}
+        description={t.seo.about.description}
         path="/about"
         jsonLd={breadcrumbJsonLd(
           [

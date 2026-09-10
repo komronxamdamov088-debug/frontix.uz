@@ -14,6 +14,13 @@ interface ServiceText {
 
 interface Dictionary {
   meta: { title: string; description: string };
+  seo: {
+    services: { title: string; description: string };
+    team: { title: string; description: string };
+    partners: { title: string; description: string };
+    about: { title: string; description: string };
+    contact: { title: string; description: string };
+  };
   nav: {
     home: string;
     services: string;
@@ -61,6 +68,8 @@ interface Dictionary {
     pageEyebrow: string;
     pageTitle: string;
     pageDescription: string;
+    tapHint: string;
+    visitWebsite: string;
   };
   process: {
     eyebrow: string;
@@ -170,7 +179,7 @@ const servicesUz: Record<ServiceSlug, ServiceText> = {
     title: "Business Automation",
     shortDescription: "Ichki jarayonlarni avtomatlashtirib, vaqt va resurslarni tejang.",
     description:
-      "Takrorlanuvchi jarayonlarni avtomatlashtirib, jamoangiz muhim ishlarga ko'proq vaqt ajratishi uchun yechimlar yaratamiz.",
+      "CRM avtomatlashtirish — mijozlar, buyurtmalar va lidlarni bitta tizimda birlashtirib, biznes jarayonlarini qo'lda boshqarish o'rniga avtomatlashtiradigan yechim. FRONTIX veb-sayt, Telegram bot va buyurtma tizimingizni CRM'ga ulaydi: mijoz tarixi, buyurtma holati va jamoa vazifalari bitta joyda ko'rinadi, hisobot va analitika esa tezkor qaror qabul qilishga yordam beradi.",
     features: ["Workflow avtomatizatsiya", "CRM integratsiyasi", "Hisobot va analitika", "API bog'lanishlar"],
   },
   "custom-software": {
@@ -220,7 +229,7 @@ const servicesRu: Record<ServiceSlug, ServiceText> = {
     title: "Автоматизация бизнеса",
     shortDescription: "Автоматизируйте внутренние процессы и экономьте время и ресурсы.",
     description:
-      "Создаём решения, автоматизирующие повторяющиеся процессы, чтобы ваша команда могла сосредоточиться на важных задачах.",
+      "CRM-автоматизация — это объединение клиентов, заказов и лидов в единой системе вместо ручного управления процессами. FRONTIX подключает ваш сайт, Telegram-бота и систему заказов к CRM: история клиента, статус заказа и задачи команды видны в одном месте, а отчётность и аналитика ускоряют принятие решений.",
     features: ["Автоматизация workflow", "Интеграция с CRM", "Отчётность и аналитика", "API-интеграции"],
   },
   "custom-software": {
@@ -265,7 +274,7 @@ const servicesEn: Record<ServiceSlug, ServiceText> = {
     title: "Business Automation",
     shortDescription: "Automate internal processes and save time and resources.",
     description:
-      "We build solutions that automate repetitive processes so your team can focus on what matters.",
+      "CRM automation means bringing customers, orders and leads together in one system instead of managing processes by hand. FRONTIX connects your website, Telegram bot and ordering system to a CRM: customer history, order status and team tasks live in one place, while reporting and analytics speed up decision-making.",
     features: ["Workflow automation", "CRM integration", "Reporting & analytics", "API connections"],
   },
   "custom-software": {
@@ -362,7 +371,34 @@ export const translations: Record<Lang, Dictionary> = {
     meta: {
       title: "FRONTIX — Biznesingiz uchun raqamli yechimlar",
       description:
-        "FRONTIX — bizneslar uchun onlayn buyurtma, CRM va avtomatlashtirish yechimlarini yaratadigan IT kompaniya.",
+        "FRONTIX — Toshkentda veb-sayt, QR menyu, Telegram bot, onlayn buyurtma va CRM avtomatlashtirish yechimlarini yaratadigan IT kompaniya.",
+    },
+    seo: {
+      services: {
+        title: "Veb-sayt, CRM va Telegram bot xizmatlari",
+        description:
+          "FRONTIX — Toshkentda veb-sayt, QR menyu, Telegram bot, onlayn buyurtma va CRM avtomatlashtirish xizmatlarini taqdim etadi. Loyiha 1-6 hafta ichida tayyor bo'ladi.",
+      },
+      team: {
+        title: "Jamoa — 12 nafar IT mutaxassis",
+        description:
+          "FRONTIX jamoasi 12 nafar mutaxassisdan iborat: 2 asoschi, 8 dasturchi, 1 administrator, 1 dizayner — Toshkentda loyihalarni boshdan-oxirigacha olib boradi.",
+      },
+      partners: {
+        title: "Hamkorlar — FRONTIX mijozlari",
+        description:
+          "FRONTIX O'zbekistonda Tezcode, Coremed, AI Solution, Mars IT School va QarzDaftar kabi bizneslarga raqamli yechimlar yaratib bergan IT kompaniya.",
+      },
+      about: {
+        title: "Biz haqimizda — FRONTIX IT kompaniyasi",
+        description:
+          "FRONTIX — Toshkentdagi IT kompaniya: kashfiyot, strategiya, dizayn, ishlab chiqish va ishga tushirish orqali g'oyadan natijagacha hamrohlik qilamiz.",
+      },
+      contact: {
+        title: "Aloqa — bepul konsultatsiya oling",
+        description:
+          "FRONTIX bilan telefon, email yoki Telegram orqali bog'laning. Loyihangiz uchun bepul konsultatsiya va individual narx taklifini oling.",
+      },
     },
     nav: {
       home: "Bosh sahifa",
@@ -379,7 +415,7 @@ export const translations: Record<Lang, Dictionary> = {
       titleHighlight: "raqamli",
       titleSuffix: " darajaga olib chiqamiz.",
       subtitle:
-        "FRONTIX — biznesingiz uchun zamonaviy website, Telegram bot, QR menyu va avtomatlashtirish yechimlarini yaratadi.",
+        "FRONTIX — Toshkentda faoliyat yurituvchi IT kompaniya: 12 nafar mutaxassisdan iborat jamoamiz veb-sayt, Telegram bot, QR menyu va CRM avtomatlashtirish yechimlarini 1-6 hafta ichida yaratadi.",
       ctaContact: "Biz bilan bog'lanish",
       ctaTeam: "Jamoamiz",
       statLabel: "savdo o'sishi",
@@ -396,7 +432,8 @@ export const translations: Record<Lang, Dictionary> = {
     servicesPage: {
       eyebrow: "Xizmatlar",
       title: "Biznesingiz uchun zarur bo'lgan barcha raqamli yechimlar",
-      description: "Har bir xizmat sinovdan o'tgan jarayon va zamonaviy texnologiyalar asosida taqdim etiladi.",
+      description:
+        "FRONTIX Toshkentda har bir xizmatni sinovdan o'tgan jarayon va zamonaviy texnologiyalar asosida, odatda 1-6 hafta ichida taqdim etadi.",
       orderCta: "Buyurtma berish",
     },
     whyFrontix: {
@@ -433,6 +470,8 @@ export const translations: Record<Lang, Dictionary> = {
       pageEyebrow: "Hamkorlar",
       pageTitle: "Bizga ishonch bildirgan hamkorlar",
       pageDescription: "Turli sohalardagi bizneslar bilan hamkorlikda raqamli mahsulotlar yaratamiz va ularning o'sishiga hissa qo'shamiz.",
+      tapHint: "Batafsil ma'lumot uchun logotipni bosing",
+      visitWebsite: "Saytga o'tish",
     },
     process: {
       eyebrow: "Ish jarayoni",
@@ -482,7 +521,7 @@ export const translations: Record<Lang, Dictionary> = {
       description: "FRONTIX jamoasi bilan tanishing va biz nima uchun ishonchli hamkor ekanimizni bilib oling.",
       heading: "Biz bizneslar uchun shunchaki sayt emas, natija beradigan raqamli mahsulotlar yaratamiz.",
       paragraph1:
-        "FRONTIX — 2021-yildan buyon bizneslarga zamonaviy raqamli yechimlar orqali o'sishga yordam beradigan IT kompaniya. Har bir loyihaga alohida yondashib, mijozlarimizning haqiqiy maqsadlariga xizmat qiluvchi mahsulotlar yaratamiz.",
+        "FRONTIX — Toshkentda joylashgan, 2021-yildan buyon bizneslarga zamonaviy raqamli yechimlar orqali o'sishga yordam beradigan IT kompaniya. Har bir loyihaga alohida yondashib, mijozlarimizning haqiqiy maqsadlariga xizmat qiluvchi mahsulotlar yaratamiz.",
       paragraph2:
         "Kichik startaplardan tortib yirik brendlargacha — 12 nafar mutaxassisdan iborat jamoamiz website, Telegram bot, QR menyu va avtomatlashtirish tizimlari orqali o'nlab bizneslarning raqamli transformatsiyasida ishtirok etgan.",
       quote: "Har bir piksel, har bir qator kod — biznesingiz muvaffaqiyati uchun.",
@@ -584,7 +623,34 @@ export const translations: Record<Lang, Dictionary> = {
     meta: {
       title: "FRONTIX — Цифровые решения для вашего бизнеса",
       description:
-        "FRONTIX создаёт современные сайты, Telegram-ботов, QR-меню и системы автоматизации для вашего бизнеса.",
+        "FRONTIX — IT-компания в Ташкенте: создаём сайты, Telegram-ботов, QR-меню, системы онлайн-заказов и CRM-автоматизацию для бизнеса в Узбекистане.",
+    },
+    seo: {
+      services: {
+        title: "Сайты, CRM и Telegram-боты для бизнеса",
+        description:
+          "FRONTIX в Ташкенте разрабатывает сайты, QR-меню, Telegram-ботов, системы онлайн-заказов и CRM-автоматизацию. Проект готов за 1-6 недель.",
+      },
+      team: {
+        title: "Команда — 12 IT-специалистов FRONTIX",
+        description:
+          "Команда FRONTIX — 12 специалистов: 2 основателя, 8 разработчиков, 1 администратор и 1 дизайнер. Ведём каждый проект в Ташкенте от начала до конца.",
+      },
+      partners: {
+        title: "Партнёры — клиенты FRONTIX",
+        description:
+          "FRONTIX сотрудничает с бизнесами Узбекистана: Tezcode, Coremed, AI Solution, Mars IT School и QarzDaftar, создавая для них цифровые решения.",
+      },
+      about: {
+        title: "О нас — IT-компания FRONTIX",
+        description:
+          "FRONTIX — IT-компания в Ташкенте. Сопровождаем бизнес от идеи до результата: исследование, стратегия, дизайн, разработка и запуск продукта.",
+      },
+      contact: {
+        title: "Контакты — бесплатная консультация",
+        description:
+          "Свяжитесь с FRONTIX по телефону, email или в Telegram. Получите бесплатную консультацию и индивидуальное предложение по цене для вашего проекта.",
+      },
     },
     nav: {
       home: "Главная",
@@ -601,7 +667,7 @@ export const translations: Record<Lang, Dictionary> = {
       titleHighlight: "цифровой",
       titleSuffix: " уровень.",
       subtitle:
-        "FRONTIX создаёт для вашего бизнеса современные сайты, Telegram-ботов, QR-меню и системы автоматизации.",
+        "FRONTIX — IT-компания в Ташкенте: команда из 12 специалистов создаёт сайты, Telegram-ботов, QR-меню и CRM-автоматизацию для бизнеса за 1-6 недель.",
       ctaContact: "Связаться с нами",
       ctaTeam: "Наша команда",
       statLabel: "рост продаж",
@@ -618,7 +684,8 @@ export const translations: Record<Lang, Dictionary> = {
     servicesPage: {
       eyebrow: "Услуги",
       title: "Все цифровые решения, необходимые вашему бизнесу",
-      description: "Каждая услуга реализуется по проверенному процессу с использованием современных технологий.",
+      description:
+        "FRONTIX в Ташкенте реализует каждую услугу по проверенному процессу с использованием современных технологий — обычно за 1-6 недель.",
       orderCta: "Оформить заказ",
     },
     whyFrontix: {
@@ -655,6 +722,8 @@ export const translations: Record<Lang, Dictionary> = {
       pageEyebrow: "Партнёры",
       pageTitle: "Партнёры, которые нам доверяют",
       pageDescription: "Мы сотрудничаем с бизнесами из разных сфер, создавая цифровые продукты и помогая им расти.",
+      tapHint: "Нажмите на логотип, чтобы узнать больше",
+      visitWebsite: "Перейти на сайт",
     },
     process: {
       eyebrow: "Процесс работы",
@@ -703,7 +772,7 @@ export const translations: Record<Lang, Dictionary> = {
       description: "Познакомьтесь с командой FRONTIX и узнайте, почему мы надёжный партнёр.",
       heading: "Мы создаём для бизнеса не просто сайты, а цифровые продукты, приносящие результат.",
       paragraph1:
-        "FRONTIX — IT-компания, с 2021 года помогающая бизнесу расти с помощью современных цифровых решений. К каждому проекту мы подходим индивидуально, создавая продукты, служащие реальным целям наших клиентов.",
+        "FRONTIX — IT-компания из Ташкента, с 2021 года помогающая бизнесу расти с помощью современных цифровых решений. К каждому проекту мы подходим индивидуально, создавая продукты, служащие реальным целям наших клиентов.",
       paragraph2:
         "От небольших стартапов до крупных брендов — наша команда из 12 специалистов участвовала в цифровой трансформации десятков компаний с помощью сайтов, Telegram-ботов, QR-меню и систем автоматизации.",
       quote: "Каждый пиксель, каждая строка кода — ради успеха вашего бизнеса.",
@@ -805,7 +874,34 @@ export const translations: Record<Lang, Dictionary> = {
     meta: {
       title: "FRONTIX — Digital solutions for your business",
       description:
-        "FRONTIX builds modern websites, Telegram bots, QR menus and automation solutions for your business.",
+        "FRONTIX is an IT company in Tashkent building websites, Telegram bots, QR menus, online ordering systems and CRM automation for businesses in Uzbekistan.",
+    },
+    seo: {
+      services: {
+        title: "Websites, CRM and Telegram bots",
+        description:
+          "FRONTIX in Tashkent builds websites, QR menus, Telegram bots, online ordering systems and CRM automation. Projects are delivered in 1-6 weeks.",
+      },
+      team: {
+        title: "Team — 12 FRONTIX specialists",
+        description:
+          "The FRONTIX team has 12 specialists: 2 founders, 8 developers, 1 administrator and 1 designer, running every project in Tashkent from start to finish.",
+      },
+      partners: {
+        title: "Partners — FRONTIX clients",
+        description:
+          "FRONTIX has partnered with businesses across Uzbekistan, including Tezcode, Coremed, AI Solution, Mars IT School and QarzDaftar, building digital solutions.",
+      },
+      about: {
+        title: "About us — FRONTIX IT company",
+        description:
+          "FRONTIX is an IT company in Tashkent. We guide businesses from idea to result through discovery, strategy, design, development and launch.",
+      },
+      contact: {
+        title: "Contact — get a free consultation",
+        description:
+          "Reach FRONTIX by phone, email or Telegram. Get a free consultation and an individual price quote for your project.",
+      },
     },
     nav: {
       home: "Home",
@@ -822,7 +918,7 @@ export const translations: Record<Lang, Dictionary> = {
       titleHighlight: "digital",
       titleSuffix: " level.",
       subtitle:
-        "FRONTIX builds modern websites, Telegram bots, QR menus and automation solutions for your business.",
+        "FRONTIX is an IT company in Tashkent, Uzbekistan: our team of 12 specialists builds websites, Telegram bots, QR menus and CRM automation in 1-6 weeks.",
       ctaContact: "Get in touch",
       ctaTeam: "Our team",
       statLabel: "sales growth",
@@ -839,7 +935,8 @@ export const translations: Record<Lang, Dictionary> = {
     servicesPage: {
       eyebrow: "Services",
       title: "All the digital solutions your business needs",
-      description: "Every service is delivered through a proven process using modern technology.",
+      description:
+        "FRONTIX in Tashkent delivers every service through a proven process using modern technology — usually within 1-6 weeks.",
       orderCta: "Get started",
     },
     whyFrontix: {
@@ -876,6 +973,8 @@ export const translations: Record<Lang, Dictionary> = {
       pageEyebrow: "Partners",
       pageTitle: "Partners who trust us",
       pageDescription: "We collaborate with businesses across industries, building digital products that help them grow.",
+      tapHint: "Tap a logo to learn more",
+      visitWebsite: "Visit website",
     },
     process: {
       eyebrow: "Our process",
@@ -924,7 +1023,7 @@ export const translations: Record<Lang, Dictionary> = {
       description: "Meet the FRONTIX team and learn why we're a trusted partner.",
       heading: "We don't just build websites for businesses — we build digital products that deliver results.",
       paragraph1:
-        "FRONTIX has been an IT company since 2021, helping businesses grow through modern digital solutions. We approach every project individually, building products that serve our clients' real goals.",
+        "FRONTIX is an IT company based in Tashkent, helping businesses grow through modern digital solutions since 2021. We approach every project individually, building products that serve our clients' real goals.",
       paragraph2:
         "From small startups to large brands — our team of 12 specialists has taken part in the digital transformation of dozens of businesses through websites, Telegram bots, QR menus and automation systems.",
       quote: "Every pixel, every line of code — for the success of your business.",

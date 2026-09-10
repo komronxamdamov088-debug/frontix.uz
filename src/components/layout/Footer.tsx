@@ -8,11 +8,14 @@ import { useLanguage } from "@/context/LanguageContext";
 
 export function Footer() {
   const year = new Date().getFullYear();
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
 
   const navLinks = [
     { label: t.nav.home, to: "/" },
     { label: t.nav.services, to: "/services" },
+    // Uz-only pilot pages (see src/data/industries.ts) — hidden in ru/en nav
+    // since there's no translated version to link to yet.
+    ...(lang === "uz" ? [{ label: "Yechimlar", to: "/yechimlar" }] : []),
     { label: t.nav.team, to: "/team" },
     { label: t.nav.partners, to: "/partners" },
     { label: t.nav.about, to: "/about" },

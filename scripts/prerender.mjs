@@ -7,6 +7,7 @@
 import { spawn } from "node:child_process";
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { SOLUTION_ROUTES } from "./solutionRoutes.mjs";
 
 const PORT = 4321;
 const ROOT = process.cwd();
@@ -14,9 +15,12 @@ const DIST = join(ROOT, "dist");
 // Keep PAGE_PATHS/LANG_PREFIXES in sync with src/App.tsx and scripts/generate-sitemap.mjs.
 const PAGE_PATHS = ["/", "/services", "/team", "/partners", "/about", "/contact"];
 const LANG_PREFIXES = ["", "/ru", "/en"];
-const ROUTES = LANG_PREFIXES.flatMap((prefix) =>
-  PAGE_PATHS.map((p) => (prefix + (p === "/" ? "" : p)) || "/"),
-);
+const ROUTES = [
+  ...LANG_PREFIXES.flatMap((prefix) => PAGE_PATHS.map((p) => (prefix + (p === "/" ? "" : p)) || "/")),
+  // Uz-only pilot pages, no lang-prefix variants.
+  "/yechimlar",
+  ...SOLUTION_ROUTES,
+];
 
 function waitForServer(url, timeoutMs = 20000) {
   const start = Date.now();

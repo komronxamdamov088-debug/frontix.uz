@@ -27,8 +27,8 @@ export default function Services() {
   return (
     <>
       <Seo
-        title={t.nav.services}
-        description={t.servicesPage.description}
+        title={t.seo.services.title}
+        description={t.seo.services.description}
         path="/services"
         jsonLd={[
           breadcrumbJsonLd(

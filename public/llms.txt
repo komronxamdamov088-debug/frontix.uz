@@ -1,6 +1,8 @@
 # FRONTIX
 
-> FRONTIX — bizneslar uchun zamonaviy raqamli yechimlar yaratadigan IT kompaniya. Website development, QR menyu, Telegram bot, onlayn buyurtma tizimlari, custom software va business automation xizmatlarini taqdim etadi. Sayt o'zbek, rus va ingliz tillarida mavjud (UZ/RU/EN).
+> FRONTIX — Toshkentda (O'zbekiston) joylashgan, bizneslar uchun zamonaviy raqamli yechimlar yaratadigan IT kompaniya. Website development, QR menyu, Telegram bot, onlayn buyurtma tizimlari, custom software va business automation xizmatlarini taqdim etadi. Sayt o'zbek, rus va ingliz tillarida mavjud (UZ/RU/EN).
+
+Oxirgi yangilanish: 2026-09-08
 
 FRONTIX bizneslarga g'oyadan ishga tushirishgacha bo'lgan yo'lda hamrohlik qiladi: strategiya, dizayn, ishlab chiqish va texnik qo'llab-quvvatlash. Saytda FRX nomli AI yordamchi mavjud bo'lib, xizmatlar, jamoa, narxlar va aloqa haqidagi savollarga javob beradi.
 

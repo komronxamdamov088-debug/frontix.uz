@@ -1,0 +1,956 @@
+import type { Service } from "@/data/services";
+
+type ServiceSlug = Service["slug"];
+
+export interface Industry {
+  slug: string;
+  /** Full plural name, used in headings: "Restoranlar va kafelar uchun ..." */
+  name: string;
+  /** Short form for breadcrumbs/cards: "Restoranlar" */
+  shortName: string;
+  /** Real, specific pain points this industry faces today (no filler). */
+  problems: string[];
+  /** Which of the 6 core services genuinely fit this industry, in display order. */
+  relevantServices: ServiceSlug[];
+}
+
+// Uzbek-only content (see: pilot phase decision to launch problem/solution
+// pages in uz first, translate to ru/en once the format is validated).
+export const industries: Industry[] = [
+  {
+    slug: "restoranlar-va-kafelar",
+    name: "Restoranlar va kafelar",
+    shortName: "Restoranlar",
+    problems: [
+      "Ofitsiantlar band bo'lganda mijozlar menyuni kuta-kuta charchaydi, ba'zan buyurtma bermay ketishadi.",
+      "Menyudagi narx yoki taomni yangilash har safar qog'oz menyuni qayta chop etishni talab qiladi.",
+      "Telefon orqali qabul qilingan buyurtmalar band signal yoki noto'g'ri yozib olish tufayli yo'qoladi.",
+      "Yetkazib berish buyurtmalarini qo'lda Excel yoki daftarda kuzatish xatoliklarga olib keladi.",
+    ],
+    relevantServices: ["qr-menu", "telegram-bot", "online-ordering"],
+  },
+  {
+    slug: "gozallik-salonlari",
+    name: "Go'zallik salonlari va sartaroshxonalar",
+    shortName: "Go'zallik salonlari",
+    problems: [
+      "Mijoz telefon qilib band vaqtni so'raganda administrator band bo'lsa, mijoz raqib salonga ketadi.",
+      "Bron qilingan vaqtni mijoz unutib qolib kelmasligi (no-show) daromadni kamaytiradi.",
+      "Mijozlar tarixi (avvalgi xizmatlar, sevimli usta) qog'ozda yoki hech qayerda saqlanmaydi.",
+      "Bo'sh vaqt oralig'ida ustalar band emas, lekin buni mijozlarga ko'rsatish imkoni yo'q.",
+    ],
+    relevantServices: ["telegram-bot", "website-development", "business-automation"],
+  },
+  {
+    slug: "tibbiyot-klinikalari",
+    name: "Tibbiyot klinikalari",
+    shortName: "Klinikalar",
+    problems: [
+      "Bemorlar navbatga yozilish uchun telefon qilganda ko'pincha band signalga duch keladi.",
+      "Bemor tarixi (tashxis, retseptlar) turli daftarlarda yoki xodim xotirasida saqlanadi.",
+      "Shifokorlar jadvali va bo'sh vaqtlar bemorlarga real vaqtda ko'rinmaydi.",
+      "Qayta tekshiruv yoki muolaja eslatmalarini qo'lda telefon qilib eslatish vaqt oladi.",
+    ],
+    relevantServices: ["website-development", "telegram-bot", "business-automation"],
+  },
+  {
+    slug: "onlayn-dokonlar",
+    name: "Onlayn do'konlar va chakana savdo",
+    shortName: "Onlayn do'konlar",
+    problems: [
+      "Instagram va Telegram orqali kelgan buyurtmalarni qo'lda yozib borishda xatolik va yo'qotish yuz beradi.",
+      "Mijoz buyurtma holatini bilmaydi, \"buyurtmam qayerda\" deb doim so'rab turadi.",
+      "To'lov va yetkazib berishni alohida-alohida qo'lda muvofiqlashtirish vaqt yo'qotadi.",
+      "Bir nechta savdo kanali (Instagram, Telegram, do'kon) o'rtasida ombor qoldig'i mos kelmay qoladi.",
+    ],
+    relevantServices: ["online-ordering", "telegram-bot", "website-development"],
+  },
+  {
+    slug: "talim-markazlari",
+    name: "Ta'lim markazlari va o'quv kurslari",
+    shortName: "Ta'lim markazlari",
+    problems: [
+      "Yangi o'quvchi ariza topshirganda ma'lumotlar qog'ozda yoki turli Excel fayllarda tarqoq saqlanadi.",
+      "Ota-onalar farzandining davomati va natijasi haqida bilish uchun doim qo'ng'iroq qilishga majbur.",
+      "Guruh jadvali va bo'sh o'rinlar haqida ma'lumotni faqat administratordan so'rab bilish mumkin.",
+      "To'lov muddatlarini kuzatish va eslatish qo'lda amalga oshiriladi, ko'p qarzdorlik unutilib qoladi.",
+    ],
+    relevantServices: ["website-development", "telegram-bot", "business-automation"],
+  },
+  {
+    slug: "fitnes-zallar",
+    name: "Fitnes-zallar va sport klublari",
+    shortName: "Fitnes-zallar",
+    problems: [
+      "Abonement muddati tugayotgan a'zolarni qo'lda kuzatish qiyin, ko'p mijoz sezmasdan chiqib ketadi.",
+      "Mashg'ulot jadvali va murabbiylar bandligi faqat devordagi qog'ozda ko'rinadi.",
+      "Yangi mijozlar ro'yxatdan o'tish uchun to'g'ridan-to'g'ri zalga kelishga majbur bo'ladi.",
+      "Zal xodimlari a'zolar tarixini (mashqlar, sog'liq holati) alohida eslab yurishga majbur.",
+    ],
+    relevantServices: ["telegram-bot", "business-automation", "website-development"],
+  },
+  {
+    slug: "avtoservislar",
+    name: "Avtoservislar va STO",
+    shortName: "Avtoservislar",
+    problems: [
+      "Mijozlar navbatga yozilish uchun ustaxonaga qo'ng'iroq qiladi, lekin usta mashina ostida bo'lganda telefon javobsiz qoladi.",
+      "Avtomobilning oldingi ta'mirlash tarixi (qaysi qism qachon almashtirilgan) qog'ozda yoki umuman yozilmagani uchun keyingi tashrifda hamma narsa qaytadan tekshiriladi.",
+      "Ehtiyot qism buyurtma qilinganda uning qachon kelishi mijozga aniq aytilmaydi, mijoz necha marta qo'ng'iroq qilib so'raydi.",
+      "Bir vaqtning o'zida ikki mijoz bitta ustaga yozilib qo'yiladi, chunki ustalar jadvali yagona joyda yuritilmaydi.",
+    ],
+    relevantServices: ["telegram-bot", "business-automation", "website-development"],
+  },
+  {
+    slug: "avto-yuvish-detayling",
+    name: "Avtomobil yuvish va detayling markazlari",
+    shortName: "Avto-yuvish",
+    problems: [
+      "Dam olish kunlari navbat uzun bo'lganda mijozlar mashinada yoki tashqarida aniq vaqtni bilmasdan kutishga majbur bo'ladi.",
+      "Doimiy mijozlar uchun chegirma yoki bonus tizimi yo'q, shuning uchun ular narxi past raqib markazga osongina o'tib ketadi.",
+      "Keramika qoplama yoki ichki tozalash kabi xizmat narxini bilish uchun mijoz albatta qo'ng'iroq qilishi kerak, sayt yoki botda narxlar ko'rsatilmagan.",
+      "Band soatlarda yangi mijoz kelib, joy yo'qligini faqat joyida bilib qoladi, vaqti behuda ketadi.",
+    ],
+    relevantServices: ["telegram-bot", "business-automation", "website-development"],
+  },
+  {
+    slug: "yuridik-firmalar",
+    name: "Yuridik firmalar va advokatlar",
+    shortName: "Yuridik firmalar",
+    problems: [
+      "Yangi mijozlar ishonchli yuristni faqat tanish-bilish orqali topadi, internetda firma haqida ma'lumot deyarli topilmaydi.",
+      "Ish (case) qaysi bosqichda ekanligi mijozga tushuntirilmaydi, mijoz holatni bilish uchun doim qo'ng'iroq qiladi.",
+      "Birlamchi konsultatsiyaga yozilish faqat telefon orqali bo'lgani uchun band soatlarda mijoz javob kutib qoladi.",
+      "Mijoz bilan yozishmalar telefon, WhatsApp va shaxsiy Telegramga tarqalib ketgani uchun hujjat va kelishuvlar yo'qolib qoladi.",
+    ],
+    relevantServices: ["website-development", "business-automation", "telegram-bot"],
+  },
+  {
+    slug: "buxgalteriya-xizmatlari",
+    name: "Buxgalteriya va moliyaviy xizmatlar",
+    shortName: "Buxgalteriya xizmatlari",
+    problems: [
+      "Mijoz kompaniyalar soliq hisobotini topshirish muddatini eslab qololmay, oxirgi kunga qolib jarima to'laydi.",
+      "Har bir mijozning hujjatlari turli Telegram chatlari va emaillarda tarqoq saqlanadi, kerak paytda topilmaydi.",
+      "Yangi mijoz xizmat narxi va paketlarini bilish uchun albatta qo'ng'iroq qilishga majbur, saytda narxlar yo'q.",
+      "Hisobot muddati yaqinlashganda har bir mijozga alohida qo'lda eslatib chiqish kerak, ba'zilari unutilib qoladi.",
+    ],
+    relevantServices: ["website-development", "business-automation", "telegram-bot"],
+  },
+  {
+    slug: "sugurta-agentliklari",
+    name: "Sug'urta agentliklari",
+    shortName: "Sug'urta agentliklari",
+    problems: [
+      "Mijoz o'z sug'urta polisining muddati qachon tugashini bilmay qoladi va sug'urta uzilib qoladi.",
+      "Avto, mulk yoki hayot sug'urtasi haqida ma'lumot olish uchun mijoz albatta agentga qo'ng'iroq qilishi kerak.",
+      "Da'vo (claim) topshirilgandan keyin uning qaysi bosqichda ekanligi mijozga ko'rinmaydi, mijoz javob kutib o'tiradi.",
+      "Agentlar mijozlar bazasini shaxsiy daftar yoki Excelda yuritadi, polis muddati tugayotganlarni kuzatish qiyin.",
+    ],
+    relevantServices: ["website-development", "telegram-bot", "business-automation"],
+  },
+  {
+    slug: "notarial-vositachilik",
+    name: "Notarial va hujjat rasmiylashtirish xizmatlari",
+    shortName: "Notarial xizmatlar",
+    problems: [
+      "Mijoz qaysi hujjat kerakligini bilmay borib, kerakli qog'oz yetishmasa, qaytib kelishga majbur bo'ladi.",
+      "Navbat va kerakli hujjatlar ro'yxati oldindan ma'lum emasligi uchun mijoz joyga kelib uzoq kutib turadi.",
+      "Xizmat narxi va tayyor bo'lish muddati faqat telefon qilib so'ralganda aytiladi, oldindan bilib bo'lmaydi.",
+      "Hujjat tayyor bo'lganini mijoz faqat o'zi qo'ng'iroq qilib bilib oladi, unga xabar berilmaydi.",
+    ],
+    relevantServices: ["telegram-bot", "business-automation", "website-development"],
+  },
+  {
+    slug: "reklama-agentliklari",
+    name: "Reklama va marketing agentliklari",
+    shortName: "Reklama agentliklari",
+    problems: [
+      "Yangi mijozlar agentlikning ilgari qilgan ishlarini ko'rish uchun faqat Instagramga tayanadi, boshqa ishonchli manba yo'q.",
+      "Loyihaning brief, dizayn, tasdiqlash va chop bosqichlari mijozga ko'rinmaydi, mijoz holatni bilish uchun alohida yozadi.",
+      "Bir nechta mijoz loyihasi va deadline qo'lda, qog'ozda yoki xotirada kuzatiladi, ba'zan chalkashib ketadi.",
+      "Kampaniya natijalari (ko'rishlar, bosishlar) mijozga muntazam yuborilmaydi, mijoz natijani o'zi so'rashga majbur bo'ladi.",
+    ],
+    relevantServices: ["website-development", "business-automation", "telegram-bot"],
+  },
+  {
+    slug: "veterinariya-klinikalari",
+    name: "Veterinariya klinikalari",
+    shortName: "Veterinariya klinikalari",
+    problems: [
+      "Uy hayvoni kechqurun yoki bayram kunlari kasal bo'lib qolganda, egasi qaysi klinika hozir ochiqligini bilmay bir nechta raqamga qo'ng'iroq qiladi.",
+      "Hayvonning emlash va davolash tarixi qog'oz kartochkada saqlanadi, boshqa shifokorga murojaat qilganda tarix qaytadan so'raladi.",
+      "Navbatga yozilish faqat telefon orqali amalga oshiriladi, band soatlarda mijoz uzoq kutishga majbur bo'ladi.",
+      "Keyingi emlash yoki parazitlarga qarshi davolash muddati yaqinlashganda egaga eslatma yuborilmaydi, natijada muddat o'tkazib yuboriladi.",
+    ],
+    relevantServices: ["website-development", "telegram-bot", "business-automation"],
+  },
+  {
+    slug: "stomatologiya-klinikalari",
+    name: "Stomatologiya klinikalari",
+    shortName: "Stomatologiya klinikalari",
+    problems: [
+      "Ko'p bosqichli davolash rejasi (masalan implant yoki breket) bemorga yozma tarzda emas, faqat og'zaki tushuntiriladi va bemor keyingi bosqichni unutadi.",
+      "Yillik profilaktik ko'rikka kelish kerakligi haqida bemorlarga hech kim eslatmaydi, ular faqat tish og'riganda qaytib keladi.",
+      "Xizmat narxi tish holatiga qarab farq qiladi, sayt yoki telefon orqali aniq narxni bilib bo'lmaydi, mijoz klinikaga borib so'rashga majbur.",
+      "Shifokor oldingi bemor bilan band bo'lganda, navbatdagi mijoz necha daqiqa kutishini bilmaydi.",
+    ],
+    relevantServices: ["website-development", "telegram-bot", "business-automation"],
+  },
+  {
+    slug: "dorixonalar",
+    name: "Dorixonalar",
+    shortName: "Dorixonalar",
+    problems: [
+      "Kerakli dori filialda mavjudligini bilish uchun mijoz qo'ng'iroq qiladi yoki bir necha dorixonani aylanib chiqadi.",
+      "Retsept asosidagi dorini oldindan buyurtma qilib, filialga borganda tayyor holda olish imkoni yo'q.",
+      "Tungi yoki 24 soat ishlaydigan eng yaqin filial qayerdaligini mijoz internetda topa olmaydi.",
+      "Surunkali kasalligi bo'lgan mijozlarga doimiy qabul qiladigan dorisi tugab qolishidan oldin eslatma yuborilmaydi.",
+    ],
+    relevantServices: ["website-development", "telegram-bot", "online-ordering"],
+  },
+  {
+    slug: "optika-salonlari",
+    name: "Optika salonlari",
+    shortName: "Optika salonlari",
+    problems: [
+      "Ko'z tekshiruvi natijasi (retsept, diоptriya) mijozga faqat qog'ozda beriladi, u yo'qolsa yangi tekshiruv kerak bo'ladi.",
+      "Ko'zoynak yoki linza buyurtmasi tayyor bo'lganda mijozga xabar berish xodim tomonidan qo'lda, telefon orqali amalga oshiriladi.",
+      "Mijoz oldingi safar tanlagan rom modeli yoki linza turini eslay olmaydi, xodim ham buni qayerdan qidirishni bilmaydi.",
+      "Yangi kolleksiya yoki chegirma haqida doimiy mijozlarga xabar berishning tizimli usuli yo'q.",
+    ],
+    relevantServices: ["website-development", "telegram-bot", "business-automation"],
+  },
+  {
+    slug: "massaj-va-spa-markazlari",
+    name: "Massaj va SPA markazlari",
+    shortName: "SPA markazlari",
+    problems: [
+      "Seansga bron qilish faqat telefon orqali, band soatlarda qo'ng'iroqqa javob berilmasa mijoz boshqa markazga ketadi.",
+      "Mijozning sog'liq holati yoki kontrendikatsiyalari (masalan homiladorlik, allergiya) hech qayerda yozilmaydi, har safar og'zaki so'raladi.",
+      "Abonement (masalan 10 seanslik) bo'yicha qolgan seanslar soni qog'ozdagi kartochkada belgilanadi, u yo'qolsa mijoz bilan bahs chiqadi.",
+      "Bir nechta terapevtning bandligi markazlashgan holda ko'rinmaydi, administrator har birining jadvalini alohida tekshiradi.",
+    ],
+    relevantServices: ["telegram-bot", "website-development", "business-automation"],
+  },
+  {
+    slug: "uy-hayvonlari-dokonlari",
+    name: "Uy hayvonlari do'konlari va groomer xizmatlari",
+    shortName: "Uy hayvonlari do'konlari",
+    problems: [
+      "Kerakli ozuqa yoki aksessuar mavjudligini bilish uchun mijoz do'konga qo'ng'iroq qiladi yoki shaxsan borib tekshiradi.",
+      "Groomer (yuvish, soch olish) xizmatiga navbat faqat telefon orqali yoziladi, band soatlarda mijoz javob kuta olmaydi.",
+      "Hayvon turi va zotiga mos ozuqa yoki vitamin tanlashda mijozga tezkor maslahat berish imkoni yo'q.",
+      "Doimiy mijozning hayvoni uchun oldingi buyurtma qilingan ozuqa tugash muddati kuzatilmaydi, eslatma yuborilmaydi.",
+    ],
+    relevantServices: ["telegram-bot", "online-ordering", "business-automation"],
+  },
+  {
+    slug: "qurilish-va-tamirlash",
+    name: "Qurilish va ta'mirlash kompaniyalari",
+    shortName: "Qurilish kompaniyalari",
+    problems: [
+      "Mijoz avvalgi bajarilgan obyektlarni va narxlar diapazonini ko'rish uchun ishonchli manba topolmaydi, ko'pincha faqat og'zaki tavsiyaga tayanadi.",
+      "Loyihaning qaysi bosqichida ekanligi (smeta tasdig'i, material yetkazilishi, ishlar bajarilishi, topshirish) mijozga hech qayerda ko'rinmaydi.",
+      "Bir vaqtning o'zida bir nechta obyektda ishlayotgan brigadalar va ularga ajratilgan materiallar qo'lda, telefon orqali kuzatiladi.",
+      "Xarajat va smeta hisob-kitobi Excel jadvalida yuritiladi, material narxi o'zgarganda qayta hisoblashda xatolar ko'payadi.",
+    ],
+    relevantServices: ["website-development", "business-automation", "custom-software"],
+  },
+  {
+    slug: "kochmas-mulk-agentliklari",
+    name: "Ko'chmas mulk agentliklari",
+    shortName: "Ko'chmas mulk agentliklari",
+    problems: [
+      "Mulk e'lonlari bir nechta saytga qo'lda joylashtiriladi, narx yoki holat o'zgarganda hamma joyda yangilash unutilib qoladi.",
+      "Mijoz o'ziga mos mulkni narx, hudud va xona soni bo'yicha topish uchun agentga qayta-qayta qo'ng'iroq qilishga majbur bo'ladi.",
+      "Obyektni ko'rikdan o'tkazishga yozilish faqat telefon orqali amalga oshiriladi, band vaqtlar bir-biriga to'qnashib qoladi.",
+      "Sotuvchi va xaridor o'rtasidagi bitim bosqichlari — kelishuv, hujjatlar, notarial rasmiylashtirish — qog'ozda yoki xotirada kuzatiladi, muddatlar chalkashadi.",
+    ],
+    relevantServices: ["website-development", "telegram-bot", "business-automation"],
+  },
+  {
+    slug: "usta-xizmatlari",
+    name: "Santexnik, elektrik va uy ustalari xizmatlari",
+    shortName: "Usta xizmatlari",
+    problems: [
+      "Shoshilinch holatda, masalan quvur yorilganda, mijoz ishonchli ustani tezda topa olmay, tasodifiy e'lonlarga tayanadi.",
+      "Usta qachon yetib kelishi aniq aytilmagani uchun mijoz butun kun uyda kutib o'tirishga majbur bo'ladi.",
+      "Bajarilgan ish uchun kafolat muddati faqat og'zaki aytiladi, hech qayerda yozilmaydi, muammo qaytalanganda bahs chiqadi.",
+      "Bir nechta usta band yoki bo'shligini markazlashgan holda ko'rish imkoni yo'q, buyurtmalar tasodifiy taqsimlanadi.",
+    ],
+    relevantServices: ["telegram-bot", "business-automation", "website-development"],
+  },
+  {
+    slug: "dizayn-studiyalari",
+    name: "Arxitektura va interyer dizayn studiyalari",
+    shortName: "Dizayn studiyalari",
+    problems: [
+      "Bajarilgan loyihalar faqat Instagram sahifasida tartibsiz joylashtiriladi, mijoz uslub yoki xona turi bo'yicha qidira olmaydi.",
+      "Loyiha jarayonidagi tasdiqlash bosqichlari — eskiz, 3D vizualizatsiya, yakuniy chizma — mijozga tushunarsiz tartibda taqdim etiladi.",
+      "Bir nechta mijoz loyihasi va ularning deadline'lari qo'lda, blokknotda yoki xotirada kuzatiladi.",
+      "Mijoz bilan fayl almashinuvi Telegram, email va WhatsApp orasida tarqoq bo'lib, qaysi versiya oxirgi ekanligi chalkashib ketadi.",
+    ],
+    relevantServices: ["website-development", "telegram-bot", "business-automation"],
+  },
+  {
+    slug: "ishlab-chiqarish-korxonalari",
+    name: "Kichik ishlab chiqarish korxonalari",
+    shortName: "Ishlab chiqarish korxonalari",
+    problems: [
+      "Xomashyo va tayyor mahsulot qoldig'i Excel jadvalida yuritiladi, ombordagi haqiqiy holat hujjatdagi raqam bilan ko'pincha mos kelmaydi.",
+      "Buyurtmalar va yetkazib berish muddatlari qo'lda rejalashtiriladi, bir vaqtda bir nechta buyurtma tushganda ustuvorlik aniqlanmay qoladi.",
+      "Mahsulot ishlab chiqarishning qaysi bosqichida — xomashyo tayyorlash, qayta ishlash, qadoqlash — ekanligi menejerga ko'rinmaydi.",
+      "Distribyutorlar bilan buyurtma va hisobot almashinuvi qog'ozda yoki telefon orqali amalga oshiriladi, ma'lumotlar tez-tez yo'qolib qoladi.",
+    ],
+    relevantServices: ["business-automation", "custom-software", "website-development"],
+  },
+  {
+    slug: "tadbir-va-toy-agentliklari",
+    name: "Tadbir va to'y agentliklari",
+    shortName: "Tadbir agentliklari",
+    problems: [
+      "Mijoz avvalgi o'tkazilgan to'y va tadbirlar portfoliosini ko'rish uchun ishonchli manba topolmaydi, Instagram tarqoq va tartibsiz.",
+      "Bir vaqtning o'zida bir nechta buyurtmachining tadbir sanasi, byudjeti va maxsus talablari qo'lda daftarga yozilib, chalkashib ketadi.",
+      "Fotograf, dekorator, catering kabi pudratchilar bilan muvofiqlashtirish faqat telefon qo'ng'iroqlari orqali bo'lib, kelishuvlar yo'qolib qoladi.",
+      "Bo'nak va qolgan to'lov muddatlari kuzatilmaganidan tadbir kuni to'lov masalasi bahsli holatga aylanadi.",
+    ],
+    relevantServices: ["website-development", "telegram-bot", "business-automation"],
+  },
+  {
+    slug: "fotostudiyalar",
+    name: "Fotostudiyalar",
+    shortName: "Fotostudiyalar",
+    problems: [
+      "Studiya bo'sh vaqtini bron qilish faqat telefon orqali bo'lgani uchun band vaqt qayta-qayta taklif qilinib, mijoz noqulaylik chekadi.",
+      "Suratga olingan materiallarni qayta ishlash va mijozga yetkazish muddati aniq belgilanmaganidan mijoz qachon tayyor bo'lishini bilmay xavotirlanadi.",
+      "Bir nechta fotografning jadvali va bandligi markazlashgan holda ko'rinmagani uchun bitta kunga ikkita buyurtma tushib qolishi mumkin.",
+      "Oldingi mijozlarga tayyor albom yoki rasm havolalarini yuborish tartibsiz, ba'zan yo'qolib qoladi.",
+    ],
+    relevantServices: ["website-development", "telegram-bot", "business-automation"],
+  },
+  {
+    slug: "musiqa-va-sanat-maktablari",
+    name: "Musiqa va san'at maktablari",
+    shortName: "Musiqa maktablari",
+    problems: [
+      "Instrument yoki yo'nalish (fortepiano, gitara, rassomlik) bo'yicha bo'sh joy bor-yo'qligini bilish uchun ota-ona har safar maktabga qo'ng'iroq qilishga majbur.",
+      "O'qituvchilar jadvali va xonalar bandligi qo'lda taqsimlanadi, natijada bitta xonaga ikki guruh to'qnashib qolishi uchraydi.",
+      "Farzandning darsga qatnashgani va o'zlashtirish natijalari ota-onaga muntazam va tizimli tarzda yetkazilmaydi.",
+      "Konsert yoki ko'rik kabi tadbirlar haqida ota-onalarga xabar berish qo'lda, ba'zi oilalar tadbirdan bexabar qolib ketadi.",
+    ],
+    relevantServices: ["website-development", "telegram-bot", "business-automation"],
+  },
+  {
+    slug: "haydovchilik-maktablari",
+    name: "Haydovchilik maktablari",
+    shortName: "Haydovchilik maktablari",
+    problems: [
+      "Nazariy va amaliy darslar jadvali o'quvchiga aniq ko'rinmagani uchun qaysi kun qaysi darsga borishini bilmay chalkashadi.",
+      "Instruktor bilan amaliy mashg'ulot vaqtini kelishish faqat telefon qo'ng'iroqlari orqali bo'lib, vaqt band bo'lsa qayta-qayta qo'ng'iroq qilinadi.",
+      "Guvohnoma imtihoniga tayyorlik uchun necha soat amaliyot qolgani o'quvchiga aniq ko'rsatilmaydi.",
+      "To'lov bo'lib-bo'lib to'langanda qancha summa to'langani va qoldiq aniq hisoblanmay, bahsli vaziyatlar yuzaga keladi.",
+    ],
+    relevantServices: ["website-development", "telegram-bot", "business-automation"],
+  },
+  {
+    slug: "onlayn-talim-platformalari",
+    name: "Onlayn ta'lim platformalari va kurs mualliflari",
+    shortName: "Onlayn kurs mualliflari",
+    problems: [
+      "Kurs sotib olish jarayoni faqat shaxsiy Instagram DM orqali bo'lgani uchun mijozga notinch va norasmiy tuyuladi.",
+      "Mijoz to'lov qilgach video darslarga kirish huquqini muallif qo'lda, alohida-alohida berishga majbur bo'ladi.",
+      "Kursni sotib olib, lekin tugatmagan o'quvchilarni eslatish yoki qaytadan jalb qilish tizimi yo'q.",
+      "Yangi kurs yoki chegirma chiqqanda avvalgi mijozlarga xabar berish qo'lda, ko'pchilik xabardor bo'lmay qoladi.",
+    ],
+    relevantServices: ["website-development", "telegram-bot", "online-ordering"],
+  },
+  {
+    slug: "bolalar-bogchalari",
+    name: "Bolalar bog'chalari va rivojlantiruvchi markazlar",
+    shortName: "Bolalar bog'chalari",
+    problems: [
+      "Yangi ota-onalar bo'sh o'rin va narxlarni bilish uchun bir nechta bog'chaga qo'ng'iroq qilishga majbur bo'ladi.",
+      "Bolaning kun davomidagi holati (ovqatlanishi, uyqusi, faoliyati) ota-onaga kechqurun bolani olib ketguncha yetkazilmaydi.",
+      "To'lov va davomat (yo'qlama) daftarda qo'lda yuritilib, oy oxirida hisob-kitobda xatoliklar chiqadi.",
+      "Bolaning sog'lig'i yoki allergiyasi haqidagi muhim ma'lumotlar tarbiyachilar almashinganda izchil saqlanmay qoladi.",
+    ],
+    relevantServices: ["website-development", "telegram-bot", "business-automation"],
+  },
+  {
+    slug: "kuryer-xizmatlari",
+    name: "Kuryer va yetkazib berish xizmatlari",
+    shortName: "Kuryer xizmatlari",
+    problems: [
+      "Mijoz jo'natmasi hozir qayerdaligini bilmaydi, \"kuryer qachon keladi\" deb operatorlarga qo'ng'iroq qilib turadi.",
+      "Kuryerlarning band yoki bo'shligi markazlashgan tarzda ko'rinmaydi, yangi buyurtma eng yaqin bo'sh kuryerga emas, tasodifiy taqsimlanadi.",
+      "Jo'natma narxi manzil va vazniga qarab har safar qo'lda hisoblanadi, bu operatorning vaqtini oladi va xatoga olib keladi.",
+      "Bir nechta yetkazib berish hamkori (boshqa kuryer xizmatlari, do'konlar) bilan buyurtmalarni muvofiqlashtirish telefon va Excel orqali amalga oshiriladi.",
+    ],
+    relevantServices: ["telegram-bot", "business-automation", "custom-software"],
+  },
+  {
+    slug: "logistika-va-yuk-tashish",
+    name: "Logistika va yuk tashish kompaniyalari",
+    shortName: "Logistika kompaniyalari",
+    problems: [
+      "Yuk mashinalari va haydovchilarning bandligi Excel jadvalida yuritiladi, ikkita buyurtma bitta mashinaga tasodifan tushib qolishi mumkin.",
+      "Mijoz yukining hozir qayerdaligini bilish uchun har safar dispetcherga qo'ng'iroq qilishga majbur bo'ladi.",
+      "Marshrut va yoqilg'i xarajatlari har bir reys uchun qo'lda hisoblanadi, bu haqiqiy tannarxni aniq ko'rsatmaydi.",
+      "Kichik hajmdagi buyurtmalarni bitta yo'nalishdagi reysga birlashtirish (konsolidatsiya) tizimlashtirilmagan, shu sabab mashinalar yarim bo'sh yuradi.",
+    ],
+    relevantServices: ["business-automation", "custom-software", "website-development"],
+  },
+  {
+    slug: "oziq-ovqat-yetkazib-berish",
+    name: "Oziq-ovqat va supermarket yetkazib berish xizmatlari",
+    shortName: "Oziq-ovqat yetkazib berish",
+    problems: [
+      "Mahsulot ro'yxati va narxlari tez-tez o'zgaradi, ammo Excel yoki qog'ozdagi ro'yxatni yangilash bir necha soat vaqt oladi.",
+      "Katta hajmdagi haftalik buyurtmalarni oldindan rejalashtirish imkoni yo'q, mijoz har safar qaytadan ro'yxatdan tanlashga majbur.",
+      "Yetkazib berish vaqti aniq ko'rsatilmaydi (\"bugun kelamiz\" deyiladi), mijoz butun kun kutishga majbur bo'ladi.",
+      "Doimiy mijozlar har hafta bir xil mahsulotlarni qaytadan qo'lda buyurtma qilishi kerak, obuna orqali avtomatik takrorlash imkoni yo'q.",
+    ],
+    relevantServices: ["online-ordering", "telegram-bot", "business-automation"],
+  },
+  {
+    slug: "turizm-agentliklari",
+    name: "Turizm agentliklari va sayohat kompaniyalari",
+    shortName: "Turizm agentliklari",
+    problems: [
+      "Tur paketlari va narxlarini bilish uchun mijoz albatta qo'ng'iroq qilishi kerak, saytda yoki ijtimoiy tarmoqda aniq ma'lumot yo'q.",
+      "Bron qilish jarayonida bo'nak, qolgan summa va hujjatlar topshirilishi qog'ozda yoki alohida daftarda kuzatiladi, bu chalkashlikka olib keladi.",
+      "Mijozga viza yoki pasport muddati tugashi haqida eslatib turish tizimi yo'q, natijada sayohat oxirgi daqiqada bekor bo'ladi.",
+      "Guruh turlarida nechta o'rin bo'shligini agentlar bir-biriga telefon orqali so'rab bilishadi, bu ikki mijozga bir o'rinni sotib yuborish xavfini tug'diradi.",
+    ],
+    relevantServices: ["website-development", "telegram-bot", "business-automation"],
+  },
+  {
+    slug: "mehmonxonalar-va-hostellar",
+    name: "Mehmonxonalar va hostellar",
+    shortName: "Mehmonxonalar",
+    problems: [
+      "Xona bandligi va narxlari bir nechta booking-saytda qo'lda yangilanadi, natijada bitta xona ikki mijozga sotilib qo'yiladi (overbooking).",
+      "Mehmon kelish yoki ketish vaqtini o'zgartirsa, buni administratorga telefon orqali aytishga majbur, bu ma'lumot boshqa xodimlarga yetib bormaydi.",
+      "Xona holati (tozalangan yoki tozalanmagan) xodimlar orasida og'zaki yoki xabar orqali uzatiladi, bu yangi mehmonni kutish vaqtini uzaytiradi.",
+      "Doimiy mehmonlarning afzalliklari (masalan yuqori qavat, dam olish soati) hech qayerda yozilmaydi, har safar qaytadan so'rashga to'g'ri keladi.",
+    ],
+    relevantServices: ["website-development", "telegram-bot", "business-automation"],
+  },
+  {
+    slug: "fermer-xojaliklari",
+    name: "Fermer xo'jaliklari va agrobiznes",
+    shortName: "Fermer xo'jaliklari",
+    problems: [
+      "Hosil va mahsulot qoldig'i qog'ozdagi daftarda yuritiladi, qancha mahsulot sotilgani va qolgani aniq ma'lum bo'lmaydi.",
+      "Xaridorlar (bozor, restoran, do'kon) bilan buyurtma va yetkazib berish kelishuvi faqat telefon orqali amalga oshiriladi, yozma tasdiq qolmaydi.",
+      "Sug'orish, o'g'itlash va hosil yig'ish kabi ishlar jadvali markazlashgan holda yuritilmaydi, ishchilar qachon nima qilishni eslab qolishga majbur.",
+      "Fermer xo'jaligi mahsulotini to'g'ridan-to'g'ri shahar xaridorlariga (oxirgi iste'molchi yoki kichik do'konlarga) taqdim etadigan onlayn ko'rinishi yo'q, faqat vositachilar orqali sotiladi.",
+    ],
+    relevantServices: ["website-development", "business-automation", "custom-software"],
+  },
+  {
+    slug: "kiyim-kechak-dokonlari",
+    name: "Kiyim-kechak do'konlari",
+    shortName: "Kiyim-kechak do'konlari",
+    problems: [
+      "Mijoz o'lchamini aniq bilmay onlayn buyurtma qiladi, keyin kiyim mos kelmay qaytarish yoki almashtirish talab qiladi.",
+      "Bir xil kiyimning turli o'lcham va rangdagi qoldiqlarini qo'lda yozib borish chalkashlikka va noto'g'ri sotuvga olib keladi.",
+      "Fasl almashganda butun kolleksiyani yangilab, eski mahsulotlarni chegirmaga chiqarish jarayoni tartibsiz va sekin kechadi.",
+      "Instagram orqali kelgan buyurtmalarni skrinshot va yozishmalardan qo'lda yig'ish sotuvchining ko'p vaqtini oladi, ba'zi buyurtmalar esa e'tibordan chetda qolib ketadi.",
+    ],
+    relevantServices: ["online-ordering", "website-development", "telegram-bot"],
+  },
+  {
+    slug: "zargarlik-dokonlari",
+    name: "Zargarlik do'konlari",
+    shortName: "Zargarlik do'konlari",
+    problems: [
+      "Har bir taqinchoq noyob va qimmat bo'lgani uchun, ombordagi haqiqiy qoldiqni qo'lda kuzatish vitrina va omborni bir-biriga mos kelmay qoldiradi.",
+      "Oltin yoki kumushning grammaji va proba sertifikatini har safar qo'lda tekshirib, mijozga tushuntirish sotuvchining vaqtini oladi.",
+      "Qimmat buyurtmalarni telefon orqali qabul qilishda mijoz oldindan to'lov qilishga ishonmaydi, chunki tasdiqlovchi hujjat yoki tizim yo'q.",
+      "Gravировka yoki o'lchamga moslashtirish kabi individual buyurtma so'rovlarini kuzatib borish uchun alohida tizim yo'q, so'rovlar yo'qolib qoladi.",
+    ],
+    relevantServices: ["online-ordering", "website-development", "telegram-bot"],
+  },
+  {
+    slug: "gul-dokonlari",
+    name: "Gul do'konlari",
+    shortName: "Gul do'konlari",
+    problems: [
+      "Gullar tez so'lib qolgani uchun ombordagi mavjud bukет tarkibini har kuni yangilab turmasa, mijozga aslida yo'q gul taklif qilinadi.",
+      "To'y yoki marosim uchun bir necha kun oldin beriladigan katta hajmdagi buyurtmalarni aniq sana va soatga rejalashtirish qog'ozda yoki xotirada chalkashadi.",
+      "Bayram kunlari (8-mart, Valentin) buyurtmalar keskin oshganda telefon liniyasi band bo'lib qoladi va ko'plab mijozlar bog'lanolmay boshqa do'konga ketadi.",
+      "Yetkazib berish manzili va aniq vaqti to'g'ri yozib olinmasa, gul kech yoki noto'g'ri manzilga yetib boradi va so'lib ulguradi.",
+    ],
+    relevantServices: ["online-ordering", "website-development", "telegram-bot"],
+  },
+  {
+    slug: "elektronika-dokonlari",
+    name: "Elektronika do'konlari",
+    shortName: "Elektronika do'konlari",
+    problems: [
+      "Mijozlar turli modellarning texnik xususiyatlarini (protsessor, xotira, batareya) solishtirish uchun sotuvchidan uzoq vaqt savol-javob talab qiladi.",
+      "Kafolat muddati va servis markazi ma'lumotini qog'oz chekda saqlash, chek yo'qolganda mijoz bilan nizoga olib keladi.",
+      "Yangi model chiqqanda eski model narxini tezda tushirish va omborda qolganini ko'rsatish kechikadi, eskirgan mahsulot uzoq turib qoladi.",
+      "Mahsulotning original yoki qayta tiklangan (refurbished) ekanini aniq ko'rsatmaslik mijoz ishonchini pasaytiradi.",
+    ],
+    relevantServices: ["online-ordering", "website-development", "telegram-bot"],
+  },
+  {
+    slug: "mebel-dokonlari",
+    name: "Mebel do'konlari",
+    shortName: "Mebel do'konlari",
+    problems: [
+      "Mijoz xonasiga mebel sig'ish-sig'maslikni aniq bilmasdan buyurtma qiladi, keyin o'lcham mos kelmay qaytarish yoki almashtirish kerak bo'ladi.",
+      "Katta gabaritli mebelni yetkazib berish uchun mashina va yuk ko'tarish jadvalini qo'lda rejalashtirish kechikishlarga olib keladi.",
+      "Yig'ish (montaj) xizmati kerak-kerakmasligini va necha ishchi zarurligini oldindan aniqlash tizimlashtirilmagan.",
+      "Mavjud mato yoki rang variantlarini har bir mebel uchun alohida ko'rsatish qiyin, mijoz vitrinadagidan boshqa rang borligini bilmaydi.",
+    ],
+    relevantServices: ["online-ordering", "website-development", "telegram-bot"],
+  },
+  {
+    slug: "qurilish-mollari-dokonlari",
+    name: "Qurilish mollari do'konlari",
+    shortName: "Qurilish mollari do'konlari",
+    problems: [
+      "Ulgurji va chakana xaridorlar uchun bir xil mahsulotga turlicha narx va minimal miqdor shartlarini qo'lda hisoblash xatolikka olib keladi.",
+      "Sement, bo'yoq kabi og'ir va hajmli tovarlarning ombordagi aniq qoldig'ini bilmasdan sotib, keyin yetishmovchilik chiqadi.",
+      "Qurilish ob'ektiga katta hajmdagi buyurtmani yetkazib berish sanasi va transport turi haqida kelishuv telefon orqali chalkash kechadi.",
+      "Bir xil mahsulotning turli brend va sifat darajasini (masalan sement markasi) solishtirib ko'rsatish imkoniyati yo'q, mijoz noto'g'ri tanlov qiladi.",
+    ],
+    relevantServices: ["online-ordering", "website-development", "telegram-bot"],
+  },
+  {
+    slug: "bolalar-oyinchoqlari-dokonlari",
+    name: "Bolalar o'yinchoqlari do'konlari",
+    shortName: "O'yinchoqlar do'konlari",
+    problems: [
+      "Ota-onalar bolaning yoshiga mos o'yinchoqni o'zi tanlay olmay, doim sotuvchidan maslahat so'rashga majbur bo'ladi.",
+      "Xavfsizlik sertifikati va material tarkibi haqida ma'lumot yetarli ko'rsatilmagani uchun ayniqsa kichik yoshdagi bolalar uchun mijozlar ishonchsizlik bildiradi.",
+      "Yangi yil va 1-iyun kabi bayramlar oldidan buyurtmalar keskin oshadi, lekin qo'lda qabul qilish tezligi yetishmay, mijozlar boshqa joyga ketadi.",
+      "Sovg'a sifatida buyurtma qilinganda o'rash va tabrik yozuvi kabi qo'shimcha xizmatlarni kuzatib borish tizimlashtirilmagan.",
+    ],
+    relevantServices: ["online-ordering", "website-development", "telegram-bot"],
+  },
+  {
+    slug: "sport-anjomlari-dokonlari",
+    name: "Sport anjomlari do'konlari",
+    shortName: "Sport anjomlari do'konlari",
+    problems: [
+      "Krossovka yoki sport kiyimining o'lchamini onlaynda aniq tanlay olmagani uchun mijozlar ko'p marta almashtirishga murojaat qiladi.",
+      "Turli sport turlari (futbol, fitnes, suzish) uchun mos jihozni tanlashda maslahat faqat do'konga kelganda mumkin bo'ladi.",
+      "Mavsumiy sport (chang'i, velosiped) mahsulotlariga talab keskin o'zgarganda, ombordagi zaxirani oldindan rejalashtirish qiyin.",
+      "Brend originalligini tasdiqlovchi ma'lumot (sertifikat, kafolat) yetkazib berilganda ko'rsatilmasa, mijoz qalbakilikdan xavotirlanadi.",
+    ],
+    relevantServices: ["online-ordering", "website-development", "telegram-bot"],
+  },
+
+  {
+    slug: "maishiy-texnika-tamirlash",
+    name: "Maishiy texnika ta'mirlash xizmatlari",
+    shortName: "Maishiy texnika ta'mirlash",
+    problems: [
+      "Mijoz muzlatgich yoki kir yuvish mashinasi buzilganda qo'ng'iroq qiladi, lekin usta boshqa manzilda ishlayotgani sababli qachon kelishini aniq ayta olmaydi, mijoz butun kun uyda kutib o'tiradi.",
+      "Ustaning qaysi mahallada, qaysi buyurtmada ekanligi faqat dispetcherning xotirasida yoki qog'ozda bo'lgani uchun, yaqin atrofdagi yangi buyurtma uzoqdagi bo'sh ustaga berilib, benzin va vaqt behuda ketadi.",
+      "Almashtirilgan ehtiyot qism (masalan kompressor)ga qo'yilgan kafolat muddati va u qaysi buyurtmada ishlatilgani hech qayerda yozilmagani uchun, mijoz uch oydan keyin qayta murojaat qilganda tarixni tiklab bo'lmaydi.",
+      "Texnika faqat uyga borib ochib ko'rilgandan keyin narx aniqlanadi, agar mijoz narxga rozi bo'lmasa borib-kelish va vaqt behuda ketadi — oldindan taxminiy narx berish imkoni yo'q.",
+    ],
+    relevantServices: ["telegram-bot", "business-automation", "website-development"],
+  },
+
+  {
+    slug: "telefon-va-kompyuter-tamirlash",
+    name: "Telefon va kompyuter ta'mirlash xizmatlari",
+    shortName: "Telefon/kompyuter ta'mirlash",
+    problems: [
+      "Mijoz telefon yoki noutbukni ta'mirga topshirgach, u qaysi bosqichda ekanini (diagnostika, ehtiyot qism kutilmoqda, tayyor) bilish uchun har safar do'konga borib yoki qo'ng'iroq qilib so'rashga majbur bo'ladi.",
+      "Boshqa shahardan pochta orqali yuborilgan qurilmani kim qabul qilib olgani va u yo'lda qayerda ekanligini tasdiqlaydigan tizim yo'q, hamma narsa faqat og'zaki ishonchga asoslanadi.",
+      "Ekran yoki batareya kabi ehtiyot qismlar ombordan tugab qolganda mijozga oldindan xabar berilmaydi, u kelganda \"ehtiyot qism yo'q ekan\" deb qaytarib yuboriladi.",
+      "Ta'mirlangan qurilmaga berilgan kafolat faqat qog'ozga yozib beriladi, u yo'qolsa yoki eskirsa mijoz keyinchalik kafolat muddati borligini isbotlay olmaydi.",
+    ],
+    relevantServices: ["telegram-bot", "business-automation", "website-development"],
+  },
+
+  {
+    slug: "poligrafiya-xizmatlari",
+    name: "Poligrafiya xizmatlari (bosmaxonalar)",
+    shortName: "Poligrafiya xizmatlari",
+    problems: [
+      "Mijoz maketni yuborganda ranglar ekranda ko'ringanidan boshqacha bosilib chiqishi mumkinligi haqida oldindan ogohlantirilmaydi, natijada butun tираж qayta bosilishiga to'g'ri keladi.",
+      "Katta buyurtma (masalan 10 ming dona flayer) bosilayotganda uning qaysi bosqichda — maket tasdiqlangan, qog'oz kesilgan, bosilmoqda, laminatsiya qilinmoqda — ekani mijozga faqat qo'ng'iroq qilib so'ralganda ma'lum bo'ladi.",
+      "Mijozning oldingi buyurtmalarida ishlatilgan aniq rang kodi va qog'oz turi tizimda saqlanmagani uchun, keyingi safar \"avvalgidek qilib bering\" deyilganda rang bir-biriga to'g'ri kelmay qoladi.",
+      "Shoshilinch buyurtmalar (ertaga tadbir bor) va oddiy navbatdagi buyurtmalar bitta umumiy navbatda aralashib ketadi, dastgoh operatori qaysi birini birinchi bosishni o'zi hal qilishga majbur bo'ladi.",
+    ],
+    relevantServices: ["telegram-bot", "business-automation", "website-development"],
+  },
+
+  {
+    slug: "tikuv-atelyelari",
+    name: "Tikuv atelyelari",
+    shortName: "Tikuv atelyelari",
+    problems: [
+      "Mijozning tana o'lchovlari qog'ozga yoki daftarga yozib qo'yiladi, keyingi kelganida daftar topilmasa yoki o'lchovlar boshqa mijoznikiga aralashib ketsa, qaytadan o'lchashga to'g'ri keladi.",
+      "Kiyim tikish kesish, birinchi urinib ko'rish va tugallash kabi bosqichlardan iboratligi va hozir qaysi bosqichda turgani mijozga aytilmagani uchun, mijoz \"tayyormi\" deb har kuni qo'ng'iroq qiladi.",
+      "Bir nechta tikuvchi bir vaqtda turli buyurtmalar ustida ishlayotganda, kim qaysi buyurtmani qachon tugatishi rejalashtirilmagani sababli, to'y kabi aniq sanaga bog'liq buyurtmalar kechikib qolish xavfi tug'iladi.",
+      "Ishlatilgan mato turi va andoza (lekalo) qoldiqlari saqlanmagani uchun, mijoz keyinchalik o'sha ko'ylakka mos aksessuar tiktirmoqchi bo'lsa, avvalgi matoning aynan qaysi turi ekanligi eslab qolinmaydi.",
+    ],
+    relevantServices: ["telegram-bot", "business-automation", "website-development"],
+  },
+
+  {
+    slug: "konditsioner-xizmatlari",
+    name: "Konditsioner o'rnatish va texnik xizmat ko'rsatish",
+    shortName: "Konditsioner xizmatlari",
+    problems: [
+      "Yozning eng issiq kunlarida konditsioner o'rnatish uchun murojaatlar keskin oshib ketadi, lekin ustalar jadvali qog'ozda yuritilgani uchun kim qaysi kuni bo'shligi aniq bilinmaydi va mijozlarga noaniq \"ertaga-indinga\" javobi beriladi.",
+      "Har yili bahorda profilaktika tozalash kerak bo'lgan mijozlar ro'yxati saqlanmagani uchun, o'tgan yili konditsioner o'rnatilgan mijozlarga eslatma yuborish imkoni yo'q va ular raqobatchiga murojaat qiladi.",
+      "Konditsionerning modeli, quvvati va frion qachon quyilgani kabi texnik tarix hech qayerda yozilmagani uchun, keyingi chaqiriqda usta hamma narsani qaytadan tekshirishga majbur bo'ladi.",
+      "Xona balandligi va tashqi blok qayerga o'rnatilishi kabi ma'lumot oldindan olinmagani uchun, usta obyektga borgach qo'shimcha asbob yoki ikkinchi usta kerakligi ma'lum bo'ladi va vaqt behuda ketadi.",
+    ],
+    relevantServices: ["telegram-bot", "business-automation", "website-development"],
+  },
+
+  {
+    slug: "mebel-tamirlash",
+    name: "Mebel ta'mirlash xizmatlari",
+    shortName: "Mebel ta'mirlash",
+    problems: [
+      "Mijoz eski divan yoki kreslo qoplamasini almashtirishni buyurtma qilganda, mato yoki furnitura yetkazib kelinishi qancha vaqt olishi aniq aytilmaydi, mijoz \"qachon tayyor bo'ladi\" deb bir necha marta qo'ng'iroq qiladi.",
+      "Uyga borib o'lchov olingandan keyin narx aniqlanadi, lekin bu ma'lumot faqat ustaning xotirasida yoki qog'ozda qoladi, ustaxonaga qaytgach boshqa xodim buyurtmani qayta hisoblashga majbur bo'ladi.",
+      "Mijozning tanlagan mato namunasi va mebelning aynan qaysi qismi ta'mirlanishi kerakligi yozib qo'yilmagani uchun, usta ustaxonaga qaytganda noto'g'ri mato bilan ishni boshlab yuborishi mumkin.",
+      "Bir nechta usta turli buyurtmalar ustida ishlayotganda (bittasi mato kutmoqda, ikkinchisi pружина almashtirilmoqda) qaysi buyurtma qaysi bosqichda ekani umumiy joyda ko'rinmaydi, natijada mijozga noto'g'ri muddat aytilib qo'yiladi.",
+    ],
+    relevantServices: ["telegram-bot", "business-automation", "website-development"],
+  },
+
+  {
+    slug: "elektr-montaj-kompaniyalari",
+    name: "Elektr montaj kompaniyalari",
+    shortName: "Elektr montaj kompaniyalari",
+    problems: [
+      "Ob'ektdagi elektr montaj ishlari qancha foizi bajarilgani haqida bosh pudratchiga hisobot faqat og'zaki yoki Excel fayl orqali yuborilgani uchun, real vaqtda qancha ish qolgani noaniq bo'lib qoladi.",
+      "Har bir ob'ektda ishlatilgan kabel, avtomat va boshqa materiallar miqdori aniq hisoblanmagani uchun, loyiha oxirida sarflangan material bilan smetadagi miqdor o'rtasida farq chiqadi va kim aybdor ekani aniqlanmaydi.",
+      "Bir nechta brigada bir vaqtda turli ob'ektlarda ishlayotganda, qaysi brigada qayerda va qanday asbob-uskuna bilan ishlayotgani markazlashgan tizimda ko'rinmaydi, favqulodda holatda kim bo'shligini topish qiyinlashadi.",
+      "Bajarilgan ishning texnik hujjatlari (ispolnitelnaya sxema, qabul-topshirish dalolatnomasi) qog'ozda yuritilgani uchun, obyekt topshirilgandan bir yil o'tib kafolat bo'yicha muammo chiqsa, kerakli hujjatni topish qiyin bo'ladi.",
+    ],
+    relevantServices: ["business-automation", "custom-software", "website-development"],
+  },
+
+  {
+    slug: "avtomobil-shina-markazlari",
+    name: "Avtomobil shinamontaj markazlari",
+    shortName: "Shinamontaj markazlari",
+    problems: [
+      "Kuz va bahorda \"shina almashtirish\" mavsumi boshlanganda barcha mijozlar bir necha kun ichida navbatga yozilishga urinadi, lekin navbat faqat qo'ng'iroq orqali yuritilgani uchun soatlar ustma-ust tushib, mijozlar kutish zalida soatlab navbat kutadi.",
+      "Mijozning saqlashga topshirgan yozgi yoki qishki shinalari omborda qaysi javonda ekani yozib qo'yilmagani uchun, keyingi mavsumda shinani topish uchun butun omborni ag'darib chiqishga to'g'ri keladi.",
+      "Disk balансировкаси va shina bosimi kabi texnik ko'rsatkichlar mijozga chiqim qog'ozida yozilmay, faqat og'zaki aytilgani uchun, keyinchalik \"vibratsiya bor\" degan shikoyat kelganda qaysi ishlar bajarilgani hujjatlashtirilmagan bo'lib chiqadi.",
+      "Shinalarning ishlab chiqarilgan yili va protektor chuqurligi haqida mijozga avtomatik eslatma yuborilmaydi, shuning uchun xavfsizlik uchun muhim bo'lgan almashtirish vaqti ko'pincha o'tkazib yuboriladi.",
+    ],
+    relevantServices: ["telegram-bot", "business-automation", "website-development"],
+  },
+
+  {
+    slug: "bolalar-oyin-markazlari",
+    name: "Bolalar o'yin markazlari",
+    shortName: "Bolalar o'yin markazlari",
+    problems: [
+      "Tug'ilgan kun bayramlari uchun zal va animator bron qilish faqat telefon orqali amalga oshadi, sanalar tez-tez ustma-ust tushib qoladi.",
+      "Soatlab kirish narxini hisoblash xodimlar tomonidan qo'lda amalga oshiriladi, hisob-kitobda xatoliklar tez-tez yuzaga keladi.",
+      "Ota-onalar bolasini markazga qoldirishdan oldin bo'sh xona yoki animator borligini oldindan bilolmaydi.",
+      "Tug'ilgan kun paketlari (tort, animator, zal ijarasi) haqida to'liq ma'lumot faqat joyiga borib so'rash orqali olinadi.",
+    ],
+    relevantServices: ["telegram-bot", "website-development", "business-automation"],
+  },
+  {
+    slug: "bouling-va-bilyard-klublari",
+    name: "Bouling va bilyard klublari",
+    shortName: "Bouling klublari",
+    problems: [
+      "Yo'lak yoki bilyard stoli band-bo'shligini mijozlar faqat klubga kelib bilishadi, oldindan onlayn bron qilish imkoni yo'q.",
+      "Kechqurun va dam olish kunlari soatlarida telefon orqali yozib borilgan bronlar bir-biriga to'qnashib qoladi.",
+      "Korporativ yoki tug'ilgan kun uchun bir nechta yo'lak yoki stolni birgalikda band qilish uchun alohida tizim yo'q.",
+      "Doimiy mijozlar qancha soat o'ynaganini xodimlar eslay olmaydi, shu sabab chegirma yoki bonus tizimi ishlamaydi.",
+    ],
+    relevantServices: ["telegram-bot", "website-development", "business-automation"],
+  },
+  {
+    slug: "yoga-studiyalari",
+    name: "Yoga studiyalari",
+    shortName: "Yoga studiyalari",
+    problems: [
+      "Guruh darslariga yozilish va bekor qilish faqat administrator bilan yozishma orqali amalga oshadi, bo'sh joylar soni aniq ko'rinmaydi.",
+      "Abonement turi (oylik, 8 ta dars, cheksiz) bo'yicha qolgan darslar sonini xodimlar daftarga qo'lda yozib boradi.",
+      "Yangi mijozlar qaysi instruktor qaysi darajadagi (boshlang'ich, ilg'or) darsni o'tishini bilmasdan noto'g'ri guruhga yoziladi.",
+      "Instruktor almashinuvi yoki dars bekor qilinganda mijozlarga xabar berish kech yetib boradi yoki umuman yetmaydi.",
+    ],
+    relevantServices: ["telegram-bot", "website-development", "business-automation"],
+  },
+  {
+    slug: "bolalar-yozgi-lagerlari",
+    name: "Bolalar yozgi lagerlari",
+    shortName: "Yozgi lagerlar",
+    problems: [
+      "Yozgi smenaga ro'yxatdan o'tish qisqa muddatda ko'plab ariza tushishi sababli qo'lda boshqarilganda adashib ketadi.",
+      "Ota-onalar farzandi lagerda bo'lgan kunlarda kunlik dastur va fotosuratlarni faqat tarqoq WhatsApp guruhlaridan oladi.",
+      "Bolaning ovqat allergiyasi va tibbiy ma'lumotlari qog'ozda yuritiladi, har smenada qaytadan so'rashga to'g'ri keladi.",
+      "Bo'sh o'rinlar soni haqida aniq ma'lumot bo'lmagani sabab ota-onalar avval navbatga yozilib, keyin joy yo'qligini bilib qoladi.",
+    ],
+    relevantServices: ["telegram-bot", "website-development", "business-automation"],
+  },
+  {
+    slug: "konsert-va-tadbir-zallari",
+    name: "Konsert va tadbir zallari",
+    shortName: "Tadbir zallari",
+    problems: [
+      "Turli tadbirlar uchun zal bandligini kuzatuvchi yagona kalendar yo'q, ikkita tadbir bir kunga tasodifan yozilib qolishi mumkin.",
+      "Chipta sotish faqat offline kassa orqali amalga oshadi, tomoshabinlar onlayn oldindan chipta xarid qila olmaydi.",
+      "Zal ijarasiga so'rovlar qo'ng'iroq, Instagram va tanishlar orqali tarqoq holda kelib, ularni birlashtirib boshqarish qiyin.",
+      "Tadbir uchun yorug'lik va tovush jihozlari, xodimlar jadvali qog'ozda yuritiladi, tayyorgarlik jarayonida chalkashlik chiqadi.",
+    ],
+    relevantServices: ["telegram-bot", "website-development", "business-automation"],
+  },
+  {
+    slug: "coworking-markazlari",
+    name: "Coworking markazlari",
+    shortName: "Coworking markazlari",
+    problems: [
+      "Ish stoli yoki alohida xona bandligi real vaqtda hech qayerda ko'rinmaydi, ikki mijoz bir joyga yozilib qolishi mumkin.",
+      "A'zolik turlari (kunlik, oylik, yillik) va ulardan qancha foydalanilgani qo'lda, jadvalda kuzatiladi.",
+      "Yangi mijoz bo'sh joy bor-yo'qligini bilish uchun albatta qo'ng'iroq qilishi yoki markazga borishi kerak.",
+      "Muzokara xonasi (meeting room)ni band qilish va undan foydalanish vaqtini hisoblash tizimlashtirilmagan.",
+    ],
+    relevantServices: ["telegram-bot", "website-development", "business-automation"],
+  },
+  {
+    slug: "kompyuter-oyinlari-klublari",
+    name: "Kompyuter o'yinlari klublari",
+    shortName: "Kompyuter klublari",
+    problems: [
+      "Kompyuter yoki konsolning band-bo'shligini mijozlar faqat klubga kelib bilishadi, oldindan onlayn bron qilib bo'lmaydi.",
+      "Soatlab ijara narxini hisoblash va turnir uchun kompyuterlarni guruhlashtirish xodimlar tomonidan qo'lda amalga oshiriladi.",
+      "Turnirlarga ro'yxatdan o'tish va ishtirokchilar ro'yxati turli Telegram guruhlarida tartibsiz to'planadi.",
+      "Klubda qancha soat o'tkazgani bo'yicha doimiy mijozlar uchun bonus yoki chegirma tizimi mavjud emas.",
+    ],
+    relevantServices: ["telegram-bot", "website-development", "business-automation"],
+  },
+  {
+    slug: "sayohat-gid-xizmatlari",
+    name: "Sayohat gid xizmatlari",
+    shortName: "Sayohat gidlari",
+    problems: [
+      "Gidning kunlik bandligi faqat shaxsiy yozishmalarda saqlanadi, natijada bir vaqtga ikki xil tur yozilib qolishi mumkin.",
+      "Turistlar qaysi tilda gid kerakligi va marshrut afzalliklarini oldindan bildirish uchun rasmiy so'rov shakli yo'q.",
+      "Tur davomida marshrut o'zgarishi (ob-havo, turistning istagi) haqida gid va turist o'rtasida tezkor aloqa vositasi yo'q.",
+      "Xorijiy turistlar tur haqini asosan naqd pulda to'lashga majbur, oldindan onlayn to'lov imkoniyati mavjud emas.",
+    ],
+    relevantServices: ["telegram-bot", "website-development", "business-automation"],
+  },
+
+  {
+    slug: "import-eksport-kompaniyalari",
+    name: "Import-eksport kompaniyalari",
+    shortName: "Import-eksport kompaniyalari",
+    problems: [
+      "Kontrakt, invoys, sertifikat va bojxona deklaratsiyalari kabi hujjatlar turli papka va Excel fayllarda saqlanadi, kerakli hujjatni topish uchun vaqt ketadi.",
+      "Yetkazib beruvchi va xaridor bilan yozishmalar, valyuta kursi o'zgarishi va to'lov muddatlari qo'lda kuzatiladi, natijada muddat o'tkazib yuboriladi.",
+      "Yuk qaysi bosqichda ekanligi (ishlab chiqarilmoqda, yo'lda, bojxonada, omborda) haqida mijozga aniq ma'lumot berilmaydi, mijoz doim qo'ng'iroq qilib so'raydi.",
+      "Har bir bitim uchun narx, yetkazib berish muddati va shartlar qo'lda hisoblanadi, xatolar tufayli marja yo'qotiladi yoki noto'g'ri narx taklif qilinadi.",
+    ],
+    relevantServices: ["business-automation", "custom-software", "website-development"],
+  },
+  {
+    slug: "ombor-ijarasi-xizmatlari",
+    name: "Ombor ijarasi xizmatlari",
+    shortName: "Ombor ijarasi",
+    problems: [
+      "Bo'sh va band ombor maydonlari haqida ma'lumot faqat menejer xotirasida yoki qog'ozda saqlanadi, mijozga qanday hajmda joy borligini tezda aytish qiyin.",
+      "Ijaraga oluvchilar bilan shartnoma muddatlari, oylik to'lovlar va kommunal xarajatlar qo'lda hisoblanadi, to'lov kechikkanda buni kuzatish qiyin.",
+      "Ombordagi tovarlarning kirim-chiqimi va joylashuvi hisobga olinmagani uchun mijozning o'zi ombordagi tovar hajmini bilmay qoladi.",
+      "Yangi mijozlar ombor joylashuvi, maydon narxi va sig'imi haqida ma'lumotni faqat qo'ng'iroq qilib bilib oladi, internetda tayyor ma'lumot yo'q.",
+    ],
+    relevantServices: ["business-automation", "custom-software", "website-development"],
+  },
+  {
+    slug: "avtomobil-ijarasi",
+    name: "Avtomobil ijarasi xizmatlari (prokat)",
+    shortName: "Avtomobil ijarasi",
+    problems: [
+      "Qaysi mashina qaysi kunlarga band qilinganini kuzatish uchun qog'oz jadval yoki Excel ishlatiladi, ikkita mijozga bir mashina tasodifan band qilinib qo'yiladi.",
+      "Mashina qaytarilganda uning holati (yoqilg'i miqdori, kuzov shikastlari, km ko'rsatkichi) hujjatlashtirilmaydi, keyinchalik nizolar kelib chiqadi.",
+      "Mijozlar mashina bandligi va narxlarini bilish uchun faqat qo'ng'iroq qiladi, band kunlarda operator javob bermasa mijoz raqobatchiga ketadi.",
+      "Ijaraga berilgan mashinalarning texnik ko'rikdan o'tish va sug'urta muddatlari qo'lda kuzatiladi, muddati o'tib ketgan mashina yo'lga chiqarilishi mumkin.",
+    ],
+    relevantServices: ["website-development", "telegram-bot", "business-automation"],
+  },
+  {
+    slug: "avtosalonlar",
+    name: "Avtosalonlar",
+    shortName: "Avtosalonlar",
+    problems: [
+      "Sotuvdagi mashinalar ro'yxati va narxlari faqat savdo maydonchasida yoki ijtimoiy tarmoqlarda tarqoq holda e'lon qilinadi, xaridor barcha mavjud modellarni bir joydan ko'ra olmaydi.",
+      "Test drayvga yozilish va mashina ko'rish uchun uchrashuv vaqtlari qo'lda, telefon orqali kelishiladi, xaridorlar navbatda adashib qoladi.",
+      "Kredit yoki lizingga sotib olish shartlari haqida xaridorga aniq hisob-kitob berilmaydi, xaridor bankka alohida murojaat qilishga majbur bo'ladi.",
+      "Xaridorning eski mashinasini hisobga olib yangisiga almashtirish (trade-in) so'rovlari qo'lda qayd qilinadi, kelishilgan narxlar va mashina holati haqida ma'lumot yo'qolib qoladi.",
+    ],
+    relevantServices: ["website-development", "telegram-bot", "business-automation"],
+  },
+  {
+    slug: "lombard-xizmatlari",
+    name: "Lombard xizmatlari",
+    shortName: "Lombardlar",
+    problems: [
+      "Garovga qo'yilgan buyumlarning bahosi, garov summasi va muddati qog'ozda yoki daftarda qayd qilinadi, muddat o'tib ketgan garovlarni kuzatish qiyinlashadi.",
+      "Mijozga garov muddati tugashi haqida oldindan xabar berilmaydi, mijoz muddatni unutib, buyumini yo'qotib qo'yadi yoki foiz oshib ketadi.",
+      "Garovga qo'yilgan oltin, texnika yoki boshqa buyumlarning saqlanish joyi va holati aniq hisobga olinmaydi, ombordagi buyumlarni tez topish qiyin.",
+      "Yangi mijozlar qaysi buyum turlariga qancha summa berilishini bilish uchun faqat filialga borib so'rashi kerak, narxlar internetda ko'rsatilmagan.",
+    ],
+    relevantServices: ["website-development", "telegram-bot", "business-automation"],
+  },
+  {
+    slug: "tarjima-xizmatlari",
+    name: "Tarjima xizmatlari (tarjima byurolari)",
+    shortName: "Tarjima xizmatlari",
+    problems: [
+      "Tarjimaga topshirilgan hujjatlar qaysi tarjimonda, qaysi bosqichda (tarjima, tahrir, notarial tasdiq) ekanligi kuzatilmaydi, mijoz holatni bilish uchun qo'ng'iroq qiladi.",
+      "Bir nechta tarjimon bilan ishlaganda, kim qaysi tilga qaysi hujjatni tarjima qilayotgani qog'ozda yoki messenjerlarda tarqoq qayd qilinadi, muddatlar chalkashib ketadi.",
+      "Mijozlar qaysi til yo'nalishi va hujjat turi uchun qancha to'lash kerakligini bilish uchun faqat qo'ng'iroq qiladi, narxlar oldindan ko'rinmaydi.",
+      "Notarial tasdiqlash uchun navbat va muddatlar qo'lda kuzatiladi, shoshilinch hujjatlar boshqa buyurtmalar orasida yo'qolib, muddati o'tkazib yuboriladi.",
+    ],
+    relevantServices: ["website-development", "telegram-bot", "business-automation"],
+  },
+  {
+    slug: "audit-va-konsalting",
+    name: "Audit va konsalting kompaniyalari",
+    shortName: "Audit va konsalting",
+    problems: [
+      "Mijozning moliyaviy hujjatlari va hisobotlari elektron pochta orqali tarqoq yuborilib, kerakli faylni topish uchun ko'p vaqt sarflanadi.",
+      "Auditor yoki konsultant xizmat ko'rsatayotgan loyihaning qaysi bosqichda ekanligi (hujjat yig'ish, tahlil, hisobot tayyorlash) mijozga aniq ko'rsatilmaydi.",
+      "Yangi mijozlar kompaniyaning tajribasi, oldingi loyihalari va mutaxassislik yo'nalishlari haqida internetda ma'lumot topa olmaydi, faqat tavsiyanoma orqali murojaat qiladi.",
+      "Hisobot topshirish va konsultatsiya uchrashuvlari muddatlari qo'lda kuzatiladi, bir nechta mijoz bilan bir vaqtda ishlaganda muddatlar chalkashib ketadi.",
+    ],
+    relevantServices: ["website-development", "business-automation", "telegram-bot"],
+  },
+  {
+    slug: "kadrlar-agentliklari",
+    name: "HR va kadrlar agentliklari",
+    shortName: "Kadrlar agentliklari",
+    problems: [
+      "Nomzodlarning rezyumelari va malakalari turli papka va elektron pochtada tarqoq saqlanadi, mos vakansiyaga mos nomzodni tezda topish qiyin.",
+      "Mijoz kompaniyalardan kelgan vakansiya so'rovlari va ularning talablari qog'ozda yoki messenjerda qayd qilinadi, qaysi vakansiya yopilgani, qaysisi ochiqligi aniq ko'rinmaydi.",
+      "Nomzod bilan suhbat (intervyu) vaqtlarini kelishish telefon orqali amalga oshiriladi, bir nechta nomzod bilan bir vaqtda ishlaganda uchrashuvlar bir-biriga to'g'ri kelib qoladi.",
+      "Ish qidiruvchilar mavjud vakansiyalar haqida ma'lumotni faqat agentlikka qo'ng'iroq qilib yoki tashrif buyurib bilib oladi, internetda yangilanган vakansiyalar ro'yxati yo'q.",
+    ],
+    relevantServices: ["website-development", "business-automation", "telegram-bot"],
+  },
+
+  {
+    slug: "repetitorlik-markazlari",
+    name: "Repetitorlik markazlari",
+    shortName: "Repetitorlik markazlari",
+    problems: [
+      "Har bir o'quvchi alohida dastur bo'yicha shug'ullanadi (masalan, biri DTM matematika, biri IELTS speaking), ammo markazda bu individual rejalar faqat repetitorning daftarida saqlanadi, ota-ona farzandining aniq qaysi mavzularni o'zlashtirganini bilmaydi.",
+      "Bitta xona/repetitor kuni davomida 30-45 daqiqalik individual darslarga bo'linadi, band vaqtlar telefon orqali og'zaki belgilanadi, natijada ikkita o'quvchi bir vaqtga yozilib qolish holatlari uchraydi.",
+      "Imtihonga (DTM, IELTS, SAT) tayyorgarlik ko'rayotgan o'quvchining probniy test ballari qog'ozda yoki alohida faylda saqlanadi, haftalik progress grafigini ko'rsatib bo'lmaydi, shu sabab ota-ona davom etish yoki etmaslikka ishonch bilan qaror qila olmaydi.",
+      "Yangi mijoz tavsiya orqali murojaat qilganda, qaysi fan bo'yicha qaysi repetitorda va qaysi soatda bo'sh joy borligi hech qayerda ro'yxatga olinmagan, buni bilish uchun har safar barcha repetitorlarga alohida qo'ng'iroq qilishga to'g'ri keladi.",
+    ],
+    relevantServices: ["website-development", "telegram-bot", "business-automation"],
+  },
+  {
+    slug: "xalq-tabobati-markazlari",
+    name: "Xalq tabobati markazlari",
+    shortName: "Xalq tabobati markazlari",
+    problems: [
+      "Mijozlar davolanish usuli (fitoterapiya, girudoterapiya, iglouqalash va h.k.) xavfsizligiga shubha bilan qaraydi, ammo mutaxassisning sertifikatlari va tajribasi haqida ishonchli ma'lumot faqat og'zaki tarzda uzatiladi.",
+      "Rasmiy shifo emasligi sababli ba'zi mijozlar avval qo'rqib qo'ng'iroq qilishga cho'chiydi, savol-javob uchun to'g'ridan-to'g'ri administratorga yozishni afzal ko'radi, ammo bunday kanal mavjud emas.",
+      "Muolaja kursi odatda 8-10 seansdan iborat bo'ladi va mijoz oralab qolsa yoki unutib qolsa, kursning samarasi pasayadi — ammo hech kim mijozga keyingi seans sanasini eslatmaydi.",
+      "Xalq tabobati usullari haqida odamlar orasida noto'g'ri tushunchalar ko'p (masalan \"bir seansda tuzaladi\"), markazning o'zi bu haqda tushuntirish materiallarini tarqata olmayapti, faqat og'zaki suhbatga tayanadi.",
+    ],
+    relevantServices: ["website-development", "telegram-bot", "business-automation"],
+  },
+  {
+    slug: "fizioterapiya-markazlari",
+    name: "Fizioterapiya va reabilitatsiya markazlari",
+    shortName: "Fizioterapiya markazlari",
+    problems: [
+      "Insult yoki jarohatdan keyingi reabilitatsiya rejasi odatda 15-20 seansdan iborat bo'ladi, ammo bemorning har seansdagi harakat diapazoni (masalan tizza bukilish burchagi) o'lchovlari qog'ozga yozilib, umumiy progress grafigi hech qachon bemorga ko'rsatilmaydi.",
+      "Bemor davolanish davomida bir necha xil mutaxassis (fizioterapevt, massajist, mashg'ulot instruktori) bilan ishlaydi, ammo ular orasida bemorning holati haqida yozma almashinuv yo'q, har safar bemorning o'zi avvalgi seansni qayta tushuntirishga majbur.",
+      "Reabilitatsiya kursini yarmida tashlab ketish holatlari ko'p uchraydi, chunki bemor natijani sezmayapti deb o'ylaydi — aslida progress sekin lekin barqaror bo'lishi mumkin, ammo buni raqamlar bilan isbotlash imkoniyati yo'q.",
+      "Har bir bemorning individual mashqlar to'plami (uyda bajarilishi kerak bo'lgan) faqat qog'ozga chizib beriladi, bemor uni yo'qotib qo'yadi yoki noto'g'ri bajaradi, natijada reabilitatsiya sekinlashadi.",
+    ],
+    relevantServices: ["website-development", "telegram-bot", "business-automation"],
+  },
+  {
+    slug: "tibbiy-buyumlar-dokonlari",
+    name: "Tibbiy buyumlar do'konlari",
+    shortName: "Tibbiy buyumlar do'konlari",
+    problems: [
+      "Nogironlar aravachasi, yurish tayoqchasi yoki bosim o'lchagich kabi buyumni tanlashda mijoz o'lcham, model va texnik xususiyatlarni bilmaydi, do'konga borib har bir mahsulotni qo'lda ko'rib chiqishga majbur bo'ladi.",
+      "Ba'zi tibbiy buyumlar (masalan, ortopedik matras yoki kompression trikotaj) shifokor tavsiyasiga qarab tanlanadi, ammo mijoz bu tavsiyani telefon orqali tushuntirganda sotuvchi to'g'ri mahsulotni topa olmaydi.",
+      "Qarindoshi uchun tibbiy buyum sotib olayotgan mijoz (masalan, qarigan ota-onasi uchun aravacha) ko'pincha shahardan tashqarida yashaydi va mahsulotni ko'rmasdan turib onlayn buyurtma berish imkoniyati yo'q, faqat telefon orqali tavsif berib sotib olishga majbur bo'ladi.",
+      "Zaxirada qaysi model mavjud-yo'qligi haqida ma'lumot yangilanmaydi, mijoz do'konga kelib kerakli o'lcham yoki modelning tugab qolganini bilib, bo'sh qaytadi.",
+    ],
+    relevantServices: ["online-ordering", "website-development", "telegram-bot"],
+  },
+  {
+    slug: "optom-savdo-kompaniyalari",
+    name: "Optom savdo kompaniyalari",
+    shortName: "Optom savdo kompaniyalari",
+    problems: [
+      "Turli mijozlar (chakana do'konlar) uchun turli miqdordagi buyurtmalarga qarab individual chegirma va narx darajalari qo'llaniladi, ammo bu narxlar Excel jadvalida saqlanadi va menejer har safar qo'lda hisoblaydi, xatolar tez-tez yuz beradi.",
+      "Ombordagi tovar qoldig'i va mijozlarning qarzdorlik holati alohida-alohida yuritiladi, natijada menejer mijozga qancha tovar qarzda ekanini yoki ombordan qancha yuk jo'natish mumkinligini aniq bila olmaydi.",
+      "Yirik buyurtmalar odatda bir necha kishi (sotuvchi, buxgalter, omborchi) orqali qo'lma-qo'l o'tadi, buyurtma qaysi bosqichda ekanligini (tasdiqlangan, yig'ilmoqda, jo'natilgan) hech kim markazlashtirilgan holda kuzata olmaydi.",
+      "Yangi mijoz (chakana do'kon egasi) kompaniya haqida, mavjud assortiment va minimal buyurtma hajmi haqida ma'lumot olish uchun faqat sotuvchiga qo'ng'iroq qilishi kerak, onlayn manba orqali mustaqil tanishib chiqish imkoniyati yo'q.",
+    ],
+    relevantServices: ["business-automation", "custom-software", "website-development"],
+  },
+  {
+    slug: "bilbord-ijarasi",
+    name: "Reklama taxtasi (bilbord) ijarasi xizmatlari",
+    shortName: "Bilbord ijarasi",
+    problems: [
+      "Shaharning qaysi hududida qaysi bilbord bo'sh, qaysi biri band ekanligi haqida ma'lumot faqat menejerning xotirasida yoki alohida jadvalda saqlanadi, mijoz aniq joy va sanani so'raganda javob kechikadi.",
+      "Reklama beruvchi mijoz bilbordning joylashuvi, o'lchami va ko'rinish burchagini baholash uchun joyga borib ko'rishni talab qiladi, chunki sifatli surat yoki xarita ko'rsatuvchi manba mavjud emas.",
+      "Ijaraga olingan bilbordning muddati tugashiga necha kun qolganini kuzatib borish qo'lda amalga oshiriladi, natijada ba'zi mijozlarga muddat tugashi haqida vaqtida eslatilmaydi va bilbord bo'sh turib qoladi.",
+      "Turli mijozlarga turli muddat (1 oy, 3 oy, 6 oy) va turli narxda ijaraga berilgan bilbordlar bo'yicha kim qachon to'lov qilishi kerakligi hisob-kitobi qog'ozda yuritiladi, to'lov muddati o'tib ketgan holatlar payqalmay qoladi.",
+    ],
+    relevantServices: ["website-development", "telegram-bot", "business-automation"],
+  },
+  {
+    slug: "klining-kompaniyalari",
+    name: "Tozalash xizmatlari (klining kompaniyalari)",
+    shortName: "Klining kompaniyalari",
+    problems: [
+      "Mijoz tozalash xizmatiga (ofis, kvartira, ta'mirdan keyingi tozalash) buyurtma berganda, aniq narx maydon o'lchami va xizmat turiga qarab hisoblanadi, ammo bu hisob-kitob har safar menejer bilan telefon orqali qo'lda qilinadi.",
+      "Bir kunda bir nechta brigada turli manzillarga chiqadi, ammo qaysi brigada qaysi obyektga ketayotgani va ish tugash vaqti markazlashtirilgan holda kuzatilmaydi, mijoz \"brigada qachon keladi\" deb qo'ng'iroq qilaverdi.",
+      "Doimiy mijozlar (masalan, ofislar) uchun haftalik yoki oylik takroriy tozalash jadvali kelishilgan bo'ladi, ammo bu jadvalni kim eslatib turishi va navbatdagi tozalashni tasdiqlashi aniq emas, ba'zan brigada kelishni unutib qoladi.",
+      "Tozalashdan keyin mijozning norozi bo'lgan holatlari (masalan, dog' ketmagan joy) qayd etilmaydi, keyingi safar xuddi shu muammo takrorlanadi, chunki brigada oldingi shikoyatdan xabardor emas.",
+    ],
+    relevantServices: ["telegram-bot", "business-automation", "website-development"],
+  },
+  {
+    slug: "quyosh-panellari-ornatish",
+    name: "Quyosh panellari o'rnatish xizmatlari",
+    shortName: "Quyosh panellari o'rnatish",
+    problems: [
+      "Mijoz uy tomining maydoni, joylashuv burchagi va oylik elektr sarfiga qarab qancha quvvatlik panel kerakligini bilmaydi, aniq hisob-kitob olish uchun mutaxassis uyiga kelishi kerak, ammo dastlabki taxminiy hisoblash imkoniyati mavjud emas.",
+      "O'rnatilgan panel tizimining davlat subsidiyasi yoki bo'lib-bo'lib to'lash (lizing) shartlariga mos kelish-kelmasligini mijoz oldindan bilolmaydi, bu haqida faqat ofisga borib so'rash orqali ma'lumot olinadi.",
+      "O'rnatishdan keyin panelning ishlab chiqarayotgan quvvati va tejalayotgan xarajat haqida mijozga hech qanday hisobot berilmaydi, mijoz investitsiya o'zini qoplayotganini his qilmaydi va tavsiya berishga ishonchi kamayadi.",
+      "Yangi buyurtmalar (uy manzili, tom turi, byudjet) turli manbalardan (qo'ng'iroq, ijtimoiy tarmoq xabari) kelib tushadi, ammo bularning barchasi bitta joyda yig'ilmaganligi sababli ba'zi murojaatlar javobsiz qolib ketadi.",
+    ],
+    relevantServices: ["website-development", "telegram-bot", "business-automation"],
+  },
+];
+
+export const serviceLabelsUz: Record<ServiceSlug, string> = {
+  "website-development": "veb-sayt",
+  "qr-menu": "QR-menyu",
+  "telegram-bot": "Telegram bot",
+  "online-ordering": "onlayn buyurtma tizimi",
+  "business-automation": "CRM avtomatlashtirish",
+  "custom-software": "maxsus dasturiy yechim",
+};
+
+export function getIndustry(slug: string): Industry | undefined {
+  return industries.find((i) => i.slug === slug);
+}

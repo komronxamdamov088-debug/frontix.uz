@@ -8,6 +8,8 @@ import Team from "@/pages/Team";
 import Partners from "@/pages/Partners";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
+import SolutionsIndex from "@/pages/SolutionsIndex";
+import SolutionPage from "@/pages/SolutionPage";
 import NotFound from "@/pages/NotFound";
 
 // Each page is served at a canonical (uz) path and again under /ru and /en so
@@ -34,6 +36,10 @@ export default function App() {
               <Route key={`${prefix}${path}`} path={`${prefix}${path}` || "/"} element={element} />
             )),
           )}
+          {/* Problem/solution pages are a uz-only pilot (see src/data/industries.ts),
+              so they exist only at the bare path, not under /ru or /en. */}
+          <Route path="/yechimlar" element={<SolutionsIndex />} />
+          <Route path="/yechimlar/:industry/:service" element={<SolutionPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>

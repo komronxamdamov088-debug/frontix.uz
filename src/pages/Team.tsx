@@ -21,8 +21,8 @@ export default function Team() {
   return (
     <>
       <Seo
-        title={t.team.pageTitle}
-        description={t.team.pageDescription}
+        title={t.seo.team.title}
+        description={t.seo.team.description}
         path="/team"
         jsonLd={breadcrumbJsonLd(
           [

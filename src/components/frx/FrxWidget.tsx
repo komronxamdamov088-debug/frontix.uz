@@ -24,7 +24,7 @@ function nextId() {
 function FrxAvatar() {
   return (
     <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-ink dark:bg-paper">
-      <Logo variant="mark" className="h-4.5 w-4.5" />
+      <Logo variant="mark" invert className="h-4.5 w-4.5" />
     </span>
   );
 }
@@ -135,7 +135,7 @@ export function FrxWidget() {
             aria-label={t.frx.openLabel}
             className="fixed bottom-5 right-5 z-40 flex h-16 w-16 items-center justify-center rounded-full bg-ink dark:bg-paper shadow-soft-dark sm:bottom-6 sm:right-6 sm:h-[68px] sm:w-[68px]"
           >
-            <Logo variant="mark" className="h-7 w-7 sm:h-8 sm:w-8" />
+            <Logo variant="mark" invert className="h-7 w-7 sm:h-8 sm:w-8" />
             <span className="absolute top-0.5 right-0.5 flex h-4 w-4">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-500 opacity-75" />
               <span className="relative inline-flex h-4 w-4 rounded-full bg-brand-500 ring-2 ring-paper dark:ring-ink" />
@@ -157,7 +157,7 @@ export function FrxWidget() {
             <div className="flex items-center justify-between border-b border-ink/10 dark:border-white/10 px-6 py-5">
               <div className="flex items-center gap-3">
                 <span className="flex h-11 w-11 items-center justify-center rounded-full bg-ink dark:bg-paper">
-                  <Logo variant="mark" className="h-6 w-6" />
+                  <Logo variant="mark" invert className="h-6 w-6" />
                 </span>
                 <div>
                   <div className="flex items-center gap-1.5 text-base font-semibold">
