@@ -23,4 +23,4 @@ Allow: /
 User-agent: OAI-SearchBot
 Allow: /
 
-Sitemap: https://frontix-uz.vercel.app/sitemap.xml
+Sitemap: https://frontix.uz/sitemap.xml
