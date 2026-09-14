@@ -2,7 +2,7 @@
 
 > FRONTIX — Toshkentda (O'zbekiston) joylashgan, bizneslar uchun zamonaviy raqamli yechimlar yaratadigan IT kompaniya. Website development, QR menyu, Telegram bot, onlayn buyurtma tizimlari, custom software va business automation xizmatlarini taqdim etadi. Sayt o'zbek, rus va ingliz tillarida mavjud (UZ/RU/EN).
 
-Oxirgi yangilanish: 2026-09-08
+Oxirgi yangilanish: 2026-09-14
 
 FRONTIX bizneslarga g'oyadan ishga tushirishgacha bo'lgan yo'lda hamrohlik qiladi: strategiya, dizayn, ishlab chiqish va texnik qo'llab-quvvatlash. Saytda FRX nomli AI yordamchi mavjud bo'lib, xizmatlar, jamoa, narxlar va aloqa haqidagi savollarga javob beradi.
 
@@ -56,11 +56,13 @@ Sayt uch tilda mavjud: o'zbekcha (prefikssiz URL), ruscha (`/ru/...`) va inglizc
 - [Hamkorlar](https://frontix.uz/partners): FRONTIX bilan hamkorlik qilgan bizneslar. RU: `/ru/partners`, EN: `/en/partners`.
 - [Biz haqimizda](https://frontix.uz/about): kompaniya missiyasi va qadriyatlari. RU: `/ru/about`, EN: `/en/about`.
 - [Aloqa](https://frontix.uz/contact): loyiha so'rovi formasi va aloqa ma'lumotlari. RU: `/ru/contact`, EN: `/en/contact`.
+- [Yechimlar](https://frontix.uz/yechimlar): soha bo'yicha (restoran, salon, klinika, do'kon, o'quv markazi, fitnes-zal va h.k.) muammo-yechim sahifalari — har biri aniq bir sohaning aniq bir xizmatga bo'lgan ehtiyojini yoritadi.
 
 ## Aloqa
 
 - Email: frontix_uz@gmail.com
-- Telefon: +998 90 816 98 33
+- Telefon: +998 95 838 06 67, +998 90 816 98 33
 - Telegram: https://t.me/frontix_official
 - Instagram: https://instagram.com/frontix_uz
 - Manzil: Toshkent, O'zbekiston
+- Google Business profili: https://www.google.com/maps/place/FRONTIX/@41.2825974,69.2793667,11z/data=!3m1!4b1!4m6!3m5!1s0xd7cb6003aea466d:0x365d9cfe484cfd03!8m2!3d41.2825974!4d69.2793667!16s%2Fg%2F11zypqv4xv
