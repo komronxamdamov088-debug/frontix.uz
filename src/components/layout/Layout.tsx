@@ -3,6 +3,7 @@ import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { ScrollToTop } from "./ScrollToTop";
 import { FrxWidget } from "@/components/frx/FrxWidget";
+import { CookieConsent } from "@/components/ui/CookieConsent";
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
@@ -12,6 +13,7 @@ export function Layout({ children }: { children: ReactNode }) {
       <main className="flex-1">{children}</main>
       <Footer />
       <FrxWidget />
+      <CookieConsent />
     </div>
   );
 }

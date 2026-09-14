@@ -56,7 +56,7 @@ export function Navbar() {
           <Logo />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-0.5">
           {navLinks.map((link) => (
             <NavLink
               key={link.to}
@@ -64,7 +64,7 @@ export function Navbar() {
               end={link.to === "/"}
               className={({ isActive }) =>
                 cn(
-                  "relative rounded-full px-4 py-2 text-sm font-medium transition-colors",
+                  "relative whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium transition-colors",
                   isActive
                     ? "text-ink dark:text-paper"
                     : "text-ink/55 dark:text-paper/55 hover:text-ink dark:hover:text-paper",
@@ -76,7 +76,7 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden lg:flex items-center gap-2">
           <LanguageSwitcher />
           <button
             onClick={toggleTheme}
@@ -90,7 +90,7 @@ export function Navbar() {
           </ButtonLink>
         </div>
 
-        <div className="flex items-center gap-1 md:hidden">
+        <div className="flex items-center gap-1 lg:hidden">
           <button
             onClick={toggleTheme}
             aria-label="Theme"
@@ -116,7 +116,7 @@ export function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="md:hidden overflow-hidden border-t border-ink/10 dark:border-white/10 bg-paper dark:bg-ink"
+            className="lg:hidden overflow-hidden border-t border-ink/10 dark:border-white/10 bg-paper dark:bg-ink"
           >
             <Container className="flex flex-col gap-1 py-4">
               {navLinks.map((link) => (

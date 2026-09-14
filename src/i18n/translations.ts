@@ -108,6 +108,7 @@ interface Dictionary {
     telegramTitle: string;
     labels: { name: string; phone: string; telegram: string; service: string; message: string };
     placeholders: { name: string; phone: string; telegram: string; message: string };
+    phoneInvalid: string;
     submit: string;
     sending: string;
     successTitle: string;
@@ -117,6 +118,7 @@ interface Dictionary {
     faq: { question: string; answer: string }[];
   };
   footer: { description: string; navTitle: string; contactTitle: string; rights: string; tagline: string };
+  cookieConsent: { message: string; learnMore: string; accept: string };
   notFound: { title: string; description: string; back: string };
   frx: {
     name: string;
@@ -553,6 +555,7 @@ export const translations: Record<Lang, Dictionary> = {
         telegram: "@username",
         message: "Loyihangiz haqida qisqacha ma'lumot bering...",
       },
+      phoneInvalid: "Telefon raqamni to'liq va to'g'ri kiriting (masalan, +998 90 123 45 67)",
       submit: "Project boshlash",
       sending: "Yuborilmoqda...",
       successTitle: "So'rovingiz qabul qilindi!",
@@ -584,6 +587,11 @@ export const translations: Record<Lang, Dictionary> = {
       contactTitle: "Aloqa",
       rights: "Barcha huquqlar himoyalangan.",
       tagline: "Raqamli yechimlar — biznesingiz uchun.",
+    },
+    cookieConsent: {
+      message: "Saytdan qulay foydalanishingiz uchun cookie-fayllardan foydalanamiz.",
+      learnMore: "Batafsil",
+      accept: "Roziman",
     },
     notFound: {
       title: "Sahifa topilmadi",
@@ -804,6 +812,7 @@ export const translations: Record<Lang, Dictionary> = {
         telegram: "@username",
         message: "Кратко расскажите о вашем проекте...",
       },
+      phoneInvalid: "Введите корректный номер телефона полностью (например, +998 90 123 45 67)",
       submit: "Начать проект",
       sending: "Отправка...",
       successTitle: "Ваша заявка принята!",
@@ -835,6 +844,11 @@ export const translations: Record<Lang, Dictionary> = {
       contactTitle: "Контакты",
       rights: "Все права защищены.",
       tagline: "Цифровые решения — для вашего бизнеса.",
+    },
+    cookieConsent: {
+      message: "Мы используем cookie-файлы для удобной работы сайта.",
+      learnMore: "Подробнее",
+      accept: "Принять",
     },
     notFound: {
       title: "Страница не найдена",
@@ -1055,6 +1069,7 @@ export const translations: Record<Lang, Dictionary> = {
         telegram: "@username",
         message: "Briefly describe your project...",
       },
+      phoneInvalid: "Enter a complete, valid phone number (e.g. +998 90 123 45 67)",
       submit: "Start project",
       sending: "Sending...",
       successTitle: "Your request has been received!",
@@ -1086,6 +1101,11 @@ export const translations: Record<Lang, Dictionary> = {
       contactTitle: "Contact",
       rights: "All rights reserved.",
       tagline: "Digital solutions — for your business.",
+    },
+    cookieConsent: {
+      message: "We use cookies to make the site work smoothly.",
+      learnMore: "Learn more",
+      accept: "Accept",
     },
     notFound: {
       title: "Page not found",

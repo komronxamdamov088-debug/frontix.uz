@@ -1,11 +1,20 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, useMotionTemplate, useMotionValue, useSpring, useTransform } from "framer-motion";
 import type { Partner } from "@/data/partners";
 import { useLanguage } from "@/context/LanguageContext";
 
-export function PartnerCard({ partner, index = 0 }: { partner: Partner; index?: number }) {
+export function PartnerCard({
+  partner,
+  index = 0,
+  flipped,
+  onToggle,
+}: {
+  partner: Partner;
+  index?: number;
+  flipped: boolean;
+  onToggle: () => void;
+}) {
   const { t, lang } = useLanguage();
-  const [flipped, setFlipped] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
@@ -30,14 +39,10 @@ export function PartnerCard({ partner, index = 0 }: { partner: Partner; index?: 
     mouseY.set(0.5);
   }
 
-  function toggleFlip() {
-    setFlipped((f) => !f);
-  }
-
   function handleKeyDown(e: React.KeyboardEvent<HTMLDivElement>) {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
-      toggleFlip();
+      onToggle();
     }
   }
 
@@ -46,7 +51,7 @@ export function PartnerCard({ partner, index = 0 }: { partner: Partner; index?: 
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      onClick={toggleFlip}
+      onClick={onToggle}
       onKeyDown={handleKeyDown}
       role="button"
       tabIndex={0}
@@ -82,7 +87,7 @@ export function PartnerCard({ partner, index = 0 }: { partner: Partner; index?: 
         className="relative h-full w-full"
         style={{ transformStyle: "preserve-3d" }}
         animate={{ rotateY: flipped ? 180 : 0 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 1.1, ease: [0.65, 0, 0.35, 1] }}
       >
         {/* Front face */}
         <div className="absolute inset-0 flex flex-col" style={{ backfaceVisibility: "hidden" }}>

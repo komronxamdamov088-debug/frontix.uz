@@ -6,11 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "node scripts/generate-sitemap.mjs && tsc -b && vite build && node scripts/prerender.mjs",
-    "postinstall": "playwright install --with-deps chromium || playwright install chromium || true",
+    "postinstall": "[ -n \"$VERCEL\" ] || (playwright install --with-deps chromium || playwright install chromium || true)",
     "lint": "oxlint",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@sparticuz/chromium": "^153.0.0",
     "clsx": "^2.1.1",
     "framer-motion": "^13.1.0",
     "lucide-react": "^1.33.0",

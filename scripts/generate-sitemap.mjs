@@ -6,7 +6,9 @@ import { writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { SOLUTION_ROUTES } from "./solutionRoutes.mjs";
 
-const SITE_URL = "https://frontix-uz.vercel.app";
+// Keep in sync with SITE.url in src/data/site.ts (plain node script, no TS
+// loader, so this can't just import it).
+const SITE_URL = "https://frontix.uz";
 const PAGES = [
   { path: "/", priority: "1.0" },
   { path: "/services", priority: "0.9" },

@@ -5,10 +5,12 @@ import { Seo, breadcrumbJsonLd } from "@/components/Seo";
 import { PageHero } from "@/components/sections/PageHero";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { Select } from "@/components/ui/Select";
 import { Reveal } from "@/components/ui/Reveal";
 import { services } from "@/data/services";
 import { SITE } from "@/data/site";
 import { useLanguage } from "@/context/LanguageContext";
+import { cn } from "@/lib/utils";
 
 interface FormState {
   name: string;
@@ -16,6 +18,11 @@ interface FormState {
   telegram: string;
   service: string;
   message: string;
+}
+
+function isValidPhone(phone: string) {
+  const digits = phone.replace(/\D/g, "");
+  return digits.length >= 9 && digits.length <= 12;
 }
 
 export default function Contact() {
@@ -31,6 +38,8 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [phoneTouched, setPhoneTouched] = useState(false);
+  const phoneValid = isValidPhone(form.phone);
 
   const update = <K extends keyof FormState>(key: K, value: FormState[K]) =>
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -52,6 +61,10 @@ export default function Contact() {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!phoneValid) {
+      setPhoneTouched(true);
+      return;
+    }
     setSending(true);
 
     try {
@@ -67,6 +80,7 @@ export default function Contact() {
       setSending(false);
       setSubmitted(true);
       setForm({ ...initialState, service: t.services[services[0].slug].title });
+      setPhoneTouched(false);
     }
   };
 
@@ -200,12 +214,18 @@ export default function Contact() {
                       <input
                         id="phone"
                         type="tel"
+                        inputMode="tel"
                         required
                         value={form.phone}
-                        onChange={(e) => update("phone", e.target.value)}
+                        onChange={(e) => update("phone", e.target.value.replace(/[^0-9+()\s-]/g, ""))}
+                        onBlur={() => setPhoneTouched(true)}
+                        aria-invalid={phoneTouched && !phoneValid}
                         placeholder={t.contact.placeholders.phone}
-                        className={inputClass}
+                        className={cn(inputClass, phoneTouched && !phoneValid && "border-red-500/60 focus:border-red-500/60")}
                       />
+                      {phoneTouched && !phoneValid && (
+                        <p className="mt-1.5 text-xs text-red-500 dark:text-red-400">{t.contact.phoneInvalid}</p>
+                      )}
                     </Field>
 
                     <Field label={t.contact.labels.telegram} htmlFor="telegram" className="sm:col-span-1">
@@ -219,18 +239,13 @@ export default function Contact() {
                     </Field>
 
                     <Field label={t.contact.labels.service} htmlFor="service" className="sm:col-span-1">
-                      <select
+                      <Select
                         id="service"
                         value={form.service}
-                        onChange={(e) => update("service", e.target.value)}
+                        onChange={(value) => update("service", value)}
+                        options={services.map((s) => ({ value: t.services[s.slug].title, label: t.services[s.slug].title }))}
                         className={inputClass}
-                      >
-                        {services.map((s) => (
-                          <option key={s.slug} value={t.services[s.slug].title}>
-                            {t.services[s.slug].title}
-                          </option>
-                        ))}
-                      </select>
+                      />
                     </Field>
 
                     <Field label={t.contact.labels.message} htmlFor="message" className="sm:col-span-2">
