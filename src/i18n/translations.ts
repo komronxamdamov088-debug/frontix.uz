@@ -80,7 +80,7 @@ interface Dictionary {
   testimonials: {
     eyebrow: string;
     title: string;
-    items: { name: string; role: string; quote: string }[];
+    items: { name: string; role: string; company?: string; quote: string; result?: string }[];
   };
   cta: { title: string; description: string; ctaContact: string; ctaTeam: string };
   about: {

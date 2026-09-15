@@ -10,6 +10,10 @@ import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import SolutionsIndex from "@/pages/SolutionsIndex";
 import SolutionPage from "@/pages/SolutionPage";
+import BlogIndex from "@/pages/BlogIndex";
+import BlogPost from "@/pages/BlogPost";
+import ProjectsIndex from "@/pages/ProjectsIndex";
+import ProjectPage from "@/pages/ProjectPage";
 import NotFound from "@/pages/NotFound";
 
 // Each page is served at a canonical (uz) path and again under /ru and /en so
@@ -36,10 +40,15 @@ export default function App() {
               <Route key={`${prefix}${path}`} path={`${prefix}${path}` || "/"} element={element} />
             )),
           )}
-          {/* Problem/solution pages are a uz-only pilot (see src/data/industries.ts),
+          {/* Problem/solution, blog and project pages are uz-only pilots (see
+              src/data/industries.ts / src/data/blog.ts / src/data/projects.ts),
               so they exist only at the bare path, not under /ru or /en. */}
           <Route path="/yechimlar" element={<SolutionsIndex />} />
           <Route path="/yechimlar/:industry/:service" element={<SolutionPage />} />
+          <Route path="/blog" element={<BlogIndex />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/loyihalar" element={<ProjectsIndex />} />
+          <Route path="/loyihalar/:slug" element={<ProjectPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>

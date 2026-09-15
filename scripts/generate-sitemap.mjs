@@ -5,6 +5,8 @@
 import { writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { SOLUTION_ROUTES } from "./solutionRoutes.mjs";
+import { BLOG_ROUTES } from "./blogRoutes.mjs";
+import { PROJECT_ROUTES } from "./projectRoutes.mjs";
 
 // Keep in sync with SITE.url in src/data/site.ts (plain node script, no TS
 // loader, so this can't just import it).
@@ -38,15 +40,34 @@ const urlEntries = LANGS.flatMap((lang) =>
   }),
 );
 
-// Uz-only pilot pages (/yechimlar/*) — no hreflang alternates since there's
-// no ru/en version to point to yet. Keep SOLUTION_ROUTES in sync with
-// src/data/industries.ts (see scripts/solutionRoutes.mjs).
+// Uz-only pilot pages (/yechimlar/*, /blog/*, /loyihalar/*) — no hreflang
+// alternates since there's no ru/en version to point to yet. Keep the route
+// lists in sync with src/data/industries.ts, src/data/blog.ts and
+// src/data/projects.ts (see scripts/solutionRoutes.mjs, blogRoutes.mjs,
+// projectRoutes.mjs).
 const solutionEntries = ["/yechimlar", ...SOLUTION_ROUTES].map((path) => {
   const loc = `${SITE_URL}${path}`;
   return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <priority>0.6</priority>\n  </url>`;
 });
 
-const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${[...urlEntries, ...solutionEntries].join("\n")}\n</urlset>\n`;
+const blogEntries = ["/blog", ...BLOG_ROUTES].map((path) => {
+  const loc = `${SITE_URL}${path}`;
+  return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <priority>0.6</priority>\n  </url>`;
+});
+
+// /loyihalar stays out of the sitemap until PROJECT_ROUTES has at least one
+// real case study — an empty listing page isn't worth asking crawlers to index.
+const projectEntries =
+  PROJECT_ROUTES.length > 0
+    ? ["/loyihalar", ...PROJECT_ROUTES].map((path) => {
+        const loc = `${SITE_URL}${path}`;
+        return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <priority>0.6</priority>\n  </url>`;
+      })
+    : [];
+
+const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${[...urlEntries, ...solutionEntries, ...blogEntries, ...projectEntries].join("\n")}\n</urlset>\n`;
 
 writeFileSync(join(process.cwd(), "public", "sitemap.xml"), xml, "utf-8");
-console.log(`[sitemap] wrote ${urlEntries.length + solutionEntries.length} URLs to public/sitemap.xml`);
+console.log(
+  `[sitemap] wrote ${urlEntries.length + solutionEntries.length + blogEntries.length + projectEntries.length} URLs to public/sitemap.xml`,
+);

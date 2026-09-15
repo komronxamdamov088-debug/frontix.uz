@@ -8,6 +8,8 @@ import { spawn } from "node:child_process";
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { SOLUTION_ROUTES } from "./solutionRoutes.mjs";
+import { BLOG_ROUTES } from "./blogRoutes.mjs";
+import { PROJECT_ROUTES } from "./projectRoutes.mjs";
 
 const PORT = 4321;
 const ROOT = process.cwd();
@@ -20,6 +22,10 @@ const ROUTES = [
   // Uz-only pilot pages, no lang-prefix variants.
   "/yechimlar",
   ...SOLUTION_ROUTES,
+  "/blog",
+  ...BLOG_ROUTES,
+  "/loyihalar",
+  ...PROJECT_ROUTES,
 ];
 
 function waitForServer(url, timeoutMs = 20000) {
