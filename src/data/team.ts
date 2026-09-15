@@ -1,6 +1,7 @@
 export type RoleKey =
   | "founder"
   | "coFounder"
+  | "coFounderCTO"
   | "frontend"
   | "backend"
   | "fullstack"
@@ -37,6 +38,7 @@ export interface TeamMember {
 export const team: TeamMember[] = [
   { slug: "Komron-Xamdamov", name: "Komron Xamdamov", roleKey: "founder", category: "founder", color: "brand" },
   { slug: "Abdurahmon-Ahunjanov", name: "Abdurahmon Ahunjanov", roleKey: "coFounder", category: "founder", color: "fuchsia" },
+  { slug: "Ismail-Ulugbekov", name: "Ismail Ulug'bekov", roleKey: "coFounderCTO", category: "founder", color: "sky" },
   { slug: "Behruz-Rahmatullaev", name: "Behruz Rahmatullaev", roleKey: "frontend", category: "developer", color: "emerald" },
   { slug: "Boxodir-Komolov", name: "Boxodir Komolov", roleKey: "frontend", category: "developer", color: "amber" },
   { slug: "Isroilbek-Nuriddinov", name: "Isroilbek Nuriddinov", roleKey: "frontend", category: "developer", color: "sky" },

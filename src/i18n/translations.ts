@@ -291,6 +291,7 @@ const servicesEn: Record<ServiceSlug, ServiceText> = {
 const rolesUz: Record<RoleKey, string> = {
   founder: "Asoschi va CEO",
   coFounder: "Hammuassis va COO",
+  coFounderCTO: "Hammuassis va CTO",
   frontend: "Frontend dasturchi",
   backend: "Backend dasturchi",
   fullstack: "Full-Stack dasturchi",
@@ -304,6 +305,7 @@ const rolesUz: Record<RoleKey, string> = {
 const rolesRu: Record<RoleKey, string> = {
   founder: "Основатель и CEO",
   coFounder: "Со-основатель и COO",
+  coFounderCTO: "Со-основатель и CTO",
   frontend: "Frontend-разработчик",
   backend: "Backend-разработчик",
   fullstack: "Full-Stack разработчик",
@@ -317,6 +319,7 @@ const rolesRu: Record<RoleKey, string> = {
 const rolesEn: Record<RoleKey, string> = {
   founder: "Founder & CEO",
   coFounder: "Co-Founder & COO",
+  coFounderCTO: "Co-Founder & CTO",
   frontend: "Frontend Developer",
   backend: "Backend Developer",
   fullstack: "Full-Stack Developer",
@@ -330,6 +333,7 @@ const rolesEn: Record<RoleKey, string> = {
 const biosUz: Record<RoleKey, string> = {
   founder: "FRONTIX g'oyasi va strategiyasi ortida turadi, kompaniya rivojini boshqaradi.",
   coFounder: "Operatsion jarayonlar va mijozlar bilan ishlashni boshqaradi.",
+  coFounderCTO: "Texnik strategiya va mahsulot arxitekturasini boshqaradi.",
   frontend: "Foydalanuvchi interfeyslarini piksel darajasida aniqlik bilan quradi.",
   backend: "Ishonchli va tez server tomon arxitekturasini yaratadi.",
   fullstack: "Frontend va backend orasida ko'prik bo'lib, loyihani boshidan oxirigacha olib boradi.",
@@ -343,6 +347,7 @@ const biosUz: Record<RoleKey, string> = {
 const biosRu: Record<RoleKey, string> = {
   founder: "Стоит за идеей и стратегией FRONTIX, руководит развитием компании.",
   coFounder: "Управляет операционными процессами и работой с клиентами.",
+  coFounderCTO: "Отвечает за техническую стратегию и архитектуру продукта.",
   frontend: "Создаёт пользовательские интерфейсы с пиксельной точностью.",
   backend: "Разрабатывает надёжную и быструю серверную архитектуру.",
   fullstack: "Связующее звено между frontend и backend, ведёт проект от начала до конца.",
@@ -356,6 +361,7 @@ const biosRu: Record<RoleKey, string> = {
 const biosEn: Record<RoleKey, string> = {
   founder: "Drives the vision and strategy behind FRONTIX, leading company growth.",
   coFounder: "Oversees operations and client relationships.",
+  coFounderCTO: "Leads technical strategy and product architecture.",
   frontend: "Builds user interfaces with pixel-perfect precision.",
   backend: "Designs reliable, high-performance server-side architecture.",
   fullstack: "Bridges frontend and backend, driving projects end to end.",
@@ -382,9 +388,9 @@ export const translations: Record<Lang, Dictionary> = {
           "FRONTIX — Toshkentda veb-sayt, QR menyu, Telegram bot, onlayn buyurtma va CRM avtomatlashtirish xizmatlarini taqdim etadi. Loyiha 1-6 hafta ichida tayyor bo'ladi.",
       },
       team: {
-        title: "Jamoa — 12 nafar IT mutaxassis",
+        title: "Jamoa — 13 nafar IT mutaxassis",
         description:
-          "FRONTIX jamoasi 12 nafar mutaxassisdan iborat: 2 asoschi, 8 dasturchi, 1 administrator, 1 dizayner — Toshkentda loyihalarni boshdan-oxirigacha olib boradi.",
+          "FRONTIX jamoasi 13 nafar mutaxassisdan iborat: 3 asoschi, 8 dasturchi, 1 administrator, 1 dizayner — Toshkentda loyihalarni boshdan-oxirigacha olib boradi.",
       },
       partners: {
         title: "Hamkorlar — FRONTIX mijozlari",
@@ -417,7 +423,7 @@ export const translations: Record<Lang, Dictionary> = {
       titleHighlight: "raqamli",
       titleSuffix: " darajaga olib chiqamiz.",
       subtitle:
-        "FRONTIX — Toshkentda faoliyat yurituvchi IT kompaniya: 12 nafar mutaxassisdan iborat jamoamiz veb-sayt, Telegram bot, QR menyu va CRM avtomatlashtirish yechimlarini 1-6 hafta ichida yaratadi.",
+        "FRONTIX — Toshkentda faoliyat yurituvchi IT kompaniya: 13 nafar mutaxassisdan iborat jamoamiz veb-sayt, Telegram bot, QR menyu va CRM avtomatlashtirish yechimlarini 1-6 hafta ichida yaratadi.",
       ctaContact: "Biz bilan bog'lanish",
       ctaTeam: "Jamoamiz",
       statLabel: "savdo o'sishi",
@@ -462,7 +468,7 @@ export const translations: Record<Lang, Dictionary> = {
       viewAll: "Barcha jamoa a'zolari",
       pageEyebrow: "Jamoa",
       pageTitle: "FRONTIX jamoasi bilan tanishing",
-      pageDescription: "12 nafar mutaxassisdan iborat jamoamiz — asoschilar, dasturchilar, administrator va dizayner.",
+      pageDescription: "13 nafar mutaxassisdan iborat jamoamiz — asoschilar, dasturchilar, administrator va dizayner.",
       categories: { all: "Barchasi", founder: "Asoschilar", developer: "Dasturchilar", admin: "Administrator", designer: "Dizayner" },
       roles: rolesUz,
       bios: biosUz,
@@ -525,7 +531,7 @@ export const translations: Record<Lang, Dictionary> = {
       paragraph1:
         "FRONTIX — Toshkentda joylashgan, 2021-yildan buyon bizneslarga zamonaviy raqamli yechimlar orqali o'sishga yordam beradigan IT kompaniya. Har bir loyihaga alohida yondashib, mijozlarimizning haqiqiy maqsadlariga xizmat qiluvchi mahsulotlar yaratamiz.",
       paragraph2:
-        "Kichik startaplardan tortib yirik brendlargacha — 12 nafar mutaxassisdan iborat jamoamiz website, Telegram bot, QR menyu va avtomatlashtirish tizimlari orqali o'nlab bizneslarning raqamli transformatsiyasida ishtirok etgan.",
+        "Kichik startaplardan tortib yirik brendlargacha — 13 nafar mutaxassisdan iborat jamoamiz website, Telegram bot, QR menyu va avtomatlashtirish tizimlari orqali o'nlab bizneslarning raqamli transformatsiyasida ishtirok etgan.",
       quote: "Har bir piksel, har bir qator kod — biznesingiz muvaffaqiyati uchun.",
       quoteAuthor: "— FRONTIX jamoasi",
       valuesEyebrow: "Qadriyatlarimiz",
@@ -537,7 +543,7 @@ export const translations: Record<Lang, Dictionary> = {
         { year: "2022", title: "Birinchi 10 loyiha", description: "Turli sohalardagi bizneslar uchun 10 dan ortiq loyiha yakunlandi." },
         { year: "2023", title: "Jamoa kengaydi", description: "Dasturchilar va dizaynerlar soni ortib, xizmatlar doirasi kengaytirildi." },
         { year: "2024", title: "30+ mamnun mijoz", description: "Turli hajmdagi bizneslar bilan uzoq muddatli hamkorlik o'rnatildi." },
-        { year: "2025", title: "12 nafarlik professional jamoa", description: "Bugungi kunda FRONTIX to'liq huquqli, ko'p tarmoqli jamoaga aylandi." },
+        { year: "2025", title: "13 nafarlik professional jamoa", description: "Bugungi kunda FRONTIX to'liq huquqli, ko'p tarmoqli jamoaga aylandi." },
       ],
       techStackTitle: "Ishlatadigan texnologiyalarimiz",
       techStack: techStackList,
@@ -613,7 +619,7 @@ export const translations: Record<Lang, Dictionary> = {
       contactCta: "Aloqa sahifasiga o'tish",
       processIntro: "Ish jarayonimiz 4 bosqichdan iborat",
       aboutIntro: "FRONTIX — bizneslar uchun natija beradigan raqamli mahsulotlar yaratadigan IT kompaniya. Asosiy qadriyatlarimiz",
-      teamIntro: "Jamoamiz 12 nafar mutaxassisdan iborat: 2 asoschi, 8 dasturchi, 1 administrator va 1 dizayner.",
+      teamIntro: "Jamoamiz 13 nafar mutaxassisdan iborat: 3 asoschi, 8 dasturchi, 1 administrator va 1 dizayner.",
       teamCta: "Jamoa sahifasiga o'tish",
       servicesListIntro: "Biz quyidagi xizmatlarni taqdim etamiz",
       servicesCta: "Barcha xizmatlar",
@@ -640,9 +646,9 @@ export const translations: Record<Lang, Dictionary> = {
           "FRONTIX в Ташкенте разрабатывает сайты, QR-меню, Telegram-ботов, системы онлайн-заказов и CRM-автоматизацию. Проект готов за 1-6 недель.",
       },
       team: {
-        title: "Команда — 12 IT-специалистов FRONTIX",
+        title: "Команда — 13 IT-специалистов FRONTIX",
         description:
-          "Команда FRONTIX — 12 специалистов: 2 основателя, 8 разработчиков, 1 администратор и 1 дизайнер. Ведём каждый проект в Ташкенте от начала до конца.",
+          "Команда FRONTIX — 13 специалистов: 3 основателя, 8 разработчиков, 1 администратор и 1 дизайнер. Ведём каждый проект в Ташкенте от начала до конца.",
       },
       partners: {
         title: "Партнёры — клиенты FRONTIX",
@@ -675,7 +681,7 @@ export const translations: Record<Lang, Dictionary> = {
       titleHighlight: "цифровой",
       titleSuffix: " уровень.",
       subtitle:
-        "FRONTIX — IT-компания в Ташкенте: команда из 12 специалистов создаёт сайты, Telegram-ботов, QR-меню и CRM-автоматизацию для бизнеса за 1-6 недель.",
+        "FRONTIX — IT-компания в Ташкенте: команда из 13 специалистов создаёт сайты, Telegram-ботов, QR-меню и CRM-автоматизацию для бизнеса за 1-6 недель.",
       ctaContact: "Связаться с нами",
       ctaTeam: "Наша команда",
       statLabel: "рост продаж",
@@ -720,7 +726,7 @@ export const translations: Record<Lang, Dictionary> = {
       viewAll: "Вся команда",
       pageEyebrow: "Команда",
       pageTitle: "Познакомьтесь с командой FRONTIX",
-      pageDescription: "Наша команда состоит из 12 специалистов — основатели, разработчики, администратор и дизайнер.",
+      pageDescription: "Наша команда состоит из 13 специалистов — основатели, разработчики, администратор и дизайнер.",
       categories: { all: "Все", founder: "Основатели", developer: "Разработчики", admin: "Администратор", designer: "Дизайнер" },
       roles: rolesRu,
       bios: biosRu,
@@ -782,7 +788,7 @@ export const translations: Record<Lang, Dictionary> = {
       paragraph1:
         "FRONTIX — IT-компания из Ташкента, с 2021 года помогающая бизнесу расти с помощью современных цифровых решений. К каждому проекту мы подходим индивидуально, создавая продукты, служащие реальным целям наших клиентов.",
       paragraph2:
-        "От небольших стартапов до крупных брендов — наша команда из 12 специалистов участвовала в цифровой трансформации десятков компаний с помощью сайтов, Telegram-ботов, QR-меню и систем автоматизации.",
+        "От небольших стартапов до крупных брендов — наша команда из 13 специалистов участвовала в цифровой трансформации десятков компаний с помощью сайтов, Telegram-ботов, QR-меню и систем автоматизации.",
       quote: "Каждый пиксель, каждая строка кода — ради успеха вашего бизнеса.",
       quoteAuthor: "— команда FRONTIX",
       valuesEyebrow: "Наши ценности",
@@ -794,7 +800,7 @@ export const translations: Record<Lang, Dictionary> = {
         { year: "2022", title: "Первые 10 проектов", description: "Завершено более 10 проектов для бизнеса из разных отраслей." },
         { year: "2023", title: "Расширение команды", description: "Выросло число разработчиков и дизайнеров, расширился спектр услуг." },
         { year: "2024", title: "30+ довольных клиентов", description: "Установлено долгосрочное сотрудничество с бизнесами разного масштаба." },
-        { year: "2025", title: "Команда из 12 специалистов", description: "Сегодня FRONTIX — полноценная многопрофильная команда." },
+        { year: "2025", title: "Команда из 13 специалистов", description: "Сегодня FRONTIX — полноценная многопрофильная команда." },
       ],
       techStackTitle: "Технологии, которые мы используем",
       techStack: techStackList,
@@ -870,7 +876,7 @@ export const translations: Record<Lang, Dictionary> = {
       contactCta: "Перейти на страницу контактов",
       processIntro: "Наш процесс работы состоит из 4 этапов",
       aboutIntro: "FRONTIX — IT-компания, создающая цифровые продукты, приносящие результат бизнесу. Наши ключевые ценности",
-      teamIntro: "Наша команда состоит из 12 специалистов: 2 основателя, 8 разработчиков, 1 администратор и 1 дизайнер.",
+      teamIntro: "Наша команда состоит из 13 специалистов: 3 основателя, 8 разработчиков, 1 администратор и 1 дизайнер.",
       teamCta: "Перейти на страницу команды",
       servicesListIntro: "Мы предоставляем следующие услуги",
       servicesCta: "Все услуги",
@@ -897,9 +903,9 @@ export const translations: Record<Lang, Dictionary> = {
           "FRONTIX in Tashkent builds websites, QR menus, Telegram bots, online ordering systems and CRM automation. Projects are delivered in 1-6 weeks.",
       },
       team: {
-        title: "Team — 12 FRONTIX specialists",
+        title: "Team — 13 FRONTIX specialists",
         description:
-          "The FRONTIX team has 12 specialists: 2 founders, 8 developers, 1 administrator and 1 designer, running every project in Tashkent from start to finish.",
+          "The FRONTIX team has 13 specialists: 3 founders, 8 developers, 1 administrator and 1 designer, running every project in Tashkent from start to finish.",
       },
       partners: {
         title: "Partners — FRONTIX clients",
@@ -932,7 +938,7 @@ export const translations: Record<Lang, Dictionary> = {
       titleHighlight: "digital",
       titleSuffix: " level.",
       subtitle:
-        "FRONTIX is an IT company in Tashkent, Uzbekistan: our team of 12 specialists builds websites, Telegram bots, QR menus and CRM automation in 1-6 weeks.",
+        "FRONTIX is an IT company in Tashkent, Uzbekistan: our team of 13 specialists builds websites, Telegram bots, QR menus and CRM automation in 1-6 weeks.",
       ctaContact: "Get in touch",
       ctaTeam: "Our team",
       statLabel: "sales growth",
@@ -977,7 +983,7 @@ export const translations: Record<Lang, Dictionary> = {
       viewAll: "View all team members",
       pageEyebrow: "Team",
       pageTitle: "Meet the FRONTIX team",
-      pageDescription: "Our team of 12 specialists — founders, developers, an administrator and a designer.",
+      pageDescription: "Our team of 13 specialists — founders, developers, an administrator and a designer.",
       categories: { all: "All", founder: "Founders", developer: "Developers", admin: "Admin", designer: "Designer" },
       roles: rolesEn,
       bios: biosEn,
@@ -1039,7 +1045,7 @@ export const translations: Record<Lang, Dictionary> = {
       paragraph1:
         "FRONTIX is an IT company based in Tashkent, helping businesses grow through modern digital solutions since 2021. We approach every project individually, building products that serve our clients' real goals.",
       paragraph2:
-        "From small startups to large brands — our team of 12 specialists has taken part in the digital transformation of dozens of businesses through websites, Telegram bots, QR menus and automation systems.",
+        "From small startups to large brands — our team of 13 specialists has taken part in the digital transformation of dozens of businesses through websites, Telegram bots, QR menus and automation systems.",
       quote: "Every pixel, every line of code — for the success of your business.",
       quoteAuthor: "— The FRONTIX team",
       valuesEyebrow: "Our values",
@@ -1051,7 +1057,7 @@ export const translations: Record<Lang, Dictionary> = {
         { year: "2022", title: "First 10 projects", description: "Completed 10+ projects for businesses across different industries." },
         { year: "2023", title: "Team expansion", description: "Grew our developer and designer roster, broadening our service range." },
         { year: "2024", title: "30+ happy clients", description: "Built long-term partnerships with businesses of all sizes." },
-        { year: "2025", title: "A team of 12 specialists", description: "Today FRONTIX is a full, multi-disciplinary team." },
+        { year: "2025", title: "A team of 13 specialists", description: "Today FRONTIX is a full, multi-disciplinary team." },
       ],
       techStackTitle: "Technologies we use",
       techStack: techStackList,
@@ -1127,7 +1133,7 @@ export const translations: Record<Lang, Dictionary> = {
       contactCta: "Go to contact page",
       processIntro: "Our process has 4 stages",
       aboutIntro: "FRONTIX is an IT company that builds digital products delivering real results for businesses. Our core values",
-      teamIntro: "Our team has 12 specialists: 2 founders, 8 developers, 1 administrator and 1 designer.",
+      teamIntro: "Our team has 13 specialists: 3 founders, 8 developers, 1 administrator and 1 designer.",
       teamCta: "Go to team page",
       servicesListIntro: "We offer the following services",
       servicesCta: "All services",
