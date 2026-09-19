@@ -34,6 +34,7 @@ export default function SolutionPage() {
   const h1 = `${industry.name} uchun ${serviceLabel}`;
   const metaTitle = `${industry.shortName} uchun ${serviceLabel}`;
   const metaDescription = solution.intro.split(". ")[0] + ".";
+  const metaKeywords = `${h1}, ${industry.name}, ${serviceLabel}, Toshkent IT yechim, FRONTIX`;
   const path = `/yechimlar/${industry.slug}/${service.slug}`;
   const otherServices = industry.relevantServices.filter((s) => s !== service.slug);
 
@@ -68,7 +69,7 @@ export default function SolutionPage() {
 
   return (
     <>
-      <Seo title={metaTitle} description={metaDescription} path={path} jsonLd={jsonLd} />
+      <Seo title={metaTitle} description={metaDescription} keywords={metaKeywords} path={path} jsonLd={jsonLd} />
 
       <section className="relative overflow-hidden pt-36 pb-16 sm:pt-44 sm:pb-20">
         <div className="grain-gradient pointer-events-none absolute inset-0" aria-hidden="true" />

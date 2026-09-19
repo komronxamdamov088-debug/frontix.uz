@@ -16,6 +16,7 @@ export default function About() {
       <Seo
         title={t.seo.about.title}
         description={t.seo.about.description}
+        keywords={t.seo.about.keywords}
         path="/about"
         jsonLd={breadcrumbJsonLd(
           [

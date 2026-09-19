@@ -16,6 +16,7 @@ export default function Partners() {
       <Seo
         title={t.seo.partners.title}
         description={t.seo.partners.description}
+        keywords={t.seo.partners.keywords}
         path="/partners"
         jsonLd={breadcrumbJsonLd(
           [

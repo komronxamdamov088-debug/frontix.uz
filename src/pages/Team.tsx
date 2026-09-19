@@ -23,6 +23,7 @@ export default function Team() {
       <Seo
         title={t.seo.team.title}
         description={t.seo.team.description}
+        keywords={t.seo.team.keywords}
         path="/team"
         jsonLd={breadcrumbJsonLd(
           [

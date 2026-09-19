@@ -20,6 +20,7 @@ export default function BlogPost() {
 
   const path = `/blog/${post.slug}`;
   const relatedServiceText = t.services[post.relatedService];
+  const keywords = `${post.category}, ${post.title}, ${relatedServiceText.title}, FRONTIX blog`;
 
   const jsonLd = [
     breadcrumbJsonLd(
@@ -54,7 +55,7 @@ export default function BlogPost() {
 
   return (
     <>
-      <Seo title={post.title} description={post.excerpt} path={path} jsonLd={jsonLd} />
+      <Seo title={post.title} description={post.excerpt} keywords={keywords} path={path} jsonLd={jsonLd} />
 
       <section className="relative overflow-hidden pt-36 pb-16 sm:pt-44 sm:pb-20">
         <div className="grain-gradient pointer-events-none absolute inset-0" aria-hidden="true" />

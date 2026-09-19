@@ -16,6 +16,7 @@ export default function SolutionsIndex() {
       <Seo
         title="Soha bo'yicha IT yechimlar"
         description="Restoran, go'zallik saloni, klinika, onlayn do'kon, o'quv markazi va fitnes-zallar uchun Toshkentda tayyor IT yechimlar: veb-sayt, Telegram bot, QR-menyu, CRM va onlayn buyurtma tizimlari."
+        keywords="soha bo'yicha IT yechimlar, restoran uchun QR-menyu, go'zallik saloni uchun sayt, klinika uchun CRM, onlayn do'kon yaratish, o'quv markazi uchun Telegram bot, fitnes-zal avtomatlashtirish"
         path="/yechimlar"
         jsonLd={breadcrumbJsonLd(
           [

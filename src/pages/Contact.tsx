@@ -89,6 +89,7 @@ export default function Contact() {
       <Seo
         title={t.seo.contact.title}
         description={t.seo.contact.description}
+        keywords={t.seo.contact.keywords}
         path="/contact"
         jsonLd={[
           breadcrumbJsonLd(

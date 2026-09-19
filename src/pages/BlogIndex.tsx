@@ -16,6 +16,7 @@ export default function BlogIndex() {
       <Seo
         title="Blog — IT va raqamli yechimlar bo'yicha qo'llanmalar"
         description="QR-menyu, Telegram bot va veb-sayt kabi raqamli yechimlar haqida amaliy qo'llanmalar: qanday ishlaydi, qachon kerak va biznesga qanday foyda beradi."
+        keywords="IT blog, QR-menyu nima, Telegram bot qanday ishlaydi, kichik biznes uchun veb-sayt, raqamli yechimlar qo'llanma, FRONTIX blog"
         path="/blog"
         jsonLd={breadcrumbJsonLd(
           [

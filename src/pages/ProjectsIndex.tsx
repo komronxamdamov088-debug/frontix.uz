@@ -18,6 +18,7 @@ export default function ProjectsIndex() {
       <Seo
         title="Loyihalar — bajarilgan ishlar"
         description="FRONTIX veb-sayt, Telegram bot, QR-menyu, onlayn buyurtma va biznes avtomatlashtirish bo'yicha bajargan loyihalari: muammo, yechim va natija."
+        keywords="FRONTIX loyihalari, portfolio, bajarilgan ishlar, veb-sayt case study, Telegram bot loyihasi, QR-menyu loyihasi, mijozlar natijalari"
         path="/loyihalar"
         jsonLd={breadcrumbJsonLd(
           [

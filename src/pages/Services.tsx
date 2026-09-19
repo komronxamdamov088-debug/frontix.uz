@@ -29,6 +29,7 @@ export default function Services() {
       <Seo
         title={t.seo.services.title}
         description={t.seo.services.description}
+        keywords={t.seo.services.keywords}
         path="/services"
         jsonLd={[
           breadcrumbJsonLd(

@@ -9,6 +9,7 @@ const OG_LOCALE: Record<Lang, string> = { uz: "uz_UZ", ru: "ru_RU", en: "en_US" 
 interface SeoProps {
   title: string;
   description: string;
+  keywords?: string;
   path?: string;
   jsonLd?: object | object[];
 }
@@ -23,7 +24,7 @@ function setMeta(attr: "name" | "property", key: string, content: string) {
   el.setAttribute("content", content);
 }
 
-export function Seo({ title, description, path = "/", jsonLd }: SeoProps) {
+export function Seo({ title, description, keywords, path = "/", jsonLd }: SeoProps) {
   const { lang } = useLanguage();
 
   useEffect(() => {
@@ -33,6 +34,11 @@ export function Seo({ title, description, path = "/", jsonLd }: SeoProps) {
     const url = `${SITE.url}${localizePath(lang, path)}`;
 
     setMeta("name", "description", description);
+    if (keywords) {
+      setMeta("name", "keywords", keywords);
+    } else {
+      document.querySelector('meta[name="keywords"]')?.remove();
+    }
     setMeta("property", "og:title", fullTitle);
     setMeta("property", "og:description", description);
     setMeta("property", "og:type", "website");
@@ -51,7 +57,7 @@ export function Seo({ title, description, path = "/", jsonLd }: SeoProps) {
       document.head.appendChild(canonical);
     }
     canonical.setAttribute("href", url);
-  }, [title, description, path, lang]);
+  }, [title, description, keywords, path, lang]);
 
   // hreflang alternates so search engines know the uz/ru/en URLs are the same
   // page in different languages, not duplicate content.

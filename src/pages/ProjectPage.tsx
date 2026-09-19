@@ -20,6 +20,7 @@ export default function ProjectPage() {
 
   const path = `/loyihalar/${project.slug}`;
   const serviceText = t.services[project.service];
+  const keywords = `${project.title}, ${project.industry}, ${serviceText.title}, FRONTIX loyiha, case study`;
 
   const jsonLd = [
     breadcrumbJsonLd(
@@ -55,7 +56,7 @@ export default function ProjectPage() {
 
   return (
     <>
-      <Seo title={project.title} description={project.summary} path={path} jsonLd={jsonLd} />
+      <Seo title={project.title} description={project.summary} keywords={keywords} path={path} jsonLd={jsonLd} />
 
       <section className="relative overflow-hidden pt-36 pb-16 sm:pt-44 sm:pb-20">
         <div className="grain-gradient pointer-events-none absolute inset-0" aria-hidden="true" />

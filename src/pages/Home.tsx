@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <>
-      <Seo title={t.meta.title} description={t.meta.description} path="/" />
+      <Seo title={t.meta.title} description={t.meta.description} keywords={t.meta.keywords} path="/" />
       <Hero />
       <ServicesPreview />
       <WhyFrontix />
