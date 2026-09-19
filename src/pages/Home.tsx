@@ -1,5 +1,6 @@
 import { Seo } from "@/components/Seo";
 import { Hero } from "@/components/sections/home/Hero";
+import { ServicesMarquee } from "@/components/sections/home/ServicesMarquee";
 import { ServicesPreview } from "@/components/sections/home/ServicesPreview";
 import { WhyFrontix } from "@/components/sections/home/WhyFrontix";
 import { TeamPreview } from "@/components/sections/home/TeamPreview";
@@ -15,6 +16,7 @@ export default function Home() {
     <>
       <Seo title={t.meta.title} description={t.meta.description} keywords={t.meta.keywords} path="/" />
       <Hero />
+      <ServicesMarquee />
       <ServicesPreview />
       <WhyFrontix />
       <TeamPreview />

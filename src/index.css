@@ -27,6 +27,7 @@
   --animate-fade-up: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   --animate-fade-in: fade-in 0.7s ease forwards;
   --animate-float: float 6s ease-in-out infinite;
+  --animate-marquee: marquee 26s linear infinite;
 
   @keyframes fade-up {
     from {
@@ -53,6 +54,14 @@
     }
     50% {
       transform: translateY(-12px);
+    }
+  }
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
     }
   }
 }
