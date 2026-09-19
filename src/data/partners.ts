@@ -74,9 +74,9 @@ export const partners: Partner[] = [
     name: "Baydar",
     logo: partner6,
     description: {
-      uz: "Maishiy texnika va elektronika do'koni — mahsulotlarni 0-12 oygacha muddatli to'lov, kafolat va bepul yetkazib berish bilan taqdim etadi.",
-      ru: "Магазин бытовой техники и электроники — предлагает товары в рассрочку на срок до 12 месяцев с гарантией и бесплатной доставкой.",
-      en: "A home appliance and electronics store — offers products on installment plans of up to 12 months with warranty and free delivery.",
+      uz: "Uy uchun maishiy texnika va elektronika buyumlarini sotuvchi do'kon.",
+      ru: "Магазин бытовой техники и электроники для дома.",
+      en: "A store selling home appliances and electronics.",
     },
   },
 ];
