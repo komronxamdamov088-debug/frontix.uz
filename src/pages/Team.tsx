@@ -16,7 +16,8 @@ export default function Team() {
 
   const categories: FilterKey[] = useMemo(() => ["all", "founder", "developer", "admin", "designer"], []);
 
-  const filtered = active === "all" ? team : team.filter((m) => m.category === active);
+  const visibleTeam = useMemo(() => team.filter((m) => !m.hiddenInAll), []);
+  const filtered = active === "all" ? visibleTeam : team.filter((m) => m.category === active);
 
   return (
     <>
@@ -53,7 +54,7 @@ export default function Team() {
               </button>
             ))}
             <span className="ml-1 text-sm text-ink/40 dark:text-paper/40">
-              {team.length} {t.team.count}
+              {visibleTeam.length} {t.team.count}
             </span>
           </div>
 
