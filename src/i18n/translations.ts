@@ -407,9 +407,9 @@ export const translations: Record<Lang, Dictionary> = {
       partners: {
         title: "Hamkorlar — FRONTIX mijozlari",
         description:
-          "FRONTIX O'zbekistonda Tezcode, Coremed, AI Solution, Mars IT School, QarzDaftar va Baydar kabi bizneslarga raqamli yechimlar yaratib bergan IT kompaniya.",
+          "FRONTIX O'zbekistonda Tezcode, Coremed, AI Solution, Mars IT School va QarzDaftar kabi bizneslarga raqamli yechimlar yaratib bergan IT kompaniya.",
         keywords:
-          "FRONTIX mijozlari, IT kompaniya portfolio, O'zbekiston hamkorlar, Tezcode, Coremed, AI Solution, Mars IT School, QarzDaftar, Baydar",
+          "FRONTIX mijozlari, IT kompaniya portfolio, O'zbekiston hamkorlar, Tezcode, Coremed, AI Solution, Mars IT School, QarzDaftar",
       },
       about: {
         title: "Biz haqimizda — FRONTIX IT kompaniyasi",
@@ -677,9 +677,9 @@ export const translations: Record<Lang, Dictionary> = {
       partners: {
         title: "Партнёры — клиенты FRONTIX",
         description:
-          "FRONTIX сотрудничает с бизнесами Узбекистана: Tezcode, Coremed, AI Solution, Mars IT School, QarzDaftar и Baydar, создавая для них цифровые решения.",
+          "FRONTIX сотрудничает с бизнесами Узбекистана: Tezcode, Coremed, AI Solution, Mars IT School и QarzDaftar, создавая для них цифровые решения.",
         keywords:
-          "клиенты FRONTIX, портфолио IT-компании, партнёры Узбекистан, Tezcode, Coremed, AI Solution, Mars IT School, QarzDaftar, Baydar",
+          "клиенты FRONTIX, портфолио IT-компании, партнёры Узбекистан, Tezcode, Coremed, AI Solution, Mars IT School, QarzDaftar",
       },
       about: {
         title: "О нас — IT-компания FRONTIX",
@@ -946,9 +946,9 @@ export const translations: Record<Lang, Dictionary> = {
       partners: {
         title: "Partners — FRONTIX clients",
         description:
-          "FRONTIX has partnered with businesses across Uzbekistan, including Tezcode, Coremed, AI Solution, Mars IT School, QarzDaftar and Baydar, building digital solutions.",
+          "FRONTIX has partnered with businesses across Uzbekistan, including Tezcode, Coremed, AI Solution, Mars IT School and QarzDaftar, building digital solutions.",
         keywords:
-          "FRONTIX clients, IT company portfolio, Uzbekistan partners, Tezcode, Coremed, AI Solution, Mars IT School, QarzDaftar, Baydar",
+          "FRONTIX clients, IT company portfolio, Uzbekistan partners, Tezcode, Coremed, AI Solution, Mars IT School, QarzDaftar",
       },
       about: {
         title: "About us — FRONTIX IT company",

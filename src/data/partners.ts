@@ -3,7 +3,6 @@ import partner2 from "@/assets/partners/partner-2.png";
 import partner3 from "@/assets/partners/partner-3.png";
 import partner4 from "@/assets/partners/partner-4.png";
 import partner5 from "@/assets/partners/partner-5.png";
-import partner6 from "@/assets/partners/partner-6.png";
 import type { Lang } from "@/i18n/translations";
 
 export interface Partner {
@@ -67,16 +66,6 @@ export const partners: Partner[] = [
       uz: "O'zbekiston bozori uchun shaxsiy qarzlarni boshqarish platformasi — qarz berish/olishni, qaytarish muddatini va qisman to'lovlarni kuzatib boradi.",
       ru: "Платформа для учёта личных долгов на узбекском рынке — отслеживает выданные/полученные долги, сроки и частичные платежи.",
       en: "A personal debt-tracking platform for the Uzbek market — tracks money lent or borrowed, due dates and partial payments.",
-    },
-  },
-  {
-    id: "partner-6",
-    name: "Baydar",
-    logo: partner6,
-    description: {
-      uz: "Uy uchun maishiy texnika va elektronika buyumlarini sotuvchi do'kon.",
-      ru: "Магазин бытовой техники и электроники для дома.",
-      en: "A store selling home appliances and electronics.",
     },
   },
 ];
