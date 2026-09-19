@@ -74,9 +74,9 @@ export const partners: Partner[] = [
     name: "Baydar",
     logo: partner6,
     description: {
-      uz: "Xorazmda maishiy texnika va elektronika sotadigan do'kon — texnikani 0-12 oy muddatli to'lov, kafolat va bepul yetkazib berish bilan taqdim etadi.",
-      ru: "Магазин бытовой техники и электроники в Хорезме — предлагает технику в рассрочку на 0-12 месяцев с гарантией и бесплатной доставкой.",
-      en: "A home appliance and electronics store in Khorezm — offers products on 0-12 month installment plans with warranty and free delivery.",
+      uz: "Maishiy texnika va elektronika do'koni — mahsulotlarni 0-12 oygacha muddatli to'lov, kafolat va bepul yetkazib berish bilan taqdim etadi.",
+      ru: "Магазин бытовой техники и электроники — предлагает товары в рассрочку на срок до 12 месяцев с гарантией и бесплатной доставкой.",
+      en: "A home appliance and electronics store — offers products on installment plans of up to 12 months with warranty and free delivery.",
     },
   },
 ];
