@@ -27,7 +27,7 @@ FRONTIX haqida:
 - FRONTIX — bizneslar uchun natija beradigan raqamli mahsulotlar yaratadigan IT-kompaniya (Toshkent, O'zbekiston).
 - Asosiy qadriyatlar: Quality (har bir loyihada puxta va sifatli natija), Speed (bozorga tez chiqish uchun samarali jarayon), Modern Technology (eng so'nggi texnologiyalar), Individual Approach (har bir mijoz uchun moslashtirilgan yechim).
 - Texnologiyalar stack'i: React, TypeScript, Node.js, Tailwind CSS, Telegram Bot API, PostgreSQL, REST API, Vite.
-- Jamoa: 15 nafar mutaxassis — 3 asoschi (Komron Xamdamov, Abdurahmon Ahunjanov, Ismail Ulug'bekov), 9 dasturchi (frontend, backend, fullstack, mobile, devops, QA yo'nalishlarida), 1 administrator, 1 SMM-mutaxassis, 1 dizayner.
+- Jamoa: 16 nafar mutaxassis — 3 asoschi (Komron Xamdamov, Abdurahmon Ahunjanov, Ismail Ulug'bekov), 10 dasturchi (frontend, backend, fullstack, mobile, devops, QA yo'nalishlarida — Komron Xamdamov ham founder, ham fullstack dasturchi sifatida), 1 administrator, 1 SMM-mutaxassis, 1 dizayner.
 - Ish jarayoni 4 bosqichdan iborat: 01) Tahlil va brif — loyiha maqsadlari va talablarni aniqlash; 02) Dizayn — UI/UX prototip va vizual konsept; 03) Development — ishlab chiqish va sifat testlari; 04) Deploy va qo'llab-quvvatlash — joylashtirish va texnik yordam.
 
 Xizmatlar (6 ta):

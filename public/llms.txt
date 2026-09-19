@@ -17,7 +17,7 @@ FRONTIX bizneslarga g'oyadan ishga tushirishgacha bo'lgan yo'lda hamrohlik qilad
 
 ## Jamoa
 
-FRONTIX jamoasi 15 nafar mutaxassisdan iborat: 3 asoschi, 9 dasturchi, 1 administrator, 1 SMM-mutaxassis va 1 dizayner.
+FRONTIX jamoasi 16 nafar mutaxassisdan iborat: 3 asoschi, 10 dasturchi, 1 administrator, 1 SMM-mutaxassis va 1 dizayner.
 
 ## Ish jarayoni
 

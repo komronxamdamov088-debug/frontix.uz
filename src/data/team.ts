@@ -40,6 +40,7 @@ export const team: TeamMember[] = [
   { slug: "Komron-Xamdamov", name: "Komron Xamdamov", roleKey: "founder", category: "founder", color: "brand" },
   { slug: "Abdurahmon-Ahunjanov", name: "Abdurahmon Ahunjanov", roleKey: "coFounder", category: "founder", color: "fuchsia" },
   { slug: "Ismail-Ulugbekov", name: "Ismail Ulug'bekov", roleKey: "coFounderCTO", category: "founder", color: "sky" },
+  { slug: "Komron-Xamdamov-Dev", name: "Komron Xamdamov", roleKey: "fullstack", category: "developer", color: "brand" },
   { slug: "Bahriddin-Ikromov", name: "Bahriddin Ikromov", roleKey: "fullstack", category: "developer", color: "emerald" },
   { slug: "Akmal-Rustamov", name: "Akmal Rustamov", roleKey: "smm", category: "admin", color: "rose" },
   { slug: "Diyor-Abdurahimov", name: "Diyor Abdurahimov", roleKey: "admin", category: "admin", color: "indigo" },
