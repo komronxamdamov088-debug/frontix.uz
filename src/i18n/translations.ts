@@ -42,6 +42,7 @@ interface Dictionary {
     newOrder: string;
   };
   servicesPreview: { eyebrow: string; title: string; description: string; viewAll: string; more: string };
+  products: { eyebrow: string; title: string; description: string; visit: string };
   services: Record<ServiceSlug, ServiceText>;
   servicesPage: { eyebrow: string; title: string; description: string; orderCta: string };
   whyFrontix: {
@@ -454,6 +455,12 @@ export const translations: Record<Lang, Dictionary> = {
       viewAll: "Barcha xizmatlar",
       more: "Batafsil",
     },
+    products: {
+      eyebrow: "Mahsulotlarimiz",
+      title: "FRONTIX tomonidan yaratilgan mahsulotlar",
+      description: "Mijozlar uchun loyihalardan tashqari, o'zimizning mahsulotlarimizni ham ishlab chiqamiz va rivojlantiramiz.",
+      visit: "Saytga o'tish",
+    },
     services: servicesUz,
     servicesPage: {
       eyebrow: "Xizmatlar",
@@ -724,6 +731,12 @@ export const translations: Record<Lang, Dictionary> = {
       viewAll: "Все услуги",
       more: "Подробнее",
     },
+    products: {
+      eyebrow: "Наши продукты",
+      title: "Продукты, созданные FRONTIX",
+      description: "Помимо проектов для клиентов, мы создаём и развиваем собственные продукты.",
+      visit: "Перейти на сайт",
+    },
     services: servicesRu,
     servicesPage: {
       eyebrow: "Услуги",
@@ -992,6 +1005,12 @@ export const translations: Record<Lang, Dictionary> = {
       description: "From websites to automation — get every solution you need in one place.",
       viewAll: "All services",
       more: "Learn more",
+    },
+    products: {
+      eyebrow: "Our products",
+      title: "Products built by FRONTIX",
+      description: "Beyond client projects, we build and grow products of our own.",
+      visit: "Visit website",
     },
     services: servicesEn,
     servicesPage: {

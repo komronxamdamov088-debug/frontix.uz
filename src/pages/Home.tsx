@@ -2,6 +2,7 @@ import { Seo } from "@/components/Seo";
 import { Hero } from "@/components/sections/home/Hero";
 import { ServicesMarquee } from "@/components/sections/home/ServicesMarquee";
 import { ServicesPreview } from "@/components/sections/home/ServicesPreview";
+import { ProductsShowcase } from "@/components/sections/home/ProductsShowcase";
 import { WhyFrontix } from "@/components/sections/home/WhyFrontix";
 import { TeamPreview } from "@/components/sections/home/TeamPreview";
 import { HowWeWork } from "@/components/sections/home/HowWeWork";
@@ -18,6 +19,7 @@ export default function Home() {
       <Hero />
       <ServicesMarquee />
       <ServicesPreview />
+      <ProductsShowcase />
       <WhyFrontix />
       <TeamPreview />
       <HowWeWork />
