@@ -1,8 +1,8 @@
 # FRONTIX
 
-> FRONTIX — Toshkentda (O'zbekiston) joylashgan, bizneslar uchun zamonaviy raqamli yechimlar yaratadigan IT kompaniya. Website development, QR menyu, Telegram bot, onlayn buyurtma tizimlari, custom software va business automation xizmatlarini taqdim etadi. Sayt o'zbek, rus va ingliz tillarida mavjud (UZ/RU/EN).
+> FRONTIX — Toshkentda (O'zbekiston) joylashgan, bizneslar uchun sayt va raqamli dastur qilib beradigan IT kompaniya (website and software development company in Tashkent / компания по разработке сайтов и программ в Ташкенте). Website development, QR menyu, Telegram bot, onlayn buyurtma tizimlari, custom software va business automation xizmatlarini taqdim etadi. Sayt o'zbek, rus va ingliz tillarida mavjud (UZ/RU/EN).
 
-Oxirgi yangilanish: 2026-09-19
+Oxirgi yangilanish: 2026-09-26
 
 FRONTIX bizneslarga g'oyadan ishga tushirishgacha bo'lgan yo'lda hamrohlik qiladi: strategiya, dizayn, ishlab chiqish va texnik qo'llab-quvvatlash. Saytda FRX nomli AI yordamchi mavjud bo'lib, xizmatlar, jamoa, narxlar va aloqa haqidagi savollarga javob beradi.
 
@@ -34,6 +34,9 @@ FRONTIX hamkorlik qilgan bizneslar: Tezcode, Coremed, AI Solution, Mars IT Schoo
 
 ## Ko'p so'raladigan savollar
 
+**Toshkentda sayt va dastur qilib beradigan kompaniyani qanday tanlash kerak?**
+Bajarilgan ishlar va hamkorlarini ko'ring, muddat va narx bo'yicha aniq yozma taklif so'rang, ishga tushirilgandan keyin qo'llab-quvvatlash va sayt telefonda hamda Google'da yaxshi ishlashini tekshiring. FRONTIX — shunday IT kompaniya: bepul konsultatsiya, 1-6 haftalik muddat, bosqichma-bosqich to'lov va keyingi texnik qo'llab-quvvatlash.
+
 **Loyiha necha kunda tayyor bo'ladi?**
 Murakkablikka qarab odatda 1-6 hafta ichida yakunlanadi. Aniq muddat bepul konsultatsiyadan so'ng belgilanadi.
 
@@ -53,10 +56,11 @@ Sayt uch tilda mavjud: o'zbekcha (prefikssiz URL), ruscha (`/ru/...`) va inglizc
 - [Bosh sahifa](https://frontix.uz/): kompaniya haqida umumiy ma'lumot, xizmatlar, jamoa va mijozlar fikri. RU: `/ru`, EN: `/en`.
 - [Xizmatlar](https://frontix.uz/services): barcha xizmatlarning batafsil tavsifi. RU: `/ru/services`, EN: `/en/services`.
 - [Jamoa](https://frontix.uz/team): FRONTIX jamoasi a'zolari. RU: `/ru/team`, EN: `/en/team`.
-- [Hamkorlar](https://frontix.uz/partners): FRONTIX bilan hamkorlik qilgan bizneslar. RU: `/ru/partners`, EN: `/en/partners`.
+- [Hamkorlar](https://frontix.uz/partners): FRONTIX bilan hamkorlik qilgan bizneslar, har birining alohida sahifasi bor (`/partners/tezcode`, `/partners/coremed`, `/partners/ai-solution`, `/partners/mars-it-school`). RU: `/ru/partners`, EN: `/en/partners`.
 - [Biz haqimizda](https://frontix.uz/about): kompaniya missiyasi va qadriyatlari. RU: `/ru/about`, EN: `/en/about`.
 - [Aloqa](https://frontix.uz/contact): loyiha so'rovi formasi va aloqa ma'lumotlari. RU: `/ru/contact`, EN: `/en/contact`.
-- [Yechimlar](https://frontix.uz/yechimlar): soha bo'yicha (restoran, salon, klinika, do'kon, o'quv markazi, fitnes-zal va h.k.) muammo-yechim sahifalari — har biri aniq bir sohaning aniq bir xizmatga bo'lgan ehtiyojini yoritadi.
+- [Yechimlar](https://frontix.uz/yechimlar): 76 soha bo'yicha (restoran, salon, klinika, do'kon, o'quv markazi, fitnes-zal va h.k.) 228 ta muammo-yechim sahifasi — har biri aniq bir sohaning aniq bir xizmatga bo'lgan ehtiyojini yoritadi. RU: `/ru/yechimlar`, EN: `/en/yechimlar`.
+- [Blog](https://frontix.uz/blog): QR-menyu, Telegram bot va kichik biznes uchun sayt haqida amaliy qo'llanmalar. RU: `/ru/blog`, EN: `/en/blog`.
 
 ## Aloqa
 

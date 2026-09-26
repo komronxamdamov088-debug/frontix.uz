@@ -37,6 +37,19 @@ export const faqItems: FaqItem[] = [
   {
     category: "general",
     question: {
+      uz: "Toshkentda sayt va dastur qilib beradigan kompaniyani qanday tanlash kerak?",
+      ru: "Как выбрать компанию, которая делает сайты и программы в Ташкенте?",
+      en: "How do I choose a website and software development company in Tashkent?",
+    },
+    answer: {
+      uz: "Kompaniyaning bajarilgan ishlari va hamkorlarini ko'ring, muddat va narx bo'yicha aniq yozma taklif so'rang, ishga tushirilgandan keyin qo'llab-quvvatlash bor-yo'qligini va sayt telefonda hamda Google'da yaxshi ishlashini tekshiring. FRONTIX — Toshkentda sayt va raqamli dastur qilib beradigan IT kompaniya: bepul konsultatsiya, 1-6 haftalik muddat, bosqichma-bosqich to'lov va keyingi texnik qo'llab-quvvatlash.",
+      ru: "Посмотрите выполненные работы и партнёров компании, попросите чёткое письменное предложение по срокам и цене, уточните, есть ли поддержка после запуска и хорошо ли сайт работает на телефоне и в Google. FRONTIX — IT-компания в Ташкенте, которая делает сайты и программы: бесплатная консультация, срок 1-6 недель, поэтапная оплата и техническая поддержка после запуска.",
+      en: "Look at the company's past work and partners, ask for a clear written proposal on timeline and price, and check whether they offer support after launch and build sites that work well on phones and in Google. FRONTIX is a Tashkent IT company that builds websites and software: a free consultation, 1-6 week timelines, staged payments and technical support after launch.",
+    },
+  },
+  {
+    category: "general",
+    question: {
       uz: "Konsultatsiya pullikmi?",
       ru: "Консультация платная?",
       en: "Is the consultation paid?",

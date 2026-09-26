@@ -402,19 +402,19 @@ const techStackList = ["React", "TypeScript", "Node.js", "Tailwind CSS", "Telegr
 export const translations: Record<Lang, Dictionary> = {
   uz: {
     meta: {
-      title: "FRONTIX — Biznesingiz uchun raqamli yechimlar",
+      title: "FRONTIX — Sayt va dastur qilib beradigan IT kompaniya, Toshkent",
       description:
-        "FRONTIX — Toshkentda veb-sayt, QR menyu, Telegram bot, onlayn buyurtma va CRM avtomatlashtirish yechimlarini yaratadigan IT kompaniya.",
+        "FRONTIX — Toshkentda sayt va raqamli dastur qilib beradigan IT kompaniya: veb-sayt, Telegram bot, QR menyu, onlayn buyurtma va CRM tizimlarini 1-6 haftada yaratamiz.",
       keywords:
-        "FRONTIX, IT kompaniya Toshkent, veb-sayt yasash, sayt yaratish, QR menyu, Telegram bot yaratish, CRM avtomatlashtirish, onlayn buyurtma tizimi, custom software, raqamli yechimlar O'zbekiston",
+        "sayt qilib beradigan kompaniya, dastur qilib beradigan kompaniya, raqamli dastur yaratish, sayt yaratib beruvchi kompaniyalar Toshkent, dasturlash kompaniyasi, IT kompaniyalar Toshkent, FRONTIX, veb-sayt yasash, sayt yaratish, QR menyu, Telegram bot yaratish, CRM avtomatlashtirish, onlayn buyurtma tizimi, raqamli yechimlar O'zbekiston",
     },
     seo: {
       services: {
-        title: "Veb-sayt, CRM va Telegram bot xizmatlari",
+        title: "Sayt va dastur yaratish xizmatlari — veb-sayt, CRM, Telegram bot",
         description:
           "FRONTIX — Toshkentda veb-sayt, QR menyu, Telegram bot, onlayn buyurtma va CRM avtomatlashtirish xizmatlarini taqdim etadi. Loyiha 1-6 hafta ichida tayyor bo'ladi.",
         keywords:
-          "veb-sayt yasash narxi, sayt buyurtma qilish, QR menyu narxi, Telegram bot buyurtma, CRM tizimi, onlayn buyurtma tizimi, biznes avtomatlashtirish, custom software Toshkent",
+          "sayt qilib berish, dastur qilib berish, raqamli dastur yaratish xizmati, veb-sayt yasash narxi, sayt buyurtma qilish, QR menyu narxi, Telegram bot buyurtma, CRM tizimi, onlayn buyurtma tizimi, biznes avtomatlashtirish, custom software Toshkent",
       },
       team: {
         title: "Jamoa — 15 nafar IT mutaxassis",
@@ -678,11 +678,11 @@ export const translations: Record<Lang, Dictionary> = {
   },
   ru: {
     meta: {
-      title: "FRONTIX — Цифровые решения для вашего бизнеса",
+      title: "FRONTIX — Компания по разработке сайтов и программ в Ташкенте",
       description:
-        "FRONTIX — IT-компания в Ташкенте: создаём сайты, Telegram-ботов, QR-меню, системы онлайн-заказов и CRM-автоматизацию для бизнеса в Узбекистане.",
+        "FRONTIX — IT-компания в Ташкенте, которая делает сайты и программы для бизнеса: сайты, Telegram-боты, QR-меню, системы онлайн-заказов и CRM за 1-6 недель.",
       keywords:
-        "FRONTIX, IT-компания Ташкент, разработка сайтов, создание сайта, QR-меню, разработка Telegram-бота, CRM-автоматизация, система онлайн-заказов, custom software, цифровые решения Узбекистан",
+        "компания по разработке сайтов, разработка программ на заказ, создание сайтов под ключ Ташкент, IT-компании Ташкента, заказать сайт в Узбекистане, FRONTIX, разработка сайтов, QR-меню, разработка Telegram-бота, CRM-автоматизация, система онлайн-заказов, цифровые решения Узбекистан",
     },
     seo: {
       services: {
@@ -953,11 +953,11 @@ export const translations: Record<Lang, Dictionary> = {
   },
   en: {
     meta: {
-      title: "FRONTIX — Digital solutions for your business",
+      title: "FRONTIX — Website & Software Development Company in Tashkent",
       description:
-        "FRONTIX is an IT company in Tashkent building websites, Telegram bots, QR menus, online ordering systems and CRM automation for businesses in Uzbekistan.",
+        "FRONTIX is a Tashkent IT company that builds websites and software for businesses: websites, Telegram bots, QR menus, online ordering systems and CRM in 1-6 weeks.",
       keywords:
-        "FRONTIX, IT company Tashkent, website development, web design, QR menu, Telegram bot development, CRM automation, online ordering system, custom software, digital solutions Uzbekistan",
+        "website development company Tashkent, software development company Uzbekistan, custom software development, web development agency Tashkent, IT companies in Tashkent, FRONTIX, web design, QR menu, Telegram bot development, CRM automation, online ordering system",
     },
     seo: {
       services: {
