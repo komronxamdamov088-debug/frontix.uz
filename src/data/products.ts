@@ -1,5 +1,5 @@
-import qarzdaftarLogo from "@/assets/partners/partner-3.png";
-import sportfitLogo from "@/assets/products/sportfit.png";
+import qarzdaftarLogo from "@/assets/products/qarzdaftar-logo.webp";
+import sportfitLogo from "@/assets/products/sportfit-logo.webp";
 import type { Lang } from "@/i18n/translations";
 
 export interface Product {

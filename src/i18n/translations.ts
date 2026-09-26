@@ -169,42 +169,42 @@ interface Dictionary {
 
 const servicesUz: Record<ServiceSlug, ServiceText> = {
   "website-development": {
-    title: "Website Development",
+    title: "Veb-sayt yaratish",
     shortDescription: "Tezkor, zamonaviy va konversiyaga yo'naltirilgan korporativ saytlar.",
     description:
-      "Biznesingiz uchun tezkor yuklanuvchi, SEO-optimallashtirilgan va har qanday qurilmada mukammal ko'rinadigan website ishlab chiqamiz.",
-    features: ["Custom UI/UX dizayn", "SEO optimizatsiya", "Tezkor yuklanish", "CMS integratsiyasi"],
+      "Biznesingiz uchun tezkor yuklanuvchi, SEO-optimallashtirilgan va har qanday qurilmada mukammal ko'rinadigan veb-sayt ishlab chiqamiz.",
+    features: ["Individual UI/UX dizayn", "SEO optimizatsiya", "Tezkor yuklanish", "Oson boshqaruv paneli"],
   },
   "qr-menu": {
-    title: "QR Menu",
+    title: "QR-menyu",
     shortDescription: "Restoran va kafelar uchun raqamli, real-vaqtda yangilanadigan menyu.",
     description:
       "Mijozlaringiz stoldan turmasdan QR kod orqali menyuni ko'rishi va buyurtma berishi mumkin bo'lgan zamonaviy tizim.",
-    features: ["Real-time yangilanish", "Ko'p tilli menyu", "Statistik hisobotlar", "Oson boshqaruv paneli"],
+    features: ["Real vaqtda yangilanish", "Ko'p tilli menyu", "Statistik hisobotlar", "Oson boshqaruv paneli"],
   },
   "telegram-bot": {
-    title: "Telegram Bot",
+    title: "Telegram bot",
     shortDescription: "Buyurtma, mijozlar bilan aloqa va avtomatik javoblar uchun botlar.",
     description:
       "Biznesingiz jarayonlarini avtomatlashtiradigan, mijozlar bilan 24/7 muloqot qiladigan Telegram botlarini yaratamiz.",
     features: ["Buyurtma qabul qilish", "To'lov integratsiyasi", "Admin panel", "Avtomatik bildirishnomalar"],
   },
   "online-ordering": {
-    title: "Online Ordering",
+    title: "Onlayn buyurtma tizimi",
     shortDescription: "To'liq huquqli onlayn buyurtma va yetkazib berish tizimlari.",
     description:
       "Mijozlaringiz uchun qulay, tezkor va ishonchli onlayn buyurtma platformasini web va mobil qurilmalarda taqdim etamiz.",
     features: ["Savat va to'lov", "Yetkazib berish trekingi", "Buyurtmalar tarixi", "Ombor integratsiyasi"],
   },
   "business-automation": {
-    title: "Business Automation",
+    title: "Biznesni avtomatlashtirish va CRM",
     shortDescription: "Ichki jarayonlarni avtomatlashtirib, vaqt va resurslarni tejang.",
     description:
       "CRM avtomatlashtirish — mijozlar, buyurtmalar va lidlarni bitta tizimda birlashtirib, biznes jarayonlarini qo'lda boshqarish o'rniga avtomatlashtiradigan yechim. FRONTIX veb-sayt, Telegram bot va buyurtma tizimingizni CRM'ga ulaydi: mijoz tarixi, buyurtma holati va jamoa vazifalari bitta joyda ko'rinadi, hisobot va analitika esa tezkor qaror qabul qilishga yordam beradi.",
-    features: ["Workflow avtomatizatsiya", "CRM integratsiyasi", "Hisobot va analitika", "API bog'lanishlar"],
+    features: ["Jarayonlarni avtomatlashtirish", "CRM tizimi", "Hisobot va tahlil", "API orqali integratsiya"],
   },
   "custom-software": {
-    title: "Custom Software",
+    title: "Maxsus dasturiy ta'minot",
     shortDescription: "Sizning biznesingiz talablariga mos individual dasturiy yechimlar.",
     description:
       "Standart yechimlar yetarli bo'lmaganda, biznesingizning noyob ehtiyojlariga mos maxsus dasturiy ta'minot ishlab chiqamiz.",
@@ -593,7 +593,7 @@ export const translations: Record<Lang, Dictionary> = {
       paragraph1:
         "FRONTIX — Toshkentda joylashgan, 2021-yildan buyon bizneslarga zamonaviy raqamli yechimlar orqali o'sishga yordam beradigan IT kompaniya. Har bir loyihaga alohida yondashib, mijozlarimizning haqiqiy maqsadlariga xizmat qiluvchi mahsulotlar yaratamiz.",
       paragraph2:
-        "Kichik startaplardan tortib yirik brendlargacha — 15 nafar mutaxassisdan iborat jamoamiz website, Telegram bot, QR menyu va avtomatlashtirish tizimlari orqali o'nlab bizneslarning raqamli transformatsiyasida ishtirok etgan.",
+        "Kichik startaplardan tortib yirik brendlargacha — 15 nafar mutaxassisdan iborat jamoamiz veb-sayt, Telegram bot, QR menyu va avtomatlashtirish tizimlari orqali o'nlab bizneslarning raqamli transformatsiyasida ishtirok etgan.",
       quote: "Har bir piksel, har bir qator kod — biznesingiz muvaffaqiyati uchun.",
       quoteAuthor: "— FRONTIX jamoasi",
       valuesEyebrow: "Qadriyatlarimiz",
@@ -631,7 +631,7 @@ export const translations: Record<Lang, Dictionary> = {
       sendAgain: "Yana yuborish",
     },
     footer: {
-      description: "Bizneslar uchun zamonaviy website, Telegram bot, QR menyu va avtomatlashtirish yechimlarini yaratamiz.",
+      description: "Bizneslar uchun zamonaviy veb-sayt, Telegram bot, QR-menyu va avtomatlashtirish yechimlarini yaratamiz.",
       navTitle: "Navigatsiya",
       contactTitle: "Aloqa",
       rights: "Barcha huquqlar himoyalangan.",

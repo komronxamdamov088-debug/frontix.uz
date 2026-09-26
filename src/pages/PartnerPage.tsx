@@ -88,7 +88,7 @@ export default function PartnerPage() {
               transition={{ duration: 0.7, delay: 0.08, ease }}
               className="mt-8 flex h-32 w-32 items-center justify-center rounded-[2rem] border border-ink/[0.06] bg-white p-5 shadow-[0_20px_50px_-20px_rgba(5,5,6,0.25)] dark:border-white/10"
             >
-              <img src={partner.logo} alt={partner.name} className="max-h-full max-w-full object-contain" />
+              <img src={partner.logo} alt={`${partner.name} logo`} width={88} height={88} className="max-h-full max-w-full object-contain" />
             </motion.div>
 
             <motion.div
@@ -209,7 +209,7 @@ export default function PartnerPage() {
                   className="group flex items-center gap-3 rounded-2xl border border-ink/[0.06] bg-paper p-3 shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-500/30 dark:border-white/10 dark:bg-white/[0.03]"
                 >
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white p-1.5 ring-1 ring-ink/[0.06]">
-                    <img src={p.logo} alt="" className="max-h-full max-w-full object-contain" />
+                    <img src={p.logo} alt={`${p.name} logo`} width={32} height={32} loading="lazy" className="max-h-full max-w-full object-contain" />
                   </span>
                   <span className="truncate text-sm font-medium">{p.name}</span>
                 </Link>

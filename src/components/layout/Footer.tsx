@@ -4,6 +4,7 @@ import { InstagramIcon } from "@/components/icons/InstagramIcon";
 import { Logo } from "@/components/ui/Logo";
 import { Container } from "@/components/ui/Container";
 import { SITE } from "@/data/site";
+import { services } from "@/data/services";
 import { useLanguage } from "@/context/LanguageContext";
 
 export function Footer() {
@@ -25,7 +26,7 @@ export function Footer() {
   return (
     <footer className="border-t border-ink/10 dark:border-white/10 bg-paper-2/60 dark:bg-ink-2/60">
       <Container className="py-16 sm:py-20">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
             <Logo />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-ink/55 dark:text-paper/55">
@@ -58,6 +59,24 @@ export function Footer() {
                 <Mail size={16} />
               </a>
             </div>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-ink/40 dark:text-paper/40">
+              {t.nav.services}
+            </h3>
+            <ul className="mt-5 space-y-3">
+              {services.map((service) => (
+                <li key={service.slug}>
+                  <Link
+                    to={`/services/${service.slug}`}
+                    className="text-sm text-ink/65 dark:text-paper/65 hover:text-ink dark:hover:text-paper transition-colors"
+                  >
+                    {t.services[service.slug].title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div>

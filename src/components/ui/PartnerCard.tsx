@@ -75,7 +75,9 @@ export function PartnerCard({ partner, index = 0 }: { partner: Partner; index?: 
         <div className="pointer-events-none absolute -inset-y-10 -left-1/3 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-brand-500/15 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[280%]" />
         <motion.img
           src={partner.logo}
-          alt={partner.name}
+          alt={`${partner.name} logo`}
+          width={240}
+          height={240}
           style={{ translateZ: 30 }}
           className="relative max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-[1.05]"
         />

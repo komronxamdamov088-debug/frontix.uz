@@ -37,6 +37,32 @@ export const faqItems: FaqItem[] = [
   {
     category: "general",
     question: {
+      uz: "FRONTIX nima va qayerda joylashgan?",
+      ru: "Что такое FRONTIX и где находится компания?",
+      en: "What is FRONTIX and where is it located?",
+    },
+    answer: {
+      uz: "FRONTIX — Toshkentda joylashgan IT kompaniya. 2021-yildan buyon 15 nafar mutaxassis O'zbekiston bizneslari uchun veb-sayt, Telegram bot, QR-menyu, onlayn buyurtma tizimlari, CRM va maxsus dasturlar yaratadi.",
+      ru: "FRONTIX — IT-компания из Ташкента. С 2021 года команда из 15 специалистов создаёт для бизнеса Узбекистана сайты, Telegram-ботов, QR-меню, системы онлайн-заказов, CRM и ПО на заказ.",
+      en: "FRONTIX is an IT company based in Tashkent. Since 2021, its team of 15 specialists has built websites, Telegram bots, QR menus, online ordering systems, CRM and custom software for businesses in Uzbekistan.",
+    },
+  },
+  {
+    category: "general",
+    question: {
+      uz: "Toshkentda Telegram bot yoki QR-menyuni qayerdan buyurtma qilsa bo'ladi?",
+      ru: "Где в Ташкенте заказать Telegram-бота или QR-меню?",
+      en: "Where can I order a Telegram bot or QR menu in Tashkent?",
+    },
+    answer: {
+      uz: "FRONTIX Toshkentda biznes uchun Telegram botlar (buyurtma, bron, avtomatik javoblar) va restoran hamda kafelar uchun QR-menyularni yaratadi. Bepul konsultatsiya uchun Aloqa sahifasi, telefon yoki Telegram orqali murojaat qiling.",
+      ru: "FRONTIX в Ташкенте разрабатывает Telegram-ботов для бизнеса (заказы, брони, автоответы) и QR-меню для ресторанов и кафе. Для бесплатной консультации напишите через страницу контактов, по телефону или в Telegram.",
+      en: "FRONTIX in Tashkent builds Telegram bots for businesses (orders, bookings, auto-replies) and QR menus for restaurants and cafes. For a free consultation, reach out through the contact page, by phone or on Telegram.",
+    },
+  },
+  {
+    category: "general",
+    question: {
       uz: "Toshkentda sayt va dastur qilib beradigan kompaniyani qanday tanlash kerak?",
       ru: "Как выбрать компанию, которая делает сайты и программы в Ташкенте?",
       en: "How do I choose a website and software development company in Tashkent?",
@@ -123,6 +149,32 @@ export const faqItems: FaqItem[] = [
       uz: "To'lov bosqichma-bosqich (oldindan va yakunda) yoki kelishilgan jadval asosida amalga oshiriladi.",
       ru: "Оплата поэтапная (предоплата и расчёт по завершении) или по согласованному графику.",
       en: "Payment is made in stages (upfront and on completion) or on an agreed schedule.",
+    },
+  },
+  {
+    category: "technical",
+    question: {
+      uz: "Restoran QR-menyuni qanday yaratadi?",
+      ru: "Как ресторану создать QR-меню?",
+      en: "How can a restaurant create a QR menu?",
+    },
+    answer: {
+      uz: "Taomlar ro'yxati, narxlar va rasmlarni tayyorlaysiz; ular admin panelga joylanadi va har bir stol uchun QR kod chop etiladi. Mijoz kodni telefon kamerasi bilan skanerlab, ilova o'rnatmasdan menyuni ko'radi. FRONTIX bilan bu odatda 1-2 hafta oladi.",
+      ru: "Вы готовите список блюд, цены и фото; они загружаются в админ-панель, и для каждого стола печатается QR-код. Гость сканирует код камерой телефона и смотрит меню без приложения. С FRONTIX это обычно занимает 1-2 недели.",
+      en: "You prepare the list of dishes, prices and photos; they're loaded into an admin panel and a QR code is printed for each table. Guests scan it with their phone camera and see the menu without installing an app. With FRONTIX this usually takes 1-2 weeks.",
+    },
+  },
+  {
+    category: "technical",
+    question: {
+      uz: "Biznes jarayonlarini qanday avtomatlashtirish mumkin?",
+      ru: "Как автоматизировать бизнес-процессы?",
+      en: "How can a business automate its processes?",
+    },
+    answer: {
+      uz: "Avval qo'lda, Excel yoki daftarda bajariladigan takroriy ishlarni aniqlang: buyurtmalar, to'lovlar, eslatmalar, hisobotlar. Keyin ularni CRM tizimi, Telegram bot yoki onlayn buyurtma tizimiga o'tkazish mumkin — ma'lumot bir joyda to'planadi, eslatma va hisobotlar avtomatik bo'ladi.",
+      ru: "Сначала определите рутинную работу, которая ведётся вручную, в Excel или тетради: заказы, оплаты, напоминания, отчёты. Затем её можно перенести в CRM, Telegram-бота или систему онлайн-заказов — данные собираются в одном месте, а напоминания и отчёты становятся автоматическими.",
+      en: "First identify the repetitive work done by hand, in Excel or in notebooks: orders, payments, reminders, reports. It can then move into a CRM, a Telegram bot or an online ordering system — data sits in one place and reminders and reports become automatic.",
     },
   },
   {

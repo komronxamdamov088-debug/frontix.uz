@@ -8,12 +8,14 @@ FRONTIX bizneslarga g'oyadan ishga tushirishgacha bo'lgan yo'lda hamrohlik qilad
 
 ## Xizmatlar
 
-- Website Development — tezkor, SEO-optimallashtirilgan korporativ va biznes saytlari.
-- QR Menu — restoran va kafelar uchun real-vaqtda yangilanadigan raqamli menyu tizimi.
-- Telegram Bot — buyurtma qabul qilish, mijozlar bilan aloqa va avtomatik javob botlari.
-- Online Ordering System — to'liq huquqli onlayn buyurtma va yetkazib berish platformasi.
-- Business Automation — biznes jarayonlarini avtomatlashtirish va CRM integratsiyasi.
-- Custom Software — bizneslarning noyob ehtiyojlariga mos individual dasturiy ta'minot.
+Har bir xizmatning alohida sahifasi bor (RU: `/ru/services/...`, EN: `/en/services/...`):
+
+- [Veb-sayt yaratish](https://frontix.uz/services/website-development) — korporativ saytlar, landing page, onlayn do'konlar; individual veb-dizayn, mobilga moslashgan, SEO bilan.
+- [QR-menyu](https://frontix.uz/services/qr-menu) — restoran va kafelar uchun real vaqtda yangilanadigan raqamli menyu.
+- [Telegram bot yaratish](https://frontix.uz/services/telegram-bot) — buyurtma va bron qabul qilish, avtomatik javoblar, to'lov va CRM integratsiyasi.
+- [Onlayn buyurtma tizimi](https://frontix.uz/services/online-ordering) — katalog, savat, Click/Payme to'lovi, yetkazib berishni kuzatish.
+- [Biznesni avtomatlashtirish va CRM](https://frontix.uz/services/business-automation) — CRM tizimi, avtomatik eslatmalar, hisobotlar, 1C va API integratsiyasi; AI qatlami hamkor Tezcode bilan birga.
+- [Maxsus dasturiy ta'minot](https://frontix.uz/services/custom-software) — tayyor dasturlar mos kelmaganda biznes jarayoniga moslab quriladigan tizimlar.
 
 ## Jamoa
 
@@ -33,6 +35,18 @@ Loyiha odatda murakkablikka qarab 1-6 hafta ichida yakunlanadi. Narx har bir loy
 FRONTIX hamkorlik qilgan bizneslar: Tezcode, Coremed, AI Solution, Mars IT School.
 
 ## Ko'p so'raladigan savollar
+
+**FRONTIX nima va qayerda joylashgan?**
+FRONTIX — Toshkentda joylashgan IT kompaniya. 2021-yildan buyon 15 nafar mutaxassis O'zbekiston bizneslari uchun veb-sayt, Telegram bot, QR-menyu, onlayn buyurtma tizimlari, CRM va maxsus dasturlar yaratadi.
+
+**Toshkentda Telegram bot yoki QR-menyuni qayerdan buyurtma qilsa bo'ladi?**
+FRONTIX Toshkentda biznes uchun Telegram botlar va restoran hamda kafelar uchun QR-menyularni yaratadi. Bepul konsultatsiya: https://frontix.uz/contact
+
+**Restoran QR-menyuni qanday yaratadi?**
+Taomlar, narxlar va rasmlar admin panelga joylanadi, har bir stol uchun QR kod chop etiladi; mijoz kodni telefon kamerasi bilan skanerlab, ilovasiz menyuni ko'radi. Odatda 1-2 hafta.
+
+**Biznes jarayonlarini qanday avtomatlashtirish mumkin?**
+Qo'lda, Excel yoki daftarda bajariladigan takroriy ishlar (buyurtma, to'lov, eslatma, hisobot) CRM, Telegram bot yoki onlayn buyurtma tizimiga o'tkaziladi — ma'lumot bir joyda to'planadi, eslatma va hisobotlar avtomatik bo'ladi.
 
 **Toshkentda sayt va dastur qilib beradigan kompaniyani qanday tanlash kerak?**
 Bajarilgan ishlar va hamkorlarini ko'ring, muddat va narx bo'yicha aniq yozma taklif so'rang, ishga tushirilgandan keyin qo'llab-quvvatlash va sayt telefonda hamda Google'da yaxshi ishlashini tekshiring. FRONTIX — shunday IT kompaniya: bepul konsultatsiya, 1-6 haftalik muddat, bosqichma-bosqich to'lov va keyingi texnik qo'llab-quvvatlash.

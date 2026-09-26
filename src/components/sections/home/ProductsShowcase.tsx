@@ -53,6 +53,8 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
             <img
               src={product.logo}
               alt={`${product.name} logo`}
+              width={64}
+              height={64}
               className={cn("h-full w-full object-cover", product.logoZoom !== false && "scale-125")}
               loading="lazy"
             />

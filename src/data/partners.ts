@@ -1,7 +1,7 @@
-import partner1 from "@/assets/partners/partner-1.png";
-import partner2 from "@/assets/partners/partner-2.png";
-import partner4 from "@/assets/partners/partner-4.png";
-import partner5 from "@/assets/partners/partner-5.png";
+import partner1 from "@/assets/partners/tezcode-logo.webp";
+import partner2 from "@/assets/partners/coremed-logo.webp";
+import partner4 from "@/assets/partners/ai-solution-logo.webp";
+import partner5 from "@/assets/partners/mars-it-school-logo.webp";
 import type { Lang } from "@/i18n/translations";
 
 type Localized<T = string> = Record<Lang, T>;

@@ -24,7 +24,17 @@ function setMeta(attr: "name" | "property", key: string, content: string) {
   el.setAttribute("content", content);
 }
 
-export function Seo({ title, description, keywords, path = "/", jsonLd }: SeoProps) {
+const MAX_DESCRIPTION = 160;
+
+/** Google cuts snippets at ~160 chars — trim at a word boundary instead. */
+function clampDescription(text: string): string {
+  if (text.length <= MAX_DESCRIPTION) return text;
+  const cut = text.slice(0, MAX_DESCRIPTION - 1);
+  return cut.slice(0, cut.lastIndexOf(" ")).replace(/[,;:—–-]\s*$/, "") + "…";
+}
+
+export function Seo({ title, description: rawDescription, keywords, path = "/", jsonLd }: SeoProps) {
+  const description = clampDescription(rawDescription);
   const { lang } = useLanguage();
 
   useEffect(() => {

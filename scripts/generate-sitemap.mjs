@@ -8,6 +8,7 @@ import { SOLUTION_ROUTES } from "./solutionRoutes.mjs";
 import { BLOG_ROUTES } from "./blogRoutes.mjs";
 import { PROJECT_ROUTES } from "./projectRoutes.mjs";
 import { PARTNER_PATHS } from "./partnerRoutes.mjs";
+import { SERVICE_PATHS } from "./serviceRoutes.mjs";
 
 // Keep in sync with SITE.url in src/data/site.ts (plain node script, no TS
 // loader, so this can't just import it).
@@ -15,6 +16,7 @@ const SITE_URL = "https://frontix.uz";
 const PAGES = [
   { path: "/", priority: "1.0" },
   { path: "/services", priority: "0.9" },
+  ...SERVICE_PATHS.map((path) => ({ path, priority: "0.9" })),
   { path: "/team", priority: "0.8" },
   { path: "/partners", priority: "0.7" },
   ...PARTNER_PATHS.map((path) => ({ path, priority: "0.6" })),

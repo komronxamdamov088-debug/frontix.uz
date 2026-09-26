@@ -6,6 +6,52 @@ import { Reveal, staggerContainer, staggerItem } from "@/components/ui/Reveal";
 import { CTASection } from "@/components/sections/CTASection";
 import { valueIcons } from "@/data/values";
 import { useLanguage } from "@/context/LanguageContext";
+import { Link } from "@/components/i18n/LocalizedLink";
+import type { Lang } from "@/i18n/translations";
+
+// "FRONTIX at a glance" — plain facts (all stated elsewhere on the site) in a
+// form that search engines and AI answer engines can quote directly.
+const FACTS: Record<Lang, { title: string; items: { label: string; value: string; to?: string }[] }> = {
+  uz: {
+    title: "FRONTIX qisqacha",
+    items: [
+      { label: "Kim", value: "Toshkentdagi IT kompaniya — bizneslar uchun sayt va dasturlar yaratadi" },
+      { label: "Qayerda", value: "Toshkent, O'zbekiston; O'zbekiston bo'ylab bizneslar bilan ishlaydi" },
+      { label: "Qachondan", value: "2021-yildan buyon" },
+      { label: "Jamoa", value: "15 nafar mutaxassis" },
+      { label: "Xizmatlar", value: "Veb-sayt, Telegram bot, QR-menyu, onlayn buyurtma, CRM va avtomatlashtirish, maxsus dasturlar", to: "/services" },
+      { label: "Kimlar uchun", value: "Kichik va o'rta biznes, restoran va kafelar, startaplar, onlayn do'konlar" },
+      { label: "Muddat", value: "Odatda 1-6 hafta" },
+      { label: "Tillar", value: "O'zbek, rus va ingliz" },
+    ],
+  },
+  ru: {
+    title: "FRONTIX коротко",
+    items: [
+      { label: "Кто", value: "IT-компания в Ташкенте — разрабатывает сайты и программы для бизнеса" },
+      { label: "Где", value: "Ташкент, Узбекистан; работает с бизнесом по всему Узбекистану" },
+      { label: "С какого года", value: "С 2021 года" },
+      { label: "Команда", value: "15 специалистов" },
+      { label: "Услуги", value: "Сайты, Telegram-боты, QR-меню, онлайн-заказы, CRM и автоматизация, ПО на заказ", to: "/services" },
+      { label: "Для кого", value: "Малый и средний бизнес, рестораны и кафе, стартапы, интернет-магазины" },
+      { label: "Сроки", value: "Обычно 1-6 недель" },
+      { label: "Языки", value: "Узбекский, русский и английский" },
+    ],
+  },
+  en: {
+    title: "FRONTIX at a glance",
+    items: [
+      { label: "Who", value: "An IT company in Tashkent that builds websites and software for businesses" },
+      { label: "Where", value: "Tashkent, Uzbekistan; works with businesses across Uzbekistan" },
+      { label: "Since", value: "2021" },
+      { label: "Team", value: "15 specialists" },
+      { label: "Services", value: "Websites, Telegram bots, QR menus, online ordering, CRM and automation, custom software", to: "/services" },
+      { label: "For", value: "Small and medium businesses, restaurants and cafes, startups, online stores" },
+      { label: "Timeline", value: "Usually 1-6 weeks" },
+      { label: "Languages", value: "Uzbek, Russian and English" },
+    ],
+  },
+};
 import { motion } from "framer-motion";
 
 export default function About() {
@@ -41,6 +87,27 @@ export default function About() {
               <p className="mt-4 text-base leading-relaxed text-ink/60 dark:text-paper/60">
                 {t.about.paragraph2}
               </p>
+              <div className="mt-8 rounded-3xl border border-ink/10 p-6 dark:border-white/10">
+                <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-ink/45 dark:text-paper/45">
+                  {FACTS[lang].title}
+                </h2>
+                <dl className="mt-4 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-[auto_1fr]">
+                  {FACTS[lang].items.map((item) => (
+                    <div key={item.label} className="contents">
+                      <dt className="text-sm font-semibold">{item.label}</dt>
+                      <dd className="text-sm text-ink/65 dark:text-paper/65">
+                        {item.to ? (
+                          <Link to={item.to} className="hover:text-brand-500 hover:underline">
+                            {item.value}
+                          </Link>
+                        ) : (
+                          item.value
+                        )}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
             </Reveal>
 
             <Reveal delay={0.1}>

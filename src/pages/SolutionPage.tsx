@@ -63,7 +63,10 @@ export default function SolutionPage() {
   const serviceLabel = serviceLabels[lang][service.slug];
   const h1 = solutionHeading(lang, text.nameFor, service.slug);
   const metaTitle = lang === "uz" ? `${text.shortName} uchun ${serviceLabel}` : h1;
-  const metaDescription = solution.intro.split(". ")[0] + ".";
+  // First sentence of the intro; add the second when the first alone is too
+  // short to be a useful search snippet.
+  const sentences = solution.intro.split(". ");
+  const metaDescription = (sentences[0].length < 110 && sentences[1] ? `${sentences[0]}. ${sentences[1]}` : sentences[0]).replace(/\.?$/, ".");
   const metaKeywords = `${h1}, ${text.name}, ${serviceLabel}, ${copy.geo}, FRONTIX`;
   const path = `/yechimlar/${industry.slug}/${service.slug}`;
   const otherServices = industry.relevantServices.filter((s) => s !== service.slug);

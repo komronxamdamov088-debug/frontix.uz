@@ -10,6 +10,7 @@ import { serviceMockups } from "@/components/sections/services/ServiceMockups";
 import { services } from "@/data/services";
 import { useLanguage } from "@/context/LanguageContext";
 import { localizePath } from "@/i18n/langRoutes";
+import { Link } from "@/components/i18n/LocalizedLink";
 
 export default function Services() {
   const { t, lang } = useLanguage();
@@ -21,7 +22,7 @@ export default function Services() {
     description: t.services[service.slug].description,
     provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
     areaServed: "UZ",
-    url: `${SITE.url}${localizePath(lang, "/services")}`,
+    url: `${SITE.url}${localizePath(lang, `/services/${service.slug}`)}`,
   }));
 
   return (
@@ -74,10 +75,18 @@ export default function Services() {
                     <p className="mt-4 text-base leading-relaxed text-ink/60 dark:text-paper/60">
                       {text.description}
                     </p>
-                    <ButtonLink to="/contact" variant="secondary" className="mt-7">
-                      {t.servicesPage.orderCta}
-                      <ArrowRight size={16} />
-                    </ButtonLink>
+                    <div className="mt-7 flex flex-wrap items-center gap-3">
+                      <ButtonLink to={`/services/${service.slug}`} variant="secondary">
+                        {t.servicesPreview.more}
+                        <ArrowRight size={16} />
+                      </ButtonLink>
+                      <Link
+                        to="/contact"
+                        className="text-sm font-medium text-ink/60 transition-colors hover:text-brand-500 dark:text-paper/60"
+                      >
+                        {t.servicesPage.orderCta}
+                      </Link>
+                    </div>
                   </div>
 
                   <div className={reversed ? "lg:order-1" : ""}>

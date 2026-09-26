@@ -11,6 +11,7 @@ import { SOLUTION_ROUTES } from "./solutionRoutes.mjs";
 import { BLOG_ROUTES } from "./blogRoutes.mjs";
 import { PROJECT_ROUTES } from "./projectRoutes.mjs";
 import { PARTNER_PATHS } from "./partnerRoutes.mjs";
+import { SERVICE_PATHS } from "./serviceRoutes.mjs";
 
 const PORT = 4321;
 const ROOT = process.cwd();
@@ -19,6 +20,7 @@ const DIST = join(ROOT, "dist");
 const PAGE_PATHS = [
   "/",
   "/services",
+  ...SERVICE_PATHS,
   "/team",
   "/partners",
   ...PARTNER_PATHS,

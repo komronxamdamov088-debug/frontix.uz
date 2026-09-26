@@ -34,7 +34,7 @@ export function ServiceCard({ service, index = 0 }: { service: Service; index?: 
       </p>
 
       <Link
-        to="/contact"
+        to={`/services/${service.slug}`}
         className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-ink/70 dark:text-paper/70 group-hover:text-brand-500 transition-colors"
       >
         {t.servicesPreview.more}

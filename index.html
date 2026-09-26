@@ -48,7 +48,10 @@
         "image": "https://frontix.uz/og-image.png",
         "description": "FRONTIX — Toshkentda sayt va raqamli dastur qilib beradigan IT kompaniya: veb-sayt, Telegram bot, QR menyu, onlayn buyurtma va CRM tizimlarini 1-6 haftada yaratamiz.",
         "foundingDate": "2021",
-        "areaServed": "UZ",
+        "areaServed": [
+          { "@type": "City", "name": "Tashkent" },
+          { "@type": "Country", "name": "Uzbekistan" }
+        ],
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Toshkent",
@@ -82,6 +85,18 @@
             "availableLanguage": ["uz", "ru", "en"]
           }
         ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "FRONTIX xizmatlari",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Veb-sayt yaratish", "url": "https://frontix.uz/services/website-development" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "QR-menyu", "url": "https://frontix.uz/services/qr-menu" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Telegram bot yaratish", "url": "https://frontix.uz/services/telegram-bot" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Onlayn buyurtma tizimi", "url": "https://frontix.uz/services/online-ordering" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Biznesni avtomatlashtirish va CRM", "url": "https://frontix.uz/services/business-automation" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Maxsus dasturiy ta'minot", "url": "https://frontix.uz/services/custom-software" } }
+          ]
+        },
         "sameAs": [
           "https://t.me/frontix_official",
           "https://instagram.com/frontix_uz",
@@ -94,7 +109,9 @@
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "FRONTIX",
-        "url": "https://frontix.uz/"
+        "url": "https://frontix.uz/",
+        "inLanguage": ["uz", "ru", "en"],
+        "publisher": { "@type": "Organization", "name": "FRONTIX", "url": "https://frontix.uz/" }
       }
     </script>
 
