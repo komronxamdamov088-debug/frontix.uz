@@ -58,6 +58,8 @@ function waitForServer(url, timeoutMs = 20000) {
 // executablePath override) whenever we're building on Vercel, and fall back to
 // Playwright's normal bundled browser everywhere else (e.g. local dev on macOS,
 // where the sparticuz binary — Linux-only — can't run at all).
+let sparticuzPath;
+
 async function launchBrowser(chromium) {
   // Rendering in parallel tabs means all but one tab are "in the background",
   // and Chromium throttles background tabs (timers, rAF) — on Vercel that made
@@ -69,8 +71,11 @@ async function launchBrowser(chromium) {
   ];
   if (!process.env.VERCEL) return chromium.launch({ args: noThrottle });
   const sparticuzChromium = (await import("@sparticuz/chromium")).default;
+  // executablePath() unpacks the binary into /tmp; share one call between the
+  // parallel workers so they don't race each other unpacking it.
+  sparticuzPath ??= sparticuzChromium.executablePath();
   return chromium.launch({
-    executablePath: await sparticuzChromium.executablePath(),
+    executablePath: await sparticuzPath,
     args: [...sparticuzChromium.args, ...noThrottle],
   });
 }
@@ -86,7 +91,6 @@ async function run() {
   try {
     await waitForServer(`http://localhost:${PORT}/`);
 
-    const browser = await launchBrowser(chromium);
 
     // Capture every route into memory first, and only write files to disk
     // after the whole loop finishes. Writing dist/index.html mid-loop would
@@ -121,19 +125,21 @@ async function run() {
       }
     }
 
-    // ~730 routes rendered one at a time took 20+ minutes on Vercel, close to
-    // its build time limit — render in parallel tabs sharing one queue.
-    const CONCURRENCY = process.env.VERCEL ? 4 : 6;
+    // ~750 routes rendered one at a time took 30+ minutes on Vercel, close to
+    // its build time limit. Workers share one queue, and each gets its own
+    // browser: @sparticuz/chromium runs with --single-process, so tabs in one
+    // browser would all share a single process and not actually run in
+    // parallel.
+    const CONCURRENCY = 4;
     const queue = [...ROUTES];
     await Promise.all(
       Array.from({ length: CONCURRENCY }, async () => {
+        const browser = await launchBrowser(chromium);
         const page = await browser.newPage();
         while (queue.length > 0) await capture(page, queue.shift());
-        await page.close();
+        await browser.close();
       }),
     );
-
-    await browser.close();
 
     for (const { route, outDir, html } of captured) {
       if (!existsSync(outDir)) mkdirSync(outDir, { recursive: true });
