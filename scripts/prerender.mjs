@@ -57,11 +57,19 @@ function waitForServer(url, timeoutMs = 20000) {
 // Playwright's normal bundled browser everywhere else (e.g. local dev on macOS,
 // where the sparticuz binary — Linux-only — can't run at all).
 async function launchBrowser(chromium) {
-  if (!process.env.VERCEL) return chromium.launch();
+  // Rendering in parallel tabs means all but one tab are "in the background",
+  // and Chromium throttles background tabs (timers, rAF) — on Vercel that made
+  // every visibility wait time out. Turn the throttling off.
+  const noThrottle = [
+    "--disable-background-timer-throttling",
+    "--disable-backgrounding-occluded-windows",
+    "--disable-renderer-backgrounding",
+  ];
+  if (!process.env.VERCEL) return chromium.launch({ args: noThrottle });
   const sparticuzChromium = (await import("@sparticuz/chromium")).default;
   return chromium.launch({
     executablePath: await sparticuzChromium.executablePath(),
-    args: sparticuzChromium.args,
+    args: [...sparticuzChromium.args, ...noThrottle],
   });
 }
 
@@ -92,7 +100,9 @@ async function run() {
     async function capture(page, route) {
       try {
         await page.goto(`http://localhost:${PORT}${route}`, { waitUntil: "networkidle", timeout: 30000 });
-        await page.waitForSelector("footer", { timeout: 15000 });
+        // "attached", not the default "visible": visibility checks need a
+        // rendered frame, which a background tab may not produce promptly.
+        await page.waitForSelector("footer", { state: "attached", timeout: 15000 });
         await page.waitForTimeout(500);
         // Strip the splash screen and mark the document so a real browser's
         // hydration doesn't replay it over content that's already visible.
@@ -111,7 +121,7 @@ async function run() {
 
     // ~730 routes rendered one at a time took 20+ minutes on Vercel, close to
     // its build time limit — render in parallel tabs sharing one queue.
-    const CONCURRENCY = 6;
+    const CONCURRENCY = process.env.VERCEL ? 4 : 6;
     const queue = [...ROUTES];
     await Promise.all(
       Array.from({ length: CONCURRENCY }, async () => {
