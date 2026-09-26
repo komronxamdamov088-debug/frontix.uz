@@ -1,3 +1,7 @@
+import type { Lang } from "@/i18n/translations";
+import { solutionsRu } from "@/data/i18n/solutions.ru";
+import { solutionsEn } from "@/data/i18n/solutions.en";
+
 export interface SolutionFaq {
   question: string;
   answer: string;
@@ -11,7 +15,8 @@ export interface SolutionContent {
   faq: SolutionFaq[];
 }
 
-// Keyed by `${industrySlug}__${serviceSlug}`. Uzbek-only pilot content — see
+// Keyed by `${industrySlug}__${serviceSlug}`. Uzbek source content; ru/en live
+// in src/data/i18n/solutions.{ru,en}.ts under the same keys — see
 // src/data/industries.ts for the industry list this must stay in sync with.
 export const solutions: Record<string, SolutionContent> = {
   "restoranlar-va-kafelar__qr-menu": {
@@ -2875,6 +2880,13 @@ export function getSolutionKey(industrySlug: string, serviceSlug: string): strin
   return `${industrySlug}__${serviceSlug}`;
 }
 
-export function getSolution(industrySlug: string, serviceSlug: string): SolutionContent | undefined {
-  return solutions[getSolutionKey(industrySlug, serviceSlug)];
+const solutionTranslations: Record<Exclude<Lang, "uz">, Record<string, SolutionContent>> = {
+  ru: solutionsRu,
+  en: solutionsEn,
+};
+
+/** Falls back to uz when a ru/en translation is missing. */
+export function getSolution(industrySlug: string, serviceSlug: string, lang: Lang = "uz"): SolutionContent | undefined {
+  const key = getSolutionKey(industrySlug, serviceSlug);
+  return (lang === "uz" ? undefined : solutionTranslations[lang][key]) ?? solutions[key];
 }

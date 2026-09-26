@@ -8,14 +8,15 @@ import { TeamPreview } from "@/components/sections/home/TeamPreview";
 import { HowWeWork } from "@/components/sections/home/HowWeWork";
 import { Testimonials } from "@/components/sections/home/Testimonials";
 import { CTASection } from "@/components/sections/CTASection";
+import { FaqSection, faqJsonLd } from "@/components/sections/FaqSection";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Home() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
 
   return (
     <>
-      <Seo title={t.meta.title} description={t.meta.description} keywords={t.meta.keywords} path="/" />
+      <Seo title={t.meta.title} description={t.meta.description} keywords={t.meta.keywords} path="/" jsonLd={faqJsonLd(lang)} />
       <Hero />
       <ServicesMarquee />
       <ServicesPreview />
@@ -24,6 +25,7 @@ export default function Home() {
       <TeamPreview />
       <HowWeWork />
       <Testimonials />
+      <FaqSection />
       <CTASection />
     </>
   );

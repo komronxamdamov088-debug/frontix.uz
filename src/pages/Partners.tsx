@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Seo, breadcrumbJsonLd } from "@/components/Seo";
 import { PageHero } from "@/components/sections/PageHero";
 import { Container } from "@/components/ui/Container";
@@ -9,7 +8,6 @@ import { useLanguage } from "@/context/LanguageContext";
 
 export default function Partners() {
   const { t, lang } = useLanguage();
-  const [openId, setOpenId] = useState<string | null>(null);
 
   return (
     <>
@@ -34,15 +32,9 @@ export default function Partners() {
 
       <section className="pb-24 sm:pb-32">
         <Container>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" style={{ perspective: 1200 }}>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4" style={{ perspective: 1200 }}>
             {partners.map((partner, i) => (
-              <PartnerCard
-                key={partner.id}
-                partner={partner}
-                index={i}
-                flipped={openId === partner.id}
-                onToggle={() => setOpenId((current) => (current === partner.id ? null : partner.id))}
-              />
+              <PartnerCard key={partner.id} partner={partner} index={i} />
             ))}
           </div>
         </Container>

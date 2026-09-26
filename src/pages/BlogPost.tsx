@@ -10,12 +10,20 @@ import { CTASection } from "@/components/sections/CTASection";
 import { getBlogPost } from "@/data/blog";
 import { useLanguage } from "@/context/LanguageContext";
 import NotFound from "@/pages/NotFound";
+import type { Lang } from "@/i18n/translations";
+
+const COPY: Record<Lang, { readTime: string; faq: string; needService: string; order: string }> = {
+  uz: { readTime: "{n} daqiqa o'qish", faq: "Ko'p so'raladigan savollar", needService: "{service} kerakmi?", order: "Buyurtma berish" },
+  ru: { readTime: "{n} мин чтения", faq: "Частые вопросы", needService: "Нужна услуга «{service}»?", order: "Заказать" },
+  en: { readTime: "{n} min read", faq: "Frequently asked questions", needService: "Need {service}?", order: "Order now" },
+};
 
 export default function BlogPost() {
   const { slug = "" } = useParams();
   const { t, lang } = useLanguage();
 
-  const post = getBlogPost(slug);
+  const post = getBlogPost(slug, lang);
+  const copy = COPY[lang];
   if (!post) return <NotFound />;
 
   const path = `/blog/${post.slug}`;
@@ -26,7 +34,7 @@ export default function BlogPost() {
     breadcrumbJsonLd(
       [
         { name: t.nav.home, path: "/" },
-        { name: "Blog", path: "/blog" },
+        { name: t.nav.blog, path: "/blog" },
         { name: post.title, path },
       ],
       lang,
@@ -76,7 +84,7 @@ export default function BlogPost() {
             <p className="mt-5 text-lg leading-relaxed text-ink/60 dark:text-paper/60 text-balance">{post.excerpt}</p>
             <div className="mt-6 inline-flex items-center gap-1.5 text-sm text-ink/45 dark:text-paper/45">
               <Clock size={14} />
-              {post.readMinutes} daqiqa o'qish
+              {copy.readTime.replace("{n}", String(post.readMinutes))}
             </div>
           </motion.div>
         </Container>
@@ -99,7 +107,7 @@ export default function BlogPost() {
         <Container>
           <div className="mx-auto max-w-2xl">
             <Reveal>
-              <h2 className="text-2xl font-semibold sm:text-3xl">Ko'p so'raladigan savollar</h2>
+              <h2 className="text-2xl font-semibold sm:text-3xl">{copy.faq}</h2>
             </Reveal>
             <div className="mt-8 space-y-4">
               {post.faq.map((item, i) => (
@@ -119,12 +127,12 @@ export default function BlogPost() {
 
             <Reveal delay={0.1}>
               <div className="mt-12 rounded-[2rem] border border-brand-500/20 bg-brand-500/[0.04] p-8 text-center sm:p-10">
-                <h3 className="text-lg font-semibold sm:text-xl">{relatedServiceText.title} kerakmi?</h3>
+                <h3 className="text-lg font-semibold sm:text-xl">{copy.needService.replace("{service}", relatedServiceText.title)}</h3>
                 <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-ink/65 dark:text-paper/65">
                   {relatedServiceText.shortDescription}
                 </p>
                 <ButtonLink to="/contact" size="lg" className="mt-6">
-                  Buyurtma berish
+                  {copy.order}
                   <ArrowRight size={16} />
                 </ButtonLink>
               </div>

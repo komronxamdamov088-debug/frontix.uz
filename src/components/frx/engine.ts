@@ -1,6 +1,7 @@
 import { services } from "@/data/services";
 import { processSteps } from "@/data/process";
 import { SITE } from "@/data/site";
+import { faqItems } from "@/data/faq";
 import { translations, type Lang } from "@/i18n/translations";
 
 export interface FrxReply {
@@ -146,8 +147,8 @@ const intents: Intent[] = [
       "поддержк", "гарант", "сопровожден",
       "support", "warranty", "guarantee", "maintenance", "after launch",
     ],
-    reply: (t) => ({
-      text: t.contact.faq[2]?.answer ?? t.frx.pricingIntro,
+    reply: (t, lang) => ({
+      text: faqAnswer("Is there support after launch?", lang) ?? t.frx.pricingIntro,
       cta: { label: t.frx.contactCta, to: "/contact" },
     }),
   },
@@ -158,8 +159,8 @@ const intents: Intent[] = [
       "способ оплат", "оплата картой", "предоплат",
       "payment method", "how to pay", "installment", "pay by card",
     ],
-    reply: (t) => ({
-      text: t.contact.faq[3]?.answer ?? t.frx.pricingIntro,
+    reply: (t, lang) => ({
+      text: faqAnswer("How does payment work?", lang) ?? t.frx.pricingIntro,
       cta: { label: t.frx.contactCta, to: "/contact" },
     }),
   },
@@ -216,6 +217,11 @@ function serviceReply(t: (typeof translations)[Lang], slug: keyof (typeof transl
     text: `${text.title}: ${text.description}\n\n${text.features.join(" · ")}\n\n${t.frx.priceNote}`,
     cta: { label: t.frx.orderCta, to: "/contact" },
   };
+}
+
+/** Looks up a site FAQ answer by its English question (see src/data/faq.ts). */
+function faqAnswer(questionEn: string, lang: Lang): string | undefined {
+  return faqItems.find((item) => item.question.en === questionEn)?.answer[lang];
 }
 
 export function getFrxReply(rawInput: string, lang: Lang): FrxReply {

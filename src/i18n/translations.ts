@@ -29,6 +29,16 @@ interface Dictionary {
     about: string;
     contact: string;
     contactCta: string;
+    company: string;
+    solutions: string;
+    projects: string;
+    blog: string;
+    solutionsDesc: string;
+    projectsDesc: string;
+    servicesDesc: string;
+    teamDesc: string;
+    partnersDesc: string;
+    aboutDesc: string;
   };
   hero: {
     badge: string;
@@ -71,6 +81,16 @@ interface Dictionary {
     pageDescription: string;
     tapHint: string;
     visitWebsite: string;
+    more: string;
+    badge: string;
+    backToAll: string;
+    /** "{name}" is replaced with the partner's name. */
+    statsTitle: string;
+    statsNote: string;
+    aboutTitle: string;
+    offeringsTitle: string;
+    partnershipTitle: string;
+    otherPartners: string;
   };
   process: {
     eyebrow: string;
@@ -115,8 +135,6 @@ interface Dictionary {
     successTitle: string;
     successDescription: string;
     sendAgain: string;
-    faqTitle: string;
-    faq: { question: string; answer: string }[];
   };
   footer: { description: string; navTitle: string; contactTitle: string; rights: string; tagline: string };
   cookieConsent: { message: string; learnMore: string; accept: string };
@@ -408,9 +426,9 @@ export const translations: Record<Lang, Dictionary> = {
       partners: {
         title: "Hamkorlar — FRONTIX mijozlari",
         description:
-          "FRONTIX O'zbekistonda Tezcode, Coremed, AI Solution, Mars IT School va QarzDaftar kabi bizneslarga raqamli yechimlar yaratib bergan IT kompaniya.",
+          "FRONTIX O'zbekistonda Tezcode, Coremed, AI Solution va Mars IT School kabi bizneslarga raqamli yechimlar yaratib bergan IT kompaniya.",
         keywords:
-          "FRONTIX mijozlari, IT kompaniya portfolio, O'zbekiston hamkorlar, Tezcode, Coremed, AI Solution, Mars IT School, QarzDaftar",
+          "FRONTIX mijozlari, IT kompaniya portfolio, O'zbekiston hamkorlar, Tezcode, Coremed, AI Solution, Mars IT School",
       },
       about: {
         title: "Biz haqimizda — FRONTIX IT kompaniyasi",
@@ -435,6 +453,16 @@ export const translations: Record<Lang, Dictionary> = {
       about: "Biz haqimizda",
       contact: "Aloqa",
       contactCta: "Biz bilan bog'lanish",
+      company: "Kompaniya",
+      solutions: "Yechimlar",
+      projects: "Loyihalar",
+      blog: "Blog",
+      solutionsDesc: "Har bir soha uchun tayyor yechimlar",
+      projectsDesc: "Biz yaratgan loyihalar",
+      servicesDesc: "Sayt, bot, QR menyu va avtomatlashtirish",
+      teamDesc: "Loyihalaringiz ustida ishlaydigan mutaxassislar",
+      partnersDesc: "Biz bilan ishlayotgan kompaniyalar",
+      aboutDesc: "FRONTIX qanday ishlaydi va nimaga ishonadi",
     },
     hero: {
       badge: "Raqamli yechimlar kompaniyasi",
@@ -505,6 +533,15 @@ export const translations: Record<Lang, Dictionary> = {
       pageDescription: "Turli sohalardagi bizneslar bilan hamkorlikda raqamli mahsulotlar yaratamiz va ularning o'sishiga hissa qo'shamiz.",
       tapHint: "Batafsil ma'lumot uchun logotipni bosing",
       visitWebsite: "Saytga o'tish",
+      more: "Batafsil",
+      badge: "Hamkor",
+      backToAll: "Barcha hamkorlar",
+      statsTitle: "{name} raqamlarda",
+      statsNote: "Ko'rsatkichlar {name} o'z saytida e'lon qilgan ma'lumotlardan olingan.",
+      aboutTitle: "{name} haqida",
+      offeringsTitle: "Nima bilan shug'ullanadi",
+      partnershipTitle: "Hamkorlik qanday tuzilgan",
+      otherPartners: "Boshqa hamkorlar",
     },
     process: {
       eyebrow: "Ish jarayoni",
@@ -592,25 +629,6 @@ export const translations: Record<Lang, Dictionary> = {
       successTitle: "So'rovingiz qabul qilindi!",
       successDescription: "So'rovingiz Telegram orqali jamoamizga yuborildi. Tez orada siz bilan bog'lanamiz.",
       sendAgain: "Yana yuborish",
-      faqTitle: "Ko'p beriladigan savollar",
-      faq: [
-        {
-          question: "Loyiha necha kunda tayyor bo'ladi?",
-          answer: "Murakkablikka qarab odatda 1-6 hafta ichida yakunlaymiz. Aniq muddat bepul konsultatsiyadan so'ng belgilanadi.",
-        },
-        {
-          question: "Narxlar qanday belgilanadi?",
-          answer: "Har bir loyiha individual baholanadi — funksionallik, dizayn murakkabligi va muddatga qarab. Konsultatsiyadan so'ng aniq taklif taqdim etamiz.",
-        },
-        {
-          question: "Loyihadan keyin qo'llab-quvvatlash bormi?",
-          answer: "Ha, barcha loyihalar uchun texnik qo'llab-quvvatlash va yangilanishlar xizmatini taklif qilamiz.",
-        },
-        {
-          question: "Qanday to'lov usullari mavjud?",
-          answer: "To'lovni bosqichma-bosqich (oldindan va yakunda) yoki kelishilgan jadval asosida amalga oshirish mumkin.",
-        },
-      ],
     },
     footer: {
       description: "Bizneslar uchun zamonaviy website, Telegram bot, QR menyu va avtomatlashtirish yechimlarini yaratamiz.",
@@ -684,9 +702,9 @@ export const translations: Record<Lang, Dictionary> = {
       partners: {
         title: "Партнёры — клиенты FRONTIX",
         description:
-          "FRONTIX сотрудничает с бизнесами Узбекистана: Tezcode, Coremed, AI Solution, Mars IT School и QarzDaftar, создавая для них цифровые решения.",
+          "FRONTIX сотрудничает с бизнесами Узбекистана: Tezcode, Coremed, AI Solution и Mars IT School, создавая для них цифровые решения.",
         keywords:
-          "клиенты FRONTIX, портфолио IT-компании, партнёры Узбекистан, Tezcode, Coremed, AI Solution, Mars IT School, QarzDaftar",
+          "клиенты FRONTIX, портфолио IT-компании, партнёры Узбекистан, Tezcode, Coremed, AI Solution, Mars IT School",
       },
       about: {
         title: "О нас — IT-компания FRONTIX",
@@ -711,6 +729,16 @@ export const translations: Record<Lang, Dictionary> = {
       about: "О нас",
       contact: "Контакты",
       contactCta: "Связаться с нами",
+      company: "Компания",
+      solutions: "Решения",
+      projects: "Проекты",
+      blog: "Блог",
+      solutionsDesc: "Готовые решения для каждой отрасли",
+      projectsDesc: "Проекты, которые мы создали",
+      servicesDesc: "Сайты, боты, QR-меню и автоматизация",
+      teamDesc: "Специалисты, которые работают над вашим проектом",
+      partnersDesc: "Компании, которые работают с нами",
+      aboutDesc: "Как работает FRONTIX и во что верит",
     },
     hero: {
       badge: "Компания цифровых решений",
@@ -781,6 +809,15 @@ export const translations: Record<Lang, Dictionary> = {
       pageDescription: "Мы сотрудничаем с бизнесами из разных сфер, создавая цифровые продукты и помогая им расти.",
       tapHint: "Нажмите на логотип, чтобы узнать больше",
       visitWebsite: "Перейти на сайт",
+      more: "Подробнее",
+      badge: "Партнёр",
+      backToAll: "Все партнёры",
+      statsTitle: "{name} в цифрах",
+      statsNote: "Показатели взяты из данных, опубликованных {name} на своём сайте.",
+      aboutTitle: "О {name}",
+      offeringsTitle: "Чем занимается",
+      partnershipTitle: "Как устроено партнёрство",
+      otherPartners: "Другие партнёры",
     },
     process: {
       eyebrow: "Процесс работы",
@@ -867,25 +904,6 @@ export const translations: Record<Lang, Dictionary> = {
       successTitle: "Ваша заявка принята!",
       successDescription: "Ваш запрос отправлен нашей команде в Telegram. Мы свяжемся с вами в ближайшее время.",
       sendAgain: "Отправить ещё раз",
-      faqTitle: "Часто задаваемые вопросы",
-      faq: [
-        {
-          question: "За сколько дней будет готов проект?",
-          answer: "Обычно завершаем за 1-6 недель в зависимости от сложности. Точный срок определяется после бесплатной консультации.",
-        },
-        {
-          question: "Как формируется цена?",
-          answer: "Каждый проект оценивается индивидуально — исходя из функциональности, сложности дизайна и сроков. После консультации предоставим точное предложение.",
-        },
-        {
-          question: "Есть ли поддержка после завершения проекта?",
-          answer: "Да, для всех проектов мы предлагаем техническую поддержку и обновления.",
-        },
-        {
-          question: "Какие способы оплаты доступны?",
-          answer: "Оплату можно произвести поэтапно (предоплата и по завершении) или по согласованному графику.",
-        },
-      ],
     },
     footer: {
       description: "Создаём для бизнеса современные сайты, Telegram-ботов, QR-меню и системы автоматизации.",
@@ -959,9 +977,9 @@ export const translations: Record<Lang, Dictionary> = {
       partners: {
         title: "Partners — FRONTIX clients",
         description:
-          "FRONTIX has partnered with businesses across Uzbekistan, including Tezcode, Coremed, AI Solution, Mars IT School and QarzDaftar, building digital solutions.",
+          "FRONTIX has partnered with businesses across Uzbekistan, including Tezcode, Coremed, AI Solution and Mars IT School, building digital solutions.",
         keywords:
-          "FRONTIX clients, IT company portfolio, Uzbekistan partners, Tezcode, Coremed, AI Solution, Mars IT School, QarzDaftar",
+          "FRONTIX clients, IT company portfolio, Uzbekistan partners, Tezcode, Coremed, AI Solution, Mars IT School",
       },
       about: {
         title: "About us — FRONTIX IT company",
@@ -986,6 +1004,16 @@ export const translations: Record<Lang, Dictionary> = {
       about: "About",
       contact: "Contact",
       contactCta: "Get in touch",
+      company: "Company",
+      solutions: "Solutions",
+      projects: "Projects",
+      blog: "Blog",
+      solutionsDesc: "Ready-made solutions for every industry",
+      projectsDesc: "Projects we have built",
+      servicesDesc: "Websites, bots, QR menus and automation",
+      teamDesc: "The people who build your project",
+      partnersDesc: "Companies that work with us",
+      aboutDesc: "How FRONTIX works and what it believes in",
     },
     hero: {
       badge: "Digital solutions company",
@@ -1056,6 +1084,15 @@ export const translations: Record<Lang, Dictionary> = {
       pageDescription: "We collaborate with businesses across industries, building digital products that help them grow.",
       tapHint: "Tap a logo to learn more",
       visitWebsite: "Visit website",
+      more: "Learn more",
+      badge: "Partner",
+      backToAll: "All partners",
+      statsTitle: "{name} in numbers",
+      statsNote: "Figures are taken from data {name} publishes on its own website.",
+      aboutTitle: "About {name}",
+      offeringsTitle: "What they do",
+      partnershipTitle: "How the partnership works",
+      otherPartners: "Other partners",
     },
     process: {
       eyebrow: "Our process",
@@ -1142,25 +1179,6 @@ export const translations: Record<Lang, Dictionary> = {
       successTitle: "Your request has been received!",
       successDescription: "Your request has been sent to our team on Telegram. We'll get back to you shortly.",
       sendAgain: "Send again",
-      faqTitle: "Frequently asked questions",
-      faq: [
-        {
-          question: "How long does a project take?",
-          answer: "Usually 1-6 weeks depending on complexity. The exact timeline is set after a free consultation.",
-        },
-        {
-          question: "How is pricing determined?",
-          answer: "Every project is priced individually based on functionality, design complexity and timeline. We'll send an exact quote after a consultation.",
-        },
-        {
-          question: "Is there support after the project ends?",
-          answer: "Yes, we offer technical support and updates for every project we deliver.",
-        },
-        {
-          question: "What payment methods are available?",
-          answer: "Payment can be made in stages (upfront and on completion) or on an agreed schedule.",
-        },
-      ],
     },
     footer: {
       description: "We build modern websites, Telegram bots, QR menus and automation solutions for businesses.",

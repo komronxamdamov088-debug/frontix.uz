@@ -1,4 +1,7 @@
 import type { Service } from "@/data/services";
+import type { Lang } from "@/i18n/translations";
+import { blogRu } from "@/data/i18n/blog.ru";
+import { blogEn } from "@/data/i18n/blog.en";
 
 export interface BlogFaq {
   question: string;
@@ -25,7 +28,10 @@ export interface BlogPost {
   faq: BlogFaq[];
 }
 
-// Uzbek-only pilot, same rationale as src/data/industries.ts / solutions.ts:
+/** The translatable part of a post; ru/en live in src/data/i18n/blog.{ru,en}.ts. */
+export type BlogPostText = Pick<BlogPost, "category" | "title" | "excerpt" | "sections" | "faq">;
+
+// Uzbek source content, same rationale as src/data/industries.ts / solutions.ts:
 // genuine educational guides (not fabricated FRONTIX stats or client claims)
 // that build topical authority around the services FRONTIX offers and give
 // Google/AI answer engines real indexable content to cite.
@@ -162,6 +168,18 @@ export const blogPosts: BlogPost[] = [
   },
 ];
 
-export function getBlogPost(slug: string): BlogPost | undefined {
-  return blogPosts.find((p) => p.slug === slug);
+const blogTranslations: Record<Exclude<Lang, "uz">, Record<string, BlogPostText>> = { ru: blogRu, en: blogEn };
+
+function localizePost(post: BlogPost, lang: Lang): BlogPost {
+  const text = lang === "uz" ? undefined : blogTranslations[lang][post.slug];
+  return text ? { ...post, ...text } : post;
+}
+
+export function getBlogPosts(lang: Lang = "uz"): BlogPost[] {
+  return blogPosts.map((post) => localizePost(post, lang));
+}
+
+export function getBlogPost(slug: string, lang: Lang = "uz"): BlogPost | undefined {
+  const post = blogPosts.find((p) => p.slug === slug);
+  return post && localizePost(post, lang);
 }

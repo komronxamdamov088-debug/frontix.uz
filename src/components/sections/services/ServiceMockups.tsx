@@ -4,7 +4,7 @@ import type { Service } from "@/data/services";
 
 function Frame({ children }: { children: ReactNode }) {
   return (
-    <div className="relative flex h-full min-h-[220px] items-center justify-center overflow-hidden rounded-2xl border border-ink/10 dark:border-white/10 bg-paper-2/50 dark:bg-white/[0.03] p-6">
+    <div className="relative flex min-h-[220px] items-center justify-center overflow-hidden rounded-2xl border border-ink/10 dark:border-white/10 bg-paper-2/50 dark:bg-white/[0.03] p-6">
       <div className="grain-gradient pointer-events-none absolute inset-0" aria-hidden="true" />
       <div className="relative w-full max-w-xs">{children}</div>
     </div>

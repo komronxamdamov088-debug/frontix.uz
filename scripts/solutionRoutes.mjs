@@ -1,4 +1,4 @@
-// Uz-only pilot problem/solution pages (/yechimlar/:industry/:service).
+// Problem/solution page slugs (/yechimlar/:industry/:service, in every language).
 // Plain data so both prerender.mjs and generate-sitemap.mjs (run via plain
 // `node`, no TS loader) can import it without duplicating the list twice.
 // Keep this in sync with the `industries` array (relevantServices) in

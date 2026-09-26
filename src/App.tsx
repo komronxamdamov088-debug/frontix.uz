@@ -6,6 +6,7 @@ import Home from "@/pages/Home";
 import Services from "@/pages/Services";
 import Team from "@/pages/Team";
 import Partners from "@/pages/Partners";
+import PartnerPage from "@/pages/PartnerPage";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import SolutionsIndex from "@/pages/SolutionsIndex";
@@ -24,8 +25,15 @@ const PAGES: { path: string; element: ReactElement }[] = [
   { path: "/services", element: <Services /> },
   { path: "/team", element: <Team /> },
   { path: "/partners", element: <Partners /> },
+  { path: "/partners/:slug", element: <PartnerPage /> },
   { path: "/about", element: <About /> },
   { path: "/contact", element: <Contact /> },
+  { path: "/yechimlar", element: <SolutionsIndex /> },
+  { path: "/yechimlar/:industry/:service", element: <SolutionPage /> },
+  { path: "/blog", element: <BlogIndex /> },
+  { path: "/blog/:slug", element: <BlogPost /> },
+  { path: "/loyihalar", element: <ProjectsIndex /> },
+  { path: "/loyihalar/:slug", element: <ProjectPage /> },
 ];
 const LANG_PREFIXES = ["", "/ru", "/en"];
 
@@ -40,15 +48,6 @@ export default function App() {
               <Route key={`${prefix}${path}`} path={`${prefix}${path}` || "/"} element={element} />
             )),
           )}
-          {/* Problem/solution, blog and project pages are uz-only pilots (see
-              src/data/industries.ts / src/data/blog.ts / src/data/projects.ts),
-              so they exist only at the bare path, not under /ru or /en. */}
-          <Route path="/yechimlar" element={<SolutionsIndex />} />
-          <Route path="/yechimlar/:industry/:service" element={<SolutionPage />} />
-          <Route path="/blog" element={<BlogIndex />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
-          <Route path="/loyihalar" element={<ProjectsIndex />} />
-          <Route path="/loyihalar/:slug" element={<ProjectPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>

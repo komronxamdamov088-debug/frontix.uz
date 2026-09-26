@@ -9,32 +9,62 @@ import { Reveal } from "@/components/ui/Reveal";
 import { CTASection } from "@/components/sections/CTASection";
 import { Link } from "@/components/i18n/LocalizedLink";
 import { services } from "@/data/services";
-import { getIndustry, serviceLabelsUz } from "@/data/industries";
+import { getIndustry, getIndustryText, serviceLabels, solutionHeading } from "@/data/industries";
 import { getSolution } from "@/data/solutions";
 import { useLanguage } from "@/context/LanguageContext";
 import NotFound from "@/pages/NotFound";
+import type { Lang } from "@/i18n/translations";
 
-// Uzbek-only pilot: 6 industries x 3 services = 18 problem/solution pages at
-// /yechimlar/:industry/:service. Content lives in src/data/industries.ts and
-// src/data/solutions.ts — this component only renders it.
+const COPY: Record<Lang, { order: string; problem: string; solution: string; faq: string; otherFor: string; geo: string }> = {
+  uz: {
+    order: "Buyurtma berish",
+    problem: "Bugungi muammo",
+    solution: "FRONTIX yechimi",
+    faq: "Ko'p so'raladigan savollar",
+    otherFor: "{name} uchun boshqa yechimlar",
+    geo: "Toshkent IT yechim",
+  },
+  ru: {
+    order: "Заказать",
+    problem: "Проблема сегодня",
+    solution: "Решение FRONTIX",
+    faq: "Частые вопросы",
+    otherFor: "Другие решения для {name}",
+    geo: "IT-решение Ташкент",
+  },
+  en: {
+    order: "Order now",
+    problem: "Today's problem",
+    solution: "The FRONTIX solution",
+    faq: "Frequently asked questions",
+    otherFor: "Other solutions for {name}",
+    geo: "IT solution Tashkent",
+  },
+};
+
+// Problem/solution pages at /yechimlar/:industry/:service (plus /ru, /en).
+// Content lives in src/data/industries.ts and src/data/solutions.ts (uz) and
+// src/data/i18n/* (ru/en) — this component only renders it.
 export default function SolutionPage() {
   const { industry: industrySlug = "", service: serviceSlug = "" } = useParams();
   const { t, lang } = useLanguage();
 
   const industry = getIndustry(industrySlug);
   const service = services.find((s) => s.slug === serviceSlug);
-  const solution = industry && service ? getSolution(industry.slug, service.slug) : undefined;
+  const solution = industry && service ? getSolution(industry.slug, service.slug, lang) : undefined;
 
   if (!industry || !service || !solution || !industry.relevantServices.includes(service.slug)) {
     return <NotFound />;
   }
 
+  const copy = COPY[lang];
+  const text = getIndustryText(industry, lang);
   const serviceText = t.services[service.slug];
-  const serviceLabel = serviceLabelsUz[service.slug];
-  const h1 = `${industry.name} uchun ${serviceLabel}`;
-  const metaTitle = `${industry.shortName} uchun ${serviceLabel}`;
+  const serviceLabel = serviceLabels[lang][service.slug];
+  const h1 = solutionHeading(lang, text.nameFor, service.slug);
+  const metaTitle = lang === "uz" ? `${text.shortName} uchun ${serviceLabel}` : h1;
   const metaDescription = solution.intro.split(". ")[0] + ".";
-  const metaKeywords = `${h1}, ${industry.name}, ${serviceLabel}, Toshkent IT yechim, FRONTIX`;
+  const metaKeywords = `${h1}, ${text.name}, ${serviceLabel}, ${copy.geo}, FRONTIX`;
   const path = `/yechimlar/${industry.slug}/${service.slug}`;
   const otherServices = industry.relevantServices.filter((s) => s !== service.slug);
 
@@ -42,7 +72,7 @@ export default function SolutionPage() {
     breadcrumbJsonLd(
       [
         { name: t.nav.home, path: "/" },
-        { name: "Yechimlar", path: "/yechimlar" },
+        { name: t.nav.solutions, path: "/yechimlar" },
         { name: h1, path },
       ],
       lang,
@@ -82,12 +112,12 @@ export default function SolutionPage() {
           >
             <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-ink/10 dark:border-white/15 px-3.5 py-1.5 text-xs font-medium uppercase tracking-[0.16em] text-ink/60 dark:text-paper/60">
               <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
-              {industry.shortName}
+              {text.shortName}
             </span>
             <h1 className="text-4xl font-semibold leading-[1.1] text-balance sm:text-5xl md:text-6xl">{h1}</h1>
             <p className="mt-5 text-lg leading-relaxed text-ink/60 dark:text-paper/60 text-balance">{solution.intro}</p>
             <ButtonLink to="/contact" size="lg" className="mt-8">
-              Buyurtma berish
+              {copy.order}
               <ArrowRight size={16} />
             </ButtonLink>
           </motion.div>
@@ -99,9 +129,9 @@ export default function SolutionPage() {
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             <Reveal>
               <div className="h-full rounded-[2rem] border border-ink/10 dark:border-white/10 bg-paper dark:bg-white/[0.02] p-8 shadow-soft sm:p-10">
-                <h2 className="text-xl font-semibold sm:text-2xl">Bugungi muammo</h2>
+                <h2 className="text-xl font-semibold sm:text-2xl">{copy.problem}</h2>
                 <ul className="mt-6 space-y-4">
-                  {industry.problems.map((problem) => (
+                  {text.problems.map((problem) => (
                     <li
                       key={problem}
                       className="flex items-start gap-3 text-sm leading-relaxed text-ink/65 dark:text-paper/65"
@@ -117,7 +147,7 @@ export default function SolutionPage() {
             </Reveal>
             <Reveal delay={0.08}>
               <div className="h-full rounded-[2rem] border border-brand-500/20 bg-brand-500/[0.04] p-8 shadow-soft sm:p-10">
-                <h2 className="text-xl font-semibold sm:text-2xl">FRONTIX yechimi</h2>
+                <h2 className="text-xl font-semibold sm:text-2xl">{copy.solution}</h2>
                 <p className="mt-4 text-sm leading-relaxed text-ink/65 dark:text-paper/65">{solution.bridge}</p>
                 <ul className="mt-6 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                   {serviceText.features.map((feature) => (
@@ -141,7 +171,7 @@ export default function SolutionPage() {
       <section className="pb-20">
         <Container>
           <Reveal>
-            <h2 className="text-2xl font-semibold sm:text-3xl">Ko'p so'raladigan savollar</h2>
+            <h2 className="text-2xl font-semibold sm:text-3xl">{copy.faq}</h2>
           </Reveal>
           <div className="mt-8 space-y-4">
             {solution.faq.map((item, i) => (
@@ -161,7 +191,7 @@ export default function SolutionPage() {
             <Reveal delay={0.1}>
               <div className="mt-12 rounded-2xl border border-ink/10 dark:border-white/10 p-6">
                 <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-ink/40 dark:text-paper/40">
-                  {industry.shortName} uchun boshqa yechimlar
+                  {copy.otherFor.replace("{name}", text.nameFor)}
                 </h3>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {otherServices.map((s) => (
@@ -170,7 +200,7 @@ export default function SolutionPage() {
                       to={`/yechimlar/${industry.slug}/${s}`}
                       className="rounded-full border border-ink/10 dark:border-white/15 px-4 py-2 text-sm text-ink/70 dark:text-paper/70 hover:border-brand-500/40 hover:text-brand-500 transition-colors"
                     >
-                      {serviceLabelsUz[s]}
+                      {serviceLabels[lang][s]}
                     </Link>
                   ))}
                 </div>

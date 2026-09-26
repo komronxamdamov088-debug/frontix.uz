@@ -1,4 +1,7 @@
 import type { Service } from "@/data/services";
+import type { Lang } from "@/i18n/translations";
+import { industriesRu } from "@/data/i18n/industries.ru";
+import { industriesEn } from "@/data/i18n/industries.en";
 
 type ServiceSlug = Service["slug"];
 
@@ -14,8 +17,8 @@ export interface Industry {
   relevantServices: ServiceSlug[];
 }
 
-// Uzbek-only content (see: pilot phase decision to launch problem/solution
-// pages in uz first, translate to ru/en once the format is validated).
+// Uzbek is the source content; ru/en live in src/data/i18n/industries.{ru,en}.ts
+// keyed by slug. Missing translations fall back to uz (see getIndustryText).
 export const industries: Industry[] = [
   {
     slug: "restoranlar-va-kafelar",
@@ -942,14 +945,58 @@ export const industries: Industry[] = [
   },
 ];
 
-export const serviceLabelsUz: Record<ServiceSlug, string> = {
-  "website-development": "veb-sayt",
-  "qr-menu": "QR-menyu",
-  "telegram-bot": "Telegram bot",
-  "online-ordering": "onlayn buyurtma tizimi",
-  "business-automation": "CRM avtomatlashtirish",
-  "custom-software": "maxsus dasturiy yechim",
+export interface IndustryText {
+  name: string;
+  shortName: string;
+  /** Form used after "uchun"/"для"/"for" in headings: "ресторанов и кафе". */
+  nameFor: string;
+  problems: string[];
+}
+
+const industryTranslations: Record<Exclude<Lang, "uz">, Record<string, IndustryText>> = {
+  ru: industriesRu,
+  en: industriesEn,
 };
+
+export function getIndustryText(industry: Industry, lang: Lang): IndustryText {
+  const translated = lang === "uz" ? undefined : industryTranslations[lang][industry.slug];
+  return translated ?? { name: industry.name, shortName: industry.shortName, nameFor: industry.name, problems: industry.problems };
+}
+
+export const serviceLabels: Record<Lang, Record<ServiceSlug, string>> = {
+  uz: {
+    "website-development": "veb-sayt",
+    "qr-menu": "QR-menyu",
+    "telegram-bot": "Telegram bot",
+    "online-ordering": "onlayn buyurtma tizimi",
+    "business-automation": "CRM avtomatlashtirish",
+    "custom-software": "maxsus dasturiy yechim",
+  },
+  ru: {
+    "website-development": "Сайт",
+    "qr-menu": "QR-меню",
+    "telegram-bot": "Telegram-бот",
+    "online-ordering": "Система онлайн-заказов",
+    "business-automation": "CRM-автоматизация",
+    "custom-software": "Индивидуальное ПО",
+  },
+  en: {
+    "website-development": "Website",
+    "qr-menu": "QR menu",
+    "telegram-bot": "Telegram bot",
+    "online-ordering": "Online ordering system",
+    "business-automation": "CRM automation",
+    "custom-software": "Custom software",
+  },
+};
+
+/** "Restoranlar va kafelar uchun QR-menyu" / "QR-меню для ресторанов и кафе" / "QR menu for restaurants and cafes" */
+export function solutionHeading(lang: Lang, industryFor: string, service: ServiceSlug): string {
+  const label = serviceLabels[lang][service];
+  if (lang === "ru") return `${label} для ${industryFor}`;
+  if (lang === "en") return `${label} for ${industryFor}`;
+  return `${industryFor} uchun ${label}`;
+}
 
 export function getIndustry(slug: string): Industry | undefined {
   return industries.find((i) => i.slug === slug);

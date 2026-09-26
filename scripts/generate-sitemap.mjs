@@ -7,6 +7,7 @@ import { join } from "node:path";
 import { SOLUTION_ROUTES } from "./solutionRoutes.mjs";
 import { BLOG_ROUTES } from "./blogRoutes.mjs";
 import { PROJECT_ROUTES } from "./projectRoutes.mjs";
+import { PARTNER_PATHS } from "./partnerRoutes.mjs";
 
 // Keep in sync with SITE.url in src/data/site.ts (plain node script, no TS
 // loader, so this can't just import it).
@@ -16,8 +17,15 @@ const PAGES = [
   { path: "/services", priority: "0.9" },
   { path: "/team", priority: "0.8" },
   { path: "/partners", priority: "0.7" },
+  ...PARTNER_PATHS.map((path) => ({ path, priority: "0.6" })),
   { path: "/about", priority: "0.7" },
   { path: "/contact", priority: "0.8" },
+  ...["/yechimlar", ...SOLUTION_ROUTES, "/blog", ...BLOG_ROUTES].map((path) => ({ path, priority: "0.6" })),
+  // /loyihalar stays out of the sitemap until PROJECT_ROUTES has at least one
+  // real case study — an empty listing page isn't worth asking crawlers to index.
+  ...(PROJECT_ROUTES.length > 0
+    ? ["/loyihalar", ...PROJECT_ROUTES].map((path) => ({ path, priority: "0.6" }))
+    : []),
 ];
 const LANGS = ["uz", "ru", "en"];
 const LANG_PREFIXES = { uz: "", ru: "/ru", en: "/en" };
@@ -40,34 +48,7 @@ const urlEntries = LANGS.flatMap((lang) =>
   }),
 );
 
-// Uz-only pilot pages (/yechimlar/*, /blog/*, /loyihalar/*) — no hreflang
-// alternates since there's no ru/en version to point to yet. Keep the route
-// lists in sync with src/data/industries.ts, src/data/blog.ts and
-// src/data/projects.ts (see scripts/solutionRoutes.mjs, blogRoutes.mjs,
-// projectRoutes.mjs).
-const solutionEntries = ["/yechimlar", ...SOLUTION_ROUTES].map((path) => {
-  const loc = `${SITE_URL}${path}`;
-  return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <priority>0.6</priority>\n  </url>`;
-});
-
-const blogEntries = ["/blog", ...BLOG_ROUTES].map((path) => {
-  const loc = `${SITE_URL}${path}`;
-  return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <priority>0.6</priority>\n  </url>`;
-});
-
-// /loyihalar stays out of the sitemap until PROJECT_ROUTES has at least one
-// real case study — an empty listing page isn't worth asking crawlers to index.
-const projectEntries =
-  PROJECT_ROUTES.length > 0
-    ? ["/loyihalar", ...PROJECT_ROUTES].map((path) => {
-        const loc = `${SITE_URL}${path}`;
-        return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <priority>0.6</priority>\n  </url>`;
-      })
-    : [];
-
-const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${[...urlEntries, ...solutionEntries, ...blogEntries, ...projectEntries].join("\n")}\n</urlset>\n`;
+const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urlEntries.join("\n")}\n</urlset>\n`;
 
 writeFileSync(join(process.cwd(), "public", "sitemap.xml"), xml, "utf-8");
-console.log(
-  `[sitemap] wrote ${urlEntries.length + solutionEntries.length + blogEntries.length + projectEntries.length} URLs to public/sitemap.xml`,
-);
+console.log(`[sitemap] wrote ${urlEntries.length} URLs to public/sitemap.xml`);

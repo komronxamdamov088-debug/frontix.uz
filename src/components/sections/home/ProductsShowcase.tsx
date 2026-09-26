@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 import { ArrowUpRight, Check } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -49,7 +50,12 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
       <div className="relative flex items-center gap-4">
         {product.logo ? (
           <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white ring-1 ring-ink/10">
-            <img src={product.logo} alt={`${product.name} logo`} className="h-full w-full scale-125 object-cover" loading="lazy" />
+            <img
+              src={product.logo}
+              alt={`${product.name} logo`}
+              className={cn("h-full w-full object-cover", product.logoZoom !== false && "scale-125")}
+              loading="lazy"
+            />
           </div>
         ) : (
           <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-[#0a0a0a] ring-1 ring-white/10">

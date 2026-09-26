@@ -9,29 +9,92 @@ import { Link } from "@/components/i18n/LocalizedLink";
 import { services } from "@/data/services";
 import { projects } from "@/data/projects";
 import { useLanguage } from "@/context/LanguageContext";
+import type { Lang } from "@/i18n/translations";
+
+const COPY: Record<
+  Lang,
+  {
+    title: string;
+    description: string;
+    keywords: string;
+    eyebrow: string;
+    heroTitle: string;
+    heroDescription: string;
+    emptyTitle: string;
+    emptyText: string;
+    cta: string;
+  }
+> = {
+  uz: {
+    title: "Loyihalar — bajarilgan ishlar",
+    description:
+      "FRONTIX veb-sayt, Telegram bot, QR-menyu, onlayn buyurtma va biznes avtomatlashtirish bo'yicha bajargan loyihalari: muammo, yechim va natija.",
+    keywords:
+      "FRONTIX loyihalari, portfolio, bajarilgan ishlar, veb-sayt case study, Telegram bot loyihasi, QR-menyu loyihasi, mijozlar natijalari",
+    eyebrow: "Bajarilgan ishlar",
+    heroTitle: "Loyihalarimiz: muammo, yechim, natija",
+    heroDescription:
+      "Har bir loyiha mijozning aniq muammosidan boshlanadi. Bu yerda tugallangan ishlarimizni — nima muammo bo'lgani, qanday yechim topilgani va qanday natija berganini — ko'rsatamiz.",
+    emptyTitle: "Bajarilgan loyihalar tez orada shu yerda",
+    emptyText:
+      "Har bir loyihani mijozning roziligi bilan, aniq raqam va natijalar bilan e'lon qilamiz — shuning uchun bu bo'lim asta-sekin to'ldiriladi. Hozircha qaysi yo'nalishlarda ishlayotganimiz bilan tanishing:",
+    cta: "Loyihangizni muhokama qilaylik",
+  },
+  ru: {
+    title: "Проекты — выполненные работы",
+    description:
+      "Проекты FRONTIX: сайты, Telegram-боты, QR-меню, онлайн-заказы и автоматизация бизнеса — проблема, решение и результат.",
+    keywords:
+      "проекты FRONTIX, портфолио, выполненные работы, кейс сайта, проект Telegram-бота, проект QR-меню, результаты клиентов",
+    eyebrow: "Выполненные работы",
+    heroTitle: "Наши проекты: проблема, решение, результат",
+    heroDescription:
+      "Каждый проект начинается с конкретной проблемы клиента. Здесь мы показываем завершённые работы — в чём была проблема, какое решение нашли и какой результат оно дало.",
+    emptyTitle: "Выполненные проекты скоро появятся здесь",
+    emptyText:
+      "Каждый проект мы публикуем с согласия клиента, с точными цифрами и результатами — поэтому раздел наполняется постепенно. А пока посмотрите, в каких направлениях мы работаем:",
+    cta: "Обсудить ваш проект",
+  },
+  en: {
+    title: "Projects — our work",
+    description:
+      "FRONTIX projects in websites, Telegram bots, QR menus, online ordering and business automation: the problem, the solution and the result.",
+    keywords:
+      "FRONTIX projects, portfolio, case studies, website case study, Telegram bot project, QR menu project, client results",
+    eyebrow: "Our work",
+    heroTitle: "Our projects: problem, solution, result",
+    heroDescription:
+      "Every project starts with a client's specific problem. Here we show finished work — what the problem was, how we solved it and what result it delivered.",
+    emptyTitle: "Finished projects are coming soon",
+    emptyText:
+      "We publish each project with the client's consent, with real numbers and results, so this section fills up gradually. Meanwhile, see the areas we work in:",
+    cta: "Let's discuss your project",
+  },
+};
 
 export default function ProjectsIndex() {
   const { t, lang } = useLanguage();
+  const copy = COPY[lang];
 
   return (
     <>
       <Seo
-        title="Loyihalar — bajarilgan ishlar"
-        description="FRONTIX veb-sayt, Telegram bot, QR-menyu, onlayn buyurtma va biznes avtomatlashtirish bo'yicha bajargan loyihalari: muammo, yechim va natija."
-        keywords="FRONTIX loyihalari, portfolio, bajarilgan ishlar, veb-sayt case study, Telegram bot loyihasi, QR-menyu loyihasi, mijozlar natijalari"
+        title={copy.title}
+        description={copy.description}
+        keywords={copy.keywords}
         path="/loyihalar"
         jsonLd={breadcrumbJsonLd(
           [
             { name: t.nav.home, path: "/" },
-            { name: "Loyihalar", path: "/loyihalar" },
+            { name: t.nav.projects, path: "/loyihalar" },
           ],
           lang,
         )}
       />
       <PageHero
-        eyebrow="Bajarilgan ishlar"
-        title="Loyihalarimiz: muammo, yechim, natija"
-        description="Har bir loyiha mijozning aniq muammosidan boshlanadi. Bu yerda tugallangan ishlarimizni — nima muammo bo'lgani, qanday yechim topilgani va qanday natija berganini — ko'rsatamiz."
+        eyebrow={copy.eyebrow}
+        title={copy.heroTitle}
+        description={copy.heroDescription}
       />
 
       {projects.length > 0 ? (
@@ -68,11 +131,9 @@ export default function ProjectsIndex() {
           <Container>
             <Reveal>
               <div className="mx-auto max-w-2xl rounded-[2rem] border border-ink/10 dark:border-white/10 bg-paper dark:bg-white/[0.02] p-8 text-center shadow-soft sm:p-10">
-                <h2 className="text-xl font-semibold sm:text-2xl">Bajarilgan loyihalar tez orada shu yerda</h2>
+                <h2 className="text-xl font-semibold sm:text-2xl">{copy.emptyTitle}</h2>
                 <p className="mt-4 text-sm leading-relaxed text-ink/65 dark:text-paper/65">
-                  Har bir loyihani mijozning roziligi bilan, aniq raqam va natijalar bilan e'lon qilamiz — shuning
-                  uchun bu bo'lim asta-sekin to'ldiriladi. Hozircha qaysi yo'nalishlarda ishlayotganimiz bilan
-                  tanishing:
+                  {copy.emptyText}
                 </p>
               </div>
             </Reveal>
@@ -103,7 +164,7 @@ export default function ProjectsIndex() {
             <Reveal delay={0.1}>
               <div className="mt-10 text-center">
                 <ButtonLink to="/contact" size="lg">
-                  Loyihangizni muhokama qilaylik
+                  {copy.cta}
                   <ArrowRight size={16} />
                 </ButtonLink>
               </div>

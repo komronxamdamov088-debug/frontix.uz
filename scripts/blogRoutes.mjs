@@ -1,4 +1,4 @@
-// Uz-only blog post slugs (/blog/:slug). Plain data so both prerender.mjs and
+// Blog post slugs (/blog/:slug, in every language). Plain data so both prerender.mjs and
 // generate-sitemap.mjs (run via plain `node`, no TS loader) can import it
 // without duplicating the list twice. Keep in sync with the `blogPosts` array
 // in src/data/blog.ts.

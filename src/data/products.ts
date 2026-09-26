@@ -1,4 +1,5 @@
 import qarzdaftarLogo from "@/assets/partners/partner-3.png";
+import sportfitLogo from "@/assets/products/sportfit.png";
 import type { Lang } from "@/i18n/translations";
 
 export interface Product {
@@ -6,6 +7,8 @@ export interface Product {
   name: string;
   /** Logo image. Products without one fall back to a monogram badge. */
   logo?: string;
+  /** Logos with built-in padding get zoomed 125% to fill the badge; set false for edge-to-edge artwork. */
+  logoZoom?: boolean;
   /** Two-letter monogram shown when there is no logo, e.g. "SF". */
   monogram?: string;
   /** Brand accent color used for the card's badge and highlights. */
@@ -44,6 +47,8 @@ export const products: Product[] = [
   {
     id: "sportfit",
     name: "SportFit",
+    logo: sportfitLogo,
+    logoZoom: false,
     monogram: "SF",
     accent: "#E2222C",
     category: {

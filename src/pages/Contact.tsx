@@ -1,12 +1,12 @@
 import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, Phone, Mail, MapPin, CheckCircle2, ArrowRight, Loader2, ChevronDown } from "lucide-react";
+import { Send, Phone, Mail, MapPin, CheckCircle2, ArrowRight, Loader2 } from "lucide-react";
 import { Seo, breadcrumbJsonLd } from "@/components/Seo";
 import { PageHero } from "@/components/sections/PageHero";
+import { FaqSection, faqJsonLd } from "@/components/sections/FaqSection";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Select } from "@/components/ui/Select";
-import { Reveal } from "@/components/ui/Reveal";
 import { services } from "@/data/services";
 import { SITE } from "@/data/site";
 import { useLanguage } from "@/context/LanguageContext";
@@ -37,7 +37,6 @@ export default function Contact() {
   const [form, setForm] = useState<FormState>(initialState);
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [phoneTouched, setPhoneTouched] = useState(false);
   const phoneValid = isValidPhone(form.phone);
 
@@ -99,15 +98,7 @@ export default function Contact() {
             ],
             lang,
           ),
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: t.contact.faq.map((item) => ({
-              "@type": "Question",
-              name: item.question,
-              acceptedAnswer: { "@type": "Answer", text: item.answer },
-            })),
-          },
+          faqJsonLd(lang),
         ]}
       />
       <PageHero eyebrow={t.contact.eyebrow} title={t.contact.title} description={t.contact.description} />
@@ -282,50 +273,10 @@ export default function Contact() {
             </motion.div>
           </div>
 
-          <div className="mx-auto mt-20 max-w-2xl">
-            <Reveal>
-              <h2 className="text-2xl font-semibold text-balance sm:text-3xl">{t.contact.faqTitle}</h2>
-            </Reveal>
-            <div className="mt-8 flex flex-col gap-3">
-              {t.contact.faq.map((item, i) => {
-                const isOpen = openFaq === i;
-                return (
-                  <Reveal key={item.question} delay={i * 0.05}>
-                    <div className="overflow-hidden rounded-2xl border border-ink/10 dark:border-white/10 bg-paper dark:bg-white/[0.02]">
-                      <button
-                        onClick={() => setOpenFaq(isOpen ? null : i)}
-                        aria-expanded={isOpen}
-                        className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
-                      >
-                        <span className="text-sm font-semibold sm:text-base">{item.question}</span>
-                        <ChevronDown
-                          size={18}
-                          className={`shrink-0 text-ink/40 dark:text-paper/40 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
-                        />
-                      </button>
-                      <AnimatePresence initial={false}>
-                        {isOpen && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                            className="overflow-hidden"
-                          >
-                            <p className="px-6 pb-5 text-sm leading-relaxed text-ink/60 dark:text-paper/60">
-                              {item.answer}
-                            </p>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  </Reveal>
-                );
-              })}
-            </div>
-          </div>
         </Container>
       </section>
+
+      <FaqSection showContactCta={false} />
     </>
   );
 }

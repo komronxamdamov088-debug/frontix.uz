@@ -10,6 +10,15 @@ import { CTASection } from "@/components/sections/CTASection";
 import { getProject } from "@/data/projects";
 import { useLanguage } from "@/context/LanguageContext";
 import NotFound from "@/pages/NotFound";
+import type { Lang } from "@/i18n/translations";
+
+// Case-study content itself (src/data/projects.ts) is uz-only until real,
+// client-approved projects exist; only the page chrome is translated.
+const COPY: Record<Lang, { problem: string; solution: string; cta: string; keywords: string }> = {
+  uz: { problem: "Muammo", solution: "Yechim", cta: "Shunga o'xshash loyiha kerakmi?", keywords: "FRONTIX loyiha, case study" },
+  ru: { problem: "Проблема", solution: "Решение", cta: "Нужен похожий проект?", keywords: "проект FRONTIX, кейс" },
+  en: { problem: "Problem", solution: "Solution", cta: "Need a similar project?", keywords: "FRONTIX project, case study" },
+};
 
 export default function ProjectPage() {
   const { slug = "" } = useParams();
@@ -18,15 +27,16 @@ export default function ProjectPage() {
   const project = getProject(slug);
   if (!project) return <NotFound />;
 
+  const copy = COPY[lang];
   const path = `/loyihalar/${project.slug}`;
   const serviceText = t.services[project.service];
-  const keywords = `${project.title}, ${project.industry}, ${serviceText.title}, FRONTIX loyiha, case study`;
+  const keywords = `${project.title}, ${project.industry}, ${serviceText.title}, ${copy.keywords}`;
 
   const jsonLd = [
     breadcrumbJsonLd(
       [
         { name: t.nav.home, path: "/" },
-        { name: "Loyihalar", path: "/loyihalar" },
+        { name: t.nav.projects, path: "/loyihalar" },
         { name: project.title, path },
       ],
       lang,
@@ -114,13 +124,13 @@ export default function ProjectPage() {
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             <Reveal>
               <div className="h-full rounded-[2rem] border border-ink/10 dark:border-white/10 bg-paper dark:bg-white/[0.02] p-8 shadow-soft sm:p-10">
-                <h2 className="text-xl font-semibold sm:text-2xl">Muammo</h2>
+                <h2 className="text-xl font-semibold sm:text-2xl">{copy.problem}</h2>
                 <p className="mt-4 text-sm leading-relaxed text-ink/65 dark:text-paper/65">{project.problem}</p>
               </div>
             </Reveal>
             <Reveal delay={0.08}>
               <div className="h-full rounded-[2rem] border border-brand-500/20 bg-brand-500/[0.04] p-8 shadow-soft sm:p-10">
-                <h2 className="text-xl font-semibold sm:text-2xl">Yechim</h2>
+                <h2 className="text-xl font-semibold sm:text-2xl">{copy.solution}</h2>
                 <p className="mt-4 text-sm leading-relaxed text-ink/65 dark:text-paper/65">{project.solution}</p>
                 <div className="mt-6 flex items-center gap-2.5 rounded-xl bg-paper-2/60 dark:bg-white/[0.03] p-3 text-sm text-ink/70 dark:text-paper/70">
                   <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-500/15 text-brand-500">
@@ -158,7 +168,7 @@ export default function ProjectPage() {
           <Reveal>
             <div className="mx-auto max-w-2xl text-center">
               <ButtonLink to="/contact" size="lg">
-                Shunga o'xshash loyiha kerakmi?
+                {copy.cta}
                 <ArrowRight size={16} />
               </ButtonLink>
             </div>
