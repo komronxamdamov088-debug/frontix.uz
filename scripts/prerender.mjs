@@ -77,7 +77,6 @@ async function run() {
     await waitForServer(`http://localhost:${PORT}/`);
 
     const browser = await launchBrowser(chromium);
-    const page = await browser.newPage();
 
     // Capture every route into memory first, and only write files to disk
     // after the whole loop finishes. Writing dist/index.html mid-loop would
@@ -87,9 +86,10 @@ async function run() {
     const captured = [];
 
     // One route's failure (timeout, transient nav error) shouldn't sink the
-    // other 246 — catch per-route and keep going.
+    // others — catch per-route and keep going.
     const failed = [];
-    for (const route of ROUTES) {
+
+    async function capture(page, route) {
       try {
         await page.goto(`http://localhost:${PORT}${route}`, { waitUntil: "networkidle", timeout: 30000 });
         await page.waitForSelector("footer", { timeout: 15000 });
@@ -108,6 +108,18 @@ async function run() {
         console.warn(`[prerender] failed on ${route} (skipping):`, err.message);
       }
     }
+
+    // ~730 routes rendered one at a time took 20+ minutes on Vercel, close to
+    // its build time limit — render in parallel tabs sharing one queue.
+    const CONCURRENCY = 6;
+    const queue = [...ROUTES];
+    await Promise.all(
+      Array.from({ length: CONCURRENCY }, async () => {
+        const page = await browser.newPage();
+        while (queue.length > 0) await capture(page, queue.shift());
+        await page.close();
+      }),
+    );
 
     await browser.close();
 
