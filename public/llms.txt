@@ -28,7 +28,7 @@ FRONTIX jamoasi 15 nafar mutaxassisdan iborat: 3 asoschi, 9 dasturchi, 1 adminis
 3. Ishlab chiqish — zamonaviy texnologiyalar bilan mahsulotni qurish.
 4. Ishga tushirish — sinovdan o'tkazib, mahsulotni ishga tushirish va qo'llab-quvvatlash.
 
-Loyiha odatda murakkablikka qarab 1-6 hafta ichida yakunlanadi. Narx har bir loyiha uchun individual belgilanadi (funksionallik, dizayn murakkabligi va muddatga qarab); bepul konsultatsiyadan so'ng aniq taklif beriladi.
+Loyiha odatda murakkablikka qarab 1-6 hafta ichida yakunlanadi. Narxlar: veb-sayt $300; admin panelli veb-sayt (kontentni mijozning o'zi boshqaradi) $550. Telegram bot, QR-menyu, CRM va maxsus dasturlar funksionallik, dizayn murakkabligi va muddatga qarab individual baholanadi; bepul konsultatsiyadan so'ng aniq taklif beriladi.
 
 ## Mahsulotlar
 
@@ -65,7 +65,7 @@ Bajarilgan ishlar va hamkorlarini ko'ring, muddat va narx bo'yicha aniq yozma ta
 Murakkablikka qarab odatda 1-6 hafta ichida yakunlanadi. Aniq muddat bepul konsultatsiyadan so'ng belgilanadi.
 
 **Narxlar qanday belgilanadi?**
-Har bir loyiha individual baholanadi — funksionallik, dizayn murakkabligi va muddatga qarab. Konsultatsiyadan so'ng aniq taklif taqdim etiladi.
+Veb-sayt $300, admin panelli sayt $550. Telegram bot, QR-menyu, CRM va maxsus dasturlar funksionallik, dizayn murakkabligi va muddatga qarab individual baholanadi. Konsultatsiyadan so'ng aniq taklif taqdim etiladi.
 
 **Loyihadan keyin qo'llab-quvvatlash bormi?**
 Ha, barcha loyihalar uchun texnik qo'llab-quvvatlash va yangilanishlar xizmati taklif qilinadi.

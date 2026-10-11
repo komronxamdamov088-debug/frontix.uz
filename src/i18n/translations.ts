@@ -402,9 +402,9 @@ const techStackList = ["React", "TypeScript", "Node.js", "Tailwind CSS", "Telegr
 export const translations: Record<Lang, Dictionary> = {
   uz: {
     meta: {
-      title: "FRONTIX — Sayt va dastur qilib beradigan IT kompaniya, Toshkent",
+      title: "Sayt yaratish Toshkentda — $300 | FRONTIX IT kompaniya",
       description:
-        "FRONTIX — Toshkentda sayt va raqamli dastur qilib beradigan IT kompaniya: veb-sayt, Telegram bot, QR menyu, onlayn buyurtma va CRM tizimlarini 1-6 haftada yaratamiz.",
+        "Toshkentda sayt yaratish $300, admin panelli sayt $550. Telegram bot, QR menyu, onlayn buyurtma va CRM tizimlari ham 1-6 haftada tayyor. FRONTIX IT kompaniyasi.",
       keywords:
         "sayt qilib beradigan kompaniya, dastur qilib beradigan kompaniya, raqamli dastur yaratish, sayt yaratib beruvchi kompaniyalar Toshkent, dasturlash kompaniyasi, IT kompaniyalar Toshkent, FRONTIX, veb-sayt yasash, sayt yaratish, QR menyu, Telegram bot yaratish, CRM avtomatlashtirish, onlayn buyurtma tizimi, raqamli yechimlar O'zbekiston",
     },
@@ -678,9 +678,9 @@ export const translations: Record<Lang, Dictionary> = {
   },
   ru: {
     meta: {
-      title: "FRONTIX — Компания по разработке сайтов и программ в Ташкенте",
+      title: "Создание сайтов в Ташкенте — $300 | FRONTIX IT-компания",
       description:
-        "FRONTIX — IT-компания в Ташкенте, которая делает сайты и программы для бизнеса: сайты, Telegram-боты, QR-меню, системы онлайн-заказов и CRM за 1-6 недель.",
+        "Создание сайта в Ташкенте $300, сайт с админ-панелью $550. Также Telegram-боты, QR-меню, системы онлайн-заказов и CRM за 1-6 недель. IT-компания FRONTIX.",
       keywords:
         "компания по разработке сайтов, разработка программ на заказ, создание сайтов под ключ Ташкент, IT-компании Ташкента, заказать сайт в Узбекистане, FRONTIX, разработка сайтов, QR-меню, разработка Telegram-бота, CRM-автоматизация, система онлайн-заказов, цифровые решения Узбекистан",
     },
@@ -953,9 +953,9 @@ export const translations: Record<Lang, Dictionary> = {
   },
   en: {
     meta: {
-      title: "FRONTIX — Website & Software Development Company in Tashkent",
+      title: "Website Development in Tashkent $300 | FRONTIX",
       description:
-        "FRONTIX is a Tashkent IT company that builds websites and software for businesses: websites, Telegram bots, QR menus, online ordering systems and CRM in 1-6 weeks.",
+        "Websites in Tashkent $300, websites with an admin panel $550. Telegram bots, QR menus, online ordering and CRM systems in 1-6 weeks. FRONTIX IT company.",
       keywords:
         "website development company Tashkent, software development company Uzbekistan, custom software development, web development agency Tashkent, IT companies in Tashkent, FRONTIX, web design, QR menu, Telegram bot development, CRM automation, online ordering system",
     },

@@ -107,6 +107,15 @@ export default function ServicePage() {
         { "@type": "Country", name: "Uzbekistan" },
       ],
       inLanguage: lang,
+      ...(service.slug === "website-development"
+        ? {
+            offers: [300, 550].map((price) => ({
+              "@type": "Offer",
+              price: String(price),
+              priceCurrency: "USD",
+            })),
+          }
+        : {}),
     },
     {
       "@context": "https://schema.org",
