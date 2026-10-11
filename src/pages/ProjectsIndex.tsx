@@ -7,7 +7,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { CTASection } from "@/components/sections/CTASection";
 import { Link } from "@/components/i18n/LocalizedLink";
 import { services } from "@/data/services";
-import { projects } from "@/data/projects";
+import { getProjects } from "@/data/projects";
 import { useLanguage } from "@/context/LanguageContext";
 import type { Lang } from "@/i18n/translations";
 
@@ -74,6 +74,7 @@ const COPY: Record<
 
 export default function ProjectsIndex() {
   const { t, lang } = useLanguage();
+  const projects = getProjects(lang);
   const copy = COPY[lang];
 
   return (

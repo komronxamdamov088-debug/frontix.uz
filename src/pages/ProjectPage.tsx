@@ -12,8 +12,6 @@ import { useLanguage } from "@/context/LanguageContext";
 import NotFound from "@/pages/NotFound";
 import type { Lang } from "@/i18n/translations";
 
-// Case-study content itself (src/data/projects.ts) is uz-only until real,
-// client-approved projects exist; only the page chrome is translated.
 const COPY: Record<Lang, { problem: string; solution: string; cta: string; keywords: string }> = {
   uz: { problem: "Muammo", solution: "Yechim", cta: "Shunga o'xshash loyiha kerakmi?", keywords: "FRONTIX loyiha, case study" },
   ru: { problem: "Проблема", solution: "Решение", cta: "Нужен похожий проект?", keywords: "проект FRONTIX, кейс" },
@@ -24,7 +22,7 @@ export default function ProjectPage() {
   const { slug = "" } = useParams();
   const { t, lang } = useLanguage();
 
-  const project = getProject(slug);
+  const project = getProject(slug, lang);
   if (!project) return <NotFound />;
 
   const copy = COPY[lang];
