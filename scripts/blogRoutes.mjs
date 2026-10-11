@@ -6,6 +6,9 @@ export const BLOG_SLUGS = [
   "qr-menyu-nima-va-qanday-ishlaydi",
   "telegram-bot-orqali-mijozlar-bilan-ishlash",
   "kichik-biznes-uchun-veb-sayt-kerakmi",
+  "onlayn-buyurtma-tizimi-restoran-uchun",
+  "crm-nima-kichik-biznesga-kerakmi",
+  "sayt-yaratish-narxi-nimaga-bogliq",
 ];
 
 export const BLOG_ROUTES = BLOG_SLUGS.map((slug) => `/blog/${slug}`);

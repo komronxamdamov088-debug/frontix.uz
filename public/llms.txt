@@ -2,7 +2,7 @@
 
 > FRONTIX — Toshkentda (O'zbekiston) joylashgan, bizneslar uchun sayt va raqamli dastur qilib beradigan IT kompaniya (website and software development company in Tashkent / компания по разработке сайтов и программ в Ташкенте). Website development, QR menyu, Telegram bot, onlayn buyurtma tizimlari, custom software va business automation xizmatlarini taqdim etadi. Sayt o'zbek, rus va ingliz tillarida mavjud (UZ/RU/EN).
 
-Oxirgi yangilanish: 2026-09-26
+Oxirgi yangilanish: 2026-10-11
 
 FRONTIX bizneslarga g'oyadan ishga tushirishgacha bo'lgan yo'lda hamrohlik qiladi: strategiya, dizayn, ishlab chiqish va texnik qo'llab-quvvatlash. Saytda FRX nomli AI yordamchi mavjud bo'lib, xizmatlar, jamoa, narxlar va aloqa haqidagi savollarga javob beradi.
 
@@ -29,6 +29,16 @@ FRONTIX jamoasi 15 nafar mutaxassisdan iborat: 3 asoschi, 9 dasturchi, 1 adminis
 4. Ishga tushirish — sinovdan o'tkazib, mahsulotni ishga tushirish va qo'llab-quvvatlash.
 
 Loyiha odatda murakkablikka qarab 1-6 hafta ichida yakunlanadi. Narx har bir loyiha uchun individual belgilanadi (funksionallik, dizayn murakkabligi va muddatga qarab); bepul konsultatsiyadan so'ng aniq taklif beriladi.
+
+## Mahsulotlar
+
+FRONTIX o'z tayyor mahsulotlarini ham ishlab chiqadi (bosh sahifadagi "Mahsulotlarimiz" bo'limi):
+
+- FRX Business — do'konlar uchun CRM: kassa, mahsulotlar, ombor qoldig'i va mijozlar bazasi bitta panelda.
+- FRX Hotel — mehmonxonalar uchun CRM: xonalar, bronlar jadvali, check-in/check-out va tunlar bo'yicha avtomatik hisob.
+- FRX MED — klinikalar uchun CRM tizimi.
+- QarzDaftar — qarzlarni boshqarish platformasi (Web, PWA va Telegram Mini App): qisman to'lovlar, Telegram orqali avtomatik eslatmalar.
+- SportFit — sport anjomlari do'koni (Uzum Market va Wildberries'da sotiladi).
 
 ## Hamkorlar
 
@@ -74,7 +84,13 @@ Sayt uch tilda mavjud: o'zbekcha (prefikssiz URL), ruscha (`/ru/...`) va inglizc
 - [Biz haqimizda](https://frontix.uz/about): kompaniya missiyasi va qadriyatlari. RU: `/ru/about`, EN: `/en/about`.
 - [Aloqa](https://frontix.uz/contact): loyiha so'rovi formasi va aloqa ma'lumotlari. RU: `/ru/contact`, EN: `/en/contact`.
 - [Yechimlar](https://frontix.uz/yechimlar): 76 soha bo'yicha (restoran, salon, klinika, do'kon, o'quv markazi, fitnes-zal va h.k.) 228 ta muammo-yechim sahifasi — har biri aniq bir sohaning aniq bir xizmatga bo'lgan ehtiyojini yoritadi. RU: `/ru/yechimlar`, EN: `/en/yechimlar`.
-- [Blog](https://frontix.uz/blog): QR-menyu, Telegram bot va kichik biznes uchun sayt haqida amaliy qo'llanmalar. RU: `/ru/blog`, EN: `/en/blog`.
+- [Blog](https://frontix.uz/blog): QR-menyu, Telegram bot, onlayn buyurtma, CRM va sayt narxi haqida amaliy qo'llanmalar. RU: `/ru/blog`, EN: `/en/blog`. Maqolalar:
+  - [QR-menyu nima va restoranga qanday foyda beradi](https://frontix.uz/blog/qr-menyu-nima-va-qanday-ishlaydi)
+  - [Telegram bot orqali mijozlar bilan ishlashni avtomatlashtirish](https://frontix.uz/blog/telegram-bot-orqali-mijozlar-bilan-ishlash)
+  - [Kichik biznes uchun veb-sayt: qachon va nega kerak](https://frontix.uz/blog/kichik-biznes-uchun-veb-sayt-kerakmi)
+  - [Restoran va do'kon uchun onlayn buyurtma tizimi](https://frontix.uz/blog/onlayn-buyurtma-tizimi-restoran-uchun)
+  - [CRM nima va kichik biznesga kerakmi](https://frontix.uz/blog/crm-nima-kichik-biznesga-kerakmi)
+  - [Sayt yaratish narxi nimaga bog'liq](https://frontix.uz/blog/sayt-yaratish-narxi-nimaga-bogliq)
 
 ## Aloqa
 

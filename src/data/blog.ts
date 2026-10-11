@@ -166,6 +166,144 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "onlayn-buyurtma-tizimi-restoran-uchun",
+    category: "Onlayn buyurtma",
+    title: "Restoran va do'kon uchun onlayn buyurtma tizimi: nima kerak va qanday ishlaydi",
+    excerpt:
+      "Onlayn buyurtma tizimi — mijoz katalogdan mahsulot tanlab, savatga qo'shib, Click yoki Payme orqali to'lab, buyurtmani saytdan yoki Telegramdan berishi mumkin bo'lgan, buyurtma esa avtomatik tarzda xodimga tushadigan tizim.",
+    publishDate: "2026-10-11",
+    readMinutes: 5,
+    relatedService: "online-ordering",
+    sections: [
+      {
+        heading: "Onlayn buyurtma tizimi nimalardan iborat",
+        body: "Tizim odatda to'rt qismdan tashkil topadi: mahsulot yoki taomlar katalogi, savat va buyurtma rasmiylashtirish sahifasi, onlayn to'lov (Click, Payme) va xodim uchun buyurtmalarni ko'radigan admin panel. Mijoz telefon yoki kompyuterdan buyurtma beradi, xodim esa uni bir joyda ko'rib, holatini (qabul qilindi, tayyorlanmoqda, yo'lda) yangilab boradi.",
+      },
+      {
+        heading: "Telefon orqali buyurtmadan farqi",
+        body: "Telefon orqali buyurtmada operator band bo'lsa, mijoz kutadi yoki boshqa joyga o'tib ketadi; buyurtma qo'lda yoziladi va xato ketishi mumkin. Onlayn tizimda mijoz buyurtmani o'zi, to'g'ri narx va tarkib bilan kiritadi, shu sababli xatolar kamayadi, operator esa faqat tasdiqlash va yetkazib berishga e'tibor beradi.",
+      },
+      {
+        heading: "Qaysi bizneslarga mos",
+        body: "Restoran va kafelar (yetkazib berish yoki olib ketish), oziq-ovqat va kiyim do'konlari, gul va tort buyurtma qiladigan kichik ishlab chiqaruvchilar, shuningdek, katalogi bor har qanday xizmat biznesi uchun. Asosiy shart — mahsulot yoki xizmatlar aniq ro'yxat va narxga ega bo'lishi.",
+      },
+      {
+        heading: "Saytmi yoki Telegram botmi",
+        body: "Tizimni veb-sayt ko'rinishida yoki Telegram bot ichida qurish mumkin. Sayt qidiruv tizimidan yangi mijoz olib keladi, Telegram bot esa doimiy mijozlar uchun qulay: ular ilova o'rnatmasdan, o'zi ishlatadigan messenjerda buyurtma beradi. Ko'p bizneslar ikkalasini birga ishlatadi, buyurtmalar esa bitta panelga tushadi.",
+      },
+      {
+        heading: "Ishga tushirish uchun nima kerak",
+        body: "Mahsulot yoki taomlar ro'yxati, narxlar, rasmlar, yetkazib berish shartlari va to'lov usullari. FRONTIX onlayn buyurtma tizimini odatda 2-4 hafta ichida, Click/Payme ulanishi va admin panel bilan birga ishga tushiradi.",
+      },
+    ],
+    faq: [
+      {
+        question: "Onlayn buyurtma tizimida Click va Payme orqali to'lov qabul qilish mumkinmi?",
+        answer: "Ha, tizimga Click yoki Payme ulanadi, mijoz buyurtma uchun onlayn to'laydi yoki naqd to'lovni tanlaydi. Ulash uchun biznesning tegishli to'lov tizimi bilan shartnomasi bo'lishi kerak.",
+      },
+      {
+        question: "Buyurtmalarni qayerda ko'raman?",
+        answer: "Admin panelda: har bir buyurtma, uning tarkibi, summasi va holati ko'rinadi. Istasangiz, yangi buyurtma haqida Telegramga xabar ham keladi.",
+      },
+      {
+        question: "Tizimni yetkazib berish xizmati bilan bog'lash mumkinmi?",
+        answer: "Ha, yetkazib berish narxi va hududi tizimda sozlanadi, kerak bo'lsa buyurtma ma'lumoti kuryer yoki tashqi xizmatga avtomatik uzatiladi.",
+      },
+    ],
+  },
+  {
+    slug: "crm-nima-kichik-biznesga-kerakmi",
+    category: "CRM",
+    title: "CRM nima va kichik biznesga kerakmi",
+    excerpt:
+      "CRM — mijozlar, buyurtmalar, to'lovlar va aloqa tarixini Excel yoki daftar o'rniga bitta tizimda saqlaydigan va takroriy ishlarni (eslatma, hisobot) avtomatlashtiradigan dastur.",
+    publishDate: "2026-10-11",
+    readMinutes: 5,
+    relatedService: "business-automation",
+    sections: [
+      {
+        heading: "CRM nima",
+        body: "CRM (Customer Relationship Management) — mijozlar bilan munosabatlarni boshqarish tizimi. U har bir mijoz kim, nima buyurtma bergan, qachon to'lagan, oxirgi marta qachon bog'langanini bir joyda saqlaydi. Natijada ma'lumot daftar, Excel va xodimning xotirasi bo'ylab tarqoq yotmaydi.",
+      },
+      {
+        heading: "Qachon Excel yetmay qoladi",
+        body: "Mijozlar yoki buyurtmalar kam bo'lsa, jadval yetarli. Lekin xodimlar ikkitadan oshganda, bir mijozni bir nechta kishi yuritganda yoki eslatma va hisobotni har kuni qo'lda tayyorlashga soatlab vaqt ketganda, jadvalda xato, takrorlanish va yo'qolgan so'rovlar paydo bo'la boshlaydi. Aynan shu nuqtada CRM foyda keltiradi.",
+      },
+      {
+        heading: "CRM nimalarni avtomatlashtiradi",
+        body: "Mijozga to'lov yoki uchrashuv haqida eslatma yuborish, yangi so'rovni mas'ul xodimga biriktirish, kunlik va oylik hisobotlarni yig'ish, qarzdorlar ro'yxatini yuritish, ombor qoldig'i kamayganda ogohlantirish. Bularni xodim qo'lda qilmaydi, tizim o'zi bajaradi.",
+      },
+      {
+        heading: "Tayyor CRM yoki maxsus tizim",
+        body: "Tayyor CRM tez ishga tushadi va ko'p bizneslarga yetarli. Biznes jarayoni o'ziga xos bo'lsa (masalan, klinikada qabul jadvali, mehmonxonada xona bandligi, do'konda kassa va ombor), sohaga moslab qurilgan tizim qulayroq. FRONTIX ikkala yo'lni taklif qiladi: sohaga tayyor FRX Business, FRX Hotel, FRX MED mahsulotlari va buyurtma asosidagi maxsus tizimlar.",
+      },
+      {
+        heading: "CRM'ga o'tishni qanday boshlash kerak",
+        body: "Avval qaysi ishlar eng ko'p vaqt oladi va qayerda xato ko'p ketishini aniqlang, so'ng shu qismdan boshlang. Hamma narsani bir kunda ko'chirishning keragi yo'q: avval mijozlar bazasi va buyurtmalar, keyin eslatmalar va hisobotlar.",
+      },
+    ],
+    faq: [
+      {
+        question: "CRM tizimini faqat katta kompaniyalar ishlatadimi?",
+        answer: "Yo'q. Mijozlari va buyurtmalari doimiy ko'payib borayotgan kichik biznes, ayniqsa do'kon, klinika, salon yoki o'quv markazi uchun ham CRM foydali, chunki ma'lumot yo'qolmaydi va hisobot avtomatik bo'ladi.",
+      },
+      {
+        question: "Mavjud Excel ma'lumotlarini CRM'ga ko'chirish mumkinmi?",
+        answer: "Ha, mijozlar va mahsulotlar ro'yxati odatda import qilinadi, shuning uchun tizimga o'tishda ma'lumotni qaytadan kiritish shart emas.",
+      },
+      {
+        question: "CRM'ni ishga tushirish qancha vaqt oladi?",
+        answer: "Tayyor yechim bilan bir necha kun, maxsus tizim bilan odatda bir necha hafta. Aniq muddat bepul konsultatsiyadan keyin belgilanadi.",
+      },
+    ],
+  },
+  {
+    slug: "sayt-yaratish-narxi-nimaga-bogliq",
+    category: "Veb-sayt",
+    title: "Sayt yaratish narxi nimaga bog'liq va buyurtma berishdan oldin nimani so'rash kerak",
+    excerpt:
+      "Sayt narxi uning turi (vizitka, korporativ, onlayn do'kon), sahifalar soni, dizayn murakkabligi, to'lov va boshqa tizimlar bilan integratsiya hamda muddatga bog'liq; shuning uchun aniq narx talabdan keyin yozma taklif sifatida beriladi.",
+    publishDate: "2026-10-11",
+    readMinutes: 5,
+    relatedService: "website-development",
+    sections: [
+      {
+        heading: "Narxni nimalar belgilaydi",
+        body: "Birinchi omil — sayt turi: bir sahifali vizitka, ko'p sahifali korporativ sayt va katalog hamda savatli onlayn do'kon hajmi jihatidan farq qiladi. Keyingi omillar: sahifalar soni, individual dizayn yoki tayyor shablon, matn va rasmlarni kim tayyorlashi, to'lov (Click, Payme), CRM yoki Telegram bilan integratsiya, uch tilli versiya va muddat.",
+      },
+      {
+        heading: "Shablon va individual dizayn",
+        body: "Shablon asosidagi sayt tezroq va arzonroq ishga tushadi, lekin boshqa saytlarga o'xshab ketadi va brend xususiyatini kam ko'rsatadi. Individual dizayn brendga moslab chiziladi, mijoz ishonchi uchun foydali, lekin ko'proq vaqt va byudjet talab qiladi.",
+      },
+      {
+        heading: "Faqat narxga qarab tanlamang",
+        body: "Arzon taklif ko'pincha qo'llab-quvvatlash, tezlik, mobilga moslashuv yoki qidiruv tizimi uchun sozlashni o'z ichiga olmaydi. Keyin bularni alohida to'lashga to'g'ri keladi. Shuning uchun taklifda aynan nima kirgani yozilgan bo'lishi muhim.",
+      },
+      {
+        heading: "Buyurtma berishdan oldin nimani so'rash kerak",
+        body: "So'rang: aniq muddat va bosqichlar, to'lov tartibi (bosqichma-bosqich yoki oldindan), saytning telefonda ishlashi, SEO uchun asosiy sozlamalar kiradimi, ishga tushgandan keyin texnik qo'llab-quvvatlash bormi, sayt kodi va domen kimning nomiga rasmiylashtirilishi. Bularning barchasi yozma kelishilgan bo'lsin.",
+      },
+      {
+        heading: "FRONTIX qanday ishlaydi",
+        body: "FRONTIX har bir loyihani alohida baholaydi: avval bepul konsultatsiya, undan keyin muddat va tarkibi aniq yozilgan taklif. Loyiha odatda 1-6 hafta ichida tayyor bo'ladi, to'lov bosqichma-bosqich amalga oshiriladi, ishga tushgandan keyin esa texnik qo'llab-quvvatlash taklif qilinadi.",
+      },
+    ],
+    faq: [
+      {
+        question: "Sayt narxini oldindan aniq bilish mumkinmi?",
+        answer: "Faqat talablar aniqlangandan keyin. Sayt turi, sahifalar soni va integratsiyalarga qarab narx o'zgaradi, shuning uchun FRONTIX bepul konsultatsiyadan so'ng yozma taklif beradi.",
+      },
+      {
+        question: "Sayt tayyor bo'lgandan keyin qo'shimcha to'lovlar bo'ladimi?",
+        answer: "Domen va hosting kabi yillik xarajatlar, shuningdek, texnik qo'llab-quvvatlash alohida kelishiladi. Taklifda bu qismlar oldindan aniq yozilgan bo'lishi kerak.",
+      },
+      {
+        question: "Sayt qancha vaqtda tayyor bo'ladi?",
+        answer: "Murakkablikka qarab odatda 1-6 hafta. Oddiy vizitka sayt tezroq, onlayn do'kon yoki maxsus tizim esa ko'proq vaqt oladi.",
+      },
+    ],
+  },
 ];
 
 const blogTranslations: Record<Exclude<Lang, "uz">, Record<string, BlogPostText>> = { ru: blogRu, en: blogEn };
