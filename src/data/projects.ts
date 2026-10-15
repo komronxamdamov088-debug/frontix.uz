@@ -1,4 +1,7 @@
 import type { Service } from "@/data/services";
+import nurafshonLogo from "@/assets/projects/nurafshon-logo.webp";
+import qarzdaftarLogo from "@/assets/products/qarzdaftar-logo.webp";
+import sportfitLogo from "@/assets/products/sportfit-logo.webp";
 import type { Lang } from "@/i18n/translations";
 
 export interface ProjectResult {
@@ -27,6 +30,8 @@ export interface ProjectText {
 interface ProjectData {
   slug: string;
   clientName: string;
+  /** Client logo shown on the project card. Omit until we have the file. */
+  clientLogo?: string;
   clientWebsite?: string;
   service: Service["slug"];
   completedDate: string;
@@ -37,6 +42,8 @@ interface ProjectData {
 export interface Project extends ProjectText {
   slug: string;
   clientName: string;
+  /** Client logo shown on the project card. Omit until we have the file. */
+  clientLogo?: string;
   clientWebsite?: string;
   service: Service["slug"];
   completedDate: string;
@@ -51,6 +58,7 @@ const projectData: ProjectData[] = [
   {
     slug: "nurafshon-restoran-sayti",
     clientName: "Nurafshon Restaurant",
+    clientLogo: nurafshonLogo,
     service: "website-development",
     completedDate: "2026-09",
     text: {
@@ -104,6 +112,7 @@ const projectData: ProjectData[] = [
   {
     slug: "qarzdaftar",
     clientName: "QarzDaftar",
+    clientLogo: qarzdaftarLogo,
     clientWebsite: "https://qarzdaftar-tau.vercel.app",
     service: "custom-software",
     completedDate: "2026-08",
@@ -158,6 +167,7 @@ const projectData: ProjectData[] = [
   {
     slug: "sportfit",
     clientName: "SportFit",
+    clientLogo: sportfitLogo,
     clientWebsite: "https://www.instagram.com/sportfit_official1/",
     service: "business-automation",
     completedDate: "2026-09",

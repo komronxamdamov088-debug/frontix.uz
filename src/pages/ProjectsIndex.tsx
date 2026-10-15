@@ -108,6 +108,16 @@ export default function ProjectsIndex() {
                     to={`/loyihalar/${project.slug}`}
                     className="group flex h-full flex-col rounded-[2rem] border border-ink/10 dark:border-white/10 bg-paper dark:bg-white/[0.02] p-8 shadow-soft transition-colors hover:border-brand-500/30"
                   >
+                    {project.clientLogo && (
+                      <div className="mb-6 h-20 w-20 overflow-hidden rounded-2xl">
+                        <img
+                          src={project.clientLogo}
+                          alt={project.clientName}
+                          loading="lazy"
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
+                    )}
                     <span className="inline-flex w-fit items-center rounded-full bg-brand-500/10 px-3 py-1 text-xs font-medium text-brand-500">
                       {project.industry}
                     </span>

@@ -2,6 +2,7 @@ import partner1 from "@/assets/partners/tezcode-logo.webp";
 import partner2 from "@/assets/partners/coremed-logo.webp";
 import partner4 from "@/assets/partners/ai-solution-logo.webp";
 import partner5 from "@/assets/partners/mars-it-school-logo.webp";
+import partner6 from "@/assets/partners/kinder-medplus-logo.webp";
 import type { Lang } from "@/i18n/translations";
 
 type Localized<T = string> = Record<Lang, T>;
@@ -324,6 +325,34 @@ export const partners: Partner[] = [
         },
       },
     ],
+  },
+  {
+    id: "partner-6",
+    slug: "kinder-medplus",
+    name: "Kinder Medplus",
+    logo: partner6,
+    tagline: {
+      uz: "Bolalar salomatligi bo'yicha hamkor",
+      ru: "Партнёр в сфере детского здоровья",
+      en: "Children's health partner",
+    },
+    description: {
+      uz: "Bolalar salomatligiga yo'naltirilgan tibbiyot markazi. Shior: «Sog'lom kelajak sari».",
+      ru: "Медицинский центр, ориентированный на здоровье детей. Девиз: «К здоровому будущему».",
+      en: "A medical centre focused on children's health. Motto: \"Towards a healthy future\".",
+    },
+    about: {
+      uz: [
+        "Kinder Medplus — bolalar salomatligiga yo'naltirilgan tibbiyot markazi. Markaz shiori — «Sog'lom kelajak sari».",
+      ],
+      ru: [
+        "Kinder Medplus — медицинский центр, ориентированный на здоровье детей. Девиз центра — «К здоровому будущему».",
+      ],
+      en: [
+        "Kinder Medplus is a medical centre focused on children's health. The centre's motto is \"Towards a healthy future\".",
+      ],
+    },
+    offerings: [],
   },
 ];
 

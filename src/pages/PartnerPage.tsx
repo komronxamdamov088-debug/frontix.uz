@@ -155,6 +155,7 @@ export default function PartnerPage() {
         </Reveal>
 
         {/* Offerings */}
+        {partner.offerings.length > 0 && (
         <section className="pb-16 sm:pb-20">
           <Reveal>
             <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">{t.partners.offeringsTitle}</h2>
@@ -177,6 +178,7 @@ export default function PartnerPage() {
             ))}
           </div>
         </section>
+        )}
 
         {/* Partnership */}
         {partner.partnership && (
