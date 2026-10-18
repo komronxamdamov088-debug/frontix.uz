@@ -48,10 +48,5 @@ export const team: TeamMember[] = [
   { slug: "Diyor-Abdurahimov", name: "Diyor Abdurahimov", roleKey: "admin", category: "admin", color: "indigo" },
   { slug: "Behruz-Rahmatullaev", name: "Behruz Rahmatullaev", roleKey: "frontend", category: "developer", color: "emerald" },
   { slug: "Boxodir-Komolov", name: "Boxodir Komolov", roleKey: "frontend", category: "developer", color: "amber" },
-  { slug: "nilufar-xolova", name: "Nilufar Xolova", roleKey: "mobile", category: "developer", color: "violet" },
-  { slug: "sherzod-qodirov", name: "Sherzod Qodirov", roleKey: "backend", category: "developer", color: "rose" },
-  { slug: "madina-ergasheva", name: "Madina Ergasheva", roleKey: "frontend", category: "developer", color: "cyan" },
-  { slug: "farrux-islomov", name: "Farrux Islomov", roleKey: "devops", category: "developer", color: "lime" },
-  { slug: "zarina-mirzayeva", name: "Zarina Mirzayeva", roleKey: "qa", category: "developer", color: "orange" },
   { slug: "malika-rahimova", name: "Malika Rahimova", roleKey: "designer", category: "designer", color: "pink" },
 ];

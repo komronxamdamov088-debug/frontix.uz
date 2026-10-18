@@ -43,9 +43,9 @@ export const faqItems: FaqItem[] = [
       en: "What is FRONTIX and where is it located?",
     },
     answer: {
-      uz: "FRONTIX — Toshkentda joylashgan IT kompaniya. 2021-yildan buyon 14 nafar mutaxassis O'zbekiston bizneslari uchun veb-sayt, Telegram bot, QR-menyu, onlayn buyurtma tizimlari, CRM va maxsus dasturlar yaratadi.",
-      ru: "FRONTIX — IT-компания из Ташкента. С 2021 года команда из 14 специалистов создаёт для бизнеса Узбекистана сайты, Telegram-ботов, QR-меню, системы онлайн-заказов, CRM и ПО на заказ.",
-      en: "FRONTIX is an IT company based in Tashkent. Since 2021, its team of 14 specialists has built websites, Telegram bots, QR menus, online ordering systems, CRM and custom software for businesses in Uzbekistan.",
+      uz: "FRONTIX — Toshkentda joylashgan IT kompaniya. 2021-yildan buyon 9 nafar mutaxassis O'zbekiston bizneslari uchun veb-sayt, Telegram bot, QR-menyu, onlayn buyurtma tizimlari, CRM va maxsus dasturlar yaratadi.",
+      ru: "FRONTIX — IT-компания из Ташкента. С 2021 года команда из 9 специалистов создаёт для бизнеса Узбекистана сайты, Telegram-ботов, QR-меню, системы онлайн-заказов, CRM и ПО на заказ.",
+      en: "FRONTIX is an IT company based in Tashkent. Since 2021, its team of 9 specialists has built websites, Telegram bots, QR menus, online ordering systems, CRM and custom software for businesses in Uzbekistan.",
     },
   },
   {
