@@ -20,8 +20,17 @@ function normalize(input: string): string {
     .trim();
 }
 
+/**
+ * Keywords match only at the start of a word, so "hi" no longer fires inside
+ * "dasturchi" and "bot" no longer fires inside "robot". Stems ("стоимост")
+ * still match their word forms; 1–2 letter keywords ("hi", "qr") must be whole words.
+ */
 function includesAny(text: string, keywords: string[]): boolean {
-  return keywords.some((kw) => text.includes(kw));
+  const padded = ` ${text} `;
+  return keywords.some((kw) => {
+    const needle = normalize(kw);
+    return needle.length <= 2 ? padded.includes(` ${needle} `) : padded.includes(` ${needle}`);
+  });
 }
 
 interface Intent {
@@ -31,15 +40,72 @@ interface Intent {
 }
 
 const intents: Intent[] = [
+  // Order matters: the first match wins, so specific questions (price, payment…) come
+  // before broad topics, and greetings come last ("Salom, sayt narxi?" → price).
   {
-    id: "greeting",
-    keywords: ["salom", "assalomu", "xayrli", "hello", "hi", "hey", "privet", "привет", "здравствуйте", "добрый"],
-    reply: (t) => ({ text: t.frx.greeting, quickReplies: t.frx.starterSuggestions }),
+    id: "who-are-you",
+    keywords: [
+      "sen kimsan", "kimsan oz", "ozing haqingda", "sun'iy intellekt", "robot", "ai misan",
+      "ты кто", "расскажи о себе", "искусственный интеллект", "робот", "ты бот",
+      "who are you", "are you ai", "are you a bot", "artificial intelligence", "tell me about yourself",
+    ],
+    reply: (_t, lang) => ({ text: selfIntro[lang] }),
   },
   {
-    id: "thanks",
-    keywords: ["rahmat", "tashakkur", "thanks", "thank you", "спасибо", "благодар"],
-    reply: (t) => ({ text: t.frx.thanks, quickReplies: [t.nav.services, t.nav.contact] }),
+    id: "start-project",
+    keywords: [
+      "qanday boshlayman", "ish boshlaymiz", "bepul konsultatsiya", "loyihani boshlash",
+      "начать проект", "с чего начать", "бесплатная консультац",
+      "get started", "how do i start", "start a project", "free consultation", "place an order",
+    ],
+    reply: (t, lang) => ({
+      text: startProject[lang],
+      cta: { label: t.frx.contactCta, to: "/contact" },
+    }),
+  },
+  {
+    id: "pricing",
+    keywords: ["narx", "pul", "byudjet", "arzon", "qancha turadi", "цен", "стоимост", "сколько стоит", "бюджет", "price", "cost", "budget", "how much"],
+    reply: (t) => ({
+      text: t.frx.pricingIntro,
+      cta: { label: t.frx.pricingCta, to: "/contact" },
+    }),
+  },
+  {
+    id: "payment",
+    keywords: [
+      "tolov usul", "qanday tolaymiz", "naqd", "karta orqali",
+      "способ оплат", "оплата картой", "предоплат",
+      "payment method", "how to pay", "installment", "pay by card",
+    ],
+    reply: (t, lang) => ({
+      text: faqAnswer("How does payment work?", lang) ?? t.frx.pricingIntro,
+      cta: { label: t.frx.contactCta, to: "/contact" },
+    }),
+  },
+  {
+    id: "support",
+    keywords: [
+      "qollab", "kafolat", "yordam berasizlar", "texnik yordam",
+      "поддержк", "гарант", "сопровожден",
+      "support", "warranty", "guarantee", "maintenance", "after launch",
+    ],
+    reply: (t, lang) => ({
+      text: faqAnswer("Is there support after launch?", lang) ?? t.frx.pricingIntro,
+      cta: { label: t.frx.contactCta, to: "/contact" },
+    }),
+  },
+  {
+    id: "tech-stack",
+    keywords: [
+      "texnologiya", "qanday tilda", "qaysi tilda yozasiz", "stack",
+      "технологи", "стек", "на чём пишете",
+      "tech stack", "technology", "framework", "programming language",
+    ],
+    reply: (t) => ({
+      text: `${t.about.techStackTitle}: ${t.about.techStack.join(", ")}.`,
+      cta: { label: t.nav.about, to: "/about" },
+    }),
   },
   {
     id: "contact",
@@ -49,7 +115,7 @@ const intents: Intent[] = [
       "contact", "phone", "address",
     ],
     reply: (t) => ({
-      text: `${t.frx.contactIntro}:\n\n📞 ${SITE.phone}\n✉️ ${SITE.email}\n📍 ${SITE.city}\n\nTelegram: ${SITE.telegramHandle}`,
+      text: `${t.frx.contactIntro}:\n\n📞 ${SITE.phones.map((p) => p.label).join(", ")}\n✉️ ${SITE.email}\n📍 ${SITE.city}\n\nTelegram: ${SITE.telegrams.map((tg) => tg.handle).join(", ")}`,
       cta: { label: t.frx.contactCta, to: "/contact" },
     }),
   },
@@ -72,7 +138,7 @@ const intents: Intent[] = [
     keywords: [
       "kimsiz", "kompaniya haqida", "tashkil", "qadriyat", "biz haqimizda",
       "кто вы", "о компании", "ценност",
-      "who are you", "about the company", "values",
+      "about the company", "values",
     ],
     reply: (t) => ({
       text: `${t.frx.aboutIntro}: ${t.values.map((v) => v.title).join(", ")}.`,
@@ -92,19 +158,9 @@ const intents: Intent[] = [
     }),
   },
   {
-    id: "service-website",
-    keywords: ["sayt", "veb", "сайт", "веб", "website", "web"],
-    reply: (t) => serviceReply(t, "website-development"),
-  },
-  {
     id: "service-qr",
     keywords: ["qr", "menyu", "restoran", "kafe", "меню", "ресторан", "кафе", "menu", "restaurant", "cafe"],
     reply: (t) => serviceReply(t, "qr-menu"),
-  },
-  {
-    id: "service-bot",
-    keywords: ["bot", "telegram", "бот", "телеграм"],
-    reply: (t) => serviceReply(t, "telegram-bot"),
   },
   {
     id: "service-ordering",
@@ -122,6 +178,16 @@ const intents: Intent[] = [
     reply: (t) => serviceReply(t, "custom-software"),
   },
   {
+    id: "service-bot",
+    keywords: ["bot", "telegram", "бот", "телеграм"],
+    reply: (t) => serviceReply(t, "telegram-bot"),
+  },
+  {
+    id: "service-website",
+    keywords: ["sayt", "veb", "сайт", "веб", "website", "web"],
+    reply: (t) => serviceReply(t, "website-development"),
+  },
+  {
     id: "services-list",
     keywords: ["xizmat", "nima qilasiz", "услуг", "service", "what do you do"],
     reply: (t) => ({
@@ -133,76 +199,21 @@ const intents: Intent[] = [
     }),
   },
   {
-    id: "pricing",
-    keywords: ["narx", "pul", "byudjet", "arzon", "цена", "стоимост", "бюджет", "price", "cost", "budget"],
-    reply: (t) => ({
-      text: t.frx.pricingIntro,
-      cta: { label: t.frx.pricingCta, to: "/contact" },
-    }),
+    id: "greeting",
+    keywords: ["salom", "assalomu", "xayrli", "hello", "hi", "hey", "privet", "привет", "здравствуйте", "добрый"],
+    reply: (t) => ({ text: t.frx.greeting, quickReplies: t.frx.starterSuggestions }),
   },
   {
-    id: "support",
-    keywords: [
-      "qollab", "kafolat", "yordam berasizlar", "texnik yordam",
-      "поддержк", "гарант", "сопровожден",
-      "support", "warranty", "guarantee", "maintenance", "after launch",
-    ],
-    reply: (t, lang) => ({
-      text: faqAnswer("Is there support after launch?", lang) ?? t.frx.pricingIntro,
-      cta: { label: t.frx.contactCta, to: "/contact" },
-    }),
-  },
-  {
-    id: "payment",
-    keywords: [
-      "tolov usul", "qanday tolaymiz", "naqd", "karta orqali",
-      "способ оплат", "оплата картой", "предоплат",
-      "payment method", "how to pay", "installment", "pay by card",
-    ],
-    reply: (t, lang) => ({
-      text: faqAnswer("How does payment work?", lang) ?? t.frx.pricingIntro,
-      cta: { label: t.frx.contactCta, to: "/contact" },
-    }),
-  },
-  {
-    id: "tech-stack",
-    keywords: [
-      "texnologiya", "qanday tilda", "qaysi tilda yozasiz", "stack",
-      "технологи", "стек", "на чём пишете",
-      "tech stack", "technology", "framework", "programming language",
-    ],
-    reply: (t) => ({
-      text: `${t.about.techStackTitle}: ${t.about.techStack.join(", ")}.`,
-      cta: { label: t.nav.about, to: "/about" },
-    }),
-  },
-  {
-    id: "who-are-you",
-    keywords: [
-      "sen kimsan", "kimsan oz", "ozing haqingda", "sun'iy intellekt", "robot", "ai misan",
-      "ты кто", "расскажи о себе", "искусственный интеллект", "робот", "ты бот",
-      "who are you", "are you ai", "are you a bot", "artificial intelligence", "tell me about yourself",
-    ],
-    reply: (_t, lang) => ({ text: selfIntro[lang] }),
-  },
-  {
-    id: "start-project",
-    keywords: [
-      "qanday boshlayman", "ish boshlaymiz", "bepul konsultatsiya", "loyihani boshlash",
-      "начать проект", "с чего начать", "бесплатная консультац",
-      "get started", "how do i start", "start a project", "free consultation", "place an order",
-    ],
-    reply: (t, lang) => ({
-      text: startProject[lang],
-      cta: { label: t.frx.contactCta, to: "/contact" },
-    }),
+    id: "thanks",
+    keywords: ["rahmat", "tashakkur", "thanks", "thank you", "спасибо", "благодар"],
+    reply: (t) => ({ text: t.frx.thanks, quickReplies: [t.nav.services, t.nav.contact] }),
   },
 ];
 
 const selfIntro: Record<Lang, string> = {
-  uz: "Men FRX — FRONTIX saytidagi lokal yordamchiman. Katta til modeli emasman, shuning uchun API kaliti kerak emas — lekin xizmatlar, narx, jarayon, jamoa va aloqa haqidagi savollaringizga tez javob bera olaman.",
-  ru: "Я FRX — локальный помощник на сайте FRONTIX. Я не большая языковая модель и не требую API-ключа, но быстро отвечу на вопросы об услугах, ценах, процессе, команде и контактах.",
-  en: "I'm FRX, the local assistant built into the FRONTIX site. I'm not a large language model and need no API key, but I can quickly answer questions about services, pricing, process, the team and contact info.",
+  uz: "Men FRX — FRONTIX kompaniyasining AI yordamchisiman. Xizmatlar, narx, ish jarayoni, jamoa va aloqa haqidagi savollaringizga javob beraman. Murakkab savollar bo'yicha esa jamoamiz bilan bog'lab qo'yaman.",
+  ru: "Я FRX — AI-ассистент компании FRONTIX. Отвечаю на вопросы об услугах, ценах, процессе работы, команде и контактах, а по сложным вопросам свяжу вас с нашей командой.",
+  en: "I'm FRX, the AI assistant of FRONTIX. I answer questions about our services, pricing, process, team and contacts, and for anything complex I'll connect you with our team.",
 };
 
 const startProject: Record<Lang, string> = {

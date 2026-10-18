@@ -33,6 +33,7 @@ interface Dictionary {
     solutions: string;
     projects: string;
     blog: string;
+    pricing: string;
     solutionsDesc: string;
     projectsDesc: string;
     servicesDesc: string;
@@ -402,9 +403,9 @@ const techStackList = ["React", "TypeScript", "Node.js", "Tailwind CSS", "Telegr
 export const translations: Record<Lang, Dictionary> = {
   uz: {
     meta: {
-      title: "Sayt yaratish Toshkentda — $300 | FRONTIX IT kompaniya",
+      title: "Sayt yaratish Toshkentda — $350 | FRONTIX IT kompaniya",
       description:
-        "Toshkentda sayt yaratish $300, admin panelli sayt $550. Telegram bot, QR menyu, onlayn buyurtma va CRM tizimlari ham 1-6 haftada tayyor. FRONTIX IT kompaniyasi.",
+        "Toshkentda sayt yaratish $350, admin panelli sayt $550. Telegram bot, QR menyu, onlayn buyurtma va CRM tizimlari ham 1-6 haftada tayyor. FRONTIX IT kompaniyasi.",
       keywords:
         "sayt qilib beradigan kompaniya, dastur qilib beradigan kompaniya, raqamli dastur yaratish, sayt yaratib beruvchi kompaniyalar Toshkent, dasturlash kompaniyasi, IT kompaniyalar Toshkent, FRONTIX, veb-sayt yasash, sayt yaratish, QR menyu, Telegram bot yaratish, CRM avtomatlashtirish, onlayn buyurtma tizimi, raqamli yechimlar O'zbekiston",
     },
@@ -457,6 +458,7 @@ export const translations: Record<Lang, Dictionary> = {
       solutions: "Yechimlar",
       projects: "Loyihalar",
       blog: "Blog",
+      pricing: "Narxlar",
       solutionsDesc: "Har bir soha uchun tayyor yechimlar",
       projectsDesc: "Biz yaratgan loyihalar",
       servicesDesc: "Sayt, bot, QR menyu va avtomatlashtirish",
@@ -678,9 +680,9 @@ export const translations: Record<Lang, Dictionary> = {
   },
   ru: {
     meta: {
-      title: "Создание сайтов в Ташкенте — $300 | FRONTIX IT-компания",
+      title: "Создание сайтов в Ташкенте — $350 | FRONTIX IT-компания",
       description:
-        "Создание сайта в Ташкенте $300, сайт с админ-панелью $550. Также Telegram-боты, QR-меню, системы онлайн-заказов и CRM за 1-6 недель. IT-компания FRONTIX.",
+        "Создание сайта в Ташкенте $350, сайт с админ-панелью $550. Также Telegram-боты, QR-меню, системы онлайн-заказов и CRM за 1-6 недель. IT-компания FRONTIX.",
       keywords:
         "компания по разработке сайтов, разработка программ на заказ, создание сайтов под ключ Ташкент, IT-компании Ташкента, заказать сайт в Узбекистане, FRONTIX, разработка сайтов, QR-меню, разработка Telegram-бота, CRM-автоматизация, система онлайн-заказов, цифровые решения Узбекистан",
     },
@@ -733,6 +735,7 @@ export const translations: Record<Lang, Dictionary> = {
       solutions: "Решения",
       projects: "Проекты",
       blog: "Блог",
+      pricing: "Цены",
       solutionsDesc: "Готовые решения для каждой отрасли",
       projectsDesc: "Проекты, которые мы создали",
       servicesDesc: "Сайты, боты, QR-меню и автоматизация",
@@ -953,9 +956,9 @@ export const translations: Record<Lang, Dictionary> = {
   },
   en: {
     meta: {
-      title: "Website Development in Tashkent $300 | FRONTIX",
+      title: "Website Development in Tashkent $350 | FRONTIX",
       description:
-        "Websites in Tashkent $300, websites with an admin panel $550. Telegram bots, QR menus, online ordering and CRM systems in 1-6 weeks. FRONTIX IT company.",
+        "Websites in Tashkent $350, websites with an admin panel $550. Telegram bots, QR menus, online ordering and CRM systems in 1-6 weeks. FRONTIX IT company.",
       keywords:
         "website development company Tashkent, software development company Uzbekistan, custom software development, web development agency Tashkent, IT companies in Tashkent, FRONTIX, web design, QR menu, Telegram bot development, CRM automation, online ordering system",
     },
@@ -1008,6 +1011,7 @@ export const translations: Record<Lang, Dictionary> = {
       solutions: "Solutions",
       projects: "Projects",
       blog: "Blog",
+      pricing: "Pricing",
       solutionsDesc: "Ready-made solutions for every industry",
       projectsDesc: "Projects we have built",
       servicesDesc: "Websites, bots, QR menus and automation",

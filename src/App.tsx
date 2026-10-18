@@ -10,6 +10,7 @@ import Partners from "@/pages/Partners";
 import PartnerPage from "@/pages/PartnerPage";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
+import Pricing from "@/pages/Pricing";
 import SolutionsIndex from "@/pages/SolutionsIndex";
 import { preloadable } from "@/lib/preloadable";
 import BlogIndex from "@/pages/BlogIndex";
@@ -32,6 +33,7 @@ const PAGES: { path: string; element: ReactElement }[] = [
   { path: "", element: <Home /> },
   { path: "/services", element: <Services /> },
   { path: "/services/:slug", element: <ServicePage /> },
+  { path: "/pricing", element: <Pricing /> },
   { path: "/team", element: <Team /> },
   { path: "/partners", element: <Partners /> },
   { path: "/partners/:slug", element: <PartnerPage /> },

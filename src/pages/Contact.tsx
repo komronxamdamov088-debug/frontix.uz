@@ -11,6 +11,7 @@ import { services } from "@/data/services";
 import { SITE } from "@/data/site";
 import { useLanguage } from "@/context/LanguageContext";
 import { cn } from "@/lib/utils";
+import type { Lang } from "@/i18n/translations";
 
 interface FormState {
   name: string;
@@ -19,6 +20,23 @@ interface FormState {
   service: string;
   message: string;
 }
+
+// Shown when /api/contact fails: the form keeps its data and the visitor sends it
+// via Telegram with an explicit click (a window.open after await is often blocked).
+const sendError: Record<Lang, { text: string; button: string }> = {
+  uz: {
+    text: "So'rovni yuborib bo'lmadi. Ma'lumotlaringiz saqlandi — Telegram orqali bir bosishda yuboring.",
+    button: "Telegram orqali yuborish",
+  },
+  ru: {
+    text: "Не удалось отправить заявку. Ваши данные сохранены — отправьте их через Telegram в один клик.",
+    button: "Отправить через Telegram",
+  },
+  en: {
+    text: "We couldn't send your request. Your details are saved — send them via Telegram in one click.",
+    button: "Send via Telegram",
+  },
+};
 
 function isValidPhone(phone: string) {
   const digits = phone.replace(/\D/g, "");
@@ -37,6 +55,7 @@ export default function Contact() {
   const [form, setForm] = useState<FormState>(initialState);
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
+  const [failed, setFailed] = useState(false);
   const [phoneTouched, setPhoneTouched] = useState(false);
   const phoneValid = isValidPhone(form.phone);
 
@@ -65,6 +84,7 @@ export default function Contact() {
       return;
     }
     setSending(true);
+    setFailed(false);
 
     try {
       const res = await fetch("/api/contact", {
@@ -73,13 +93,13 @@ export default function Contact() {
         body: JSON.stringify(form),
       });
       if (!res.ok) throw new Error("request failed");
-    } catch {
-      openTelegramFallback();
-    } finally {
-      setSending(false);
       setSubmitted(true);
       setForm({ ...initialState, service: t.services[services[0].slug].title });
       setPhoneTouched(false);
+    } catch {
+      setFailed(true);
+    } finally {
+      setSending(false);
     }
   };
 
@@ -120,9 +140,13 @@ export default function Contact() {
                     <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-500/10 text-brand-500">
                       <Phone size={16} />
                     </span>
-                    <a href={`tel:${SITE.phoneHref}`} className="text-ink/70 dark:text-paper/70 hover:text-ink dark:hover:text-paper transition-colors">
-                      {SITE.phone}
-                    </a>
+                    <div className="flex flex-col">
+                      {SITE.phones.map((p) => (
+                        <a key={p.href} href={`tel:${p.href}`} className="text-ink/70 dark:text-paper/70 hover:text-ink dark:hover:text-paper transition-colors">
+                          {p.label}
+                        </a>
+                      ))}
+                    </div>
                   </li>
                   <li className="flex items-center gap-3">
                     <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-500/10 text-brand-500">
@@ -141,20 +165,23 @@ export default function Contact() {
                 </ul>
               </div>
 
-              <a
-                href={SITE.telegramUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="group flex items-center justify-between rounded-3xl bg-ink dark:bg-white/[0.03] border border-ink/10 dark:border-white/10 p-8 text-paper transition-colors hover:border-brand-500/40"
-              >
-                <div>
-                  <h3 className="text-lg font-semibold">{t.contact.telegramTitle}</h3>
-                  <p className="mt-1 text-sm text-paper/55">{SITE.telegramHandle}</p>
-                </div>
-                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-500 text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-                  <Send size={17} />
-                </span>
-              </a>
+              {SITE.telegrams.map((tg, i) => (
+                <a
+                  key={tg.url}
+                  href={tg.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group flex items-center justify-between rounded-3xl bg-ink dark:bg-white/[0.03] border border-ink/10 dark:border-white/10 p-8 text-paper transition-colors hover:border-brand-500/40"
+                >
+                  <div>
+                    {i === 0 && <h3 className="text-lg font-semibold">{t.contact.telegramTitle}</h3>}
+                    <p className={i === 0 ? "mt-1 text-sm text-paper/55" : "text-lg font-semibold"}>{tg.handle}</p>
+                  </div>
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-500 text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+                    <Send size={17} />
+                  </span>
+                </a>
+              ))}
             </motion.div>
 
             <motion.div
@@ -251,6 +278,19 @@ export default function Contact() {
                         className={`${inputClass} resize-none`}
                       />
                     </Field>
+
+                    {failed && (
+                      <div
+                        role="alert"
+                        className="sm:col-span-2 rounded-2xl border border-red-500/30 bg-red-500/5 p-4 text-sm"
+                      >
+                        <p className="text-red-600 dark:text-red-400">{sendError[lang].text}</p>
+                        <Button type="button" variant="secondary" className="mt-3" onClick={openTelegramFallback}>
+                          <Send size={16} />
+                          {sendError[lang].button}
+                        </Button>
+                      </div>
+                    )}
 
                     <div className="sm:col-span-2">
                       <Button type="submit" size="lg" disabled={sending} className="w-full sm:w-auto">

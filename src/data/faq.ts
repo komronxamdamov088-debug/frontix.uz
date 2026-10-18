@@ -19,7 +19,7 @@ export const faqCategories: { id: FaqCategory; label: Localized }[] = [
 
 // Site-wide FAQ shown on the home and contact pages (and as FAQPage JSON-LD).
 // Answers only restate facts already published elsewhere on the site — no
-// new promises about guarantees or ownership terms. Website prices ($300 /
+// new promises about guarantees or ownership terms. Website prices ($350 /
 // $550) are the owner's confirmed fixed prices.
 export const faqItems: FaqItem[] = [
   {
@@ -134,9 +134,9 @@ export const faqItems: FaqItem[] = [
       en: "How is the price determined?",
     },
     answer: {
-      uz: "Veb-sayt narxi $300, admin panelli sayt (kontentni o'zingiz boshqarasiz) $550. Telegram bot, QR menyu, CRM va maxsus dasturlar funksionallik, dizayn murakkabligi va muddatga qarab individual baholanadi: loyihangiz haqida qisqacha yozsangiz, bepul taklif tayyorlaymiz.",
-      ru: "Сайт стоит $300, сайт с админ-панелью (контентом управляете сами) — $550. Telegram-боты, QR-меню, CRM и индивидуальные программы оцениваются по функциональности, сложности дизайна и срокам: опишите проект коротко, и мы подготовим бесплатное предложение.",
-      en: "A website costs $300; a website with an admin panel (you manage the content yourself) costs $550. Telegram bots, QR menus, CRM and custom software are priced individually by features, design complexity and timeline — tell us briefly about your project and we'll prepare a free quote.",
+      uz: "Veb-sayt narxi $350, admin panelli sayt (kontentni o'zingiz boshqarasiz) $550. Telegram bot, QR menyu, CRM va maxsus dasturlar funksionallik, dizayn murakkabligi va muddatga qarab individual baholanadi: loyihangiz haqida qisqacha yozsangiz, bepul taklif tayyorlaymiz.",
+      ru: "Сайт стоит $350, сайт с админ-панелью (контентом управляете сами) — $550. Telegram-боты, QR-меню, CRM и индивидуальные программы оцениваются по функциональности, сложности дизайна и срокам: опишите проект коротко, и мы подготовим бесплатное предложение.",
+      en: "A website costs $350; a website with an admin panel (you manage the content yourself) costs $550. Telegram bots, QR menus, CRM and custom software are priced individually by features, design complexity and timeline — tell us briefly about your project and we'll prepare a free quote.",
     },
   },
   {

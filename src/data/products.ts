@@ -1,5 +1,8 @@
 import qarzdaftarLogo from "@/assets/products/qarzdaftar-logo.webp";
 import sportfitLogo from "@/assets/products/sportfit-logo.webp";
+import frxBusinessLogo from "@/assets/products/frx-business-logo.svg";
+import frxHotelLogo from "@/assets/products/frx-hotel-logo.svg";
+import frxMedLogo from "@/assets/products/frxmed-logo.svg";
 import type { Lang } from "@/i18n/translations";
 
 export interface Product {
@@ -14,6 +17,8 @@ export interface Product {
   /** Brand accent color used for the card's badge and highlights. */
   accent: string;
   website?: string;
+  /** Link text override, e.g. when `website` is an Instagram page rather than a site. */
+  websiteLabel?: Record<Lang, string>;
   category: Record<Lang, string>;
   description: Record<Lang, string>;
   features: Record<Lang, string[]>;
@@ -23,9 +28,76 @@ export interface Product {
 // entry here — the home page "Products" section renders this list as-is.
 export const products: Product[] = [
   {
+    id: "frx-business",
+    name: "FRX Business",
+    logo: frxBusinessLogo,
+    logoZoom: false,
+    accent: "#2F6FED",
+    category: {
+      uz: "CRM · Do'kon va savdo uchun",
+      ru: "CRM · Для магазинов и торговли",
+      en: "CRM · For shops and retail",
+    },
+    description: {
+      uz: "Do'konlar uchun CRM tizimi — kassa, mahsulotlar, ombor qoldig'i va mijozlarni bitta oson panelda boshqaring. Har bir biznes o'z alohida ma'lumotlari bilan ishlaydi.",
+      ru: "CRM для магазинов — касса, товары, складские остатки и клиенты в одной удобной панели. Каждый бизнес работает со своими изолированными данными.",
+      en: "A CRM for shops — point of sale, products, stock and customers in one simple dashboard. Every business works with its own isolated data.",
+    },
+    features: {
+      uz: ["Kassa va savdo statistikasi", "Mahsulot va kategoriyalar", "Kam qoldiq ogohlantirishi", "Mijozlar bazasi"],
+      ru: ["Касса и статистика продаж", "Товары и категории", "Оповещение о низком остатке", "База клиентов"],
+      en: ["Point of sale and sales stats", "Products and categories", "Low-stock alerts", "Customer database"],
+    },
+  },
+  {
+    id: "frx-hotel",
+    name: "FRX Hotel",
+    logo: frxHotelLogo,
+    logoZoom: false,
+    accent: "#2F6FED",
+    category: {
+      uz: "CRM · Mehmonxonalar uchun",
+      ru: "CRM · Для гостиниц",
+      en: "CRM · For hotels",
+    },
+    description: {
+      uz: "Mehmonxonalar uchun CRM tizimi — xonalar, bronlar va mehmonlarni boshqaring, check-in/check-out va tunlar bo'yicha hisob-kitob avtomatik.",
+      ru: "CRM для гостиниц — управление номерами, бронированиями и гостями, автоматический check-in/check-out и расчёт по ночам.",
+      en: "A CRM for hotels — manage rooms, bookings and guests, with automatic check-in/check-out and per-night billing.",
+    },
+    features: {
+      uz: ["Xonalar va xona turlari", "Bronlar jadvali", "Check-in / check-out", "Tunlar bo'yicha avtomatik summa"],
+      ru: ["Номера и типы номеров", "Таблица бронирований", "Check-in / check-out", "Автоматический расчёт по ночам"],
+      en: ["Rooms and room types", "Booking calendar", "Check-in / check-out", "Automatic per-night totals"],
+    },
+  },
+  {
+    id: "frx-med",
+    name: "FRX MED",
+    logo: frxMedLogo,
+    logoZoom: false,
+    accent: "#2F6FED",
+    category: {
+      uz: "CRM · Klinika va shifoxonalar uchun",
+      ru: "CRM · Для клиник и больниц",
+      en: "CRM · For clinics and hospitals",
+    },
+    description: {
+      uz: "Klinika va shifoxonalar uchun CRM tizimi — bemorlar, shifokorlar va qabullarni bitta joyda tartibli yuritish uchun.",
+      ru: "CRM для клиник и больниц — пациенты, врачи и приёмы в одном месте, всё под контролем.",
+      en: "A CRM for clinics and hospitals — patients, doctors and appointments organised in one place.",
+    },
+    features: {
+      uz: ["Bemorlar bazasi", "Shifokorlar va qabul jadvali", "Tashriflar tarixi", "Klinika statistikasi"],
+      ru: ["База пациентов", "Врачи и расписание приёмов", "История визитов", "Статистика клиники"],
+      en: ["Patient records", "Doctors and appointment schedule", "Visit history", "Clinic statistics"],
+    },
+  },
+  {
     id: "qarzdaftar",
     name: "QarzDaftar",
     logo: qarzdaftarLogo,
+    logoZoom: false,
     accent: "#2563EB",
     website: "https://qarzdaftar-tau.vercel.app",
     category: {
@@ -51,6 +123,8 @@ export const products: Product[] = [
     logoZoom: false,
     monogram: "SF",
     accent: "#E2222C",
+    website: "https://www.instagram.com/sportfit_official1/",
+    websiteLabel: { uz: "Instagram'da ko'rish", ru: "Смотреть в Instagram", en: "View on Instagram" },
     category: {
       uz: "E-commerce · Sport do'koni",
       ru: "E-commerce · Спортивный магазин",

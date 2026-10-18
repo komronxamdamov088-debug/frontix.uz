@@ -247,6 +247,7 @@ export function Navbar() {
         { label: t.nav.partners, to: "/partners", description: t.nav.partnersDesc, icon: Handshake },
       ],
     },
+    { label: t.nav.pricing, to: "/pricing" },
     { label: t.nav.blog, to: "/blog" },
   ];
   const mobileEntries: NavEntry[] = [{ label: t.nav.home, to: "/" }, ...navEntries, { label: t.nav.contact, to: "/contact" }];

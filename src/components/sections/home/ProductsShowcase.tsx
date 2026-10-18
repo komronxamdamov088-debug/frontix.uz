@@ -18,7 +18,7 @@ export function ProductsShowcase() {
           description={t.products.description}
         />
 
-        <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {products.map((product, i) => (
             <ProductCard key={product.id} product={product} index={i} />
           ))}
@@ -36,7 +36,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6, delay: (index % 2) * 0.08, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.6, delay: (index % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ y: -6 }}
       className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-ink/10 dark:border-white/10 bg-paper dark:bg-white/[0.02] p-8 shadow-soft"
       style={{ ["--accent" as string]: product.accent }}
@@ -77,7 +77,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
 
       <p className="relative mt-6 text-sm leading-relaxed text-ink/60 dark:text-paper/60">{product.description[lang]}</p>
 
-      <ul className="relative mt-6 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+      <ul className="relative mt-6 grid grid-cols-1 gap-2.5 sm:grid-cols-2 md:grid-cols-1">
         {product.features[lang].map((feature) => (
           <li key={feature} className="flex items-start gap-2 text-sm text-ink/80 dark:text-paper/80">
             <Check size={16} className="mt-0.5 shrink-0" style={{ color: product.accent }} />
@@ -93,7 +93,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
           rel="noopener noreferrer"
           className="relative mt-8 inline-flex w-fit items-center gap-1.5 text-sm font-medium text-ink/70 dark:text-paper/70 transition-colors hover:text-[var(--accent)]"
         >
-          {t.products.visit}
+          {product.websiteLabel?.[lang] ?? t.products.visit}
           <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </a>
       )}

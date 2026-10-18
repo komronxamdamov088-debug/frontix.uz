@@ -17,6 +17,7 @@ const PAGES = [
   { path: "/", priority: "1.0" },
   { path: "/services", priority: "0.9" },
   ...SERVICE_PATHS.map((path) => ({ path, priority: "0.9" })),
+  { path: "/pricing", priority: "0.9" },
   { path: "/team", priority: "0.8" },
   { path: "/partners", priority: "0.7" },
   ...PARTNER_PATHS.map((path) => ({ path, priority: "0.6" })),

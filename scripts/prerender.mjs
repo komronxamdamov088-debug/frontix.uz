@@ -20,6 +20,7 @@ const DIST = join(ROOT, "dist");
 const PAGE_PATHS = [
   "/",
   "/services",
+  "/pricing",
   ...SERVICE_PATHS,
   "/team",
   "/partners",

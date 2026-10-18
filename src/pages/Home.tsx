@@ -8,6 +8,7 @@ import { TeamPreview } from "@/components/sections/home/TeamPreview";
 import { HowWeWork } from "@/components/sections/home/HowWeWork";
 import { Testimonials } from "@/components/sections/home/Testimonials";
 import { CTASection } from "@/components/sections/CTASection";
+import { PricingSection } from "@/components/sections/PricingSection";
 import { FaqSection, faqJsonLd } from "@/components/sections/FaqSection";
 import { useLanguage } from "@/context/LanguageContext";
 import { SITE } from "@/data/site";
@@ -53,6 +54,7 @@ export default function Home() {
       <TeamPreview />
       <HowWeWork />
       <Testimonials />
+      <PricingSection onHome />
       <FaqSection />
       <CTASection />
     </>

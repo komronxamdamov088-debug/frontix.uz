@@ -24,9 +24,9 @@ export interface ServiceDetailText {
 export const serviceDetails: Record<ServiceSlug, Record<Lang, ServiceDetailText>> = {
   "website-development": {
     uz: {
-      seoTitle: "Toshkentda veb-sayt yaratish — $300, admin panelli $550",
+      seoTitle: "Toshkentda veb-sayt yaratish — $350, admin panelli $550",
       metaDescription:
-        "FRONTIX Toshkentda biznes uchun veb-sayt yaratadi: sayt $300, admin panelli sayt $550. Korporativ sayt, landing, onlayn do'kon. Telefonga moslashgan, SEO bilan, 1-6 haftada.",
+        "FRONTIX Toshkentda biznes uchun veb-sayt yaratadi: sayt $350, admin panelli sayt $550. Korporativ sayt, landing, onlayn do'kon. Telefonga moslashgan, SEO bilan, 1-6 haftada.",
       keywords:
         "veb-sayt yaratish Toshkent, sayt qilib berish, korporativ sayt, landing page yaratish, onlayn do'kon ochish, biznes uchun sayt, sayt dizayni, veb-dizayn O'zbekiston, sayt yaratib beradigan kompaniya",
       h1: "Toshkentda biznes uchun veb-sayt yaratish",
@@ -60,9 +60,9 @@ export const serviceDetails: Record<ServiceSlug, Record<Lang, ServiceDetailText>
       ],
     },
     ru: {
-      seoTitle: "Разработка сайтов в Ташкенте — $300, с админ-панелью $550",
+      seoTitle: "Разработка сайтов в Ташкенте — $350, с админ-панелью $550",
       metaDescription:
-        "FRONTIX разрабатывает сайты для бизнеса в Ташкенте: сайт $300, сайт с админ-панелью $550. Корпоративные сайты, лендинги, интернет-магазины. Адаптив, SEO, 1-6 недель.",
+        "FRONTIX разрабатывает сайты для бизнеса в Ташкенте: сайт $350, сайт с админ-панелью $550. Корпоративные сайты, лендинги, интернет-магазины. Адаптив, SEO, 1-6 недель.",
       keywords:
         "разработка сайтов Ташкент, создание сайта Узбекистан, корпоративный сайт, лендинг под ключ, интернет-магазин разработка, сайт для бизнеса, веб-дизайн Ташкент, заказать сайт",
       h1: "Разработка сайтов для бизнеса в Ташкенте",
@@ -96,9 +96,9 @@ export const serviceDetails: Record<ServiceSlug, Record<Lang, ServiceDetailText>
       ],
     },
     en: {
-      seoTitle: "Website Development in Tashkent — $300, with Admin Panel $550",
+      seoTitle: "Website Development in Tashkent — $350, with Admin Panel $550",
       metaDescription:
-        "FRONTIX builds business websites in Tashkent: website $300, website with an admin panel $550. Corporate sites, landing pages, online stores. Responsive, SEO-ready, 1-6 weeks.",
+        "FRONTIX builds business websites in Tashkent: website $350, website with an admin panel $550. Corporate sites, landing pages, online stores. Responsive, SEO-ready, 1-6 weeks.",
       keywords:
         "website development Tashkent, website development Uzbekistan, web development company Tashkent, corporate website development, landing page development, e-commerce website, responsive website, website design Uzbekistan",
       h1: "Business website development in Tashkent",

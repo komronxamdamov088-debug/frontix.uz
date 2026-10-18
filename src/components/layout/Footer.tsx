@@ -14,6 +14,7 @@ export function Footer() {
   const navLinks = [
     { label: t.nav.home, to: "/" },
     { label: t.nav.services, to: "/services" },
+    { label: t.nav.pricing, to: "/pricing" },
     { label: t.nav.solutions, to: "/yechimlar" },
     { label: t.nav.projects, to: "/loyihalar" },
     { label: t.nav.blog, to: "/blog" },
@@ -33,15 +34,18 @@ export function Footer() {
               {t.footer.description}
             </p>
             <div className="mt-6 flex items-center gap-3">
-              <a
-                href={SITE.telegramUrl}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Telegram"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/10 dark:border-white/15 text-ink/60 dark:text-paper/60 hover:text-brand-500 hover:border-brand-500/40 transition-colors"
-              >
-                <Send size={16} />
-              </a>
+              {SITE.telegrams.map((tg) => (
+                <a
+                  key={tg.url}
+                  href={tg.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Telegram ${tg.handle}`}
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/10 dark:border-white/15 text-ink/60 dark:text-paper/60 hover:text-brand-500 hover:border-brand-500/40 transition-colors"
+                >
+                  <Send size={16} />
+                </a>
+              ))}
               <a
                 href={SITE.instagramUrl}
                 target="_blank"
@@ -102,11 +106,13 @@ export function Footer() {
               {t.footer.contactTitle}
             </h3>
             <ul className="mt-5 space-y-3 text-sm text-ink/65 dark:text-paper/65">
-              <li>
-                <a href={`tel:${SITE.phoneHref}`} className="hover:text-ink dark:hover:text-paper transition-colors">
-                  {SITE.phone}
-                </a>
-              </li>
+              {SITE.phones.map((p) => (
+                <li key={p.href}>
+                  <a href={`tel:${p.href}`} className="hover:text-ink dark:hover:text-paper transition-colors">
+                    {p.label}
+                  </a>
+                </li>
+              ))}
               <li>
                 <a href={`mailto:${SITE.email}`} className="hover:text-ink dark:hover:text-paper transition-colors">
                   {SITE.email}
