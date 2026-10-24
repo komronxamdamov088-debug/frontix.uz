@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "@/components/i18n/LocalizedLink";
-import { Send as SendIcon, X, ArrowUpRight } from "lucide-react";
+import { Send as SendIcon, X, ArrowUpRight, Mic, PhoneOff } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { useLanguage } from "@/context/LanguageContext";
+import { useVoiceAgent } from "./useVoiceAgent";
 import { getFrxReply, type FrxReply } from "./engine";
 import { cn } from "@/lib/utils";
 
@@ -109,6 +110,14 @@ export function FrxWidget() {
     setTyping(false);
   };
 
+  const voice = useVoiceAgent({
+    onTranscript: (role, text) => {
+      const next = [...messagesRef.current, { id: nextId(), role, text }];
+      messagesRef.current = next;
+      setMessages(next);
+    },
+  });
+
   const sendMessage = (raw: string) => {
     const value = raw.trim();
     if (!value) return;
@@ -167,13 +176,41 @@ export function FrxWidget() {
                   <div className="text-xs text-ink/50 dark:text-paper/50">{t.frx.subtitle}</div>
                 </div>
               </div>
+              <div className="flex items-center gap-1">
+                <button
+                  onClick={voice.status === "live" || voice.status === "connecting" ? voice.stop : voice.start}
+                  aria-label="Ovozli suhbat"
+                  title={voice.status === "error" ? "Mikrofon yoki ulanish xatosi. Qayta urinib ko'ring" : "Ovozli suhbat"}
+                  className={cn(
+                    "flex h-9 items-center gap-1.5 rounded-full px-3 text-xs font-medium transition-colors",
+                    voice.status === "live"
+                      ? "bg-red-500 text-white"
+                      : "bg-brand-500/10 text-brand-500 hover:bg-brand-500/20",
+                    voice.status === "error" && "bg-red-500/10 text-red-500",
+                  )}
+                >
+                  {voice.status === "live" || voice.status === "connecting" ? <PhoneOff size={15} /> : <Mic size={15} />}
+                  {voice.status === "connecting"
+                    ? "Ulanmoqda..."
+                    : voice.status === "live"
+                      ? voice.speaking
+                        ? "FRX gapirmoqda"
+                        : "Tinglayapman"
+                      : voice.status === "error"
+                        ? "Xato, qayta"
+                        : "Gaplashish"}
+                </button>
               <button
-                onClick={() => setOpen(false)}
+                onClick={() => {
+                  voice.stop();
+                  setOpen(false);
+                }}
                 aria-label={t.frx.closeLabel}
                 className="flex h-9 w-9 items-center justify-center rounded-full text-ink/50 dark:text-paper/50 hover:bg-ink/[0.05] dark:hover:bg-white/[0.08] hover:text-ink dark:hover:text-paper transition-colors"
               >
                 <X size={18} />
               </button>
+              </div>
             </div>
 
             <div ref={scrollRef} className="flex-1 space-y-4 overflow-y-auto px-5 py-5">

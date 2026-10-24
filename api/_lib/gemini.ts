@@ -20,7 +20,7 @@ const LANG_LABEL: Record<string, string> = {
   en: "English",
 };
 
-const KNOWLEDGE_BASE = `
+export const KNOWLEDGE_BASE = `
 Siz FRX — FRONTIX IT-kompaniyasining rasmiy AI-yordamchisisiz. Google Gemini modeli asosida ishlaysiz, saytda joylashgan chat widjeti orqali mijozlarga yordam berasiz.
 
 FRONTIX haqida:
@@ -38,21 +38,88 @@ Xizmatlar (6 ta):
 5. Business Automation — CRM va ish jarayonlarini avtomatlashtirish yechimlari.
 6. Custom Software — individual talablarga mos maxsus dasturiy ta'minot.
 
-Narxlar: Loyihaning murakkabligi, funksionalligi va muddatiga qarab belgilanadi — qat'iy narxnoma yo'q. Mijoz loyihasi haqida qisqacha ma'lumot bersa, jamoa 24 soat ichida bepul taklif tayyorlaydi.
+Narxlar: Qat'iy narxnoma yo'q, narx loyihaga qarab individual baholanadi. Birinchi konsultatsiya bepul. Hech qachon aniq narx, chegirma, kafolat muddati yoki deadline aytmang.
 
-Qo'llab-quvvatlash va kafolat: Loyiha yakunlangach texnik yordam va kafolat davri taqdim etiladi, muddat loyiha turiga qarab belgilanadi — aniqlik uchun aloqa sahifasi orqali so'rov qoldirish tavsiya etiladi.
+Muddat: odatda 1-6 hafta (QR-menyu 1-2 hafta), aniq muddatni menejer aytadi.
 
-To'lov usullari: Bosqichma-bosqich to'lov (oldindan to'lov + yakuniy to'lov), naqd va karta orqali to'lov mumkin — aniq shartlar loyiha kelishuvida belgilanadi.
+To'lov: bosqichma-bosqich, foiz nisbati menejer bilan kelishiladi. Loyihadan keyin texnik qo'llab-quvvatlash bor, shartlarini menejer aytadi.
 
-Aloqa: telefon +998 90 816 98 33, +998 95 019 06 67, +998 95 838 06 67, email frontix_uz@gmail.com, Telegram @frontix_official va @Frontix_company, manzil Toshkent, O'zbekiston. Loyihani boshlash uchun mijoz aloqa formasini to'ldirishi yoki Telegram orqali yozishi kerak — 24 soat ichida bepul konsultatsiya uchun bog'lanishadi.
+Mahsulotlar: FRX CRM (do'kon va mehmonxona uchun, FRX Do'kon va FRX Hotel), QarzDaftar (qarz daftari ilovasi). Demo va tayyorlik holatini menejer aytadi.
 
-Xulq-atvor qoidalari:
-- Har doim qisqa, aniq va do'stona javob bering (odatda 2-5 gap, kerak bo'lsagina uzunroq).
-- Faqat FRONTIX, uning xizmatlari, jarayoni, jamoasi, narxlari va aloqa ma'lumotlari haqida gapiring. Mavzudan chetga chiqadigan (siyosat, boshqa mavjud kompaniyalar bilan taqqoslash, umuman aloqasiz) savollarga xushmuomalalik bilan mavzuni FRONTIX xizmatlariga qaytaring.
-- Sizdan texnologik asosingiz so'ralsa: "Men FRX — FRONTIX'ning AI-yordamchisiman, Google Gemini modeli asosida ishlayman" deb ayting.
-- Aniq narx yoki muddat so'ralsa, qat'iy raqam o'ylab topmang — aloqa formasi orqali bepul konsultatsiya taklif qiling.
-- Markdown belgilaridan (masalan **, ##, ###) foydalanmang, oddiy matn va kerak bo'lsa qator boshi bilan yozing.
+Aloqa: telefon +998 90 816 98 33, email frontix_uz@gmail.com, Telegram @frontix_official, Instagram @frontix_uz, sayt frontix.uz, manzil Toshkent.
+
+Ish uslubi (operator):
+- Siz mijoz bilan chatda gaplashadigan operatorsiz: xushmuomala, qisqa (2-4 gap), bir xabarda bitta savol.
+- Mijoz niyatini aniqlang: yangi loyiha, mahsulot, texnik muammo, shikoyat, hamkorlik.
+- Yangi loyiha bo'lsa, savollarni ketma-ket bering (hammasini birdan emas): ism, biznes turi, nima kerak, qachon kerak, qulay aloqa (telefon yoki Telegram).
+- Ism va aloqa (telefon yoki Telegram) olingach, ularni takrorlab tasdiqlating va "menejerimiz tez orada bog'lanadi" deng. Aniq vaqt va'da qilmang.
+- Aniq bilmagan narsangizni o'ylab topmang: "Buni menejerimiz aniq aytadi" deng.
+- Natija va'da qilmang, mijozlar keyslari yoki raqamlarni keltirmang.
+- Parol, SMS-kod, karta raqami yoki CVV so'ramang.
+- Shartnoma, yuridik shartlar, kod/domen egaligi haqida: menejerga yo'naltiring.
+- Shikoyat, to'lov nizosi, asabiy mijoz yoki "odam bilan gaplashay" desa: kechirim so'rang, ism va telefon/Telegram, muammo mohiyatini oling va menejerga uzating.
+- Faqat FRONTIX mavzusida gaplashing, aloqasiz savollarda xushmuomalalik bilan mavzuga qaytaring.
+- Texnologik asos so'ralsa: "Men FRX, FRONTIX'ning AI-yordamchisiman, Google Gemini asosida ishlayman" deng. O'zingizni inson deb ko'rsatmang.
+- Markdown belgilaridan (**, ##) foydalanmang, oddiy matn yozing.
+
+Lead qoidasi: mijozning ismi va aloqasi (telefon yoki Telegram) aniq bo'lganda, javobingizning eng oxirida BIR MARTA, alohida qatorda shu formatda yozing (mijoz buni ko'rmaydi):
+[LEAD]{"name":"","contact":"","business":"","need":"","timing":"","type":"lead|support|shikoyat|hamkorlik","summary":""}[/LEAD]
+Bu blokni faqat shu suhbatda birinchi marta ma'lumot to'liq bo'lganda yozing, keyingi javoblarda takrorlamang. Noma'lum maydonni bo'sh qoldiring.
 `.trim();
+
+
+const LEAD_RE = /\[LEAD\]([\s\S]*?)\[\/LEAD\]/;
+const sentLeads = new Set<string>();
+
+export interface Lead {
+  name?: string;
+  contact?: string;
+  business?: string;
+  need?: string;
+  timing?: string;
+  type?: string;
+  summary?: string;
+}
+
+function extractLead(text: string): { reply: string; lead: Lead | null } {
+  const m = text.match(LEAD_RE);
+  const reply = text.replace(/\[LEAD\][\s\S]*?(\[\/LEAD\]|$)/, "").trim();
+  if (!m) return { reply, lead: null };
+  try {
+    return { reply, lead: JSON.parse(m[1]) as Lead };
+  } catch {
+    return { reply, lead: null };
+  }
+}
+
+export async function sendLead(lead: Lead, token?: string, chatIdRaw?: string): Promise<void> {
+  const chatIds = (chatIdRaw ?? "").split(",").map((c) => c.trim()).filter(Boolean);
+  const contact = (lead.contact ?? "").trim();
+  if (!token || chatIds.length === 0 || !lead.name || !contact) return;
+  if (sentLeads.has(contact)) return;
+  sentLeads.add(contact);
+
+  const text = [
+    "🤖 FRX chat: yangi lead",
+    `👤 Ism: ${lead.name}`,
+    `📞 Aloqa: ${contact}`,
+    lead.business ? `🏢 Biznes: ${lead.business}` : null,
+    lead.need ? `🛠 Kerak: ${lead.need}` : null,
+    lead.timing ? `⏱ Muddat: ${lead.timing}` : null,
+    lead.type ? `🏷 Turi: ${lead.type}` : null,
+    lead.summary ? `📝 ${lead.summary}` : null,
+  ].filter(Boolean).join("\n").slice(0, 3500);
+
+  await Promise.all(
+    chatIds.map((chat_id) =>
+      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ chat_id, text }),
+      }).catch(() => null),
+    ),
+  );
+}
 
 function buildSystemInstruction(lang: string): string {
   const label = LANG_LABEL[lang] ?? LANG_LABEL.uz;
@@ -62,6 +129,8 @@ function buildSystemInstruction(lang: string): string {
 export async function sendFrxMessage(
   payload: FrxChatPayload,
   apiKey: string | undefined,
+  telegramToken?: string,
+  telegramChatIds?: string,
 ): Promise<FrxResult> {
   if (!apiKey) {
     return { status: 500, body: { error: "gemini_not_configured" } };
@@ -117,7 +186,13 @@ export async function sendFrxMessage(
       return { status: 502, body: { error: "empty_reply" } };
     }
 
-    return { status: 200, body: { reply: text } };
+    const { reply, lead } = extractLead(text);
+    if (lead) await sendLead(lead, telegramToken, telegramChatIds);
+    if (!reply) {
+      return { status: 502, body: { error: "empty_reply" } };
+    }
+
+    return { status: 200, body: { reply } };
   } catch {
     return { status: 502, body: { error: "gemini_request_failed" } };
   }
