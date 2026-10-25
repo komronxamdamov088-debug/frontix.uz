@@ -161,28 +161,28 @@ export function FrxWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.96 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed bottom-5 right-5 z-50 flex h-[min(820px,calc(100vh-2rem))] w-[calc(100vw-2.5rem)] flex-col overflow-hidden rounded-3xl border border-ink/10 dark:border-white/10 bg-paper dark:bg-ink-2 shadow-soft-dark sm:bottom-6 sm:right-6 sm:w-[520px]"
+            className="fixed inset-0 z-50 flex h-dvh w-full flex-col overflow-hidden bg-paper dark:bg-ink-2 sm:inset-auto sm:bottom-6 sm:right-6 sm:h-[min(820px,calc(100dvh-3rem))] sm:w-[520px] sm:max-w-[calc(100vw-3rem)] sm:rounded-3xl sm:border sm:border-ink/10 sm:dark:border-white/10 sm:shadow-soft-dark"
           >
-            <div className="flex items-center justify-between border-b border-ink/10 dark:border-white/10 px-6 py-5">
-              <div className="flex items-center gap-3">
-                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-ink dark:bg-paper">
-                  <Logo variant="mark" invert className="h-6 w-6" />
+            <div className="flex items-center justify-between gap-2 border-b border-ink/10 dark:border-white/10 px-4 pb-4 pt-[max(1rem,env(safe-area-inset-top))] sm:px-6 sm:py-5">
+              <div className="flex min-w-0 items-center gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-ink dark:bg-paper sm:h-11 sm:w-11">
+                  <Logo variant="mark" invert className="h-5 w-5 sm:h-6 sm:w-6" />
                 </span>
-                <div>
+                <div className="min-w-0">
                   <div className="flex items-center gap-1.5 text-base font-semibold">
                     {t.frx.name}
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
                   </div>
-                  <div className="text-xs text-ink/50 dark:text-paper/50">{t.frx.subtitle}</div>
+                  <div className="truncate text-xs text-ink/50 dark:text-paper/50">{t.frx.subtitle}</div>
                 </div>
               </div>
-              <div className="flex items-center gap-1">
+              <div className="flex shrink-0 items-center gap-1">
                 <button
                   onClick={voice.status === "live" || voice.status === "connecting" ? voice.stop : voice.start}
                   aria-label="Ovozli suhbat"
                   title={voice.status === "error" ? "Mikrofon yoki ulanish xatosi. Qayta urinib ko'ring" : "Ovozli suhbat"}
                   className={cn(
-                    "flex h-9 items-center gap-1.5 rounded-full px-3 text-xs font-medium transition-colors",
+                    "flex h-9 items-center gap-1.5 whitespace-nowrap rounded-full px-3 text-xs font-medium transition-colors",
                     voice.status === "live"
                       ? "bg-red-500 text-white"
                       : "bg-brand-500/10 text-brand-500 hover:bg-brand-500/20",
@@ -213,14 +213,14 @@ export function FrxWidget() {
               </div>
             </div>
 
-            <div ref={scrollRef} className="flex-1 space-y-4 overflow-y-auto px-5 py-5">
+            <div ref={scrollRef} className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-contain px-4 py-5 sm:px-5">
               {messages.map((m) => (
                 <div key={m.id} className={cn("flex flex-col gap-2", m.role === "user" ? "items-end" : "items-start")}>
                   <div className={cn("flex items-end gap-2", m.role === "user" && "flex-row-reverse")}>
                     {m.role === "frx" && <FrxAvatar />}
                     <div
                       className={cn(
-                        "max-w-95 whitespace-pre-line rounded-2xl px-4 py-3 text-sm leading-relaxed",
+                        "max-w-[85%] whitespace-pre-line break-words rounded-2xl px-4 py-3 text-sm leading-relaxed sm:max-w-95",
                         m.role === "user"
                           ? "rounded-br-sm bg-brand-500 text-white"
                           : "rounded-bl-sm bg-paper-2 dark:bg-white/[0.06] text-ink dark:text-paper",
@@ -264,13 +264,13 @@ export function FrxWidget() {
                 e.preventDefault();
                 sendMessage(input);
               }}
-              className="flex items-center gap-2 border-t border-ink/10 dark:border-white/10 p-4"
+              className="flex items-center gap-2 border-t border-ink/10 dark:border-white/10 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:p-4"
             >
               <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder={t.frx.inputPlaceholder}
-                className="flex-1 rounded-full bg-paper-2 dark:bg-white/[0.05] px-4 py-3 text-sm outline-none placeholder:text-ink/35 dark:placeholder:text-paper/35"
+                className="min-w-0 flex-1 rounded-full bg-paper-2 dark:bg-white/[0.05] px-4 py-3 text-base outline-none sm:text-sm placeholder:text-ink/35 dark:placeholder:text-paper/35"
               />
               <button
                 type="submit"
