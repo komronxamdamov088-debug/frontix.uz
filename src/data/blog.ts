@@ -389,6 +389,67 @@ export const blogPosts: BlogPost[] = [
         { question: "Mijoz ilova o'rnatishi kerakmi?", answer: "Yo'q, QR kodni telefon kamerasi bilan skanerlash kifoya." },
       ],
   },
+  {
+    slug: "biznesni-avtomatlashtirish-toshkent",
+    category: "Avtomatlashtirish",
+    title: "Biznesni avtomatlashtirish Toshkentda: nimani avtomatlashtirish mumkin va qayerdan boshlash kerak",
+    excerpt: "Biznesni avtomatlashtirish — takrorlanuvchi ishlarni (buyurtma qabul qilish, mijozlar bazasi, eslatmalar, hisobotlar) dastur zimmasiga yuklash; odatda CRM yoki Telegram bot bilan boshlanadi va CRM 250 000 so'mdan boshlanadi.",
+    publishDate: "2026-11-22",
+    readMinutes: 5,
+    relatedService: "business-automation",
+    sections: [
+        { heading: "Nimani avtomatlashtirish mumkin", body: "Mijozlar va so'rovlar bazasini yuritish, buyurtmalarni qabul qilish, mijozga avtomatik eslatma va javob yuborish, hisobot va statistikani tayyorlash, to'lovlarni qayd etish, xodimlar vazifalarini kuzatish." },
+        { heading: "Qayerdan boshlash kerak", body: "Eng ko'p vaqt oladigan va xato qilinadigan jarayonni tanlang. Odatda bu mijozlar bilan ishlash: so'rov qayerdan kelgani, kim javob bergani, nima kelishilgani daftarda yoki Excel'da yo'qolib ketadi. Shuning uchun birinchi qadam ko'pincha CRM bo'ladi." },
+        { heading: "CRM va Telegram bot birgalikda", body: "Mijoz Telegram bot orqali yozadi, so'rov avtomatik CRM'ga tushadi, menejerga xabar boradi. Qo'lda ko'chirish yo'qoladi, javob tezlashadi." },
+        { heading: "Qancha turadi", body: "FRONTIX'da CRM 250 000 so'mdan, Telegram bot $250 dan boshlanadi. Biznesingizga moslangan murakkab tizimlar funksionallikka qarab alohida baholanadi." },
+        { heading: "Qanday boshlash mumkin", body: "FRONTIX'ga biznesingiz va qaysi jarayon sizni ko'proq vaqtingizni oladi, shuni yozing. Bepul konsultatsiyada nimani avtomatlashtirish foydali ekanini va muddatini aytamiz." },
+      ],
+    faq: [
+        { question: "Biznesni avtomatlashtirish nimadan boshlanadi?", answer: "Eng ko'p vaqt oladigan jarayonni aniqlashdan; ko'pincha bu mijozlar bilan ishlash va CRM." },
+        { question: "CRM qancha turadi?", answer: "FRONTIX'da 250 000 so'mdan boshlanadi." },
+        { question: "Kichik biznesga avtomatlashtirish kerakmi?", answer: "Agar buyurtmalar va mijozlar qo'lda yuritilib, xato va kechikish bo'layotgan bo'lsa, ha, kichik biznes ham tez foyda ko'radi." },
+      ],
+  },
+  {
+    slug: "crm-narxi-toshkent",
+    category: "CRM",
+    title: "CRM tizimi narxi Toshkentda: 250 000 so'mdan, narx nimaga bog'liq",
+    excerpt: "FRONTIX'da CRM tizimi 250 000 so'mdan boshlanadi; yakuniy narx foydalanuvchilar soni, bosqichlar, integratsiyalar (Telegram, to'lov, 1C) va hisobotlar murakkabligiga bog'liq.",
+    publishDate: "2026-11-22",
+    readMinutes: 4,
+    relatedService: "business-automation",
+    sections: [
+        { heading: "CRM nima uchun kerak", body: "CRM mijozlar, so'rovlar va kelishuvlarni bir joyda saqlaydi: kim yozgan, kim javob bergan, keyingi qadam nima. Daftar va Excel'dagi yo'qolgan so'rovlar yo'qoladi." },
+        { heading: "Narxga nima ta'sir qiladi", body: "Foydalanuvchilar soni, sotuv bosqichlari, Telegram bot va to'lov tizimlari bilan integratsiya, hisobotlar, import qilinadigan eski ma'lumotlar va dizayn." },
+        { heading: "Tayyor yoki maxsus CRM", body: "Tayyor yechim tez va arzon ishga tushadi, lekin jarayoningizga to'liq mos kelmasligi mumkin. Maxsus CRM sizning biznes jarayoningizga moslab quriladi, ko'proq vaqt oladi." },
+        { heading: "Narx va muddat", body: "FRONTIX'da CRM 250 000 so'mdan boshlanadi. Muddat murakkablikka qarab bir necha kundan bir necha haftagacha; aniq narx va muddat bepul konsultatsiyadan keyin yozma taklifda beriladi." },
+      ],
+    faq: [
+        { question: "CRM qancha turadi?", answer: "FRONTIX'da 250 000 so'mdan boshlanadi." },
+        { question: "CRM'ni Telegram bot bilan bog'lash mumkinmi?", answer: "Ha, so'rovlar botdan CRM'ga avtomatik tushadi." },
+        { question: "Qancha vaqtda ishga tushadi?", answer: "Murakkablikka qarab bir necha kundan bir necha haftagacha." },
+      ],
+  },
+  {
+    slug: "telegram-bot-biznes-uchun-soha-boyicha",
+    category: "Telegram bot",
+    title: "Telegram bot biznes uchun: salon, restoran va yetkazib berish xizmatida nima qiladi",
+    excerpt: "Telegram bot salonda yozilishni, restoranda buyurtma va bronni, yetkazib berishda buyurtma holatini avtomatik qabul qiladi va javob beradi; FRONTIX'da bot $250 dan boshlanadi.",
+    publishDate: "2026-11-22",
+    readMinutes: 4,
+    relatedService: "telegram-bot",
+    sections: [
+        { heading: "Go'zallik saloni uchun", body: "Bot mijozni xizmat va vaqtga yozadi, eslatma yuboradi, narxlar va manzil haqidagi savollarga javob beradi. Administrator telefonda band bo'lmaydi." },
+        { heading: "Restoran va kafe uchun", body: "Bot menyuni ko'rsatadi, buyurtma va stol broni qabul qiladi, buyurtmani xodimga uzatadi, to'lovni Click yoki Payme orqali olishi mumkin." },
+        { heading: "Yetkazib berish xizmati uchun", body: "Bot buyurtmani qabul qiladi, manzil va to'lovni so'raydi, buyurtma holati haqida mijozga xabar beradi, kuryerga topshiradi." },
+        { heading: "Narx va muddat", body: "FRONTIX'da Telegram bot $250 dan boshlanadi. Oddiy bot bir necha kundan 1-2 haftagacha, to'lov va CRM integratsiyali bot ko'proq vaqt oladi." },
+      ],
+    faq: [
+        { question: "Telegram bot salon uchun ham bo'ladimi?", answer: "Ha, yozilish, eslatma va savollarga javob uchun." },
+        { question: "Restoran uchun botda to'lov qabul qilsa bo'ladimi?", answer: "Ha, Click va Payme integratsiyasi mumkin." },
+        { question: "Bot qancha turadi?", answer: "FRONTIX'da $250 dan." },
+      ],
+  },
 ];
 
 const blogTranslations: Record<Exclude<Lang, "uz">, Record<string, BlogPostText>> = { ru: blogRu, en: blogEn };

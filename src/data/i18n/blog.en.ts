@@ -315,4 +315,53 @@ export const blogEn: Record<string, BlogPostText> = {
         { question: "Does the guest need to install an app?", answer: "No, scanning the QR code with the phone camera is enough." },
       ],
   },
+  "biznesni-avtomatlashtirish-toshkent": {
+    category: "Automation",
+    title: "Business automation in Tashkent: what you can automate and where to start",
+    excerpt: "Business automation means handing repetitive work (taking orders, the customer database, reminders, reports) to software; it usually starts with a CRM or a Telegram bot, and a CRM at FRONTIX starts from 250,000 UZS.",
+    sections: [
+        { heading: "What can be automated", body: "Keeping the customer and enquiry database, taking orders, sending automatic reminders and replies, preparing reports and statistics, recording payments, tracking employee tasks." },
+        { heading: "Where to start", body: "Pick the process that takes the most time and causes the most mistakes. This is usually work with customers: where the enquiry came from, who answered, what was agreed gets lost in a notebook or Excel. That is why the first step is often a CRM." },
+        { heading: "CRM and Telegram bot together", body: "The customer writes to a Telegram bot, the request lands in the CRM automatically and the manager is notified. Manual copying disappears and replies get faster." },
+        { heading: "What it costs", body: "At FRONTIX a CRM starts from 250,000 UZS and a Telegram bot from $250. Complex systems built for your business are priced individually by functionality." },
+        { heading: "How to begin", body: "Tell FRONTIX what your business does and which process eats most of your time. In a free consultation we say what is worth automating and how long it takes." },
+      ],
+    faq: [
+        { question: "Where does business automation start?", answer: "With identifying the process that takes the most time; most often that is customer work and a CRM." },
+        { question: "How much does a CRM cost?", answer: "At FRONTIX from 250,000 UZS." },
+        { question: "Does a small business need automation?", answer: "If orders and customers are handled by hand and cause mistakes and delays, yes, small businesses benefit quickly too." },
+      ],
+  },
+  "crm-narxi-toshkent": {
+    category: "CRM",
+    title: "CRM price in Tashkent: from 250,000 UZS and what changes the cost",
+    excerpt: "A CRM at FRONTIX starts from 250,000 UZS; the final price depends on the number of users, stages, integrations (Telegram, payments, 1C) and report complexity.",
+    sections: [
+        { heading: "Why you need a CRM", body: "A CRM keeps customers, enquiries and agreements in one place: who wrote, who answered, what the next step is. Enquiries lost in notebooks and Excel stop disappearing." },
+        { heading: "What affects the price", body: "Number of users, sales stages, integration with a Telegram bot and payment systems, reports, migrating old data and design." },
+        { heading: "Ready-made or custom CRM", body: "A ready-made solution launches fast and cheap but may not fully fit your process. A custom CRM is built around your business processes and takes longer." },
+        { heading: "Price and timeline", body: "A CRM at FRONTIX starts from 250,000 UZS. The timeline is from a few days to a few weeks depending on complexity; the exact price and timeline come in a written proposal after a free consultation." },
+      ],
+    faq: [
+        { question: "How much does a CRM cost?", answer: "At FRONTIX from 250,000 UZS." },
+        { question: "Can the CRM be linked to a Telegram bot?", answer: "Yes, enquiries flow from the bot into the CRM automatically." },
+        { question: "How long does launch take?", answer: "From a few days to a few weeks depending on complexity." },
+      ],
+  },
+  "telegram-bot-biznes-uchun-soha-boyicha": {
+    category: "Telegram bot",
+    title: "Telegram bot for business: what it does for a salon, restaurant and delivery service",
+    excerpt: "A Telegram bot takes bookings at a salon, orders and reservations at a restaurant, and order status in delivery, answering customers automatically; at FRONTIX a bot starts from $250.",
+    sections: [
+        { heading: "For a beauty salon", body: "The bot books the customer for a service and time, sends reminders and answers questions about prices and the address. The administrator is no longer tied to the phone." },
+        { heading: "For a restaurant or cafe", body: "The bot shows the menu, takes orders and table reservations, passes the order to staff and can take payment via Click or Payme." },
+        { heading: "For a delivery service", body: "The bot takes the order, asks for address and payment, tells the customer the order status and hands the order to the courier." },
+        { heading: "Price and timeline", body: "A Telegram bot at FRONTIX starts from $250. A simple bot takes a few days to 1-2 weeks; a bot with payment and CRM integration takes longer." },
+      ],
+    faq: [
+        { question: "Is a Telegram bot suitable for a salon?", answer: "Yes, for bookings, reminders and answering questions." },
+        { question: "Can a restaurant bot take payments?", answer: "Yes, Click and Payme can be integrated." },
+        { question: "How much does a bot cost?", answer: "At FRONTIX from $250." },
+      ],
+  },
 };

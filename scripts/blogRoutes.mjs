@@ -13,6 +13,9 @@ export const BLOG_SLUGS = [
   "it-kompaniya-qanday-tanlash-toshkent",
   "telegram-bot-yaratish-narxi-toshkent",
   "qr-menyu-narxi-toshkent",
+  "biznesni-avtomatlashtirish-toshkent",
+  "crm-narxi-toshkent",
+  "telegram-bot-biznes-uchun-soha-boyicha",
 ];
 
 export const BLOG_ROUTES = BLOG_SLUGS.map((slug) => `/blog/${slug}`);
