@@ -55,7 +55,11 @@ export function Seo({ title, description: rawDescription, keywords, path = "/", 
     setMeta("property", "og:url", url);
     setMeta("property", "og:site_name", SITE.name);
     setMeta("property", "og:image", `${SITE.url}/og-image.png`);
+    setMeta("property", "og:image:width", "1200");
+    setMeta("property", "og:image:height", "630");
+    setMeta("property", "og:image:alt", fullTitle);
     setMeta("property", "og:locale", OG_LOCALE[lang]);
+    setMeta("name", "twitter:image", `${SITE.url}/og-image.png`);
     setMeta("name", "twitter:card", "summary_large_image");
     setMeta("name", "twitter:title", fullTitle);
     setMeta("name", "twitter:description", description);

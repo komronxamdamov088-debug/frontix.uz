@@ -6,6 +6,8 @@
       "source": "/(.*)",
       "headers": [
         { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Permissions-Policy", "value": "camera=(), geolocation=(), payment=(), microphone=(self)" },
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
         { "key": "Link", "value": "</llms.txt>; rel=\"describedby\"; type=\"text/plain\"" }
       ]

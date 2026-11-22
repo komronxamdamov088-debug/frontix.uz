@@ -246,4 +246,73 @@ export const blogEn: Record<string, BlogPostText> = {
       },
     ],
   },
+  "it-xizmatlar-narxi-toshkent": {
+    category: "IT service pricing",
+    title: "IT service prices in Tashkent 2026: what a website, Telegram bot, QR menu and CRM cost",
+    excerpt: "FRONTIX prices in Tashkent: website $350, website with admin panel $550, QR menu from $50, Telegram bot from $250, CRM from 250,000 UZS. Complex projects are quoted individually.",
+    sections: [
+        { heading: "Main prices at a glance", body: "Website — $350. Website with an admin panel where you manage the content yourself — $550. QR menu — from $50. Telegram bot — from $250. CRM — from 250,000 UZS. Custom software and complex integrations are priced by functionality." },
+        { heading: "What affects the price", body: "Number of features, design complexity, payment systems (Click, Payme), integration with CRM and other systems, and the timeline. A simple project takes 1-2 weeks, a complex one several weeks." },
+        { heading: "Which service you need", body: "To be found online — a website. To take orders in Telegram — a Telegram bot. For a restaurant or cafe — a QR menu. To organise customers and sales — a CRM. These are often used together." },
+        { heading: "What to check before taking a cheap offer", body: "Ask what is included: design, mobile layout, domain and hosting, technical support, code ownership. At the same price the scope can differ a lot." },
+        { heading: "How to get an exact price", body: "Tell FRONTIX briefly about your project: we hold a free consultation and send a proposal with the scope and timeline spelled out." },
+      ],
+    faq: [
+        { question: "How much does a website cost?", answer: "At FRONTIX a website costs $350, a website with an admin panel $550." },
+        { question: "How much does a Telegram bot cost?", answer: "A Telegram bot starts from $250; the exact price depends on features." },
+        { question: "How much does a QR menu cost?", answer: "A QR menu starts from $50." },
+        { question: "How much does a CRM cost?", answer: "CRM starts from 250,000 UZS; custom systems are priced separately." },
+      ],
+  },
+  "it-kompaniya-qanday-tanlash-toshkent": {
+    category: "Choosing an IT company",
+    title: "How to choose an IT company in Tashkent: 7 checks",
+    excerpt: "When choosing an IT company, check the portfolio, written contract and proposal scope, timeline, support, code ownership, payment terms and response speed; choosing on price alone leads to extra costs later.",
+    sections: [
+        { heading: "1. Portfolio and real projects", body: "Look at the company's finished work and open it: does it work, is it comfortable on a phone, does it load fast." },
+        { heading: "2. Written proposal and contract", body: "Scope, stages, timeline and price should be in writing. A verbal agreement leads to disputes later." },
+        { heading: "3. Clear timeline and stages", body: "A good company splits the project into stages and shows results at each one." },
+        { heading: "4. Payment terms", body: "Staged payment is safer for both sides. Be careful with full prepayment." },
+        { heading: "5. Code and domain ownership", body: "Ask in advance in whose name the code and the domain are registered." },
+        { heading: "6. Support after launch", body: "Find out who helps, and how fast, when an error appears or a change is needed." },
+        { heading: "7. Response speed", body: "How quickly and clearly the company answers first questions shows the quality of later work." },
+        { heading: "FRONTIX works on these principles", body: "FRONTIX builds websites, Telegram bots, QR menus, online ordering systems, CRM and custom software. A free consultation first, then a proposal with scope and timeline written out." },
+      ],
+    faq: [
+        { question: "What matters most when choosing an IT company?", answer: "A written contract and proposal scope, a portfolio of finished projects, and support after launch." },
+        { question: "Freelancer or company — which is better?", answer: "A freelancer can be enough for a small one-off job; for long-term support and several specialists a company is more reliable." },
+      ],
+  },
+  "telegram-bot-yaratish-narxi-toshkent": {
+    category: "Telegram bot",
+    title: "Telegram bot cost: from $250, and what changes the price",
+    excerpt: "A Telegram bot at FRONTIX starts from $250; the final price depends on features such as order intake, payments (Click, Payme), CRM integration and an admin panel.",
+    sections: [
+        { heading: "Why you need a Telegram bot", body: "A bot takes orders and bookings 24/7, answers frequent questions automatically and stores customers in a database. Customers install nothing — they are already in Telegram." },
+        { heading: "What affects the price", body: "Number of features, integration with payment systems, connection to CRM and other systems, an admin panel, a multilingual interface and the timeline." },
+        { heading: "Simple vs complex bot", body: "A simple bot answers questions and takes enquiries. A complex one includes a catalogue, cart, payment and order tracking, and needs more time." },
+        { heading: "How long it takes", body: "A simple bot usually takes from a few days to 1-2 weeks, a complex one longer. The exact timeline is set after the consultation." },
+      ],
+    faq: [
+        { question: "How much does a Telegram bot cost?", answer: "At FRONTIX from $250; the exact price depends on features." },
+        { question: "Can payments be added to the bot?", answer: "Yes, Click, Payme and other payment systems can be integrated." },
+        { question: "Can the bot be linked to a CRM?", answer: "Yes, orders and customers can flow into the CRM automatically." },
+      ],
+  },
+  "qr-menyu-narxi-toshkent": {
+    category: "QR menu",
+    title: "QR menu price: from $50, what restaurants and cafes should consider",
+    excerpt: "A QR menu at FRONTIX starts from $50; the price depends on the number of dishes, online ordering, an admin panel and design complexity.",
+    sections: [
+        { heading: "How much a QR menu costs", body: "A QR menu at FRONTIX starts from $50. A simple menu display is cheaper; adding online ordering and kitchen integration raises the price." },
+        { heading: "What affects the price", body: "Number of dishes and categories, photos, multiple languages, online ordering, payment, the ability to change prices via the admin panel and branded design." },
+        { heading: "Savings compared to a paper menu", body: "When a price or dish changes there is no reprinting: the change appears on every table at once through the admin panel." },
+        { heading: "Launch", body: "You need the menu content (dishes, prices, photos) and a QR code for each table. Usually ready within 1-2 weeks." },
+      ],
+    faq: [
+        { question: "How much does a QR menu cost?", answer: "At FRONTIX from $50." },
+        { question: "Can I change prices myself?", answer: "Yes, you update prices and dishes yourself via the admin panel." },
+        { question: "Does the guest need to install an app?", answer: "No, scanning the QR code with the phone camera is enough." },
+      ],
+  },
 };

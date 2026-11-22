@@ -9,6 +9,10 @@ export const BLOG_SLUGS = [
   "onlayn-buyurtma-tizimi-restoran-uchun",
   "crm-nima-kichik-biznesga-kerakmi",
   "sayt-yaratish-narxi-nimaga-bogliq",
+  "it-xizmatlar-narxi-toshkent",
+  "it-kompaniya-qanday-tanlash-toshkent",
+  "telegram-bot-yaratish-narxi-toshkent",
+  "qr-menyu-narxi-toshkent",
 ];
 
 export const BLOG_ROUTES = BLOG_SLUGS.map((slug) => `/blog/${slug}`);
