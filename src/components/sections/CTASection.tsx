@@ -3,9 +3,17 @@ import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { useLanguage } from "@/context/LanguageContext";
+import { SITE } from "@/data/site";
+
+const DIRECT_LABELS = {
+  uz: { telegram: "Telegram'da yozish", call: "Qo'ng'iroq qilish" },
+  ru: { telegram: "Написать в Telegram", call: "Позвонить" },
+  en: { telegram: "Message on Telegram", call: "Call us" },
+} as const;
 
 export function CTASection() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const direct = DIRECT_LABELS[lang];
 
   return (
     <section className="py-24 sm:py-32">
@@ -36,6 +44,19 @@ export function CTASection() {
                 >
                   {t.cta.ctaTeam}
                 </ButtonLink>
+              </div>
+              <div className="mt-5 flex flex-col items-center justify-center gap-3 text-sm sm:flex-row sm:gap-6">
+                <a
+                  href={SITE.telegramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-paper/80 underline-offset-4 hover:text-paper hover:underline"
+                >
+                  {direct.telegram}
+                </a>
+                <a href={`tel:${SITE.phoneHref.replace(/\s+/g, "")}`} className="text-paper/80 underline-offset-4 hover:text-paper hover:underline">
+                  {direct.call}: {SITE.phone}
+                </a>
               </div>
             </div>
           </div>
