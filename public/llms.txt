@@ -101,6 +101,7 @@ Sayt uch tilda mavjud: o'zbekcha (prefikssiz URL), ruscha (`/ru/...`) va inglizc
   - [Kichik biznes uchun CRM Toshkentda](https://frontix.uz/blog/crm-dlya-malogo-biznesa-tashkent)
   - [Go'zallik saloni uchun chat-bot](https://frontix.uz/blog/chat-bot-dlya-salona-krasoty-tashkent)
   - [Klinika uchun CRM Toshkentda](https://frontix.uz/blog/crm-dlya-kliniki-tashkent)
+  - [Tayyor CRM yoki maxsus CRM: qaysi biri mos](https://frontix.uz/blog/tayyor-crm-yoki-maxsus-crm)
 
 ## Aloqa
 

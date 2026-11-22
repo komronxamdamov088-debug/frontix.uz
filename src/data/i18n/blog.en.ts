@@ -412,4 +412,21 @@ export const blogEn: Record<string, BlogPostText> = {
         { question: "What is FRX MED?", answer: "FRONTIX's CRM system for clinics." },
       ],
   },
+  "tayyor-crm-yoki-maxsus-crm": {
+    category: "CRM",
+    title: "Ready-made CRM or custom CRM: which suits your business",
+    excerpt: "A ready-made CRM (such as amoCRM or Bitrix24) launches fast and cheap, while a custom CRM is built fully around your process; the choice depends on process complexity, budget and the need for flexibility.",
+    sections: [
+        { heading: "Ready-made CRM: when it fits", body: "If your process is standard (customer → enquiry → sale), a ready-made solution launches in days and the starting cost is low. A monthly fee per user may apply." },
+        { heading: "Ready-made CRM: limits", body: "If your process is unusual you either adapt to the system or need extra settings and integrations. If a needed feature is missing, adding or working around it can be hard." },
+        { heading: "Custom CRM: when it fits", body: "Your process is unique, the system must connect to several other programs (payments, Telegram, 1C), or you want to avoid ongoing yearly fees. Staff learn faster because the system follows their own steps." },
+        { heading: "How to choose", body: "First write down the process. If it is 80% standard, start with a ready-made CRM. If your key steps do not fit a ready-made system, consider a custom one." },
+        { heading: "What FRONTIX offers", body: "A CRM at FRONTIX starts from 250,000 UZS, and complex custom systems are priced by functionality after a free consultation." },
+      ],
+    faq: [
+        { question: "Is a ready-made CRM cheaper than a custom one?", answer: "The starting cost is usually lower, but monthly per-user fees can add up over time." },
+        { question: "Can I move from a ready-made to a custom CRM?", answer: "Yes, data can be exported and moved to the new system; check export options beforehand." },
+        { question: "How do I choose a CRM?", answer: "Write down your process: if the key steps fit a ready-made system choose it, otherwise choose a custom one." },
+      ],
+  },
 };

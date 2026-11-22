@@ -510,6 +510,27 @@ export const blogPosts: BlogPost[] = [
         { question: "FRX MED nima?", answer: "FRONTIX'ning klinikalar uchun CRM tizimi." },
       ],
   },
+  {
+    slug: "tayyor-crm-yoki-maxsus-crm",
+    category: "CRM",
+    title: "Tayyor CRM yoki maxsus CRM: qaysi biri biznesingizga mos",
+    excerpt: "Tayyor CRM (masalan amoCRM yoki Bitrix24 kabi) tez va arzon ishga tushadi, maxsus CRM esa sizning jarayoningizga to'liq moslab quriladi; tanlov jarayon murakkabligi, byudjet va moslashuv ehtiyojiga bog'liq.",
+    publishDate: "2026-11-22",
+    readMinutes: 5,
+    relatedService: "business-automation",
+    sections: [
+        { heading: "Tayyor CRM: qachon yaxshi", body: "Jarayoningiz standart bo'lsa (mijoz → so'rov → sotuv), tayyor yechim bir necha kunda ishga tushadi va boshlang'ich xarajat past bo'ladi. Foydalanuvchilar soniga qarab oylik to'lov bo'lishi mumkin." },
+        { heading: "Tayyor CRM: cheklovlar", body: "Jarayoningiz o'ziga xos bo'lsa, tayyor tizimga moslashish yoki qo'shimcha sozlama va integratsiyalar kerak bo'ladi. Kerakli funksiya bo'lmasa, uni qo'shish yoki aylanib o'tish qiyin." },
+        { heading: "Maxsus CRM: qachon yaxshi", body: "Biznes jarayoningiz noyob, tizim bir nechta boshqa dastur (to'lov, Telegram, 1C) bilan bog'lanishi kerak yoki uzoq muddatda yillik to'lovlardan qutulmoqchi bo'lsangiz. Tizim aynan sizning qadamlaringizga qurilganligi uchun xodimlar tezroq o'rganadi." },
+        { heading: "Qanday tanlash", body: "Avval jarayonni yozib chiqing. Agar 80% standart bo'lsa, tayyor CRM'dan boshlang. Agar asosiy qadamlaringiz tayyor tizimga sig'masa, maxsus tizimni ko'rib chiqing." },
+        { heading: "FRONTIX imkoniyati", body: "FRONTIX'da CRM 250 000 so'mdan boshlanadi, murakkab maxsus tizimlar esa funksionallikka qarab bepul konsultatsiyadan keyin baholanadi." },
+      ],
+    faq: [
+        { question: "Tayyor CRM maxsus CRM'dan arzonmi?", answer: "Boshlang'ich xarajat odatda arzon; lekin uzoq muddatda foydalanuvchilar soniga qarab oylik to'lovlar yig'ilishi mumkin." },
+        { question: "Tayyor CRM'dan maxsusga o'tish mumkinmi?", answer: "Ha, ma'lumotlarni eksport qilib yangi tizimga ko'chirish mumkin; avval eksport imkoniyatini tekshiring." },
+        { question: "CRM'ni qanday tanlash kerak?", answer: "Jarayoningizni yozib chiqing: asosiy qadamlar tayyor tizimga sig'sa tayyorni, sig'masa maxsus tizimni tanlang." },
+      ],
+  },
 ];
 
 const blogTranslations: Record<Exclude<Lang, "uz">, Record<string, BlogPostText>> = { ru: blogRu, en: blogEn };

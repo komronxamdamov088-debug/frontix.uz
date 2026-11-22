@@ -19,6 +19,7 @@ export const BLOG_SLUGS = [
   "crm-dlya-malogo-biznesa-tashkent",
   "chat-bot-dlya-salona-krasoty-tashkent",
   "crm-dlya-kliniki-tashkent",
+  "tayyor-crm-yoki-maxsus-crm",
 ];
 
 export const BLOG_ROUTES = BLOG_SLUGS.map((slug) => `/blog/${slug}`);

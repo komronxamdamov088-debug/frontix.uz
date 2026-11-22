@@ -10,6 +10,8 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { services } from "@/data/services";
 import { useLanguage } from "@/context/LanguageContext";
+import { SITE } from "@/data/site";
+import { localizePath } from "@/i18n/langRoutes";
 import type { Lang } from "@/i18n/translations";
 
 /** Starting price per service slug, as shown to visitors. `null` = priced individually after a consultation. */
@@ -21,6 +23,47 @@ const FROM_PRICE: Record<(typeof services)[number]["slug"], Record<Lang, string>
   "business-automation": { uz: "250 000 so'm", ru: "250 000 сум", en: "250,000 UZS" },
   "custom-software": null,
 };
+
+/** Machine-readable prices for search and AI engines. Only confirmed prices; "minPrice" marks "from" prices. */
+const OFFERS: { slug: (typeof services)[number]["slug"]; price: number; currency: "USD" | "UZS"; from: boolean; extra?: "admin" }[] = [
+  { slug: "website-development", price: 350, currency: "USD", from: false },
+  { slug: "website-development", price: 550, currency: "USD", from: false, extra: "admin" },
+  { slug: "qr-menu", price: 50, currency: "USD", from: true },
+  { slug: "telegram-bot", price: 250, currency: "USD", from: true },
+  { slug: "business-automation", price: 250000, currency: "UZS", from: true },
+];
+
+const ADMIN_NAME: Record<Lang, string> = {
+  uz: "Admin panelli veb-sayt",
+  ru: "Сайт с админ-панелью",
+  en: "Website with admin panel",
+};
+
+function pricingJsonLd(lang: Lang, names: Record<string, string>) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "FRONTIX pricing",
+    itemListElement: OFFERS.map((o, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "Service",
+        name: o.extra === "admin" ? ADMIN_NAME[lang] : names[o.slug],
+        url: `${SITE.url}${localizePath(lang, `/services/${o.slug}`)}`,
+        provider: { "@type": "Organization", name: SITE.name, url: SITE.url },
+        areaServed: { "@type": "City", name: "Tashkent" },
+        offers: {
+          "@type": "Offer",
+          priceCurrency: o.currency,
+          priceSpecification: o.from
+            ? { "@type": "PriceSpecification", minPrice: o.price, priceCurrency: o.currency }
+            : { "@type": "PriceSpecification", price: o.price, priceCurrency: o.currency },
+        },
+      },
+    })),
+  };
+}
 
 const COPY: Record<Lang, { seoTitle: string; seoDescription: string; keywords: string; eyebrow: string; title: string; description: string; otherTitle: string; otherDescription: string; individual: string; individualHint: string; quote: string; from: string; more: string }> = {
   uz: {
@@ -82,13 +125,16 @@ export default function Pricing() {
         description={copy.seoDescription}
         keywords={copy.keywords}
         path="/pricing"
-        jsonLd={breadcrumbJsonLd(
-          [
-            { name: t.nav.home, path: "/" },
-            { name: t.nav.pricing, path: "/pricing" },
-          ],
-          lang,
-        )}
+        jsonLd={[
+          breadcrumbJsonLd(
+            [
+              { name: t.nav.home, path: "/" },
+              { name: t.nav.pricing, path: "/pricing" },
+            ],
+            lang,
+          ),
+          pricingJsonLd(lang, Object.fromEntries(services.map((sv) => [sv.slug, t.services[sv.slug].title]))),
+        ]}
       />
       <PageHero eyebrow={copy.eyebrow} title={copy.title} description={copy.description} />
 
