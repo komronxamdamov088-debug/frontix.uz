@@ -450,6 +450,66 @@ export const blogPosts: BlogPost[] = [
         { question: "Bot qancha turadi?", answer: "FRONTIX'da $250 dan." },
       ],
   },
+  {
+    slug: "crm-dlya-malogo-biznesa-tashkent",
+    category: "CRM",
+    title: "Kichik biznes uchun CRM Toshkentda: nimadan boshlash va qancha turadi",
+    excerpt: "Kichik biznes uchun CRM mijozlar, so'rovlar va kelishuvlarni bir joyda saqlaydi; FRONTIX'da CRM 250 000 so'mdan boshlanadi va Telegram bot bilan bog'lanadi.",
+    publishDate: "2026-11-22",
+    readMinutes: 4,
+    relatedService: "business-automation",
+    sections: [
+        { heading: "CRM kichik biznesga nima beradi", body: "Barcha mijozlar va so'rovlar bitta joyda: kim yozgan, kim javob bergan, nima kelishilgan. Daftar va Excel'da yo'qolgan so'rovlar kamayadi, menejer o'zgarsa ham tarix saqlanadi." },
+        { heading: "Qachon CRM kerak", body: "Mijozlar bir nechta joydan keladi (Telegram, Instagram, telefon), so'rovlar yo'qolib qolmoqda, kim qachon javob berganini bilmaysiz yoki hisobotni qo'lda tuzasiz." },
+        { heading: "Qanday boshlash kerak", body: "Avval jarayonni yozib chiqing: mijoz qayerdan keladi va qadamlari qanday. Keyin faqat shu qadamlarni CRM'ga o'tkazing, ortiqcha funksiya qo'shmang." },
+        { heading: "Narx", body: "FRONTIX'da CRM 250 000 so'mdan boshlanadi; foydalanuvchilar soni, integratsiyalar va hisobotlar murakkabligiga qarab o'zgaradi." },
+      ],
+    faq: [
+        { question: "Kichik biznesga CRM kerakmi?", answer: "Agar so'rovlar bir necha kanaldan kelsa va qo'lda yuritilsa, ha, tez foyda beradi." },
+        { question: "CRM qancha turadi?", answer: "FRONTIX'da 250 000 so'mdan." },
+        { question: "CRM'ni Telegram bilan bog'lasa bo'ladimi?", answer: "Ha, so'rovlar botdan CRM'ga avtomatik tushadi." },
+      ],
+  },
+  {
+    slug: "chat-bot-dlya-salona-krasoty-tashkent",
+    category: "Telegram bot",
+    title: "Go'zallik saloni uchun chat-bot Toshkentda: yozilish va eslatmalar avtomatik",
+    excerpt: "Salon uchun Telegram chat-bot mijozni xizmat va vaqtga yozadi, eslatma yuboradi va savollarga javob beradi; FRONTIX'da bot $250 dan boshlanadi.",
+    publishDate: "2026-11-22",
+    readMinutes: 4,
+    relatedService: "telegram-bot",
+    sections: [
+        { heading: "Salonda bot nima qiladi", body: "Mijoz Telegram'da xizmat va vaqtni tanlaydi, bot yozuvni saqlaydi, oldindan eslatma yuboradi, narxlar va manzil haqidagi savollarga javob beradi." },
+        { heading: "Administratorga foydasi", body: "Telefon va xabarlarga javob berishga ketadigan vaqt kamayadi, yozuvlar chalkashmaydi, mijoz kechasi ham yozila oladi." },
+        { heading: "CRM bilan bog'lash", body: "Yozuvlar va mijozlar bazasi CRM'ga tushadi, shunda qaytib keladigan mijozlarni ko'rish va eslatish oson." },
+        { heading: "Narx va muddat", body: "FRONTIX'da Telegram bot $250 dan boshlanadi; oddiy bot bir necha kundan 1-2 haftagacha tayyor bo'ladi." },
+      ],
+    faq: [
+        { question: "Salon uchun bot qancha turadi?", answer: "FRONTIX'da $250 dan." },
+        { question: "Bot mijozga eslatma yuboradimi?", answer: "Ha, yozilgan vaqtdan oldin avtomatik eslatma yuborishi mumkin." },
+        { question: "Botni CRM bilan bog'lash mumkinmi?", answer: "Ha, yozuvlar CRM'ga avtomatik tushadi." },
+      ],
+  },
+  {
+    slug: "crm-dlya-kliniki-tashkent",
+    category: "CRM",
+    title: "Klinika uchun CRM Toshkentda: bemorlar, yozilish va hisobotlar bir joyda",
+    excerpt: "Klinika uchun CRM bemorlar bazasi, qabulga yozilish va hisobotlarni bir joyda yuritadi; FRONTIX o'z FRX MED CRM mahsulotini ham yaratgan, individual tizim esa talabga qarab baholanadi.",
+    publishDate: "2026-11-22",
+    readMinutes: 4,
+    relatedService: "business-automation",
+    sections: [
+        { heading: "Klinikaga CRM nima uchun kerak", body: "Bemorlar bazasi, qabulga yozilish jadvali, shifokorlar yuklamasi va hisobotlar daftar yoki Excel'da emas, bitta tizimda bo'ladi." },
+        { heading: "Nimalarni avtomatlashtirish mumkin", body: "Qabulga yozilish, bemorga eslatma, shifokor jadvali, to'lovlarni qayd etish va hisobotlar." },
+        { heading: "Tayyor yoki maxsus tizim", body: "Tayyor yechim tez ishga tushadi; klinikaning o'ziga xos jarayoni bo'lsa maxsus tizim moslab quriladi. FRONTIX o'zining FRX MED (klinikalar uchun CRM) mahsulotiga ega." },
+        { heading: "Narx", body: "FRONTIX'da CRM 250 000 so'mdan boshlanadi; klinika uchun aniq narx funksiyalarga qarab bepul konsultatsiyadan keyin belgilanadi." },
+      ],
+    faq: [
+        { question: "Klinika uchun CRM qancha turadi?", answer: "FRONTIX'da CRM 250 000 so'mdan; aniq narx funksiyalarga bog'liq." },
+        { question: "Bemorlarga eslatma yuborish mumkinmi?", answer: "Ha, qabul oldidan avtomatik eslatma qo'shish mumkin." },
+        { question: "FRX MED nima?", answer: "FRONTIX'ning klinikalar uchun CRM tizimi." },
+      ],
+  },
 ];
 
 const blogTranslations: Record<Exclude<Lang, "uz">, Record<string, BlogPostText>> = { ru: blogRu, en: blogEn };

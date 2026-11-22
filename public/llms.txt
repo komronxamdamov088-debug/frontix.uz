@@ -98,6 +98,9 @@ Sayt uch tilda mavjud: o'zbekcha (prefikssiz URL), ruscha (`/ru/...`) va inglizc
   - [Biznesni avtomatlashtirish Toshkentda](https://frontix.uz/blog/biznesni-avtomatlashtirish-toshkent)
   - [CRM tizimi narxi Toshkentda](https://frontix.uz/blog/crm-narxi-toshkent)
   - [Telegram bot biznes uchun: salon, restoran, yetkazib berish](https://frontix.uz/blog/telegram-bot-biznes-uchun-soha-boyicha)
+  - [Kichik biznes uchun CRM Toshkentda](https://frontix.uz/blog/crm-dlya-malogo-biznesa-tashkent)
+  - [Go'zallik saloni uchun chat-bot](https://frontix.uz/blog/chat-bot-dlya-salona-krasoty-tashkent)
+  - [Klinika uchun CRM Toshkentda](https://frontix.uz/blog/crm-dlya-kliniki-tashkent)
 
 ## Aloqa
 

@@ -364,4 +364,52 @@ export const blogEn: Record<string, BlogPostText> = {
         { question: "How much does a bot cost?", answer: "At FRONTIX from $250." },
       ],
   },
+  "crm-dlya-malogo-biznesa-tashkent": {
+    category: "CRM",
+    title: "CRM for small business in Tashkent: where to start and what it costs",
+    excerpt: "A CRM for a small business keeps customers, enquiries and agreements in one place; at FRONTIX a CRM starts from 250,000 UZS and connects to a Telegram bot.",
+    sections: [
+        { heading: "What a CRM gives a small business", body: "All customers and enquiries in one place: who wrote, who answered, what was agreed. Fewer enquiries lost in notebooks and Excel, and history stays even when a manager changes." },
+        { heading: "When you need a CRM", body: "Customers come from several places (Telegram, Instagram, phone), enquiries get lost, you do not know who answered and when, or you build reports by hand." },
+        { heading: "Where to start", body: "First write down the process: where the customer comes from and what the steps are. Then move only those steps into the CRM without adding extra features." },
+        { heading: "Price", body: "A CRM at FRONTIX starts from 250,000 UZS; the price depends on the number of users, integrations and report complexity." },
+      ],
+    faq: [
+        { question: "Does a small business need a CRM?", answer: "If enquiries come from several channels and are handled by hand, yes, the benefit comes quickly." },
+        { question: "How much does a CRM cost?", answer: "At FRONTIX from 250,000 UZS." },
+        { question: "Can the CRM be linked to Telegram?", answer: "Yes, enquiries from the bot flow into the CRM automatically." },
+      ],
+  },
+  "chat-bot-dlya-salona-krasoty-tashkent": {
+    category: "Telegram bot",
+    title: "Chatbot for a beauty salon in Tashkent: booking and reminders automatic",
+    excerpt: "A Telegram chatbot for a salon books the customer for a service and time, sends reminders and answers questions; at FRONTIX a bot starts from $250.",
+    sections: [
+        { heading: "What the bot does in a salon", body: "The customer picks a service and time in Telegram, the bot saves the booking, sends a reminder beforehand and answers questions about prices and the address." },
+        { heading: "How it helps the administrator", body: "Less time on calls and messages, bookings do not get mixed up, and customers can book even at night." },
+        { heading: "Linking to a CRM", body: "Bookings and the customer base go into the CRM, making it easy to see and bring back regular customers." },
+        { heading: "Price and timeline", body: "A Telegram bot at FRONTIX starts from $250; a simple bot is ready in a few days to 1-2 weeks." },
+      ],
+    faq: [
+        { question: "How much does a salon bot cost?", answer: "At FRONTIX from $250." },
+        { question: "Does the bot send reminders?", answer: "Yes, it can remind customers automatically before the booking." },
+        { question: "Can the bot be linked to a CRM?", answer: "Yes, bookings flow into the CRM automatically." },
+      ],
+  },
+  "crm-dlya-kliniki-tashkent": {
+    category: "CRM",
+    title: "CRM for a clinic in Tashkent: patients, booking and reports in one place",
+    excerpt: "A clinic CRM keeps the patient database, appointment booking and reports in one place; FRONTIX has its own FRX MED product, and custom systems are priced by requirements.",
+    sections: [
+        { heading: "Why a clinic needs a CRM", body: "The patient database, appointment schedule, doctor workload and reports live in one system instead of a notebook or Excel." },
+        { heading: "What can be automated", body: "Appointment booking, patient reminders, doctor schedules, payment records and reports." },
+        { heading: "Ready-made or custom system", body: "A ready-made solution launches fast; if the clinic has a special process a custom system is built around it. FRONTIX has its own FRX MED product (a CRM for clinics)." },
+        { heading: "Price", body: "A CRM at FRONTIX starts from 250,000 UZS; the exact price for a clinic is set by features after a free consultation." },
+      ],
+    faq: [
+        { question: "How much does a clinic CRM cost?", answer: "At FRONTIX from 250,000 UZS; the exact price depends on features." },
+        { question: "Can patients get reminders?", answer: "Yes, automatic reminders before the appointment can be added." },
+        { question: "What is FRX MED?", answer: "FRONTIX's CRM system for clinics." },
+      ],
+  },
 };
